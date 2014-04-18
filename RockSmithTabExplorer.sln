@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockSmithTabExplorer", "RockSmithTabExplorer\RockSmithTabExplorer.csproj", "{DCA2A0F8-15AF-4B12-B2C7-13C884FB39EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaTab.Core", "AlphaTab.Core\AlphaTab.Core.csproj", "{A3A01A41-EE58-4C99-867B-D88D2512F72F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCA2A0F8-15AF-4B12-B2C7-13C884FB39EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCA2A0F8-15AF-4B12-B2C7-13C884FB39EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCA2A0F8-15AF-4B12-B2C7-13C884FB39EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCA2A0F8-15AF-4B12-B2C7-13C884FB39EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3A01A41-EE58-4C99-867B-D88D2512F72F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3A01A41-EE58-4C99-867B-D88D2512F72F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3A01A41-EE58-4C99-867B-D88D2512F72F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3A01A41-EE58-4C99-867B-D88D2512F72F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

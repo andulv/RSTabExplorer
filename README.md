@@ -1,3 +1,5 @@
+![RSTabExplorer](https://raw.githubusercontent.com/andulv/RSTabExplorer/master/Screenshot1.JPG "RSTabExplorer")
+
 View Rocksmith 2014 songs (built in, DLC or custom DLC) as tablature
 
 # Features

@@ -3,7 +3,7 @@
 View Rocksmith 2014 songs (built in, DLC or custom DLC) as tablature
 
 # Features
-* Loads Rocksmith 2014 .psarc archives. Lists all songs and track-arrangments present in archive.
+* Loads Rocksmith 2014 .psarc archives. Lists all songs and tracks (arrangements) present in archive.
 * Displays track as tablature / score.
 
 # Credits

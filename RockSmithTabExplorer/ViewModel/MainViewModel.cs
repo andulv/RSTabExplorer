@@ -61,7 +61,7 @@ namespace RockSmithTabExplorer.ViewModel
                     _currentTrackIndex = 0;
                 else
                     _currentTrackIndex = -1;
-                OnPropertyChanged();
+                OnPropertyChanged("Score");
                 OnPropertyChangedExplicit("ScoreTitle");
                 OnPropertyChangedExplicit("CurrentScoreTrack");
                 _showScoreInfoCommand.RaiseCanExecuteChanged();
@@ -69,15 +69,15 @@ namespace RockSmithTabExplorer.ViewModel
             }
         }
 
-        public Track CurrentScoreTrack 
-        { 
-            get 
+        public Track CurrentScoreTrack
+        {
+            get
             {
                 if (_score == null || _currentTrackIndex < 0 || _currentTrackIndex >= _score.tracks.length)
                     return null;
 
-                return  _score.tracks[_currentTrackIndex] as Track; 
-            } 
+                return _score.tracks[_currentTrackIndex] as Track;
+            }
         }
 
         public string ScoreTitle
@@ -111,7 +111,7 @@ namespace RockSmithTabExplorer.ViewModel
             set
             {
                 _selectedRockSmithSong = value;
-                OnPropertyChanged();
+                OnPropertyChanged("SelectedRockSmithSong");
 
                 setTrackFromPath();
             }
@@ -159,7 +159,7 @@ namespace RockSmithTabExplorer.ViewModel
             set
             {
                 _selectedRockSmithTrack = value;
-                OnPropertyChanged();
+                OnPropertyChanged("SelectedRockSmithTrack");
                 if (value != null)
                     TrackDetail = songManager.GetTrackDetail(SelectedRockSmithSong.Key, value.Name);
                 else
@@ -175,7 +175,7 @@ namespace RockSmithTabExplorer.ViewModel
             protected set
             {
                 _trackDetail = value;
-                OnPropertyChanged();
+                OnPropertyChanged("TrackDetail");
                 if (_trackDetail != null && _trackDetail.RockSmithSong != null && _trackDetail.RockSmithSong.Levels != null)
                     SelectedLevel = _trackDetail.RockSmithSong.Levels.LastOrDefault();
                 else
@@ -191,7 +191,7 @@ namespace RockSmithTabExplorer.ViewModel
             set
             {
                 _selectedLevel = value;
-                OnPropertyChanged();
+                OnPropertyChanged("SelectedLevel");
                 GenerateScore();
             }
         }
@@ -204,7 +204,7 @@ namespace RockSmithTabExplorer.ViewModel
                 //{
                 //    TrackDetail.RockSmithSong.Serialize(stream);
                 //}
-                if(LevelOnlySelected)
+                if (LevelOnlySelected)
                     Score = RockSmithImporter.GetScoreForExactDifficultyLevel(TrackDetail.RockSmithSong, SelectedLevel.Difficulty);
                 else
                     Score = RockSmithImporter.GetScoreForMaxDifficultyLevel(TrackDetail.RockSmithSong, SelectedLevel.Difficulty);
@@ -222,7 +222,7 @@ namespace RockSmithTabExplorer.ViewModel
             set
             {
                 _levelOnlySelected = value;
-                OnPropertyChanged();
+                OnPropertyChanged("LevelOnlySelected");
                 GenerateScore();
             }
         }
@@ -281,7 +281,7 @@ namespace RockSmithTabExplorer.ViewModel
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged(string propertyName)// = null) [CallerMemberName]
         {
             OnPropertyChangedExplicit(propertyName);
         }

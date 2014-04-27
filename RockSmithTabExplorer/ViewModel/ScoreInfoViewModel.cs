@@ -54,7 +54,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
             set
             {
                 _album = value;
-                OnPropertyChanged();
+                OnPropertyChanged("Album");
             }
         }
 
@@ -64,7 +64,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
             set
             {
                 _artist = value;
-                OnPropertyChanged();
+                OnPropertyChanged("Artist");
             }
         }
 
@@ -74,7 +74,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
             set
             {
                 _copyright = value;
-                OnPropertyChanged();
+                OnPropertyChanged("Copyright");
             }
         }
 
@@ -84,7 +84,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
             set
             {
                 _instructions = value;
-                OnPropertyChanged();
+                OnPropertyChanged("Instructions");
             }
         }
 
@@ -94,7 +94,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
             set
             {
                 _music = value;
-                OnPropertyChanged();
+                OnPropertyChanged("Music");
             }
         }
 
@@ -104,7 +104,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
             set
             {
                 _notices = value;
-                OnPropertyChanged();
+                OnPropertyChanged("Notices");
             }
         }
 
@@ -114,7 +114,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
             set
             {
                 _subTitle = value;
-                OnPropertyChanged();
+                OnPropertyChanged("SubTitle");
             }
         }
 
@@ -124,7 +124,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
             set
             {
                 _title = value;
-                OnPropertyChanged();
+                OnPropertyChanged("Title");
             }
         }
 
@@ -134,7 +134,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
             set
             {
                 _words = value;
-                OnPropertyChanged();
+                OnPropertyChanged("Words");
             }
         }
 
@@ -144,13 +144,13 @@ namespace AlphaTab.Wpf.Share.ViewModel
             set
             {
                 _tab = value;
-                OnPropertyChanged();
+                OnPropertyChanged("Tab");
             }
         }
 
 
         public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged(string propertyName)// = null) [CallerMemberName]
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));

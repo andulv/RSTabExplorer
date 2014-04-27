@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RockSmithTabExplorer</RootNamespace>
     <AssemblyName>RockSmithTabExplorer</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -170,12 +170,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AlphaTab.Core\AlphaTab.Core.csproj">
-      <Project>{a3a01a41-ee58-4c99-867b-d88d2512f72f}</Project>
-      <Name>AlphaTab.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\32\folder_page_white.png" />
   </ItemGroup>
   <ItemGroup>
@@ -205,6 +199,10 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+    <ProjectReference Include="..\AlphaTab.Core\AlphaTab.Core.csproj">
+      <Project>{A3A01A41-EE58-4C99-867B-D88D2512F72F}</Project>
+      <Name>AlphaTab.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

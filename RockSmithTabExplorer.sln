@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockSmithTabExplorer", "RockSmithTabExplorer\RockSmithTabExplorer.csproj", "{DCA2A0F8-15AF-4B12-B2C7-13C884FB39EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlphaTab.Core", "AlphaTab.Core\AlphaTab.Core.csproj", "{A3A01A41-EE58-4C99-867B-D88D2512F72F}"

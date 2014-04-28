@@ -145,7 +145,7 @@ namespace AlphaTab.src.alphatab.importer
                     var voice = AddBarAndVoiceToTrack(track, isBass ? Clef.F4 : Clef.G2);
 
                     bool firstNoteInBar = true;
-                    while (currentNote != null && currentNote.Time >= measure.Time && (nextmeasure == null || currentNote.Time < nextmeasure.Time))
+                    while (currentNote != null && (nextmeasure == null || currentNote.Time < nextmeasure.Time))
                     {
                         Duration duration = Duration.Quarter;
 

@@ -11,19 +11,25 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
 
 
-        <ToolBarTray Background="#4b4c4c" Grid.ColumnSpan="2">
-            <controls:ToolBarCustom ToolBarTray.IsLocked="True" Background="#4b4c4c">
-                <Button Command="{Binding OpenFileCommand}" ToolTip="Open File" Style="{StaticResource ToolbarButtonStyle}">
+
+        <ToolBarTray Grid.ColumnSpan="2">
+            <controls:ToolBarCustom ToolBarTray.IsLocked="True">
+                <Button Command="{Binding OpenFileCommand}" ToolTip="Open File" Style="{StaticResource ToolbarButtonStyle}" Margin="6,0,0,0">
                     <Image Source="Images\32\folder_page_white.png" Width="24" Height="24" />
                 </Button>
-                <Button Command="{Binding ShowScoreInfoCommand}" ToolTip="Show Score Info" Style="{StaticResource ToolbarButtonStyle}">
+                <Button Command="{Binding ShowScoreInfoCommand}" ToolTip="Show Score Info" Style="{StaticResource ToolbarButtonStyle}" Margin="2,0,0,0">
                     <Image Source="Images\32\information.png" Width="24" Height="24" />
                 </Button>
-                <StackPanel Grid.Row="0" Orientation="Horizontal">
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="6,0,0,0">
+                    <Label>Track:</Label>
                     <ComboBox ItemsSource="{Binding SelectedRockSmithSong.TrackInfos}" SelectedItem="{Binding SelectedRockSmithTrack, Mode=TwoWay}"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0,0,0">
+                    <Label>Difficulty Level:</Label>
                     <ComboBox ItemsSource="{Binding TrackDetail.RockSmithSong.Levels}" SelectedItem="{Binding SelectedLevel, Mode=TwoWay}">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
@@ -38,6 +44,9 @@
                             </DataTemplate>
                         </ComboBox.ItemTemplate>
                     </ComboBox>
+                </StackPanel>
+
+                <StackPanel  VerticalAlignment="Center" Margin="6,0,0,0">
                     <CheckBox IsChecked="{Binding LevelOnlySelected, Mode=TwoWay}">Only include notes/chords for selected difficulty</CheckBox>
                 </StackPanel>
             </controls:ToolBarCustom>

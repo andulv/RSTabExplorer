@@ -9,6 +9,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
 
@@ -21,6 +22,24 @@
                 <Button Command="{Binding ShowScoreInfoCommand}" ToolTip="Show Score Info" Style="{StaticResource ToolbarButtonStyle}">
                     <Image Source="Images\32\information.png" Width="24" Height="24" />
                 </Button>
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                    <ComboBox ItemsSource="{Binding SelectedRockSmithSong.TrackInfos}" SelectedItem="{Binding SelectedRockSmithTrack, Mode=TwoWay}"/>
+                    <ComboBox ItemsSource="{Binding TrackDetail.RockSmithSong.Levels}" SelectedItem="{Binding SelectedLevel, Mode=TwoWay}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <Run Text="{Binding Difficulty, Mode=OneWay}" />
+                                    <Run Text=" (Notes: "></Run>
+                                    <Run Text="{Binding Notes.Count, Mode=OneWay}" />
+                                    <Run Text=", Chords: "></Run>
+                                    <Run Text="{Binding Chords.Count, Mode=OneWay}" />
+                                    <Run Text=")"></Run>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <CheckBox IsChecked="{Binding LevelOnlySelected, Mode=TwoWay}">Only include notes/chords for selected difficulty</CheckBox>
+                </StackPanel>
             </controls:ToolBarCustom>
         </ToolBarTray>
 
@@ -38,7 +57,6 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="{Binding FileName}"></TextBlock>
                 <ListView  Grid.Row="1" ItemsSource="{Binding AvailableSongs}" SelectedItem="{Binding SelectedRockSmithSong, Mode=TwoWay}">
                     <ListView.View>
                         <GridView>
@@ -192,27 +210,9 @@
             <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" ResizeDirection="Columns"></GridSplitter>
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <StackPanel Grid.Row="0" Orientation="Horizontal">
-                    <ComboBox ItemsSource="{Binding SelectedRockSmithSong.TrackInfos}" SelectedItem="{Binding SelectedRockSmithTrack, Mode=TwoWay}"/>
-                    <ComboBox ItemsSource="{Binding TrackDetail.RockSmithSong.Levels}" SelectedItem="{Binding SelectedLevel, Mode=TwoWay}">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock>
-                                    <Run Text="{Binding Difficulty, Mode=OneWay}" />
-                                    <Run Text=" (Notes: "></Run>
-                                    <Run Text="{Binding Notes.Count, Mode=OneWay}" />
-                                    <Run Text=", Chords: "></Run>
-                                    <Run Text="{Binding Chords.Count, Mode=OneWay}" />
-                                    <Run Text=")"></Run>
-                                </TextBlock>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                    <CheckBox IsChecked="{Binding LevelOnlySelected, Mode=TwoWay}">Only include notes/chords for selected difficulty</CheckBox>
-                </StackPanel>
+
                 <ScrollViewer Grid.Row="1" Background="#616362" Name="ScrollViewer" HorizontalScrollBarVisibility="Auto">
                     <Grid Margin="10" Name="TablatureGrid">
                         <!-- A Fancy Drop Shadow Effect -->
@@ -232,5 +232,9 @@
             </Grid>
             <!-- A scroll viewer to enable the tablature scrolling -->
         </Grid>
+
+        <StatusBar Grid.Row="2">
+            <TextBlock Grid.Row="0" Text="{Binding FileName}"></TextBlock>
+        </StatusBar>
     </Grid>
 </Window>

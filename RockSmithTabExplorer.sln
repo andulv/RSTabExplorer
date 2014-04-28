@@ -8,6 +8,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{26BF96E4-5175-4AC4-A5BE-DF827EC0A91C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockSmithTabExplorerTests", "RockSmithTabExplorerTests\RockSmithTabExplorerTests.csproj", "{4CF6D7B7-85A5-4009-A89B-87FD5E07B783}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A3A01A41-EE58-4C99-867B-D88D2512F72F} = {A3A01A41-EE58-4C99-867B-D88D2512F72F}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution

@@ -78,6 +78,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="RockSmithImporter.cs" />
+    <Compile Include="RocksmithLocator.cs" />
     <Compile Include="ScoreInfoWindow.xaml.cs">
       <DependentUpon>ScoreInfoWindow.xaml</DependentUpon>
     </Compile>

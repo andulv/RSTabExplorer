@@ -33,42 +33,27 @@ namespace AlphaTab.src.alphatab.importer
         /// <param name="difficultyLevel">null = highest level available</param>
         public static Score GetScoreForMaxDifficultyLevel(Song2014 song, int? difficultyLevel)
         {
-            int phraseId=0;
-
-            List<Tuple<SongPhraseIteration2014, Single>> iterationsWithEndTime = new List<Tuple<SongPhraseIteration2014, float>>();
-            for (int i = 0; i < song.PhraseIterations.Length; i++)
-            {
-                var thisIteration = song.PhraseIterations[i];
-                if (i < song.PhraseIterations.Length - 1)
-                {
-                    var nextIteration = song.PhraseIterations[i + 1];
-                    iterationsWithEndTime.Add(Tuple.Create(thisIteration, nextIteration.Time));
-                }
-                else
-                {
-                    iterationsWithEndTime.Add(Tuple.Create(thisIteration, Single.MaxValue));
-                }
-            }
+            List<PhraseIterationWithEndTime> iterationsWithEndTime = PhraseIterationWithEndTime.listFromBaseArray(song.PhraseIterations);
 
             IEnumerable<SongNoteChordWrapper> allSounds = Enumerable.Empty<SongNoteChordWrapper>();
 
-            foreach (var phrase in song.Phrases)
+            for (int phraseId = 0; phraseId < song.Phrases.Length;phraseId++)
             {
+                var phrase = song.Phrases[phraseId];
                 var diffLevel = phrase.MaxDifficulty;
                 if (difficultyLevel.HasValue && difficultyLevel < diffLevel)
                     diffLevel = difficultyLevel.Value;
 
                 var selectedLevel = song.Levels.FirstOrDefault(x => x.Difficulty == diffLevel);
-                
-                foreach (var iterationTuple in iterationsWithEndTime.Where(x => x.Item1.PhraseId == phraseId))
+
+                foreach (var iterationWithEndTime in iterationsWithEndTime.Where(x => x.PhraseId == phraseId))
                 {
-                    var notes = selectedLevel.Notes.Where(x => x.Time >= iterationTuple.Item1.Time && x.Time < iterationTuple.Item2);
-                    var chords = selectedLevel.Chords.Where(x => x.Time >= iterationTuple.Item1.Time && x.Time < iterationTuple.Item2);
+                    var notes = selectedLevel.Notes.Where(x => iterationWithEndTime.contains(x.Time));
+                    var chords = selectedLevel.Chords.Where(x => iterationWithEndTime.contains(x.Time));
 
                     allSounds = allSounds.Union(notes.Select(x => new SongNoteChordWrapper(x)))
                                 .Union(chords.Select(x => new SongNoteChordWrapper(x)));
                 }
-                phraseId++;
             }
             var score = CreateSong(song, allSounds);
             return score;
@@ -478,6 +463,51 @@ namespace AlphaTab.src.alphatab.importer
 
         }
 
+        private class PhraseIterationWithEndTime : SongPhraseIteration2014
+        {
+            public float EndTime;
+            private SongPhraseIteration2014 phraseIteration;
+
+            public PhraseIterationWithEndTime(SongPhraseIteration2014 _base, float _endTime)
+            {
+                phraseIteration = _base;
+                EndTime = _endTime;
+            }
+
+            public int PhraseId
+            {
+                get { return phraseIteration.PhraseId; }
+            }
+
+            public float Time
+            {
+                get { return phraseIteration.Time; }
+            }
+
+            public bool contains(float _time)
+            {
+                return _time >= Time && _time < EndTime;
+            }
+
+            public static List<PhraseIterationWithEndTime> listFromBaseArray(SongPhraseIteration2014[] phraseIterations)
+            {
+                List<PhraseIterationWithEndTime> iterationsWithEndTime = new List<PhraseIterationWithEndTime>();
+                for (int i = 0; i < phraseIterations.Length; i++)
+                {
+                    var thisIteration = phraseIterations[i];
+                    if (i < phraseIterations.Length - 1)
+                    {
+                        var nextIteration = phraseIterations[i + 1];
+                        iterationsWithEndTime.Add(new PhraseIterationWithEndTime(thisIteration, nextIteration.Time));
+                    }
+                    else
+                    {
+                        iterationsWithEndTime.Add(new PhraseIterationWithEndTime(thisIteration, Single.MaxValue));
+                    }
+                }
+                return iterationsWithEndTime;
+            }
+        }
     }
 
 }

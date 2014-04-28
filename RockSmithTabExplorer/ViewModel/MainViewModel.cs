@@ -30,6 +30,7 @@ using System.Linq;
 using System.Xml.Linq;
 using RocksmithToolkitLib.Xml;
 using System.Windows;
+using RockSmithTabExplorer;
 
 namespace AlphaTab.Wpf.Share.ViewModel
 {
@@ -252,6 +253,9 @@ namespace AlphaTab.Wpf.Share.ViewModel
             _errorService = errorService;
             OpenFileCommand = new RelayCommand(OpenFile);
             _showScoreInfoCommand = new RelayCommand(ShowScoreInfo, () => _score != null);
+
+            string rocksmithFolder = RocksmithLocator.Rocksmith2014Folder();
+            if (rocksmithFolder.Length != 0) OpenFile(rocksmithFolder + @"\songs.psarc");
         }
 
 

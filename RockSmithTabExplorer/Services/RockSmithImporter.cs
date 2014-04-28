@@ -46,8 +46,10 @@ namespace RockSmithTabExplorer
 
                 var selectedLevel = song.Levels.FirstOrDefault(x => x.Difficulty == diffLevel);
 
-                foreach (var iterationWithEndTime in iterationsWithEndTime.Where(x => x.PhraseId == phraseId))
+                var phraseIterations = iterationsWithEndTime.Where(x => x.PhraseId == phraseId).ToArray();
+                for (int i = 0; i < phraseIterations.Length; i++)
                 {
+                    var iterationWithEndTime = phraseIterations[i];
                     var notes = selectedLevel.Notes.Where(x => iterationWithEndTime.contains(x.Time));
                     var chords = selectedLevel.Chords.Where(x => iterationWithEndTime.contains(x.Time));
 

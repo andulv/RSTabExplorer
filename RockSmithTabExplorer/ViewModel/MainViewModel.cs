@@ -150,12 +150,19 @@ namespace AlphaTab.Wpf.Share.ViewModel
             get { return _selectedRockSmithSong; }
             set
             {
+                var oldTrack = _selectedRockSmithTrack;
                 _selectedRockSmithSong = value;
                 OnPropertyChanged();
                 if (value != null && value.TrackInfos != null)
-                    SelectedRockSmithTrack = value.TrackInfos.FirstOrDefault();
+                {
+
+                    SelectedRockSmithTrack = value.TrackInfos.FirstOrDefault(x => oldTrack!=null && x.Name == oldTrack.Name);
+                    if (SelectedRockSmithTrack == null) SelectedRockSmithTrack = value.TrackInfos.FirstOrDefault();
+                }
                 else
+                {
                     SelectedRockSmithTrack = null;
+                }
             }
         }
 

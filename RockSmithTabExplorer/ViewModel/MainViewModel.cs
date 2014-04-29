@@ -267,8 +267,8 @@ namespace AlphaTab.Wpf.Share.ViewModel
             OpenFileCommand = new RelayCommand(OpenFile);
             _showScoreInfoCommand = new RelayCommand(ShowScoreInfo, () => _score != null);
 
-            string rocksmithFolder = RocksmithLocator.Rocksmith2014Folder();
-            if (rocksmithFolder.Length != 0) OpenFile(rocksmithFolder + @"\songs.psarc");
+            //string rocksmithFolder = RocksmithLocator.Rocksmith2014Folder();
+            //if (rocksmithFolder.Length != 0) OpenFile(rocksmithFolder + @"\songs.psarc");
         }
 
 

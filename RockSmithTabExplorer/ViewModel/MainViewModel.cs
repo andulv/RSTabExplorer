@@ -155,9 +155,29 @@ namespace AlphaTab.Wpf.Share.ViewModel
                 _selectedRockSmithSong = value;
                 OnPropertyChanged();
 
-                if (value != null && value.TrackInfos != null)
-                    SelectedRockSmithTrack = new GuitarPath("bass").pickTrack(value.TrackInfos);
+                setTrackFromPath();
             }
+        }
+
+
+        private string _selectedGuitarPath;
+        private GuitarPath guitarPath;
+        public string SelectedGuitarPath
+        {
+            get { return _selectedGuitarPath; }
+            set
+            {
+                _selectedGuitarPath = value;
+                guitarPath = new GuitarPath(value);
+                OnPropertyChanged("SelectedGuitarPath");
+                setTrackFromPath();
+            }
+        }
+
+        private void setTrackFromPath()
+        {
+            if (SelectedRockSmithSong != null && SelectedRockSmithSong.TrackInfos != null)
+                SelectedRockSmithTrack = guitarPath.pickTrack(SelectedRockSmithSong.TrackInfos);
         }
 
         //Is set by user by selecting in dropdown. Automtically set when SelectedRockSmithSong is set.

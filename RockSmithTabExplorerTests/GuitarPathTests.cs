@@ -11,22 +11,36 @@ namespace RockSmithTabExplorerTests
     [TestClass]
     public class GuitarPathTests
     {
+        private RSTrackInfo testPathWithTracks(string pathName, string[] tracks)
+        {
+            GuitarPath path = new GuitarPath(pathName);
+            var trackList = new List<RSTrackInfo>();
+            foreach(var track in tracks)
+            {
+                trackList.Add(new RSTrackInfo() { Name = track });
+            }
+            return path.pickTrack(trackList);
+        }
+
         [TestMethod]
         public void ItReturnsBassWhenAvaliable()
         {
-            GuitarPath path = new GuitarPath("bass");
-            var trackList = new List<RSTrackInfo> { new RSTrackInfo() { Name = "vocals" }, new RSTrackInfo() { Name = "bass" } };
-            var track = path.pickTrack(trackList);
+            var track = testPathWithTracks("bass", new string[] { "vocals", "combo","bass" });
             StringAssert.StartsWith(track.Name, "bass");
         }
 
         [TestMethod]
         public void ItDoesntFailWhenNoPreferenceFound()
         {
-            GuitarPath path = new GuitarPath("bass");
-            var trackList = new List<RSTrackInfo> { new RSTrackInfo { Name = "jimi_hendrix" } };
-            var track = path.pickTrack(trackList);
+            var track = testPathWithTracks("bass", new string[] { "jimi_hendrix" });
             Assert.IsNotNull(track);
+        }
+
+        [TestMethod]
+        public void ItUsesNextOptionWhenPreferenceMissing()
+        {
+            var track = testPathWithTracks("bass", new string[] { "vocals", "combo" });
+            StringAssert.StartsWith(track.Name, "combo");
         }
     }
 }

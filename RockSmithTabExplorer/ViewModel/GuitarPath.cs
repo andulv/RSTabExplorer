@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using AlphaTab.src.alphatab.importer;
 using System.Text.RegularExpressions;
+using System.ComponentModel;
 
 namespace RockSmithTabExplorer.ViewModel
 {
@@ -21,7 +22,28 @@ namespace RockSmithTabExplorer.ViewModel
 
         public RSTrackInfo pickTrack(IList<RSTrackInfo> songTracks)
         {
-            return songTracks.FirstOrDefault(t=> t.Name.Contains("bass")) ?? songTracks.FirstOrDefault();
+            //TODO: change from switch to inheritance. BassPath,RhythmPath,LeadPath and AutoPath.
+            switch (Name)
+            {
+                case "bass":
+                    return findTrackContaining(songTracks, new string[] {"bass","combo","rhythm","lead"});
+                case "lead":
+                    return findTrackContaining(songTracks, new string[] { "lead", "combo", "rhythm", "bass" });
+                case "rhythm":
+                    return findTrackContaining(songTracks, new string[] { "rhythm", "combo", "lead", "bass" });
+                default:
+                    throw new InvalidEnumArgumentException("No guitar path");
+            }
+        }
+
+        private RSTrackInfo findTrackContaining(IList<RSTrackInfo> songTracks, string[] preferences)
+        {
+            for(int i=0;i<preferences.Length;i++)
+            {
+                RSTrackInfo found = songTracks.FirstOrDefault(t => t.Name.Contains(preferences[i]));
+                if (found != null) return found;
+            }
+            return songTracks.FirstOrDefault();
         }
     }
 }

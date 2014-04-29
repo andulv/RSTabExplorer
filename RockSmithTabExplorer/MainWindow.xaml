@@ -4,7 +4,7 @@
         xmlns:controls="clr-namespace:AlphaTab.Wpf.Share.Controls"
         xmlns:converter="clr-namespace:AlphaTab.Wpf.Share.Converter;assembly=AlphaTab.Wpf.Share"
         xmlns:wpf="clr-namespace:AlphaTab.Wpf;assembly=AlphaTab.Core"
-        Title="RockSmith Tab Explorer " Height="754" Width="782" WindowState="Maximized">
+        Title="RockSmith Tab Explorer " Height="750" Width="800" WindowState="Maximized">
     <Grid Background="#4b4c4c">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -50,15 +50,25 @@
 
             <ToolBarTray DockPanel.Dock="Left">
                 <controls:ToolBarCustom ToolBarTray.IsLocked="True">
+                    <Label VerticalAlignment="Center">Load:</Label>
                     <Button Command="{Binding OpenFileCommand}" ToolTip="Open File" Style="{StaticResource ToolbarButtonStyle}" Margin="6,0,0,0">
-                        <Image Source="Images\Folder.png" Width="24" Height="24" />
+                        <StackPanel>
+                            <Image Source="Images\Folder.png" Width="24" Height="24" />
+                            <TextBlock>Psarc File</TextBlock>
+                        </StackPanel>
                     </Button>
                     <Button Command="{Binding LoadDiskTracksCommand}" ToolTip="Load Disk Tracks" Style="{StaticResource ToolbarButtonStyle}" Margin="2,0,0,0">
-                        <Image Source="Images\CD.png" Width="24" Height="24" />
+                        <StackPanel>
+                            <Image Source="Images\CD.png" Width="24" Height="24" />
+                            <TextBlock>Disk Tracks</TextBlock>
+                        </StackPanel>
                     </Button>
-                    <!--<Button Command="{Binding LoadDLCTracksCommand}" ToolTip="Load DLC Tracks" Style="{StaticResource ToolbarButtonStyle}" Margin="2,0,0,0">
-                        <Image Source="Images\Download.png" Width="24" Height="24" />
-                    </Button>-->
+                    <Button Command="{Binding LoadDLCTracksCommand}" ToolTip="Load DLC Tracks" Style="{StaticResource ToolbarButtonStyle}" Margin="2,0,0,0">
+                        <StackPanel>
+                            <Image Source="Images\Download.png" Width="24" Height="24" />
+                            <TextBlock>DLC Tracks</TextBlock>
+                        </StackPanel>
+                    </Button>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0,0,0">
                         <Label>Path:</Label>
                         <ComboBox SelectedValuePath="Tag" SelectedValue="{Binding Path=SelectedGuitarPath, Mode=TwoWay}" >
@@ -264,7 +274,7 @@
         </Grid>
 
         <StatusBar Grid.Row="2">
-            <TextBlock Grid.Row="0" Text="{Binding FileName}"></TextBlock>
+            <TextBlock Grid.Row="0" Text="{Binding FileNameStatus}"></TextBlock>
         </StatusBar>
     </Grid>
 </Window>

@@ -97,6 +97,7 @@
     <Compile Include="ScoreInfoWindow.xaml.cs">
       <DependentUpon>ScoreInfoWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SongManager.cs" />
     <Compile Include="Utils\NonClosingStream.cs" />
     <Compile Include="Utils\RelayCommand.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />

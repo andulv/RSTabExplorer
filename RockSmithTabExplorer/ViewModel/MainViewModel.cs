@@ -15,25 +15,17 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library.
  */
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using alphatab.importer;
 using alphatab.model;
 using AlphaTab.Wpf.Share.Data;
 using AlphaTab.Wpf.Share.Utils;
-using AlphaTab.src.alphatab.importer;
 using System.Linq;
-using System.Xml.Linq;
 using RocksmithToolkitLib.Xml;
-using System.Windows;
-using RockSmithTabExplorer;
-using RockSmithTabExplorer.ViewModel;
 
-namespace AlphaTab.Wpf.Share.ViewModel
+namespace RockSmithTabExplorer.ViewModel
 {
     /// <summary>
     /// This viewmodel contains the data and logic for the main application window. 
@@ -48,7 +40,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
         // those properties store the score information
         private Score _score;
         private int _currentTrackIndex;
-        ArcFileWrapper _archiveFile;
+        SongManager songManager = new SongManager();
         private readonly RelayCommand _showScoreInfoCommand;
 
         public Score Score
@@ -124,20 +116,28 @@ namespace AlphaTab.Wpf.Share.ViewModel
         /// Opens a new file from the specified file path.
         /// </summary>
         /// <param name="file">the path to the file to load</param>
-        private void OpenFile(string file)
+        private void OpenFile(string file, bool appendSongs = false)
         {
             if (!string.IsNullOrWhiteSpace(file) && File.Exists(file))
             {
-                InternalOpenRockSmithFile(file);
+                InternalOpenRockSmithFile(file, appendSongs);
             }
         }
 
-        protected void InternalOpenRockSmithFile(string file)
+        protected void InternalOpenRockSmithFile(string file, bool appendSongs = false)
         {
-            FileName = file;
-            _archiveFile = new ArcFileWrapper(file);
-            AvailableSongs = _archiveFile.GetAllSongInfos();
-            OnPropertyChanged("FileName");
+            if (appendSongs)
+            {
+                FileNameStatus = FileNameStatus + ", " + file;
+            }
+            else
+            {
+                FileNameStatus = file;
+                songManager = new SongManager();
+            }
+            songManager.Add(file);
+            AvailableSongs = songManager.GetAllSongInfos();
+            OnPropertyChanged("FileNameStatus");
             OnPropertyChanged("AvailableSongs");
 
             SelectedRockSmithSong = AvailableSongs.FirstOrDefault();
@@ -194,7 +194,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
                 _selectedRockSmithTrack = value;
                 OnPropertyChanged();
                 if (value != null)
-                    TrackDetail = _archiveFile.GetTrackDetail(SelectedRockSmithSong.Key, value.Name);
+                    TrackDetail = songManager.GetTrackDetail(SelectedRockSmithSong.Key, value.Name);
                 else
                     TrackDetail = null;
             }
@@ -246,7 +246,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
                 Score = null;
         }
 
-        public string FileName { get; protected set; }
+        public string FileNameStatus { get; protected set; }
 
         bool _levelOnlySelected;
         public bool LevelOnlySelected
@@ -266,6 +266,19 @@ namespace AlphaTab.Wpf.Share.ViewModel
             if (rocksmithFolder.Length != 0) OpenFile(rocksmithFolder + @"\songs.psarc");
         }
 
+        public void LoadDLCTracks()
+        {
+            string rocksmithFolder = RocksmithLocator.Rocksmith2014Folder();
+            if (rocksmithFolder.Length != 0)
+            {
+                string[] psarcs = Directory.GetFiles(rocksmithFolder + @"\dlc", "*.psarc");
+                foreach(string file in psarcs)
+                {
+                    OpenFile(file, true);
+                }
+            }
+        }
+
         #endregion
 
         public MainViewModel(IDialogService dialogService, IErrorService errorService)
@@ -274,7 +287,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
             _errorService = errorService;
             OpenFileCommand = new RelayCommand(OpenFile);
             LoadDiskTracksCommand = new RelayCommand(LoadDiskTracks);
-            //LoadDLCTracksCommand = new RelayCommand(LoadDLCTracks);
+            LoadDLCTracksCommand = new RelayCommand(LoadDLCTracks);
             _showScoreInfoCommand = new RelayCommand(ShowScoreInfo, () => _score != null);
 
             SelectedGuitarPath = RockSmithTabExplorer.Properties.Settings.Default.GuitarPath;

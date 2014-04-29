@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RockSmithTabExplorer.ViewModel;
-using AlphaTab.src.alphatab.importer;
+using RockSmithTabExplorer;
 
 namespace RockSmithTabExplorerTests
 {

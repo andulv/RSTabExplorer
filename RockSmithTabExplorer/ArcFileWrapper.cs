@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace AlphaTab.src.alphatab.importer
+namespace RockSmithTabExplorer
 {
     public class ArcFileWrapper : IDisposable
     {
@@ -67,7 +67,10 @@ namespace AlphaTab.src.alphatab.importer
         {
             var sngEntry=_psarc.Entries.FirstOrDefault(x =>x.Name == @"songs/bin/generic/" + songKey + "_" + arrangmentName + ".sng");
             var jsonEntry = _psarc.Entries.FirstOrDefault(x => x.Name.StartsWith(@"manifests/songs") && x.Name.EndsWith("/" + songKey + "_" + arrangmentName + ".json"));
-
+            if (sngEntry == null || jsonEntry == null)
+            {
+                return null;
+            }
 
             Attributes2014 att;
             using (var wrappedStream = new NonClosingStreamWrapper(jsonEntry.Data))

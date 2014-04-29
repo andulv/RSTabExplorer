@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace AlphaTab.src.alphatab.importer
+namespace RockSmithTabExplorer
 {
     public class RockSmithImporter
     {

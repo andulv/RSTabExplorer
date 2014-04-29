@@ -8,6 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{4CF6D7B7-85A5-4009-A89B-87FD5E07B783}</ProjectGuid>
     <ProjectGuid>{4CF6D7B7-85A5-4009-A89B-87FD5E07B783}</ProjectGuid>
+    <ProjectGuid>{4CF6D7B7-85A5-4009-A89B-87FD5E07B783}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RockSmithTabExplorerTests</RootNamespace>
@@ -46,6 +47,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GuitarPathTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RockSmithLocatorTests.cs" />
   </ItemGroup>

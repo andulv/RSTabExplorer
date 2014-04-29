@@ -86,6 +86,7 @@
     <Compile Include="Utils\RelayCommand.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ScoreInfoViewModel.cs" />
+    <Compile Include="ViewModel\GuitarPath.cs" />
     <Compile Include="ViewModel\TrackViewModel.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>

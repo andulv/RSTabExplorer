@@ -100,6 +100,8 @@ namespace AlphaTab.Wpf.Share.ViewModel
         #region Score Loading
 
         public ICommand OpenFileCommand { get; private set; }
+        public ICommand LoadDiskTracksCommand { get; private set; }
+        public ICommand LoadDLCTracksCommand { get; private set; }
 
         /// <summary>
         /// Opens a new file by loading the file path using the IO service. 
@@ -258,7 +260,11 @@ namespace AlphaTab.Wpf.Share.ViewModel
             }
         }
 
-
+        public void LoadDiskTracks()
+        {
+            string rocksmithFolder = RocksmithLocator.Rocksmith2014Folder();
+            if (rocksmithFolder.Length != 0) OpenFile(rocksmithFolder + @"\songs.psarc");
+        }
 
         #endregion
 
@@ -267,12 +273,11 @@ namespace AlphaTab.Wpf.Share.ViewModel
             _dialogService = dialogService;
             _errorService = errorService;
             OpenFileCommand = new RelayCommand(OpenFile);
+            LoadDiskTracksCommand = new RelayCommand(LoadDiskTracks);
+            //LoadDLCTracksCommand = new RelayCommand(LoadDLCTracks);
             _showScoreInfoCommand = new RelayCommand(ShowScoreInfo, () => _score != null);
 
             SelectedGuitarPath = RockSmithTabExplorer.Properties.Settings.Default.GuitarPath;
-
-            //string rocksmithFolder = RocksmithLocator.Rocksmith2014Folder();
-            //if (rocksmithFolder.Length != 0) OpenFile(rocksmithFolder + @"\songs.psarc");
         }
 
 

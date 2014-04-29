@@ -22,5 +22,17 @@ namespace RockSmithTabExplorer.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("lead")]
+        public string GuitarPath {
+            get {
+                return ((string)(this["GuitarPath"]));
+            }
+            set {
+                this["GuitarPath"] = value;
+            }
+        }
     }
 }

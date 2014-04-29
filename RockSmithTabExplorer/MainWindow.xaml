@@ -55,7 +55,7 @@
                     </Button>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0,0,0">
                         <Label>Path:</Label>
-                        <ComboBox SelectedIndex="0" SelectedValuePath="Tag" SelectedValue="{Binding Path=SelectedGuitarPath, Mode=OneWayToSource}" >
+                        <ComboBox SelectedValuePath="Tag" SelectedValue="{Binding Path=SelectedGuitarPath, Mode=TwoWay}" >
                             <ComboBoxItem Tag="lead">Lead</ComboBoxItem>
                             <ComboBoxItem Tag="rhythm">Rhythm</ComboBoxItem>
                             <ComboBoxItem Tag="bass">Bass</ComboBoxItem>

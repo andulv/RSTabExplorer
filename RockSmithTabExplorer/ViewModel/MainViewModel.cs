@@ -159,7 +159,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
             }
         }
 
-
+        //Set from settings at startup, updated from dropdown.
         private string _selectedGuitarPath;
         private GuitarPath guitarPath;
         public string SelectedGuitarPath
@@ -168,6 +168,8 @@ namespace AlphaTab.Wpf.Share.ViewModel
             set
             {
                 _selectedGuitarPath = value;
+                RockSmithTabExplorer.Properties.Settings.Default.GuitarPath = value;
+                RockSmithTabExplorer.Properties.Settings.Default.Save();
                 guitarPath = new GuitarPath(value);
                 OnPropertyChanged("SelectedGuitarPath");
                 setTrackFromPath();
@@ -266,6 +268,8 @@ namespace AlphaTab.Wpf.Share.ViewModel
             _errorService = errorService;
             OpenFileCommand = new RelayCommand(OpenFile);
             _showScoreInfoCommand = new RelayCommand(ShowScoreInfo, () => _score != null);
+
+            SelectedGuitarPath = RockSmithTabExplorer.Properties.Settings.Default.GuitarPath;
 
             //string rocksmithFolder = RocksmithLocator.Rocksmith2014Folder();
             //if (rocksmithFolder.Length != 0) OpenFile(rocksmithFolder + @"\songs.psarc");

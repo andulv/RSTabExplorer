@@ -2,51 +2,17 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="clr-namespace:AlphaTab.Wpf.Share.Controls"
-        xmlns:converter="clr-namespace:AlphaTab.Wpf.Share.Converter;assembly=AlphaTab.Wpf.Share"
         xmlns:wpf="clr-namespace:AlphaTab.Wpf;assembly=AlphaTab.Core"
         Title="RockSmith Tab Explorer " Height="750" Width="800" WindowState="Maximized">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    </Window.Resources>
     <Grid Background="#4b4c4c">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-
-
-        <DockPanel>
-            <ToolBarTray DockPanel.Dock="Right">
-                <controls:ToolBarCustom ToolBarTray.IsLocked="True">
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="6,0,0,0">
-                        <Label>Track:</Label>
-                        <ComboBox ItemsSource="{Binding SelectedRockSmithSong.TrackInfos}" SelectedItem="{Binding SelectedRockSmithTrack, Mode=TwoWay}"/>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0,0,0">
-                        <Label>Difficulty Level:</Label>
-                        <ComboBox ItemsSource="{Binding TrackDetail.RockSmithSong.Levels}" SelectedItem="{Binding SelectedLevel, Mode=TwoWay}">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock>
-                                        <Run Text="{Binding Difficulty, Mode=OneWay}" />
-                                        <Run Text=" (Notes: "></Run>
-                                        <Run Text="{Binding Notes.Count, Mode=OneWay}" />
-                                        <Run Text=", Chords: "></Run>
-                                        <Run Text="{Binding Chords.Count, Mode=OneWay}" />
-                                        <Run Text=")"></Run>
-                                    </TextBlock>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
-                    </StackPanel>
-
-                    <StackPanel VerticalAlignment="Center" Margin="6,0,0,0">
-                        <CheckBox IsChecked="{Binding LevelOnlySelected, Mode=TwoWay}">Only include notes/chords for selected difficulty</CheckBox>
-                    </StackPanel>
-                    <Button Command="{Binding ShowScoreInfoCommand}" ToolTip="Show Score Info" Style="{StaticResource ToolbarButtonStyle}" Margin="2,0,0,0">
-                        <Path Width="24" Height="24" Stretch="Uniform" Fill="Black" Data="F1 M 18.0011,25.9619L 13.3448,25.9619L 13.3448,12.9L 18.0011,12.9L 18.0011,25.9619 Z M 15.649,10.56C 14.8629,10.5387 14.2149,10.2495 13.7048,9.69214C 13.1948,9.13486 12.9308,8.43716 12.9128,7.59912C 12.9308,6.7876 13.1948,6.11328 13.7048,5.57608C 14.2149,5.03891 14.8629,4.76019 15.649,4.73999C 16.435,4.76022 17.0831,5.03891 17.5931,5.57611C 18.1031,6.11328 18.3671,6.7876 18.3851,7.59912C 18.3671,8.4595 18.1031,9.16357 17.5931,9.7113C 17.0831,10.259 16.435,10.5419 15.649,10.56 Z M 15.601,0C 11.1707,0.108398 7.49048,1.63821 4.56027,4.58942C 1.6301,7.54062 0.110046,11.2628 0,15.7559C 0.110046,20.0614 1.6301,23.666 4.56027,26.5695C 7.49045,29.4731 11.1707,30.9826 15.601,31.0981C 20.0102,30.9826 23.6844,29.4731 26.6236,26.5695C 29.5628,23.666 31.0889,20.0614 31.2019,15.7559C 31.0889,11.2628 29.5628,7.54062 26.6236,4.58942C 23.6844,1.63821 20.0102,0.108398 15.601,0 Z "/>
-                    </Button>
-                </controls:ToolBarCustom>
-            </ToolBarTray>
 
             <ToolBarTray DockPanel.Dock="Left">
                 <controls:ToolBarCustom ToolBarTray.IsLocked="True">
@@ -80,8 +46,6 @@
                     </StackPanel>
                 </controls:ToolBarCustom>
             </ToolBarTray>
-
-        </DockPanel>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -251,9 +215,10 @@
             <Grid Grid.Column="2">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
-
-                <ScrollViewer Grid.Row="1" Background="#616362" Name="ScrollViewer" HorizontalScrollBarVisibility="Auto">
+                
+                <ScrollViewer Grid.Row="0" Background="#616362" Name="ScrollViewer" HorizontalScrollBarVisibility="Auto">
                     <Grid Margin="10" Name="TablatureGrid">
                         <!-- A Fancy Drop Shadow Effect -->
                         <Border VerticalAlignment="Top"  Background="Black" Name="TablatureShadow">
@@ -268,6 +233,41 @@
                         </Border>
                     </Grid>
                 </ScrollViewer>
+
+                <DockPanel Grid.Row="1" Background="#616362" Visibility="{Binding TrackToolBarVisible, Converter={StaticResource BoolToVisibility}}">
+                    <Button Command="{Binding ShowScoreInfoCommand}" ToolTip="Show Score Info" Style="{StaticResource ToolbarButtonStyle}" Margin="2,0,0,0"  DockPanel.Dock="Right">
+                        <Path Width="24" Height="24" Stretch="Uniform" Fill="Black" Data="F1 M 18.0011,25.9619L 13.3448,25.9619L 13.3448,12.9L 18.0011,12.9L 18.0011,25.9619 Z M 15.649,10.56C 14.8629,10.5387 14.2149,10.2495 13.7048,9.69214C 13.1948,9.13486 12.9308,8.43716 12.9128,7.59912C 12.9308,6.7876 13.1948,6.11328 13.7048,5.57608C 14.2149,5.03891 14.8629,4.76019 15.649,4.73999C 16.435,4.76022 17.0831,5.03891 17.5931,5.57611C 18.1031,6.11328 18.3671,6.7876 18.3851,7.59912C 18.3671,8.4595 18.1031,9.16357 17.5931,9.7113C 17.0831,10.259 16.435,10.5419 15.649,10.56 Z M 15.601,0C 11.1707,0.108398 7.49048,1.63821 4.56027,4.58942C 1.6301,7.54062 0.110046,11.2628 0,15.7559C 0.110046,20.0614 1.6301,23.666 4.56027,26.5695C 7.49045,29.4731 11.1707,30.9826 15.601,31.0981C 20.0102,30.9826 23.6844,29.4731 26.6236,26.5695C 29.5628,23.666 31.0889,20.0614 31.2019,15.7559C 31.0889,11.2628 29.5628,7.54062 26.6236,4.58942C 23.6844,1.63821 20.0102,0.108398 15.601,0 Z "/>
+                    </Button>
+                            
+                    <ToolBarPanel DockPanel.Dock="Left" Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="6,0,0,0">
+                            <Label Foreground="#FFDCE2E5">Track:</Label>
+                            <ComboBox ItemsSource="{Binding SelectedRockSmithSong.TrackInfos}" SelectedItem="{Binding SelectedRockSmithTrack, Mode=TwoWay}"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0,0,0">
+                            <Label Foreground="#FFDCE2E5">Difficulty Level:</Label>
+                            <ComboBox ItemsSource="{Binding TrackDetail.RockSmithSong.Levels}" SelectedItem="{Binding SelectedLevel, Mode=TwoWay}">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>
+                                    <Run Text="{Binding Difficulty, Mode=OneWay}" />
+                                    <Run Text=" (Notes: "></Run>
+                                    <Run Text="{Binding Notes.Count, Mode=OneWay}" />
+                                    <Run Text=", Chords: "></Run>
+                                    <Run Text="{Binding Chords.Count, Mode=OneWay}" />
+                                    <Run Text=")"></Run>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel VerticalAlignment="Center" Margin="6,0,0,0">
+                            <CheckBox Foreground="#FFDCE2E5" IsChecked="{Binding LevelOnlySelected, Mode=TwoWay}">Only include notes/chords for selected difficulty</CheckBox>
+                        </StackPanel>
+                    </ToolBarPanel>
+                </DockPanel>
 
             </Grid>
             <!-- A scroll viewer to enable the tablature scrolling -->

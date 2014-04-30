@@ -57,6 +57,7 @@ namespace RockSmithTabExplorer.ViewModel
                 OnPropertyChangedExplicit("ScoreTitle");
                 OnPropertyChangedExplicit("CurrentScoreTrack");
                 _showScoreInfoCommand.RaiseCanExecuteChanged();
+                TrackToolBarVisible = _score != null;
             }
         }
 
@@ -270,6 +271,17 @@ namespace RockSmithTabExplorer.ViewModel
                 _levelOnlySelected = value;
                 OnPropertyChanged();
                 GenerateScore();
+            }
+        }
+
+        bool _trackToolBarVisible = false;
+        public bool TrackToolBarVisible
+        {
+            get { return _trackToolBarVisible; }
+            private set
+            {
+                _trackToolBarVisible = value;
+                OnPropertyChanged("TrackToolBarVisible");
             }
         }
 

@@ -2,10 +2,12 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="clr-namespace:AlphaTab.Wpf.Share.Controls"
+        xmlns:c="clr-namespace:RockSmithTabExplorer"
         xmlns:wpf="clr-namespace:AlphaTab.Wpf;assembly=AlphaTab.Core"
         Title="RockSmith Tab Explorer " Height="750" Width="800" WindowState="Maximized">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+        <c:ChordFretDisplayConverter x:Key="ChordFretDisplayConverter"/>
     </Window.Resources>
     <Grid Background="#4b4c4c">
         <Grid.RowDefinitions>
@@ -176,12 +178,12 @@
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding ChordName}" />
-                                    <GridViewColumn Header="1" DisplayMemberBinding="{Binding Fret0}" />
-                                    <GridViewColumn Header="2" DisplayMemberBinding="{Binding Fret1}" />
-                                    <GridViewColumn Header="3" DisplayMemberBinding="{Binding Fret2}" />
-                                    <GridViewColumn Header="4" DisplayMemberBinding="{Binding Fret3}" />
-                                    <GridViewColumn Header="5" DisplayMemberBinding="{Binding Fret4}" />
-                                    <GridViewColumn Header="6" DisplayMemberBinding="{Binding Fret5}" />
+                                    <GridViewColumn Header="1" DisplayMemberBinding="{Binding Fret0, Converter={StaticResource ChordFretDisplayConverter}}" />
+                                    <GridViewColumn Header="2" DisplayMemberBinding="{Binding Fret1, Converter={StaticResource ChordFretDisplayConverter}}" />
+                                    <GridViewColumn Header="3" DisplayMemberBinding="{Binding Fret2, Converter={StaticResource ChordFretDisplayConverter}}" />
+                                    <GridViewColumn Header="4" DisplayMemberBinding="{Binding Fret3, Converter={StaticResource ChordFretDisplayConverter}}" />
+                                    <GridViewColumn Header="5" DisplayMemberBinding="{Binding Fret4, Converter={StaticResource ChordFretDisplayConverter}}" />
+                                    <GridViewColumn Header="6" DisplayMemberBinding="{Binding Fret5, Converter={StaticResource ChordFretDisplayConverter}}" />
                                 </GridView>
                             </ListView.View>
                         </ListView >

@@ -1,4 +1,4 @@
-![RSTabExplorer](https://raw.githubusercontent.com/andulv/RSTabExplorer/master/Screenshot1.JPG "RSTabExplorer")
+![RSTabExplorer](/Screenshot1.JPG?raw=true "RSTabExplorer")
 
 View Rocksmith 2014 songs (built in, DLC or custom DLC) as tablature
 
@@ -11,7 +11,7 @@ View Rocksmith 2014 songs (built in, DLC or custom DLC) as tablature
 * Uses RocksmithToolkitLib from 'Rocksmith Custom Toolkit' to parse archives and songs (https://github.com/rscustom/rocksmith-custom-song-toolkit)
 * The application itself is built upon GDI WPF sample application from alphaTab.
  
-# Status (v0.1 - 2014-04-19)
+# Status (v0.0.2 - 2014-04-30)
 * Is basically working for almost all Rocksmith 2014 PC files I have tested with
 * No error handling. Will probably crash and burn at slighest hint of failure.
 * Single threaded, and no progress / busy indicators. UI locks up while performing operations (parsing .psarc, rendering score, etc.)

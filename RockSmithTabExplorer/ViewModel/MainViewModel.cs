@@ -118,28 +118,41 @@ namespace RockSmithTabExplorer.ViewModel
         /// <param name="file">the path to the file to load</param>
         private void OpenFile(string file, bool appendSongs = false)
         {
+            OpenFileWithoutUpdate(file, appendSongs);
+            PostFileOpenUpdate();
+        }
+
+        protected void OpenFileWithoutUpdate(string file, bool appendSongs = false)
+        {
             if (!string.IsNullOrWhiteSpace(file) && File.Exists(file))
             {
-                InternalOpenRockSmithFile(file, appendSongs);
+                if (appendSongs)
+                {
+                    FileNameStatus = FileNameStatus + ", " + file;
+                }
+                else
+                {
+                    FileNameStatus = file;
+                    songManager = new SongManager();
+                }
+                songManager.Add(file);
             }
         }
 
-        protected void InternalOpenRockSmithFile(string file, bool appendSongs = false)
+        private void OpenFiles(string[] files)
         {
-            if (appendSongs)
+            foreach (string file in files)
             {
-                FileNameStatus = FileNameStatus + ", " + file;
+                OpenFileWithoutUpdate(file, true);
             }
-            else
-            {
-                FileNameStatus = file;
-                songManager = new SongManager();
-            }
-            songManager.Add(file);
+            PostFileOpenUpdate();
+        }
+
+        private void PostFileOpenUpdate()
+        {
             AvailableSongs = songManager.GetAllSongInfos();
             OnPropertyChanged("FileNameStatus");
             OnPropertyChanged("AvailableSongs");
-
             SelectedRockSmithSong = AvailableSongs.FirstOrDefault();
         }
 
@@ -272,10 +285,7 @@ namespace RockSmithTabExplorer.ViewModel
             if (rocksmithFolder.Length != 0)
             {
                 string[] psarcs = Directory.GetFiles(rocksmithFolder + @"\dlc", "*.psarc");
-                foreach(string file in psarcs)
-                {
-                    OpenFile(file, true);
-                }
+                OpenFiles(psarcs);
             }
         }
 

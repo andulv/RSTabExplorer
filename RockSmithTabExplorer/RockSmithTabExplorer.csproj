@@ -88,17 +88,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ArcFileWrapper.cs" />
+    <Compile Include="Models\ArcFileWrapper.cs" />
     <Compile Include="Converter\ChordFretDisplayConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RockSmithImporter.cs" />
-    <Compile Include="RocksmithLocator.cs" />
+    <Compile Include="Services\RockSmithImporter.cs" />
+    <Compile Include="Services\RocksmithLocator.cs" />
     <Compile Include="ScoreInfoWindow.xaml.cs">
       <DependentUpon>ScoreInfoWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SongManager.cs" />
+    <Compile Include="Services\SongLoader.cs" />
+    <Compile Include="Services\SongManager.cs" />
     <Compile Include="Utils\NonClosingStream.cs" />
     <Compile Include="Utils\RelayCommand.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
@@ -110,7 +111,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controls\ToolBarCustom.cs" />
-    <Compile Include="Converter\BoolToBrushConverter.cs" />
     <Compile Include="Data\DialogService.cs" />
     <Compile Include="Data\ErrorService.cs" />
     <Compile Include="Data\IDialogService.cs" />

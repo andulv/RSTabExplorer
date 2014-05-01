@@ -37,6 +37,12 @@ namespace RockSmithTabExplorer
             files.Clear();
         }
 
+        public RSSongInfo GetFirstSong()
+        {
+            if (AvaliableSongInfos == null) return null;
+            return AvaliableSongInfos.FirstOrDefault();
+        }
+
         public TrackDetail GetTrackDetail(string songKey, string arrangmentName)
         {
             return files.Select(f=>f.GetTrackDetail(songKey,arrangmentName)).FirstOrDefault(td=>td!=null);

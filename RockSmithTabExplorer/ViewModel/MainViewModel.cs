@@ -123,7 +123,7 @@ namespace RockSmithTabExplorer.ViewModel
             // Update SelectedRockSmithSong on song load
             if (args.PropertyName == "IsLoading" && songLoader.IsLoading == false)
             {
-                SelectedRockSmithSong = songManager.AvaliableSongInfos.FirstOrDefault();
+                SelectedRockSmithSong = songManager.GetFirstSong();
             }
         }
 

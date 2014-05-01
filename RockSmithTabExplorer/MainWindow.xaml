@@ -63,7 +63,7 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <ListView  Grid.Row="1" ItemsSource="{Binding AvailableSongs}" SelectedItem="{Binding SelectedRockSmithSong, Mode=TwoWay}">
+                <ListView  Grid.Row="1" ItemsSource="{Binding SongManager.AvaliableSongInfos}" SelectedItem="{Binding SelectedRockSmithSong, Mode=TwoWay}">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Key" DisplayMemberBinding="{Binding Key}" />
@@ -276,7 +276,7 @@
         </Grid>
 
         <StatusBar Grid.Row="2">
-            <TextBlock Grid.Row="0" Text="{Binding FileNameStatus}"></TextBlock>
+            <TextBlock Grid.Row="0" Text="{Binding SongManager.StatusString}"></TextBlock>
         </StatusBar>
     </Grid>
 </Window>

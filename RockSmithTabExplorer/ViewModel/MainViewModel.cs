@@ -40,8 +40,15 @@ namespace RockSmithTabExplorer.ViewModel
         // those properties store the score information
         private Score _score;
         private int _currentTrackIndex;
-        SongManager songManager = new SongManager();
         private readonly RelayCommand _showScoreInfoCommand;
+
+        SongLoader songLoader;
+        SongManager songManager = new SongManager();
+        public SongManager SongManager
+        {
+            get { return songManager; }
+            private set { songManager = value; }
+        }
 
         public Score Score
         {
@@ -96,72 +103,7 @@ namespace RockSmithTabExplorer.ViewModel
         public ICommand LoadDiskTracksCommand { get; private set; }
         public ICommand LoadDLCTracksCommand { get; private set; }
 
-        /// <summary>
-        /// Opens a new file by loading the file path using the IO service. 
-        /// </summary>
-        public void OpenFile()
-        {
-            //InternalOpenRockSmithFile(@"d:\Program Files (x86)\Rocksmith 2014\songs.psarc");
-            //InternalOpenRockSmithFile(@"d:\Rocksmith\Metallica - Nothing Else Matters_p.psarc");
-
-            //var package=new RSPackageInfo(){FileName=@"d:\Program Files (x86)\Rocksmith 2014\songs.psarc"};
-            //ArchiveUtils.ExtractPackage(package, @"d:\Program Files (x86)\Extracted\");
-            OpenFile(_dialogService.OpenFile());
-            //InternalOpenRockSmithFile(@"d:\Program Files (x86)\Joy Division - Dead Souls_p_Pc\songs\bin\generic\deadsoulsjd_bass.xml");           
-            //InternalOpenRockSmithFile(@"d:\Program Files (x86)\Smells Like Teen Spirit_p_Pc\songs\bin\generic\smellsliketeenspirit_bass.xml");
-            //InternalOpenRockSmithFile(@"d:\Program Files (x86)\Metallica - Nothing Else Matters_p_Pc\songs\bin\generic\nothingelsematters_bass.xml");
-            //InternalOpenFile(@"E:\Tablature\Test tittel.gp5");
-        }
-
-        /// <summary>
-        /// Opens a new file from the specified file path.
-        /// </summary>
-        /// <param name="file">the path to the file to load</param>
-        private void OpenFile(string file, bool appendSongs = false)
-        {
-            OpenFileWithoutUpdate(file, appendSongs);
-            PostFileOpenUpdate();
-        }
-
-        protected void OpenFileWithoutUpdate(string file, bool appendSongs = false)
-        {
-            if (!string.IsNullOrWhiteSpace(file) && File.Exists(file))
-            {
-                if (appendSongs)
-                {
-                    FileNameStatus = FileNameStatus + ", " + file;
-                }
-                else
-                {
-                    FileNameStatus = file;
-                    songManager = new SongManager();
-                }
-                songManager.Add(file);
-            }
-        }
-
-        private void OpenFiles(string[] files)
-        {
-            foreach (string file in files)
-            {
-                OpenFileWithoutUpdate(file, true);
-            }
-            PostFileOpenUpdate();
-        }
-
-        private void PostFileOpenUpdate()
-        {
-            AvailableSongs = songManager.GetAllSongInfos();
-            OnPropertyChanged("FileNameStatus");
-            OnPropertyChanged("AvailableSongs");
-            SelectedRockSmithSong = AvailableSongs.FirstOrDefault();
-        }
-
-
-        //Is set when file is opened (root of all things)
-        public IList<RSSongInfo> AvailableSongs { get; protected set; }
-
-        //Is set by user by selecting in listview. Automtically set when AvailableSongs is set.
+        //Is set by user by selecting in listview. Automtically set when AvaliableSongInfos is set.
         RSSongInfo _selectedRockSmithSong;
         public RSSongInfo SelectedRockSmithSong
         {
@@ -172,6 +114,18 @@ namespace RockSmithTabExplorer.ViewModel
                 OnPropertyChanged();
 
                 setTrackFromPath();
+            }
+        }
+
+        private void OnSongManagerPropertyChange(object sender, PropertyChangedEventArgs args)
+        {
+            // Re-raise events for the view
+            this.OnPropertyChanged(args.PropertyName);
+
+            // Update SelectedRockSmithSong on song load
+            if (args.PropertyName == "AvaliableSongInfos")
+            {
+                SelectedRockSmithSong = songManager.AvaliableSongInfos.FirstOrDefault();
             }
         }
 
@@ -285,31 +239,17 @@ namespace RockSmithTabExplorer.ViewModel
             }
         }
 
-        public void LoadDiskTracks()
-        {
-            string rocksmithFolder = RocksmithLocator.Rocksmith2014Folder();
-            if (rocksmithFolder.Length != 0) OpenFile(rocksmithFolder + @"\songs.psarc");
-        }
-
-        public void LoadDLCTracks()
-        {
-            string rocksmithFolder = RocksmithLocator.Rocksmith2014Folder();
-            if (rocksmithFolder.Length != 0)
-            {
-                string[] psarcs = Directory.GetFiles(rocksmithFolder + @"\dlc", "*.psarc");
-                OpenFiles(psarcs);
-            }
-        }
-
         #endregion
 
         public MainViewModel(IDialogService dialogService, IErrorService errorService)
         {
             _dialogService = dialogService;
             _errorService = errorService;
-            OpenFileCommand = new RelayCommand(OpenFile);
-            LoadDiskTracksCommand = new RelayCommand(LoadDiskTracks);
-            LoadDLCTracksCommand = new RelayCommand(LoadDLCTracks);
+            songLoader = new SongLoader(_dialogService, songManager);
+            songManager.PropertyChanged += OnSongManagerPropertyChange;
+            OpenFileCommand = new RelayCommand(songLoader.OpenFile);
+            LoadDiskTracksCommand = new RelayCommand(songLoader.LoadDiskTracks);
+            LoadDLCTracksCommand = new RelayCommand(songLoader.LoadDLCTracks);
             _showScoreInfoCommand = new RelayCommand(ShowScoreInfo, () => _score != null);
 
             SelectedGuitarPath = RockSmithTabExplorer.Properties.Settings.Default.GuitarPath;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using AlphaTab.Wpf.Share.Data;
 using System.IO;
+using System.ComponentModel;
 
 namespace RockSmithTabExplorer
 {
@@ -11,10 +12,10 @@ namespace RockSmithTabExplorer
     {
         private readonly IDialogService _dialogService;
         private SongManager songManager;
-        public SongLoader(IDialogService dialogService, SongManager songCollection)
+        public SongLoader(IDialogService dialogService, SongManager songManager)
         {
             _dialogService = dialogService;
-            songManager = songCollection;
+            this.songManager = songManager;
         }
 
         /// <summary>
@@ -31,17 +32,31 @@ namespace RockSmithTabExplorer
         /// <param name="file">the path to the file to load</param>
         public void OpenFile(string file, bool appendSongs = false)
         {
+            BackgroundWorker backgroundWorker = new BackgroundWorker();
+            backgroundWorker.DoWork += (s, e) => BackgroundOpenFile(s, e, file, appendSongs);
+            backgroundWorker.RunWorkerCompleted += (s, e) => songManager.FileLoadComplete();
+            backgroundWorker.RunWorkerAsync();
+        }
+
+        private void BackgroundOpenFile(object sender, DoWorkEventArgs e, string file, bool appendSongs)
+        {
             OpenFileWithoutUpdate(file, appendSongs);
-            PostFileOpenUpdate();
         }
 
         public void OpenFiles(string[] files)
+        {
+            BackgroundWorker backgroundWorker = new BackgroundWorker();
+            backgroundWorker.DoWork += (s, e) => BackgroundOpenFiles(s, e, files);
+            backgroundWorker.RunWorkerCompleted += (s, e) => songManager.FileLoadComplete();
+            backgroundWorker.RunWorkerAsync();
+        }
+
+        private void BackgroundOpenFiles(object sender, DoWorkEventArgs e, string[] files)
         {
             foreach (string file in files)
             {
                 OpenFileWithoutUpdate(file, true);
             }
-            PostFileOpenUpdate();
         }
 
         private void OpenFileWithoutUpdate(string file, bool appendSongs = false)
@@ -54,11 +69,6 @@ namespace RockSmithTabExplorer
                 }
                 songManager.Add(file);
             }
-        }
-
-        private void PostFileOpenUpdate()
-        {
-            songManager.FileLoadComplete();
         }
 
         public void LoadDiskTracks()

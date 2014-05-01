@@ -18,6 +18,17 @@ namespace RockSmithTabExplorer
             this.songManager = songManager;
         }
 
+        private bool isLoading=false;
+        public bool IsLoading
+        {
+            get { return isLoading; }
+            private set
+            {
+                isLoading = value;
+                OnPropertyChanged("IsLoading");
+            }
+        }
+
         /// <summary>
         /// Opens a new file by loading the file path using the IO service. 
         /// </summary>
@@ -32,9 +43,10 @@ namespace RockSmithTabExplorer
         /// <param name="file">the path to the file to load</param>
         public void OpenFile(string file, bool appendSongs = false)
         {
+            IsLoading = true;
             BackgroundWorker backgroundWorker = new BackgroundWorker();
             backgroundWorker.DoWork += (s, e) => BackgroundOpenFile(s, e, file, appendSongs);
-            backgroundWorker.RunWorkerCompleted += (s, e) => songManager.FileLoadComplete();
+            backgroundWorker.RunWorkerCompleted += (s, e) => IsLoading = false;
             backgroundWorker.RunWorkerAsync();
         }
 
@@ -45,9 +57,10 @@ namespace RockSmithTabExplorer
 
         public void OpenFiles(string[] files)
         {
+            IsLoading = true;
             BackgroundWorker backgroundWorker = new BackgroundWorker();
             backgroundWorker.DoWork += (s, e) => BackgroundOpenFiles(s, e, files);
-            backgroundWorker.RunWorkerCompleted += (s, e) => songManager.FileLoadComplete();
+            backgroundWorker.RunWorkerCompleted += (s, e) => IsLoading = false;
             backgroundWorker.RunWorkerAsync();
         }
 
@@ -86,5 +99,22 @@ namespace RockSmithTabExplorer
                 OpenFiles(psarcs);
             }
         }
+
+        #region INotifyPropertyChanged
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChangedExplicit(string propertyName)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        protected virtual void OnPropertyChanged(string propertyName)// = null) [CallerMemberName]
+        {
+            OnPropertyChangedExplicit(propertyName);
+        }
+
+        #endregion
     }
 }

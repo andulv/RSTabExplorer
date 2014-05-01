@@ -103,7 +103,6 @@ namespace RockSmithTabExplorer.ViewModel
         public ICommand LoadDiskTracksCommand { get; private set; }
         public ICommand LoadDLCTracksCommand { get; private set; }
 
-        //Is set by user by selecting in listview. Automtically set when AvaliableSongInfos is set.
         RSSongInfo _selectedRockSmithSong;
         public RSSongInfo SelectedRockSmithSong
         {
@@ -117,13 +116,12 @@ namespace RockSmithTabExplorer.ViewModel
             }
         }
 
-        private void OnSongManagerPropertyChange(object sender, PropertyChangedEventArgs args)
+        private void OnIsLoadingToggled(object sender, PropertyChangedEventArgs args)
         {
-            // Re-raise events for the view
-            this.OnPropertyChanged(args.PropertyName);
+            IsLoading = songLoader.IsLoading;
 
             // Update SelectedRockSmithSong on song load
-            if (args.PropertyName == "AvaliableSongInfos")
+            if (args.PropertyName == "IsLoading" && songLoader.IsLoading == false)
             {
                 SelectedRockSmithSong = songManager.AvaliableSongInfos.FirstOrDefault();
             }
@@ -239,6 +237,17 @@ namespace RockSmithTabExplorer.ViewModel
             }
         }
 
+        bool _isLoading = false;
+        public bool IsLoading
+        {
+            get { return _isLoading; }
+            private set
+            {
+                _isLoading = value;
+                OnPropertyChanged("IsLoading");
+            }
+        }
+
         #endregion
 
         public MainViewModel(IDialogService dialogService, IErrorService errorService)
@@ -246,7 +255,12 @@ namespace RockSmithTabExplorer.ViewModel
             _dialogService = dialogService;
             _errorService = errorService;
             songLoader = new SongLoader(_dialogService, songManager);
-            songManager.PropertyChanged += OnSongManagerPropertyChange;
+
+            // Re-raise events for the view
+            songManager.PropertyChanged += (sender, args) => this.OnPropertyChanged(args.PropertyName);
+            songLoader.PropertyChanged += (sender, args) => this.OnPropertyChanged(args.PropertyName);
+            songLoader.PropertyChanged += OnIsLoadingToggled;
+
             OpenFileCommand = new RelayCommand(songLoader.OpenFile);
             LoadDiskTracksCommand = new RelayCommand(songLoader.LoadDiskTracks);
             LoadDLCTracksCommand = new RelayCommand(songLoader.LoadDLCTracks);

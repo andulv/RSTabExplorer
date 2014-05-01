@@ -17,7 +17,7 @@ namespace RockSmithTabExplorer
         {
             files.Add(new ArcFileWrapper(file));
 
-            if (StatusString.Length>0)
+            if (StatusString != null && StatusString.Length > 0)
             {
                 StatusString = StatusString + ", " + file;
             }
@@ -25,22 +25,16 @@ namespace RockSmithTabExplorer
             {
                 StatusString = file;
             }
+
+            AvaliableSongInfos = files.SelectMany(f => f.GetAllSongInfos()).ToList();
+            OnPropertyChanged("StatusString");
+            OnPropertyChanged("AvaliableSongInfos");
         }
 
         public void Clear()
         {
             StatusString = "";
             files.Clear();
-        }
-
-        /// <summary>
-        /// Trigger when all songs have finished loading.
-        /// </summary>
-        public void FileLoadComplete()
-        {
-            AvaliableSongInfos = files.SelectMany(f => f.GetAllSongInfos()).ToList();
-            OnPropertyChanged("StatusString");
-            OnPropertyChanged("AvaliableSongInfos");
         }
 
         public TrackDetail GetTrackDetail(string songKey, string arrangmentName)

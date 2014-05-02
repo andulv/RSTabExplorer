@@ -1,13 +1,9 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.rendering
-{
-	public  class BarRendererBase : global::haxe.lang.HxObject 
-	{
-		public    BarRendererBase(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+namespace alphatab.rendering{
+	public  class BarRendererBase : global::haxe.lang.HxObject {
+		public    BarRendererBase(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -15,45 +11,37 @@ namespace alphatab.rendering
 		}
 		
 		
-		public    BarRendererBase(global::alphatab.model.Bar bar)
-		{
-			unchecked 
-			{
+		public    BarRendererBase(global::alphatab.model.Bar bar){
+			unchecked {
 				global::alphatab.rendering.BarRendererBase.__hx_ctor_alphatab_rendering_BarRendererBase(this, bar);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_rendering_BarRendererBase(global::alphatab.rendering.BarRendererBase __temp_me90, global::alphatab.model.Bar bar)
-		{
-			unchecked 
-			{
-				__temp_me90._bar = bar;
-				__temp_me90.x = 0;
-				__temp_me90.y = 0;
-				__temp_me90.width = 0;
-				__temp_me90.height = 0;
-				__temp_me90.index = 0;
-				__temp_me90.topOverflow = 0;
-				__temp_me90.bottomOverflow = 0;
-				__temp_me90.isEmpty = true;
+		public static   void __hx_ctor_alphatab_rendering_BarRendererBase(global::alphatab.rendering.BarRendererBase __temp_me104, global::alphatab.model.Bar bar){
+			unchecked {
+				__temp_me104.bar = bar;
+				__temp_me104.x = 0;
+				__temp_me104.y = 0;
+				__temp_me104.width = 0;
+				__temp_me104.height = 0;
+				__temp_me104.index = 0;
+				__temp_me104.topOverflow = 0;
+				__temp_me104.bottomOverflow = 0;
+				__temp_me104.isEmpty = true;
 			}
 		}
 		
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.rendering.BarRendererBase(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.rendering.BarRendererBase(((global::alphatab.model.Bar) (arr[0]) ));
 			}
 		}
@@ -77,14 +65,11 @@ namespace alphatab.rendering
 		
 		public  int bottomOverflow;
 		
-		public  global::alphatab.model.Bar _bar;
+		public  global::alphatab.model.Bar bar;
 		
-		public virtual   void registerOverflowTop(int topOverflow)
-		{
-			unchecked 
-			{
-				if (( topOverflow > this.topOverflow )) 
-				{
+		public virtual   void registerOverflowTop(int topOverflow){
+			unchecked {
+				if (( topOverflow > this.topOverflow )) {
 					this.topOverflow = topOverflow;
 				}
 				
@@ -92,12 +77,9 @@ namespace alphatab.rendering
 		}
 		
 		
-		public virtual   void registerOverflowBottom(int bottomOverflow)
-		{
-			unchecked 
-			{
-				if (( bottomOverflow > this.bottomOverflow )) 
-				{
+		public virtual   void registerOverflowBottom(int bottomOverflow){
+			unchecked {
+				if (( bottomOverflow > this.bottomOverflow )) {
 					this.bottomOverflow = bottomOverflow;
 				}
 				
@@ -105,10 +87,8 @@ namespace alphatab.rendering
 		}
 		
 		
-		public virtual   void applyBarSpacing(int spacing)
-		{
-			unchecked 
-			{
+		public virtual   void applyBarSpacing(int spacing){
+			unchecked {
 				{
 				}
 				
@@ -116,73 +96,57 @@ namespace alphatab.rendering
 		}
 		
 		
-		public   global::alphatab.Settings getSettings()
-		{
-			unchecked 
-			{
+		public   global::alphatab.Settings getSettings(){
+			unchecked {
 				return this.stave.staveGroup.layout.renderer.settings;
 			}
 		}
 		
 		
-		public   double getScale()
-		{
-			unchecked 
-			{
+		public   double getScale(){
+			unchecked {
 				return this.stave.staveGroup.layout.renderer.settings.scale;
 			}
 		}
 		
 		
-		public   global::alphatab.rendering.layout.ScoreLayout getLayout()
-		{
-			unchecked 
-			{
+		public   global::alphatab.rendering.layout.ScoreLayout getLayout(){
+			unchecked {
 				return this.stave.staveGroup.layout;
 			}
 		}
 		
 		
-		public   global::alphatab.rendering.RenderingResources getResources()
-		{
-			unchecked 
-			{
+		public   global::alphatab.rendering.RenderingResources getResources(){
+			unchecked {
 				return this.stave.staveGroup.layout.renderer.renderingResources;
 			}
 		}
 		
 		
-		public   bool isFirstOfLine()
-		{
-			unchecked 
-			{
+		public   bool isFirstOfLine(){
+			unchecked {
 				return ( this.index == 0 );
 			}
 		}
 		
 		
-		public   bool isLastOfLine()
-		{
-			unchecked 
-			{
+		public   bool isLastOfLine(){
+			unchecked {
 				return ( this.index == ( this.stave.barRenderers.length - 1 ) );
 			}
 		}
 		
 		
-		public   bool isLast()
-		{
-			unchecked 
-			{
-				return ( this._bar.index == ( this._bar.track.bars.length - 1 ) );
+		public   bool isLast(){
+			unchecked {
+				return ( this.bar.index == ( this.bar.track.bars.length - 1 ) );
 			}
 		}
 		
 		
-		public virtual   void registerMaxSizes(global::alphatab.rendering.staves.BarSizeInfo sizes)
-		{
-			unchecked 
-			{
+		public virtual   void registerMaxSizes(global::alphatab.rendering.staves.BarSizeInfo sizes){
+			unchecked {
 				{
 				}
 				
@@ -190,10 +154,8 @@ namespace alphatab.rendering
 		}
 		
 		
-		public virtual   void applySizes(global::alphatab.rendering.staves.BarSizeInfo sizes)
-		{
-			unchecked 
-			{
+		public virtual   void applySizes(global::alphatab.rendering.staves.BarSizeInfo sizes){
+			unchecked {
 				{
 				}
 				
@@ -201,10 +163,8 @@ namespace alphatab.rendering
 		}
 		
 		
-		public virtual   void finalizeRenderer(global::alphatab.rendering.layout.ScoreLayout layout)
-		{
-			unchecked 
-			{
+		public virtual   void finalizeRenderer(global::alphatab.rendering.layout.ScoreLayout layout){
+			unchecked {
 				{
 				}
 				
@@ -212,28 +172,22 @@ namespace alphatab.rendering
 		}
 		
 		
-		public virtual   int getTopPadding()
-		{
-			unchecked 
-			{
+		public virtual   int getTopPadding(){
+			unchecked {
 				return 0;
 			}
 		}
 		
 		
-		public virtual   int getBottomPadding()
-		{
-			unchecked 
-			{
+		public virtual   int getBottomPadding(){
+			unchecked {
 				return 0;
 			}
 		}
 		
 		
-		public virtual   void doLayout()
-		{
-			unchecked 
-			{
+		public virtual   void doLayout(){
+			unchecked {
 				{
 				}
 				
@@ -241,10 +195,8 @@ namespace alphatab.rendering
 		}
 		
 		
-		public virtual   void paint(int cx, int cy, global::alphatab.platform.ICanvas canvas)
-		{
-			unchecked 
-			{
+		public virtual   void paint(int cx, int cy, global::alphatab.platform.ICanvas canvas){
+			unchecked {
 				{
 				}
 				
@@ -252,12 +204,22 @@ namespace alphatab.rendering
 		}
 		
 		
-		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public virtual   void buildBoundingsLookup(global::alphatab.rendering.utils.BoundingsLookup lookup, int visualTop, int visualHeight, int realTop, int realHeight, int x){
+			unchecked {
+				global::alphatab.rendering.utils.BarBoundings barLookup = new global::alphatab.rendering.utils.BarBoundings();
+				barLookup.bar = this.bar;
+				barLookup.isFirstOfLine = ( this.index == 0 );
+				barLookup.isLastOfLine = ( this.index == ( this.stave.barRenderers.length - 1 ) );
+				barLookup.visualBounds = new global::alphatab.rendering.utils.Bounds(((int) (( ( x + this.stave.x ) + this.x )) ), ((int) (visualTop) ), ((int) (this.width) ), ((int) (visualHeight) ));
+				barLookup.bounds = new global::alphatab.rendering.utils.Bounds(((int) (( ( x + this.stave.x ) + this.x )) ), ((int) (realTop) ), ((int) (this.width) ), ((int) (realHeight) ));
+				lookup.bars.push(barLookup);
+			}
+		}
+		
+		
+		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1079503181:
 					{
 						this.bottomOverflow = ((int) (@value) );
@@ -318,15 +280,12 @@ namespace alphatab.rendering
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
-					case 1058404052:
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
+					case 4895187:
 					{
-						this._bar = ((global::alphatab.model.Bar) (@value) );
+						this.bar = ((global::alphatab.model.Bar) (@value) );
 						return @value;
 					}
 					
@@ -347,7 +306,7 @@ namespace alphatab.rendering
 					
 					case 207609411:
 					{
-						this.isEmpty = ((bool) (@value) );
+						this.isEmpty = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
@@ -405,117 +364,120 @@ namespace alphatab.rendering
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
+					case 776879323:
+					{
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("buildBoundingsLookup") ), ((int) (776879323) ))) );
+					}
+					
+					
 					case 1028568990:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("paint"), ((int) (1028568990) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("paint") ), ((int) (1028568990) ))) );
 					}
 					
 					
 					case 1825584277:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("doLayout"), ((int) (1825584277) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("doLayout") ), ((int) (1825584277) ))) );
 					}
 					
 					
 					case 357418928:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("getBottomPadding"), ((int) (357418928) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("getBottomPadding") ), ((int) (357418928) ))) );
 					}
 					
 					
 					case 415081458:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("getTopPadding"), ((int) (415081458) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("getTopPadding") ), ((int) (415081458) ))) );
 					}
 					
 					
 					case 236164353:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("finalizeRenderer"), ((int) (236164353) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("finalizeRenderer") ), ((int) (236164353) ))) );
 					}
 					
 					
 					case 673875012:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("applySizes"), ((int) (673875012) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("applySizes") ), ((int) (673875012) ))) );
 					}
 					
 					
 					case 632903889:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("registerMaxSizes"), ((int) (632903889) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("registerMaxSizes") ), ((int) (632903889) ))) );
 					}
 					
 					
 					case 1695797088:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("isLast"), ((int) (1695797088) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("isLast") ), ((int) (1695797088) ))) );
 					}
 					
 					
 					case 1812105259:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("isLastOfLine"), ((int) (1812105259) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("isLastOfLine") ), ((int) (1812105259) ))) );
 					}
 					
 					
 					case 1020198193:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("isFirstOfLine"), ((int) (1020198193) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("isFirstOfLine") ), ((int) (1020198193) ))) );
 					}
 					
 					
 					case 1225225327:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("getResources"), ((int) (1225225327) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("getResources") ), ((int) (1225225327) ))) );
 					}
 					
 					
 					case 1427060704:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("getLayout"), ((int) (1427060704) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("getLayout") ), ((int) (1427060704) ))) );
 					}
 					
 					
 					case 1487265300:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("getScale"), ((int) (1487265300) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("getScale") ), ((int) (1487265300) ))) );
 					}
 					
 					
 					case 825311129:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("getSettings"), ((int) (825311129) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("getSettings") ), ((int) (825311129) ))) );
 					}
 					
 					
 					case 561297662:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("applyBarSpacing"), ((int) (561297662) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("applyBarSpacing") ), ((int) (561297662) ))) );
 					}
 					
 					
 					case 880319888:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("registerOverflowBottom"), ((int) (880319888) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("registerOverflowBottom") ), ((int) (880319888) ))) );
 					}
 					
 					
 					case 1694779088:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("registerOverflowTop"), ((int) (1694779088) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("registerOverflowTop") ), ((int) (1694779088) ))) );
 					}
 					
 					
-					case 1058404052:
+					case 4895187:
 					{
-						return this._bar;
+						return this.bar;
 					}
 					
 					
@@ -584,12 +546,9 @@ namespace alphatab.rendering
 		}
 		
 		
-		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1079503181:
 					{
 						return ((double) (this.bottomOverflow) );
@@ -643,12 +602,16 @@ namespace alphatab.rendering
 		}
 		
 		
-		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs){
+			unchecked {
+				switch (hash){
+					case 776879323:
+					{
+						this.buildBoundingsLookup(((global::alphatab.rendering.utils.BoundingsLookup) (dynargs[0]) ), ((int) (global::haxe.lang.Runtime.toInt(dynargs[1])) ), ((int) (global::haxe.lang.Runtime.toInt(dynargs[2])) ), ((int) (global::haxe.lang.Runtime.toInt(dynargs[3])) ), ((int) (global::haxe.lang.Runtime.toInt(dynargs[4])) ), ((int) (global::haxe.lang.Runtime.toInt(dynargs[5])) ));
+						break;
+					}
+					
+					
 					case 1028568990:
 					{
 						this.paint(((int) (global::haxe.lang.Runtime.toInt(dynargs[0])) ), ((int) (global::haxe.lang.Runtime.toInt(dynargs[1])) ), ((global::alphatab.platform.ICanvas) (dynargs[2]) ));
@@ -771,11 +734,9 @@ namespace alphatab.rendering
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
-				baseArr.push("_bar");
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
+				baseArr.push("bar");
 				baseArr.push("bottomOverflow");
 				baseArr.push("topOverflow");
 				baseArr.push("isEmpty");

@@ -1,18 +1,13 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.model
-{
-	public  class Beat : global::haxe.lang.HxObject 
-	{
-		static Beat() 
-		{
+namespace alphatab.model{
+	public  class Beat : global::haxe.lang.HxObject {
+		static Beat() {
 			global::alphatab.model.Beat.WhammyBarMaxPosition = 60;
 			global::alphatab.model.Beat.WhammyBarMaxValue = 24;
 		}
-		public    Beat(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+		public    Beat(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -20,33 +15,30 @@ namespace alphatab.model
 		}
 		
 		
-		public    Beat()
-		{
-			unchecked 
-			{
+		public    Beat(){
+			unchecked {
 				global::alphatab.model.Beat.__hx_ctor_alphatab_model_Beat(this);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_model_Beat(global::alphatab.model.Beat __temp_me74)
-		{
-			unchecked 
-			{
-				__temp_me74.whammyBarPoints = new global::haxe.root.Array<object>();
-				__temp_me74.notes = new global::haxe.root.Array<object>();
-				__temp_me74.brushType = global::alphatab.model.BrushType.None;
-				__temp_me74.vibrato = global::alphatab.model.VibratoType.None;
-				__temp_me74.graceType = global::alphatab.model.GraceType.None;
-				__temp_me74.pickStroke = global::alphatab.model.PickStrokeType.None;
-				__temp_me74.duration = global::alphatab.model.Duration.Quarter;
-				__temp_me74.tremoloSpeed = new global::haxe.lang.Null<global::alphatab.model.Duration>(default(global::haxe.lang.Null<global::alphatab.model.Duration>).@value, true);
-				__temp_me74.automations = new global::haxe.root.Array<object>();
-				__temp_me74.start = 0;
-				__temp_me74.tupletDenominator = -1;
-				__temp_me74.tupletNumerator = -1;
-				__temp_me74.dynamicValue = global::alphatab.model.DynamicValue.F;
-				__temp_me74.crescendo = global::alphatab.rendering.glyphs.CrescendoType.None;
+		public static   void __hx_ctor_alphatab_model_Beat(global::alphatab.model.Beat __temp_me88){
+			unchecked {
+				__temp_me88.whammyBarPoints = new global::haxe.root.Array<object>();
+				__temp_me88.notes = new global::haxe.root.Array<object>();
+				__temp_me88.brushType = global::alphatab.model.BrushType.None;
+				__temp_me88.vibrato = global::alphatab.model.VibratoType.None;
+				__temp_me88.graceType = global::alphatab.model.GraceType.None;
+				__temp_me88.pickStroke = global::alphatab.model.PickStrokeType.None;
+				__temp_me88.duration = global::alphatab.model.Duration.Quarter;
+				__temp_me88.tremoloSpeed = default(global::haxe.lang.Null<global::alphatab.model.Duration>);
+				__temp_me88.automations = new global::haxe.root.Array<object>();
+				__temp_me88.dots = 0;
+				__temp_me88.start = 0;
+				__temp_me88.tupletDenominator = -1;
+				__temp_me88.tupletNumerator = -1;
+				__temp_me88.dynamicValue = global::alphatab.model.DynamicValue.F;
+				__temp_me88.crescendo = global::alphatab.rendering.glyphs.CrescendoType.None;
 			}
 		}
 		
@@ -55,19 +47,15 @@ namespace alphatab.model
 		
 		public static  int WhammyBarMaxValue;
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.model.Beat(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.model.Beat();
 			}
 		}
@@ -85,12 +73,9 @@ namespace alphatab.model
 		
 		public  global::alphatab.model.Note _minNote;
 		
-		public virtual   global::alphatab.model.Note minNote()
-		{
-			unchecked 
-			{
-				if (( this._minNote == default(global::alphatab.model.Note) )) 
-				{
+		public virtual   global::alphatab.model.Note minNote(){
+			unchecked {
+				if (( this._minNote == default(global::alphatab.model.Note) )) {
 					this.refreshNotes();
 				}
 				
@@ -101,12 +86,9 @@ namespace alphatab.model
 		
 		public  global::alphatab.model.Note _maxNote;
 		
-		public virtual   global::alphatab.model.Note maxNote()
-		{
-			unchecked 
-			{
-				if (( this._maxNote == default(global::alphatab.model.Note) )) 
-				{
+		public virtual   global::alphatab.model.Note maxNote(){
+			unchecked {
+				if (( this._maxNote == default(global::alphatab.model.Note) )) {
 					this.refreshNotes();
 				}
 				
@@ -121,10 +103,8 @@ namespace alphatab.model
 		
 		public  global::haxe.root.Array<object> automations;
 		
-		public virtual   bool isRest()
-		{
-			unchecked 
-			{
+		public virtual   bool isRest(){
+			unchecked {
 				return ( this.notes.length == 0 );
 			}
 		}
@@ -156,10 +136,8 @@ namespace alphatab.model
 		
 		public  global::haxe.root.Array<object> whammyBarPoints;
 		
-		public   bool hasWhammyBar()
-		{
-			unchecked 
-			{
+		public   bool hasWhammyBar(){
+			unchecked {
 				return ( this.whammyBarPoints.length > 0 );
 			}
 		}
@@ -169,19 +147,15 @@ namespace alphatab.model
 		
 		public  string chordId;
 		
-		public   bool hasChord()
-		{
-			unchecked 
-			{
+		public   bool hasChord(){
+			unchecked {
 				return  ! (string.Equals(this.chordId, default(string))) ;
 			}
 		}
 		
 		
-		public   global::alphatab.model.Chord chord()
-		{
-			unchecked 
-			{
+		public   global::alphatab.model.Chord chord(){
+			unchecked {
 				return ((global::alphatab.model.Chord) (this.voice.bar.track.chords.@get(this.chordId).@value) );
 			}
 		}
@@ -191,11 +165,9 @@ namespace alphatab.model
 		
 		public  global::alphatab.model.PickStrokeType pickStroke;
 		
-		public   bool isTremolo()
-		{
-			unchecked 
-			{
-				return ( ! (global::haxe.lang.Runtime.eq((this.tremoloSpeed).toDynamic(), (default(global::haxe.lang.Null<global::alphatab.model.Duration>)).toDynamic())) );
+		public   bool isTremolo(){
+			unchecked {
+				return this.tremoloSpeed.hasValue;
 			}
 		}
 		
@@ -208,16 +180,13 @@ namespace alphatab.model
 		
 		public  global::alphatab.model.DynamicValue dynamicValue;
 		
-		public virtual   global::alphatab.model.Beat clone()
-		{
-			unchecked 
-			{
+		public virtual   global::alphatab.model.Beat clone(){
+			unchecked {
 				global::alphatab.model.Beat beat = new global::alphatab.model.Beat();
 				{
 					int _g = 0;
 					global::haxe.root.Array<object> _g1 = this.whammyBarPoints;
-					while (( _g < _g1.length ))
-					{
+					while (( _g < _g1.length )){
 						global::alphatab.model.BendPoint b = ((global::alphatab.model.BendPoint) (_g1[_g]) );
 						 ++ _g;
 						beat.whammyBarPoints.push(b.clone());
@@ -228,8 +197,7 @@ namespace alphatab.model
 				{
 					int _g2 = 0;
 					global::haxe.root.Array<object> _g11 = this.notes;
-					while (( _g2 < _g11.length ))
-					{
+					while (( _g2 < _g11.length )){
 						global::alphatab.model.Note n = ((global::alphatab.model.Note) (_g11[_g2]) );
 						 ++ _g2;
 						beat.addNote(n.clone());
@@ -237,13 +205,14 @@ namespace alphatab.model
 					
 				}
 				
+				beat.dots = this.dots;
 				beat.chordId = this.chordId;
 				beat.brushType = this.brushType;
 				beat.vibrato = this.vibrato;
 				beat.graceType = this.graceType;
 				beat.pickStroke = this.pickStroke;
 				beat.duration = this.duration;
-				beat.tremoloSpeed = new global::haxe.lang.Null<global::alphatab.model.Duration>(this.tremoloSpeed.@value, true);
+				beat.tremoloSpeed = this.tremoloSpeed;
 				beat.text = this.text;
 				beat.fadeIn = this.fadeIn;
 				beat.tap = this.tap;
@@ -252,8 +221,7 @@ namespace alphatab.model
 				{
 					int _g3 = 0;
 					global::haxe.root.Array<object> _g12 = this.automations;
-					while (( _g3 < _g12.length ))
-					{
+					while (( _g3 < _g12.length )){
 						global::alphatab.model.Automation a = ((global::alphatab.model.Automation) (_g12[_g3]) );
 						 ++ _g3;
 						beat.automations.push(a.clone());
@@ -271,35 +239,27 @@ namespace alphatab.model
 		}
 		
 		
-		public   bool hasTuplet()
-		{
-			unchecked 
-			{
+		public   bool hasTuplet(){
+			unchecked {
 				return (  ! ((( ( this.tupletDenominator == -1 ) && ( this.tupletNumerator == -1 ) )))  &&  ! ((( ( this.tupletDenominator == 1 ) && ( this.tupletNumerator == 1 ) )))  );
 			}
 		}
 		
 		
-		public virtual   int calculateDuration()
-		{
-			unchecked 
-			{
+		public virtual   int calculateDuration(){
+			unchecked {
 				int ticks = global::alphatab.audio.MidiUtils.durationToTicks(this.duration);
-				if (( this.dots == 2 )) 
-				{
+				if (( this.dots == 2 )) {
 					ticks = global::alphatab.audio.MidiUtils.applyDot(ticks, true);
 				}
-				 else 
-				{
-					if (( this.dots == 1 )) 
-					{
+				 else {
+					if (( this.dots == 1 )) {
 						ticks = global::alphatab.audio.MidiUtils.applyDot(ticks, false);
 					}
 					
 				}
 				
-				if (( ( this.tupletDenominator > 0 ) && ( this.tupletNumerator >= 0 ) )) 
-				{
+				if (( ( this.tupletDenominator > 0 ) && ( this.tupletNumerator >= 0 ) )) {
 					ticks = global::alphatab.audio.MidiUtils.applyTuplet(ticks, this.tupletNumerator, this.tupletDenominator);
 				}
 				
@@ -308,61 +268,52 @@ namespace alphatab.model
 		}
 		
 		
-		public virtual   void addNote(global::alphatab.model.Note note)
-		{
-			unchecked 
-			{
+		public virtual   void addNote(global::alphatab.model.Note note){
+			unchecked {
 				note.beat = this;
 				this.notes.push(note);
 			}
 		}
 		
 		
-		public virtual   void refreshNotes()
-		{
-			unchecked 
-			{
+		public virtual   void refreshNotes(){
+			unchecked {
 				int _g = 0;
 				global::haxe.root.Array<object> _g1 = this.notes;
-				while (( _g < _g1.length ))
-				{
+				while (( _g < _g1.length )){
 					global::alphatab.model.Note n = ((global::alphatab.model.Note) (_g1[_g]) );
 					 ++ _g;
-					bool __temp_stmt515 = ( this._minNote == default(global::alphatab.model.Note) );
-					bool __temp_boolv516 = false;
-					if ( ! (__temp_stmt515) ) 
-					{
-						int __temp_stmt517 = default(int);
+					bool __temp_stmt544 = ( this._minNote == default(global::alphatab.model.Note) );
+					bool __temp_boolv545 = false;
+					if ( ! (__temp_stmt544) ) {
+						int __temp_stmt546 = default(int);
 						{
 							global::alphatab.model.Note _this = this._minNote;
-							__temp_stmt517 = ( _this.fret + _this.beat.voice.bar.track.tuning[( ( _this.beat.voice.bar.track.tuning.length - (( _this.@string - 1 )) ) - 1 )] );
+							__temp_stmt546 = ( _this.fret + _this.beat.voice.bar.track.tuning[( ( _this.beat.voice.bar.track.tuning.length - (( _this.@string - 1 )) ) - 1 )] );
 						}
 						
-						__temp_boolv516 = ( ( n.fret + n.beat.voice.bar.track.tuning[( ( n.beat.voice.bar.track.tuning.length - (( n.@string - 1 )) ) - 1 )] ) < __temp_stmt517 );
+						__temp_boolv545 = ( ( n.fret + n.beat.voice.bar.track.tuning[( ( n.beat.voice.bar.track.tuning.length - (( n.@string - 1 )) ) - 1 )] ) < __temp_stmt546 );
 					}
 					
-					bool __temp_stmt514 = ( __temp_stmt515 || __temp_boolv516 );
-					if (__temp_stmt514) 
-					{
+					bool __temp_stmt543 = ( __temp_stmt544 || __temp_boolv545 );
+					if (__temp_stmt543) {
 						this._minNote = n;
 					}
 					
-					bool __temp_stmt519 = ( this._maxNote == default(global::alphatab.model.Note) );
-					bool __temp_boolv520 = false;
-					if ( ! (__temp_stmt519) ) 
-					{
-						int __temp_stmt521 = default(int);
+					bool __temp_stmt548 = ( this._maxNote == default(global::alphatab.model.Note) );
+					bool __temp_boolv549 = false;
+					if ( ! (__temp_stmt548) ) {
+						int __temp_stmt550 = default(int);
 						{
 							global::alphatab.model.Note _this1 = this._maxNote;
-							__temp_stmt521 = ( _this1.fret + _this1.beat.voice.bar.track.tuning[( ( _this1.beat.voice.bar.track.tuning.length - (( _this1.@string - 1 )) ) - 1 )] );
+							__temp_stmt550 = ( _this1.fret + _this1.beat.voice.bar.track.tuning[( ( _this1.beat.voice.bar.track.tuning.length - (( _this1.@string - 1 )) ) - 1 )] );
 						}
 						
-						__temp_boolv520 = ( ( n.fret + n.beat.voice.bar.track.tuning[( ( n.beat.voice.bar.track.tuning.length - (( n.@string - 1 )) ) - 1 )] ) > __temp_stmt521 );
+						__temp_boolv549 = ( ( n.fret + n.beat.voice.bar.track.tuning[( ( n.beat.voice.bar.track.tuning.length - (( n.@string - 1 )) ) - 1 )] ) > __temp_stmt550 );
 					}
 					
-					bool __temp_stmt518 = ( __temp_stmt519 || __temp_boolv520 );
-					if (__temp_stmt518) 
-					{
+					bool __temp_stmt547 = ( __temp_stmt548 || __temp_boolv549 );
+					if (__temp_stmt547) {
 						this._maxNote = n;
 					}
 					
@@ -372,19 +323,15 @@ namespace alphatab.model
 		}
 		
 		
-		public virtual   global::alphatab.model.Automation getAutomation(global::alphatab.model.AutomationType type)
-		{
-			unchecked 
-			{
+		public virtual   global::alphatab.model.Automation getAutomation(global::alphatab.model.AutomationType type){
+			unchecked {
 				{
 					int _g = 0;
 					global::haxe.root.Array<object> _g1 = this.automations;
-					while (( _g < _g1.length ))
-					{
+					while (( _g < _g1.length )){
 						global::alphatab.model.Automation a = ((global::alphatab.model.Automation) (_g1[_g]) );
 						 ++ _g;
-						if (( a.type == type )) 
-						{
+						if (( a.type == type )) {
 							return a;
 						}
 						
@@ -397,19 +344,15 @@ namespace alphatab.model
 		}
 		
 		
-		public virtual   global::alphatab.model.Note getNoteOnString(int @string)
-		{
-			unchecked 
-			{
+		public virtual   global::alphatab.model.Note getNoteOnString(int @string){
+			unchecked {
 				{
 					int _g = 0;
 					global::haxe.root.Array<object> _g1 = this.notes;
-					while (( _g < _g1.length ))
-					{
+					while (( _g < _g1.length )){
 						global::alphatab.model.Note n = ((global::alphatab.model.Note) (_g1[_g]) );
 						 ++ _g;
-						if (( n.@string == @string )) 
-						{
+						if (( n.@string == @string )) {
 							return n;
 						}
 						
@@ -422,12 +365,54 @@ namespace alphatab.model
 		}
 		
 		
-		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
+		public virtual   void finish(){
+			unchecked {
+				if (( ( this.voice.bar.index == 0 ) && ( this.index == 0 ) )) {
+					this.previousBeat = default(global::alphatab.model.Beat);
+				}
+				 else {
+					if (( this.index == 0 )) {
+						this.previousBeat = ((global::alphatab.model.Beat) (((global::alphatab.model.Voice) (this.voice.bar.previousBar.voices[this.voice.index]) ).beats[( ((global::alphatab.model.Voice) (this.voice.bar.previousBar.voices[this.voice.index]) ).beats.length - 1 )]) );
+						this.previousBeat.nextBeat = this;
+					}
+					 else {
+						this.previousBeat = ((global::alphatab.model.Beat) (this.voice.beats[( this.index - 1 )]) );
+						this.previousBeat.nextBeat = this;
+					}
+					
+				}
+				
+				if (( this.index == 0 )) {
+					global::alphatab.model.MasterBar __temp_stmt551 = default(global::alphatab.model.MasterBar);
+					{
+						global::alphatab.model.Bar _this = this.voice.bar;
+						__temp_stmt551 = ((global::alphatab.model.MasterBar) (_this.track.score.masterBars[_this.index]) );
+					}
+					
+					this.start = __temp_stmt551.start;
+				}
+				 else {
+					this.start = ( this.previousBeat.start + this.previousBeat.calculateDuration() );
+				}
+				
 				{
+					int _g = 0;
+					global::haxe.root.Array<object> _g1 = this.notes;
+					while (( _g < _g1.length )){
+						global::alphatab.model.Note n = ((global::alphatab.model.Note) (_g1[_g]) );
+						 ++ _g;
+						n.finish();
+					}
+					
+				}
+				
+			}
+		}
+		
+		
+		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 67859554:
 					{
 						this.start = ((int) (@value) );
@@ -481,12 +466,9 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1751303026:
 					{
 						this.dynamicValue = ((global::alphatab.model.DynamicValue) (@value) );
@@ -510,7 +492,7 @@ namespace alphatab.model
 					
 					case 706091227:
 					{
-						this.tremoloSpeed = new global::haxe.lang.Null<global::alphatab.model.Duration>(global::haxe.lang.Null<object>.ofDynamic<global::alphatab.model.Duration>(@value).@value, true);
+						this.tremoloSpeed = global::haxe.lang.Null<object>.ofDynamic<global::alphatab.model.Duration>(@value);
 						return @value;
 					}
 					
@@ -587,28 +569,28 @@ namespace alphatab.model
 					
 					case 5790307:
 					{
-						this.tap = ((bool) (@value) );
+						this.tap = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
 					
 					case 1280692680:
 					{
-						this.slap = ((bool) (@value) );
+						this.slap = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
 					
 					case 650430015:
 					{
-						this.hasRasgueado = ((bool) (@value) );
+						this.hasRasgueado = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
 					
 					case 5594513:
 					{
-						this.pop = ((bool) (@value) );
+						this.pop = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
@@ -622,7 +604,7 @@ namespace alphatab.model
 					
 					case 1688947841:
 					{
-						this.fadeIn = ((bool) (@value) );
+						this.fadeIn = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
@@ -643,7 +625,7 @@ namespace alphatab.model
 					
 					case 207609411:
 					{
-						this.isEmpty = ((bool) (@value) );
+						this.isEmpty = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
@@ -715,51 +697,54 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
+					case 109002835:
+					{
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("finish") ), ((int) (109002835) ))) );
+					}
+					
+					
 					case 1764199192:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("getNoteOnString"), ((int) (1764199192) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("getNoteOnString") ), ((int) (1764199192) ))) );
 					}
 					
 					
 					case 1332371469:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("getAutomation"), ((int) (1332371469) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("getAutomation") ), ((int) (1332371469) ))) );
 					}
 					
 					
 					case 860674150:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("refreshNotes"), ((int) (860674150) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("refreshNotes") ), ((int) (860674150) ))) );
 					}
 					
 					
 					case 88562355:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("addNote"), ((int) (88562355) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("addNote") ), ((int) (88562355) ))) );
 					}
 					
 					
 					case 2079799002:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("calculateDuration"), ((int) (2079799002) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("calculateDuration") ), ((int) (2079799002) ))) );
 					}
 					
 					
 					case 1250598502:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("hasTuplet"), ((int) (1250598502) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("hasTuplet") ), ((int) (1250598502) ))) );
 					}
 					
 					
 					case 1214452573:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("clone"), ((int) (1214452573) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("clone") ), ((int) (1214452573) ))) );
 					}
 					
 					
@@ -789,7 +774,7 @@ namespace alphatab.model
 					
 					case 1614864450:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("isTremolo"), ((int) (1614864450) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("isTremolo") ), ((int) (1614864450) ))) );
 					}
 					
 					
@@ -807,13 +792,13 @@ namespace alphatab.model
 					
 					case 1170095196:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("chord"), ((int) (1170095196) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("chord") ), ((int) (1170095196) ))) );
 					}
 					
 					
 					case 1377207970:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("hasChord"), ((int) (1377207970) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("hasChord") ), ((int) (1377207970) ))) );
 					}
 					
 					
@@ -831,7 +816,7 @@ namespace alphatab.model
 					
 					case 1097521840:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("hasWhammyBar"), ((int) (1097521840) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("hasWhammyBar") ), ((int) (1097521840) ))) );
 					}
 					
 					
@@ -915,7 +900,7 @@ namespace alphatab.model
 					
 					case 1762533406:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("isRest"), ((int) (1762533406) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("isRest") ), ((int) (1762533406) ))) );
 					}
 					
 					
@@ -939,7 +924,7 @@ namespace alphatab.model
 					
 					case 1228566710:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("maxNote"), ((int) (1228566710) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("maxNote") ), ((int) (1228566710) ))) );
 					}
 					
 					
@@ -951,7 +936,7 @@ namespace alphatab.model
 					
 					case 974358180:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("minNote"), ((int) (974358180) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("minNote") ), ((int) (974358180) ))) );
 					}
 					
 					
@@ -1002,12 +987,9 @@ namespace alphatab.model
 		}
 		
 		
-		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 67859554:
 					{
 						return ((double) (this.start) );
@@ -1055,12 +1037,16 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs){
+			unchecked {
+				switch (hash){
+					case 109002835:
+					{
+						this.finish();
+						break;
+					}
+					
+					
 					case 1764199192:
 					{
 						return this.getNoteOnString(((int) (global::haxe.lang.Runtime.toInt(dynargs[0])) ));
@@ -1159,10 +1145,8 @@ namespace alphatab.model
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("dynamicValue");
 				baseArr.push("start");
 				baseArr.push("crescendo");

@@ -1,9 +1,7 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.platform
-{
-	public  interface ICanvas : global::haxe.lang.IHxObject 
-	{
+namespace alphatab.platform{
+	public  interface ICanvas : global::haxe.lang.IHxObject {
 		   int getWidth();
 		
 		   void setWidth(int width);

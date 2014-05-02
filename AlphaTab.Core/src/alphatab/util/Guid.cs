@@ -1,13 +1,9 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.util
-{
-	public  class Guid : global::haxe.lang.HxObject 
-	{
-		public    Guid(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+namespace alphatab.util{
+	public  class Guid : global::haxe.lang.HxObject {
+		public    Guid(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -15,19 +11,15 @@ namespace alphatab.util
 		}
 		
 		
-		public    Guid()
-		{
-			unchecked 
-			{
+		public    Guid(){
+			unchecked {
 				global::alphatab.util.Guid.__hx_ctor_alphatab_util_Guid(this);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_util_Guid(global::alphatab.util.Guid __temp_me273)
-		{
-			unchecked 
-			{
+		public static   void __hx_ctor_alphatab_util_Guid(global::alphatab.util.Guid __temp_me295){
+			unchecked {
 				{
 				}
 				
@@ -35,34 +27,30 @@ namespace alphatab.util
 		}
 		
 		
-		public static   string generate()
-		{
-			unchecked 
-			{
+		public static   string generate(){
+			unchecked {
 				global::haxe.root.StringBuf result = new global::haxe.root.StringBuf();
 				{
 					int _g = 0;
-					while (( _g < 32 ))
-					{
+					while (( _g < 32 )){
 						int j = _g++;
-						if (( ( ( ( j == 8 ) || ( j == 12 ) ) || ( j == 16 ) ) || ( j == 20 ) )) 
-						{
+						if (( ( ( ( j == 8 ) || ( j == 12 ) ) || ( j == 16 ) ) || ( j == 20 ) )) {
 							result.b.Append(((object) ("-") ));
 						}
 						
 						{
-							int __temp_stmt621 = default(int);
+							int __temp_stmt639 = default(int);
 							{
-								double v = ( global::Math.rand.NextDouble() * 16 );
+								double v = ( global::haxe.root.Math.rand.NextDouble() * 16 );
 								{
 									double x1 = global::System.Math.Floor(((double) (v) ));
-									__temp_stmt621 = ((int) (x1) );
+									__temp_stmt639 = ((int) (x1) );
 								}
 								
 							}
 							
-							object x = global::haxe.root.StringTools.hex(__temp_stmt621, default(global::haxe.lang.Null<int>));
-							result.b.Append(((object) (global::Std.@string(x)) ));
+							string x = global::haxe.root.StringTools.hex(__temp_stmt639, default(global::haxe.lang.Null<int>));
+							result.b.Append(((object) (global::haxe.root.Std.@string(x)) ));
 						}
 						
 					}
@@ -74,19 +62,15 @@ namespace alphatab.util
 		}
 		
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.util.Guid(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.util.Guid();
 			}
 		}

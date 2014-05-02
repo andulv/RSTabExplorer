@@ -1,17 +1,12 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.model
-{
-	public  class MasterBar : global::haxe.lang.HxObject 
-	{
-		static MasterBar() 
-		{
+namespace alphatab.model{
+	public  class MasterBar : global::haxe.lang.HxObject {
+		static MasterBar() {
 			global::alphatab.model.MasterBar.MaxAlternateEndings = 8;
 		}
-		public    MasterBar(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+		public    MasterBar(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -19,49 +14,41 @@ namespace alphatab.model
 		}
 		
 		
-		public    MasterBar()
-		{
-			unchecked 
-			{
+		public    MasterBar(){
+			unchecked {
 				global::alphatab.model.MasterBar.__hx_ctor_alphatab_model_MasterBar(this);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_model_MasterBar(global::alphatab.model.MasterBar __temp_me79)
-		{
-			unchecked 
-			{
-				__temp_me79.alternateEndings = 0;
-				__temp_me79.repeatCount = 0;
-				__temp_me79.index = 0;
-				__temp_me79.keySignature = 0;
-				__temp_me79.isDoubleBar = false;
-				__temp_me79.isRepeatStart = false;
-				__temp_me79.repeatCount = 0;
-				__temp_me79.timeSignatureDenominator = 4;
-				__temp_me79.timeSignatureNumerator = 4;
-				__temp_me79.tripletFeel = global::alphatab.model.TripletFeel.NoTripletFeel;
-				__temp_me79.start = 0;
+		public static   void __hx_ctor_alphatab_model_MasterBar(global::alphatab.model.MasterBar __temp_me93){
+			unchecked {
+				__temp_me93.alternateEndings = 0;
+				__temp_me93.repeatCount = 0;
+				__temp_me93.index = 0;
+				__temp_me93.keySignature = 0;
+				__temp_me93.isDoubleBar = false;
+				__temp_me93.isRepeatStart = false;
+				__temp_me93.repeatCount = 0;
+				__temp_me93.timeSignatureDenominator = 4;
+				__temp_me93.timeSignatureNumerator = 4;
+				__temp_me93.tripletFeel = global::alphatab.model.TripletFeel.NoTripletFeel;
+				__temp_me93.start = 0;
 			}
 		}
 		
 		
 		public static  int MaxAlternateEndings;
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.model.MasterBar(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.model.MasterBar();
 			}
 		}
@@ -81,10 +68,8 @@ namespace alphatab.model
 		
 		public  bool isRepeatStart;
 		
-		public   bool isRepeatEnd()
-		{
-			unchecked 
-			{
+		public   bool isRepeatEnd(){
+			unchecked {
 				return ( this.repeatCount > 0 );
 			}
 		}
@@ -102,10 +87,8 @@ namespace alphatab.model
 		
 		public  global::alphatab.model.Section section;
 		
-		public   bool isSectionStart()
-		{
-			unchecked 
-			{
+		public   bool isSectionStart(){
+			unchecked {
 				return ( this.section != default(global::alphatab.model.Section) );
 			}
 		}
@@ -119,21 +102,16 @@ namespace alphatab.model
 		
 		public  int start;
 		
-		public virtual   int calculateDuration()
-		{
-			unchecked 
-			{
+		public virtual   int calculateDuration(){
+			unchecked {
 				return ( this.timeSignatureNumerator * global::alphatab.audio.MidiUtils.valueToTicks(this.timeSignatureDenominator) );
 			}
 		}
 		
 		
-		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 67859554:
 					{
 						this.start = ((int) (@value) );
@@ -194,12 +172,9 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 67859554:
 					{
 						this.start = ((int) (global::haxe.lang.Runtime.toInt(@value)) );
@@ -272,14 +247,14 @@ namespace alphatab.model
 					
 					case 1582764861:
 					{
-						this.isRepeatStart = ((bool) (@value) );
+						this.isRepeatStart = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
 					
 					case 875656696:
 					{
-						this.isDoubleBar = ((bool) (@value) );
+						this.isDoubleBar = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
@@ -330,15 +305,12 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 2079799002:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("calculateDuration"), ((int) (2079799002) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("calculateDuration") ), ((int) (2079799002) ))) );
 					}
 					
 					
@@ -368,7 +340,7 @@ namespace alphatab.model
 					
 					case 1502232391:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("isSectionStart"), ((int) (1502232391) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("isSectionStart") ), ((int) (1502232391) ))) );
 					}
 					
 					
@@ -410,7 +382,7 @@ namespace alphatab.model
 					
 					case 420980214:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("isRepeatEnd"), ((int) (420980214) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("isRepeatEnd") ), ((int) (420980214) ))) );
 					}
 					
 					
@@ -467,12 +439,9 @@ namespace alphatab.model
 		}
 		
 		
-		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 67859554:
 					{
 						return ((double) (this.start) );
@@ -526,12 +495,9 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs){
+			unchecked {
+				switch (hash){
 					case 2079799002:
 					{
 						return this.calculateDuration();
@@ -561,10 +527,8 @@ namespace alphatab.model
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("start");
 				baseArr.push("score");
 				baseArr.push("volumeAutomation");

@@ -1,13 +1,9 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace haxe.root
-{
-	public  class EReg : global::haxe.lang.HxObject 
-	{
-		public    EReg(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+namespace haxe.root{
+	public  class EReg : global::haxe.lang.HxObject {
+		public    EReg(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -15,31 +11,25 @@ namespace haxe.root
 		}
 		
 		
-		public    EReg(string r, string opt)
-		{
-			unchecked 
-			{
+		public    EReg(string r, string opt){
+			unchecked {
 				global::haxe.root.EReg.__hx_ctor__EReg(this, r, opt);
 			}
 		}
 		
 		
-		public static   void __hx_ctor__EReg(global::haxe.root.EReg __temp_me5, string r, string opt)
-		{
-			unchecked 
-			{
+		public static   void __hx_ctor__EReg(global::haxe.root.EReg __temp_me6, string r, string opt){
+			unchecked {
 				int opts = ((int) (global::haxe.lang.Runtime.toInt(((object) (global::System.Text.RegularExpressions.RegexOptions.CultureInvariant) ))) );
 				{
 					int _g1 = 0;
 					int _g = opt.Length;
-					while (( _g1 < _g ))
-					{
+					while (( _g1 < _g )){
 						int i = _g1++;
 						{
 							int _g2 = default(int);
 							_g2 = ((int) (opt[i]) );
-							switch (_g2)
-							{
+							switch (_g2){
 								case 105:
 								{
 									opts |= ((int) (global::haxe.lang.Runtime.toInt(((object) (global::System.Text.RegularExpressions.RegexOptions.IgnoreCase) ))) );
@@ -49,7 +39,7 @@ namespace haxe.root
 								
 								case 103:
 								{
-									__temp_me5.isGlobal = true;
+									__temp_me6.isGlobal = true;
 									break;
 								}
 								
@@ -76,24 +66,20 @@ namespace haxe.root
 					
 				}
 				
-				__temp_me5.regex = new global::System.Text.RegularExpressions.Regex(global::haxe.lang.Runtime.toString(r), ((global::System.Text.RegularExpressions.RegexOptions) (((object) (opts) )) ));
+				__temp_me6.regex = new global::System.Text.RegularExpressions.Regex(((string) (r) ), ((global::System.Text.RegularExpressions.RegexOptions) (((object) (opts) )) ));
 			}
 		}
 		
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::haxe.root.EReg(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::haxe.root.EReg(global::haxe.lang.Runtime.toString(arr[0]), global::haxe.lang.Runtime.toString(arr[1]));
 			}
 		}
@@ -107,28 +93,22 @@ namespace haxe.root
 		
 		public  string cur;
 		
-		public virtual   bool match(string s)
-		{
-			unchecked 
-			{
-				this.m = this.regex.Match(global::haxe.lang.Runtime.toString(s));
+		public virtual   bool match(string s){
+			unchecked {
+				this.m = this.regex.Match(((string) (s) ));
 				this.cur = s;
 				return ( this.m as global::System.Text.RegularExpressions.Group ).Success;
 			}
 		}
 		
 		
-		public virtual   string matched(int n)
-		{
-			unchecked 
-			{
-				if (( ( this.m == default(global::System.Text.RegularExpressions.Match) ) || ( ((uint) (n) ) > this.m.Groups.Count ) )) 
-				{
+		public virtual   string matched(int n){
+			unchecked {
+				if (( ( this.m == default(global::System.Text.RegularExpressions.Match) ) || ( ((uint) (n) ) > this.m.Groups.Count ) )) {
 					throw global::haxe.lang.HaxeException.wrap("EReg::matched");
 				}
 				
-				if ( ! (this.m.Groups[n].Success) ) 
-				{
+				if ( ! (this.m.Groups[n].Success) ) {
 					return default(string);
 				}
 				
@@ -137,12 +117,9 @@ namespace haxe.root
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 4949376:
 					{
 						this.cur = global::haxe.lang.Runtime.toString(@value);
@@ -152,7 +129,7 @@ namespace haxe.root
 					
 					case 1821933:
 					{
-						this.isGlobal = ((bool) (@value) );
+						this.isGlobal = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
@@ -182,21 +159,18 @@ namespace haxe.root
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 159136996:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("matched"), ((int) (159136996) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("matched") ), ((int) (159136996) ))) );
 					}
 					
 					
 					case 52644165:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("match"), ((int) (52644165) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("match") ), ((int) (52644165) ))) );
 					}
 					
 					
@@ -235,12 +209,9 @@ namespace haxe.root
 		}
 		
 		
-		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs){
+			unchecked {
+				switch (hash){
 					case 159136996:
 					{
 						return this.matched(((int) (global::haxe.lang.Runtime.toInt(dynargs[0])) ));
@@ -264,10 +235,8 @@ namespace haxe.root
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("cur");
 				baseArr.push("isGlobal");
 				baseArr.push("m");

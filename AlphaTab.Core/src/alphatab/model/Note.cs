@@ -1,11 +1,8 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.model
-{
-	public  class Note : global::haxe.lang.HxObject 
-	{
-		static Note() 
-		{
+namespace alphatab.model{
+	public  class Note : global::haxe.lang.HxObject {
+		static Note() {
 			global::alphatab.model.Note.FingeringUnknown = -2;
 			global::alphatab.model.Note.FingeringNoOrDead = -1;
 			global::alphatab.model.Note.FingeringThumb = 0;
@@ -14,10 +11,8 @@ namespace alphatab.model
 			global::alphatab.model.Note.FingeringAnnularFinger = 3;
 			global::alphatab.model.Note.FingeringLittleFinger = 4;
 		}
-		public    Note(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+		public    Note(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -25,45 +20,41 @@ namespace alphatab.model
 		}
 		
 		
-		public    Note()
-		{
-			unchecked 
-			{
+		public    Note(){
+			unchecked {
 				global::alphatab.model.Note.__hx_ctor_alphatab_model_Note(this);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_model_Note(global::alphatab.model.Note __temp_me81)
-		{
-			unchecked 
-			{
-				__temp_me81.bendPoints = new global::haxe.root.Array<object>();
-				__temp_me81.dynamicValue = global::alphatab.model.DynamicValue.F;
-				__temp_me81.accentuated = global::alphatab.model.AccentuationType.None;
-				__temp_me81.fret = -1;
-				__temp_me81.isGhost = false;
-				__temp_me81.@string = 0;
-				__temp_me81.isHammerPullDestination = false;
-				__temp_me81.isHammerPullOrigin = false;
-				__temp_me81.harmonicValue = ((double) (0) );
-				__temp_me81.harmonicType = global::alphatab.model.HarmonicType.None;
-				__temp_me81.isLetRing = false;
-				__temp_me81.isPalmMute = false;
-				__temp_me81.isDead = false;
-				__temp_me81.slideType = global::alphatab.model.SlideType.None;
-				__temp_me81.vibrato = global::alphatab.model.VibratoType.None;
-				__temp_me81.isStaccato = false;
-				__temp_me81.isTieOrigin = false;
-				__temp_me81.isTieDestination = false;
-				__temp_me81.leftHandFinger = -1;
-				__temp_me81.rightHandFinger = -1;
-				__temp_me81.isFingering = false;
-				__temp_me81.swapAccidentals = false;
-				__temp_me81.trillValue = -1;
-				__temp_me81.trillSpeed = global::alphatab.model.Duration.ThirtySecond;
-				__temp_me81.durationPercent = ((double) (1) );
-				__temp_me81.octave = -1;
+		public static   void __hx_ctor_alphatab_model_Note(global::alphatab.model.Note __temp_me95){
+			unchecked {
+				__temp_me95.bendPoints = new global::haxe.root.Array<object>();
+				__temp_me95.dynamicValue = global::alphatab.model.DynamicValue.F;
+				__temp_me95.accentuated = global::alphatab.model.AccentuationType.None;
+				__temp_me95.fret = -1;
+				__temp_me95.isGhost = false;
+				__temp_me95.@string = 0;
+				__temp_me95.isHammerPullDestination = false;
+				__temp_me95.isHammerPullOrigin = false;
+				__temp_me95.harmonicValue = ((double) (0) );
+				__temp_me95.harmonicType = global::alphatab.model.HarmonicType.None;
+				__temp_me95.isLetRing = false;
+				__temp_me95.isPalmMute = false;
+				__temp_me95.isDead = false;
+				__temp_me95.slideType = global::alphatab.model.SlideType.None;
+				__temp_me95.vibrato = global::alphatab.model.VibratoType.None;
+				__temp_me95.isStaccato = false;
+				__temp_me95.isTieOrigin = false;
+				__temp_me95.isTieDestination = false;
+				__temp_me95.leftHandFinger = -1;
+				__temp_me95.rightHandFinger = -1;
+				__temp_me95.isFingering = false;
+				__temp_me95.swapAccidentals = false;
+				__temp_me95.trillValue = -1;
+				__temp_me95.trillSpeed = global::alphatab.model.Duration.ThirtySecond;
+				__temp_me95.durationPercent = ((double) (1) );
+				__temp_me95.octave = -1;
 			}
 		}
 		
@@ -82,19 +73,53 @@ namespace alphatab.model
 		
 		public static  int FingeringLittleFinger;
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static   global::alphatab.model.Note nextNoteOnSameLine(global::alphatab.model.Note note){
+			unchecked {
+				global::alphatab.model.Beat nextBeat = note.beat.nextBeat;
+				while (( ( nextBeat != default(global::alphatab.model.Beat) ) && ( nextBeat.voice.bar.index <= ( note.beat.voice.bar.index + 3 ) ) )){
+					global::alphatab.model.Note noteOnString = nextBeat.getNoteOnString(note.@string);
+					if (( noteOnString != default(global::alphatab.model.Note) )) {
+						return noteOnString;
+					}
+					 else {
+						nextBeat = nextBeat.nextBeat;
+					}
+					
+				}
+				
+				return default(global::alphatab.model.Note);
+			}
+		}
+		
+		
+		public static   global::alphatab.model.Note previousNoteOnSameLine(global::alphatab.model.Note note){
+			unchecked {
+				global::alphatab.model.Beat previousBeat = note.beat.previousBeat;
+				while (( ( previousBeat != default(global::alphatab.model.Beat) ) && ( previousBeat.voice.bar.index >= ( note.beat.voice.bar.index - 3 ) ) )){
+					global::alphatab.model.Note noteOnString = previousBeat.getNoteOnString(note.@string);
+					if (( noteOnString != default(global::alphatab.model.Note) )) {
+						return noteOnString;
+					}
+					 else {
+						previousBeat = previousBeat.previousBeat;
+					}
+					
+				}
+				
+				return default(global::alphatab.model.Note);
+			}
+		}
+		
+		
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.model.Note(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.model.Note();
 			}
 		}
@@ -104,10 +129,8 @@ namespace alphatab.model
 		
 		public  global::haxe.root.Array<object> bendPoints;
 		
-		public   bool hasBend()
-		{
-			unchecked 
-			{
+		public   bool hasBend(){
+			unchecked {
 				return ( this.bendPoints.length > 1 );
 			}
 		}
@@ -157,19 +180,15 @@ namespace alphatab.model
 		
 		public  int trillValue;
 		
-		public   int trillFret()
-		{
-			unchecked 
-			{
+		public   int trillFret(){
+			unchecked {
 				return ( this.trillValue - this.beat.voice.bar.track.tuning[( ( this.beat.voice.bar.track.tuning.length - (( this.@string - 1 )) ) - 1 )] );
 			}
 		}
 		
 		
-		public   bool isTrill()
-		{
-			unchecked 
-			{
+		public   bool isTrill(){
+			unchecked {
 				return ( this.trillValue >= 0 );
 			}
 		}
@@ -187,16 +206,13 @@ namespace alphatab.model
 		
 		public  int octave;
 		
-		public virtual   global::alphatab.model.Note clone()
-		{
-			unchecked 
-			{
+		public virtual   global::alphatab.model.Note clone(){
+			unchecked {
 				global::alphatab.model.Note n = new global::alphatab.model.Note();
 				{
 					int _g = 0;
 					global::haxe.root.Array<object> _g1 = this.bendPoints;
-					while (( _g < _g1.length ))
-					{
+					while (( _g < _g1.length )){
 						global::alphatab.model.BendPoint p = ((global::alphatab.model.BendPoint) (_g1[_g]) );
 						 ++ _g;
 						n.bendPoints.push(p.clone());
@@ -233,30 +249,59 @@ namespace alphatab.model
 		}
 		
 		
-		public   int stringTuning()
-		{
-			unchecked 
-			{
+		public   int stringTuning(){
+			unchecked {
 				return this.beat.voice.bar.track.tuning[( ( this.beat.voice.bar.track.tuning.length - (( this.@string - 1 )) ) - 1 )];
 			}
 		}
 		
 		
-		public   int realValue()
-		{
-			unchecked 
-			{
+		public   int realValue(){
+			unchecked {
 				return ( this.fret + this.beat.voice.bar.track.tuning[( ( this.beat.voice.bar.track.tuning.length - (( this.@string - 1 )) ) - 1 )] );
 			}
 		}
 		
 		
-		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public virtual   void finish(){
+			unchecked {
+				global::haxe.root.Array<object> _g = new global::haxe.root.Array<object>(new object[]{this});
+				global::alphatab.util.LazyVar<object> nextNoteOnLine = new global::alphatab.util.LazyVar<object>(((global::haxe.lang.Function) (new global::alphatab.model.Note_finish_179__Fun(((global::haxe.root.Array<object>) (_g) ))) ));
+				global::alphatab.util.LazyVar<object> prevNoteOnLine = new global::alphatab.util.LazyVar<object>(((global::haxe.lang.Function) (new global::alphatab.model.Note_finish_180__Fun(((global::haxe.root.Array<object>) (_g) ))) ));
+				if (this.isTieDestination) {
+					if (( ((global::alphatab.model.Note) (prevNoteOnLine.getValue()) ) == default(global::alphatab.model.Note) )) {
+						this.isTieDestination = false;
+					}
+					 else {
+						this.tieOrigin = ((global::alphatab.model.Note) (prevNoteOnLine.getValue()) );
+						this.tieOrigin.isTieOrigin = true;
+						this.fret = this.tieOrigin.fret;
+					}
+					
+				}
+				
+				if (this.isHammerPullOrigin) {
+					if (( ((global::alphatab.model.Note) (nextNoteOnLine.getValue()) ) == default(global::alphatab.model.Note) )) {
+						this.isHammerPullOrigin = false;
+					}
+					 else {
+						((global::alphatab.model.Note) (nextNoteOnLine.getValue()) ).isHammerPullDestination = true;
+						((global::alphatab.model.Note) (nextNoteOnLine.getValue()) ).hammerPullOrigin = this;
+					}
+					
+				}
+				
+				if (( this.slideType != global::alphatab.model.SlideType.None )) {
+					this.slideTarget = ((global::alphatab.model.Note) (nextNoteOnLine.getValue()) );
+				}
+				
+			}
+		}
+		
+		
+		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 792673520:
 					{
 						this.octave = ((int) (@value) );
@@ -324,12 +369,9 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 792673520:
 					{
 						this.octave = ((int) (global::haxe.lang.Runtime.toInt(@value)) );
@@ -353,7 +395,7 @@ namespace alphatab.model
 					
 					case 2132043430:
 					{
-						this.swapAccidentals = ((bool) (@value) );
+						this.swapAccidentals = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
@@ -381,7 +423,7 @@ namespace alphatab.model
 					
 					case 1618969487:
 					{
-						this.isFingering = ((bool) (@value) );
+						this.isFingering = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
@@ -402,14 +444,14 @@ namespace alphatab.model
 					
 					case 55629992:
 					{
-						this.isTieDestination = ((bool) (@value) );
+						this.isTieDestination = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
 					
 					case 1361216012:
 					{
-						this.isTieOrigin = ((bool) (@value) );
+						this.isTieOrigin = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
@@ -423,7 +465,7 @@ namespace alphatab.model
 					
 					case 253080294:
 					{
-						this.isStaccato = ((bool) (@value) );
+						this.isStaccato = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
@@ -451,21 +493,21 @@ namespace alphatab.model
 					
 					case 1607275438:
 					{
-						this.isDead = ((bool) (@value) );
+						this.isDead = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
 					
 					case 1725549749:
 					{
-						this.isPalmMute = ((bool) (@value) );
+						this.isPalmMute = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
 					
 					case 1914101345:
 					{
-						this.isLetRing = ((bool) (@value) );
+						this.isLetRing = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
@@ -486,14 +528,14 @@ namespace alphatab.model
 					
 					case 1833015931:
 					{
-						this.isHammerPullOrigin = ((bool) (@value) );
+						this.isHammerPullOrigin = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
 					
 					case 152554969:
 					{
-						this.isHammerPullDestination = ((bool) (@value) );
+						this.isHammerPullDestination = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
@@ -514,7 +556,7 @@ namespace alphatab.model
 					
 					case 803091205:
 					{
-						this.isGhost = ((bool) (@value) );
+						this.isGhost = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
@@ -551,27 +593,30 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
+					case 109002835:
+					{
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("finish") ), ((int) (109002835) ))) );
+					}
+					
+					
 					case 897232691:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("realValue"), ((int) (897232691) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("realValue") ), ((int) (897232691) ))) );
 					}
 					
 					
 					case 530960102:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("stringTuning"), ((int) (530960102) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("stringTuning") ), ((int) (530960102) ))) );
 					}
 					
 					
 					case 1214452573:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("clone"), ((int) (1214452573) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("clone") ), ((int) (1214452573) ))) );
 					}
 					
 					
@@ -613,13 +658,13 @@ namespace alphatab.model
 					
 					case 850086945:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("isTrill"), ((int) (850086945) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("isTrill") ), ((int) (850086945) ))) );
 					}
 					
 					
 					case 680886982:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("trillFret"), ((int) (680886982) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("trillFret") ), ((int) (680886982) ))) );
 					}
 					
 					
@@ -757,7 +802,7 @@ namespace alphatab.model
 					
 					case 274206003:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("hasBend"), ((int) (274206003) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("hasBend") ), ((int) (274206003) ))) );
 					}
 					
 					
@@ -784,12 +829,9 @@ namespace alphatab.model
 		}
 		
 		
-		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 792673520:
 					{
 						return ((double) (this.octave) );
@@ -849,12 +891,16 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs){
+			unchecked {
+				switch (hash){
+					case 109002835:
+					{
+						this.finish();
+						break;
+					}
+					
+					
 					case 897232691:
 					{
 						return this.realValue();
@@ -898,14 +944,13 @@ namespace alphatab.model
 					
 				}
 				
+				return default(object);
 			}
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("octave");
 				baseArr.push("dynamicValue");
 				baseArr.push("beat");
@@ -943,6 +988,54 @@ namespace alphatab.model
 			}
 		}
 		
+		
+	}
+}
+
+
+
+#pragma warning disable 109, 114, 219, 429, 168, 162
+namespace alphatab.model{
+	public  class Note_finish_179__Fun : global::haxe.lang.Function {
+		public    Note_finish_179__Fun(global::haxe.root.Array<object> _g) : base(0, 0){
+			unchecked {
+				this._g = _g;
+			}
+		}
+		
+		
+		public override   object __hx_invoke0_o(){
+			unchecked {
+				return global::alphatab.model.Note.nextNoteOnSameLine(((global::alphatab.model.Note) (this._g[0]) ));
+			}
+		}
+		
+		
+		public  global::haxe.root.Array<object> _g;
+		
+	}
+}
+
+
+
+#pragma warning disable 109, 114, 219, 429, 168, 162
+namespace alphatab.model{
+	public  class Note_finish_180__Fun : global::haxe.lang.Function {
+		public    Note_finish_180__Fun(global::haxe.root.Array<object> _g) : base(0, 0){
+			unchecked {
+				this._g = _g;
+			}
+		}
+		
+		
+		public override   object __hx_invoke0_o(){
+			unchecked {
+				return global::alphatab.model.Note.previousNoteOnSameLine(((global::alphatab.model.Note) (this._g[0]) ));
+			}
+		}
+		
+		
+		public  global::haxe.root.Array<object> _g;
 		
 	}
 }

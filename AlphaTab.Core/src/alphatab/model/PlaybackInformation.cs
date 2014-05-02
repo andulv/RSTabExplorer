@@ -1,13 +1,9 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.model
-{
-	public  class PlaybackInformation : global::haxe.lang.HxObject 
-	{
-		public    PlaybackInformation(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+namespace alphatab.model{
+	public  class PlaybackInformation : global::haxe.lang.HxObject {
+		public    PlaybackInformation(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -15,39 +11,31 @@ namespace alphatab.model
 		}
 		
 		
-		public    PlaybackInformation()
-		{
-			unchecked 
-			{
+		public    PlaybackInformation(){
+			unchecked {
 				global::alphatab.model.PlaybackInformation.__hx_ctor_alphatab_model_PlaybackInformation(this);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_model_PlaybackInformation(global::alphatab.model.PlaybackInformation __temp_me82)
-		{
-			unchecked 
-			{
-				{
-				}
-				
+		public static   void __hx_ctor_alphatab_model_PlaybackInformation(global::alphatab.model.PlaybackInformation __temp_me96){
+			unchecked {
+				__temp_me96.volume = 15;
+				__temp_me96.balance = 8;
+				__temp_me96.port = 1;
 			}
 		}
 		
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.model.PlaybackInformation(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.model.PlaybackInformation();
 			}
 		}
@@ -69,12 +57,9 @@ namespace alphatab.model
 		
 		public  bool isSolo;
 		
-		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1329360815:
 					{
 						this.secondaryChannel = ((int) (@value) );
@@ -128,22 +113,19 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1774118697:
 					{
-						this.isSolo = ((bool) (@value) );
+						this.isSolo = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
 					
 					case 1707881443:
 					{
-						this.isMute = ((bool) (@value) );
+						this.isMute = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
@@ -201,12 +183,9 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1774118697:
 					{
 						return this.isSolo;
@@ -266,12 +245,9 @@ namespace alphatab.model
 		}
 		
 		
-		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1329360815:
 					{
 						return ((double) (this.secondaryChannel) );
@@ -319,10 +295,8 @@ namespace alphatab.model
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("isSolo");
 				baseArr.push("isMute");
 				baseArr.push("secondaryChannel");

@@ -1,11 +1,8 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace haxe.xml
-{
-	public  class Parser : global::haxe.lang.HxObject 
-	{
-		static Parser() 
-		{
+namespace haxe.xml{
+	public  class Parser : global::haxe.lang.HxObject {
+		static Parser() {
 			{
 				global::haxe.ds.StringMap<object> h = new global::haxe.ds.StringMap<object>();
 				h.@set("lt", "<");
@@ -18,10 +15,8 @@ namespace haxe.xml
 			}
 			
 		}
-		public    Parser(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+		public    Parser(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -29,19 +24,15 @@ namespace haxe.xml
 		}
 		
 		
-		public    Parser()
-		{
-			unchecked 
-			{
+		public    Parser(){
+			unchecked {
 				global::haxe.xml.Parser.__hx_ctor_haxe_xml_Parser(this);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_haxe_xml_Parser(global::haxe.xml.Parser __temp_me295)
-		{
-			unchecked 
-			{
+		public static   void __hx_ctor_haxe_xml_Parser(global::haxe.xml.Parser __temp_me318){
+			unchecked {
 				{
 				}
 				
@@ -51,10 +42,8 @@ namespace haxe.xml
 		
 		public static  global::haxe.ds.StringMap<object> escapes;
 		
-		public static   global::haxe.root.Xml parse(string str)
-		{
-			unchecked 
-			{
+		public static   global::haxe.root.Xml parse(string str){
+			unchecked {
 				global::haxe.root.Xml doc = global::haxe.root.Xml.createDocument();
 				global::haxe.xml.Parser.doParse(str, new global::haxe.lang.Null<int>(0, true), doc);
 				return doc;
@@ -62,11 +51,9 @@ namespace haxe.xml
 		}
 		
 		
-		public static   int doParse(string str, global::haxe.lang.Null<int> p, global::haxe.root.Xml parent)
-		{
-			unchecked 
-			{
-				int __temp_p294 = ( (global::haxe.lang.Runtime.eq((p).toDynamic(), (default(global::haxe.lang.Null<int>)).toDynamic())) ? (((int) (0) )) : (p.@value) );
+		public static   int doParse(string str, global::haxe.lang.Null<int> p, global::haxe.root.Xml parent){
+			unchecked {
+				int __temp_p317 = ( ( ! (p.hasValue) ) ? (((int) (0) )) : (p.@value) );
 				global::haxe.root.Xml xml = default(global::haxe.root.Xml);
 				int state = 1;
 				int next = 1;
@@ -75,24 +62,19 @@ namespace haxe.xml
 				int nsubs = 0;
 				int nbrackets = 0;
 				int c = default(int);
-				if (( ((uint) (__temp_p294) ) < str.Length )) 
-				{
-					c = ((int) (global::haxe.lang.Runtime.toInt(str[__temp_p294])) );
+				if (( ((uint) (__temp_p317) ) < str.Length )) {
+					c = ((int) (global::haxe.lang.Runtime.toInt(str[__temp_p317])) );
 				}
-				 else 
-				{
+				 else {
 					c = -1;
 				}
 				
 				global::haxe.root.StringBuf buf = new global::haxe.root.StringBuf();
-				while ( ! ((( c == -1 ))) )
-				{
-					switch (state)
-					{
+				while ( ! ((( c == -1 ))) ){
+					switch (state){
 						case 0:
 						{
-							switch (c)
-							{
+							switch (c){
 								case 10:case 13:case 9:case 32:
 								{
 									{
@@ -116,8 +98,7 @@ namespace haxe.xml
 						
 						case 1:
 						{
-							switch (c)
-							{
+							switch (c){
 								case 60:
 								{
 									state = 0;
@@ -128,7 +109,7 @@ namespace haxe.xml
 								
 								default:
 								{
-									start = __temp_p294;
+									start = __temp_p317;
 									state = 13;
 									continue;
 								}
@@ -141,23 +122,20 @@ namespace haxe.xml
 						
 						case 13:
 						{
-							if (( c == 60 )) 
-							{
-								global::haxe.root.Xml child = global::haxe.root.Xml.createPCData(global::haxe.lang.Runtime.concat(buf.toString(), global::haxe.lang.StringExt.substr(str, start, new global::haxe.lang.Null<int>(( __temp_p294 - start ), true))));
+							if (( c == 60 )) {
+								global::haxe.root.Xml child = global::haxe.root.Xml.createPCData(global::haxe.lang.Runtime.concat(buf.toString(), global::haxe.lang.StringExt.substr(str, start, new global::haxe.lang.Null<int>(( __temp_p317 - start ), true))));
 								buf = new global::haxe.root.StringBuf();
 								parent.addChild(child);
 								nsubs++;
 								state = 0;
 								next = 2;
 							}
-							 else 
-							{
-								if (( c == 38 )) 
-								{
-									buf.addSub(str, start, new global::haxe.lang.Null<int>(( __temp_p294 - start ), true));
+							 else {
+								if (( c == 38 )) {
+									buf.addSub(str, start, new global::haxe.lang.Null<int>(( __temp_p317 - start ), true));
 									state = 18;
 									next = 13;
-									start = ( __temp_p294 + 1 );
+									start = ( __temp_p317 + 1 );
 								}
 								
 							}
@@ -168,38 +146,35 @@ namespace haxe.xml
 						
 						case 17:
 						{
-							bool __temp_boolv627 = ( c == 93 );
-							bool __temp_boolv626 = false;
-							bool __temp_boolv625 = false;
-							if (__temp_boolv627) 
-							{
-								int __temp_stmt628 = default(int);
+							bool __temp_boolv645 = ( c == 93 );
+							bool __temp_boolv644 = false;
+							bool __temp_boolv643 = false;
+							if (__temp_boolv645) {
+								int __temp_stmt646 = default(int);
 								{
-									int index = ( __temp_p294 + 1 );
-									__temp_stmt628 = ( (( ((uint) (index) ) < str.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(str[index])) )) : (-1) );
+									int index = ( __temp_p317 + 1 );
+									__temp_stmt646 = ( (( ((uint) (index) ) < str.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(str[index])) )) : (-1) );
 								}
 								
-								__temp_boolv626 = ( __temp_stmt628 == 93 );
-								if (__temp_boolv626) 
-								{
-									int __temp_stmt629 = default(int);
+								__temp_boolv644 = ( __temp_stmt646 == 93 );
+								if (__temp_boolv644) {
+									int __temp_stmt647 = default(int);
 									{
-										int index1 = ( __temp_p294 + 2 );
-										__temp_stmt629 = ( (( ((uint) (index1) ) < str.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(str[index1])) )) : (-1) );
+										int index1 = ( __temp_p317 + 2 );
+										__temp_stmt647 = ( (( ((uint) (index1) ) < str.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(str[index1])) )) : (-1) );
 									}
 									
-									__temp_boolv625 = ( __temp_stmt629 == 62 );
+									__temp_boolv643 = ( __temp_stmt647 == 62 );
 								}
 								
 							}
 							
-							bool __temp_stmt624 = ( ( __temp_boolv627 && __temp_boolv626 ) && __temp_boolv625 );
-							if (__temp_stmt624) 
-							{
-								global::haxe.root.Xml child1 = global::haxe.root.Xml.createCData(global::haxe.lang.StringExt.substr(str, start, new global::haxe.lang.Null<int>(( __temp_p294 - start ), true)));
+							bool __temp_stmt642 = ( ( __temp_boolv645 && __temp_boolv644 ) && __temp_boolv643 );
+							if (__temp_stmt642) {
+								global::haxe.root.Xml child1 = global::haxe.root.Xml.createCData(global::haxe.lang.StringExt.substr(str, start, new global::haxe.lang.Null<int>(( __temp_p317 - start ), true)));
 								parent.addChild(child1);
 								nsubs++;
-								__temp_p294 += 2;
+								__temp_p317 += 2;
 								state = 1;
 							}
 							
@@ -209,92 +184,81 @@ namespace haxe.xml
 						
 						case 2:
 						{
-							switch (c)
-							{
+							switch (c){
 								case 33:
 								{
-									int __temp_stmt630 = default(int);
+									int __temp_stmt648 = default(int);
 									{
-										int index2 = ( __temp_p294 + 1 );
-										__temp_stmt630 = ( (( ((uint) (index2) ) < str.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(str[index2])) )) : (-1) );
+										int index2 = ( __temp_p317 + 1 );
+										__temp_stmt648 = ( (( ((uint) (index2) ) < str.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(str[index2])) )) : (-1) );
 									}
 									
-									if (( __temp_stmt630 == 91 )) 
-									{
-										__temp_p294 += 2;
-										if ( ! (string.Equals(global::haxe.lang.StringExt.substr(str, __temp_p294, new global::haxe.lang.Null<int>(6, true)).ToUpper(), "CDATA[")) ) 
-										{
+									if (( __temp_stmt648 == 91 )) {
+										__temp_p317 += 2;
+										if ( ! (string.Equals(global::haxe.lang.StringExt.substr(str, __temp_p317, new global::haxe.lang.Null<int>(6, true)).ToUpper(), "CDATA[")) ) {
 											throw global::haxe.lang.HaxeException.wrap("Expected <![CDATA[");
 										}
 										
-										__temp_p294 += 5;
+										__temp_p317 += 5;
 										state = 17;
-										start = ( __temp_p294 + 1 );
+										start = ( __temp_p317 + 1 );
 									}
-									 else 
-									{
-										int __temp_stmt633 = default(int);
+									 else {
+										int __temp_stmt651 = default(int);
 										{
-											int index3 = ( __temp_p294 + 1 );
-											__temp_stmt633 = ( (( ((uint) (index3) ) < str.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(str[index3])) )) : (-1) );
+											int index3 = ( __temp_p317 + 1 );
+											__temp_stmt651 = ( (( ((uint) (index3) ) < str.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(str[index3])) )) : (-1) );
 										}
 										
-										bool __temp_stmt632 = ( __temp_stmt633 == 68 );
-										bool __temp_boolv634 = false;
-										if ( ! (__temp_stmt632) ) 
-										{
-											int __temp_stmt635 = default(int);
+										bool __temp_stmt650 = ( __temp_stmt651 == 68 );
+										bool __temp_boolv652 = false;
+										if ( ! (__temp_stmt650) ) {
+											int __temp_stmt653 = default(int);
 											{
-												int index4 = ( __temp_p294 + 1 );
-												__temp_stmt635 = ( (( ((uint) (index4) ) < str.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(str[index4])) )) : (-1) );
+												int index4 = ( __temp_p317 + 1 );
+												__temp_stmt653 = ( (( ((uint) (index4) ) < str.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(str[index4])) )) : (-1) );
 											}
 											
-											__temp_boolv634 = ( __temp_stmt635 == 100 );
+											__temp_boolv652 = ( __temp_stmt653 == 100 );
 										}
 										
-										bool __temp_stmt631 = ( __temp_stmt632 || __temp_boolv634 );
-										if (__temp_stmt631) 
-										{
-											if ( ! (string.Equals(global::haxe.lang.StringExt.substr(str, ( __temp_p294 + 2 ), new global::haxe.lang.Null<int>(6, true)).ToUpper(), "OCTYPE")) ) 
-											{
+										bool __temp_stmt649 = ( __temp_stmt650 || __temp_boolv652 );
+										if (__temp_stmt649) {
+											if ( ! (string.Equals(global::haxe.lang.StringExt.substr(str, ( __temp_p317 + 2 ), new global::haxe.lang.Null<int>(6, true)).ToUpper(), "OCTYPE")) ) {
 												throw global::haxe.lang.HaxeException.wrap("Expected <!DOCTYPE");
 											}
 											
-											__temp_p294 += 8;
+											__temp_p317 += 8;
 											state = 16;
-											start = ( __temp_p294 + 1 );
+											start = ( __temp_p317 + 1 );
 										}
-										 else 
-										{
-											int __temp_stmt638 = default(int);
+										 else {
+											int __temp_stmt656 = default(int);
 											{
-												int index5 = ( __temp_p294 + 1 );
-												__temp_stmt638 = ( (( ((uint) (index5) ) < str.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(str[index5])) )) : (-1) );
+												int index5 = ( __temp_p317 + 1 );
+												__temp_stmt656 = ( (( ((uint) (index5) ) < str.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(str[index5])) )) : (-1) );
 											}
 											
-											bool __temp_stmt637 = ( __temp_stmt638 != 45 );
-											bool __temp_boolv639 = false;
-											if ( ! (__temp_stmt637) ) 
-											{
-												int __temp_stmt640 = default(int);
+											bool __temp_stmt655 = ( __temp_stmt656 != 45 );
+											bool __temp_boolv657 = false;
+											if ( ! (__temp_stmt655) ) {
+												int __temp_stmt658 = default(int);
 												{
-													int index6 = ( __temp_p294 + 2 );
-													__temp_stmt640 = ( (( ((uint) (index6) ) < str.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(str[index6])) )) : (-1) );
+													int index6 = ( __temp_p317 + 2 );
+													__temp_stmt658 = ( (( ((uint) (index6) ) < str.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(str[index6])) )) : (-1) );
 												}
 												
-												__temp_boolv639 = ( __temp_stmt640 != 45 );
+												__temp_boolv657 = ( __temp_stmt658 != 45 );
 											}
 											
-											bool __temp_stmt636 = ( __temp_stmt637 || __temp_boolv639 );
-											if (__temp_stmt636) 
-											{
+											bool __temp_stmt654 = ( __temp_stmt655 || __temp_boolv657 );
+											if (__temp_stmt654) {
 												throw global::haxe.lang.HaxeException.wrap("Expected <!--");
 											}
-											 else 
-											{
-												__temp_p294 += 2;
+											 else {
+												__temp_p317 += 2;
 												state = 15;
-												start = ( __temp_p294 + 1 );
+												start = ( __temp_p317 + 1 );
 											}
 											
 										}
@@ -308,19 +272,18 @@ namespace haxe.xml
 								case 63:
 								{
 									state = 14;
-									start = __temp_p294;
+									start = __temp_p317;
 									break;
 								}
 								
 								
 								case 47:
 								{
-									if (( parent == default(global::haxe.root.Xml) )) 
-									{
+									if (( parent == default(global::haxe.root.Xml) )) {
 										throw global::haxe.lang.HaxeException.wrap("Expected node name");
 									}
 									
-									start = ( __temp_p294 + 1 );
+									start = ( __temp_p317 + 1 );
 									state = 0;
 									next = 10;
 									break;
@@ -330,7 +293,7 @@ namespace haxe.xml
 								default:
 								{
 									state = 3;
-									start = __temp_p294;
+									start = __temp_p317;
 									continue;
 								}
 								
@@ -342,14 +305,12 @@ namespace haxe.xml
 						
 						case 3:
 						{
-							if ( ! ((( ( ( ( ( ( ( ( c >= 97 ) && ( c <= 122 ) ) || ( ( c >= 65 ) && ( c <= 90 ) ) ) || ( ( c >= 48 ) && ( c <= 57 ) ) ) || ( c == 58 ) ) || ( c == 46 ) ) || ( c == 95 ) ) || ( c == 45 ) ))) ) 
-							{
-								if (( __temp_p294 == start )) 
-								{
+							if ( ! ((( ( ( ( ( ( ( ( c >= 97 ) && ( c <= 122 ) ) || ( ( c >= 65 ) && ( c <= 90 ) ) ) || ( ( c >= 48 ) && ( c <= 57 ) ) ) || ( c == 58 ) ) || ( c == 46 ) ) || ( c == 95 ) ) || ( c == 45 ) ))) ) {
+								if (( __temp_p317 == start )) {
 									throw global::haxe.lang.HaxeException.wrap("Expected node name");
 								}
 								
-								xml = global::haxe.root.Xml.createElement(global::haxe.lang.StringExt.substr(str, start, new global::haxe.lang.Null<int>(( __temp_p294 - start ), true)));
+								xml = global::haxe.root.Xml.createElement(global::haxe.lang.StringExt.substr(str, start, new global::haxe.lang.Null<int>(( __temp_p317 - start ), true)));
 								parent.addChild(xml);
 								state = 0;
 								next = 4;
@@ -362,8 +323,7 @@ namespace haxe.xml
 						
 						case 4:
 						{
-							switch (c)
-							{
+							switch (c){
 								case 47:
 								{
 									state = 11;
@@ -383,7 +343,7 @@ namespace haxe.xml
 								default:
 								{
 									state = 5;
-									start = __temp_p294;
+									start = __temp_p317;
 									continue;
 								}
 								
@@ -395,18 +355,15 @@ namespace haxe.xml
 						
 						case 5:
 						{
-							if ( ! ((( ( ( ( ( ( ( ( c >= 97 ) && ( c <= 122 ) ) || ( ( c >= 65 ) && ( c <= 90 ) ) ) || ( ( c >= 48 ) && ( c <= 57 ) ) ) || ( c == 58 ) ) || ( c == 46 ) ) || ( c == 95 ) ) || ( c == 45 ) ))) ) 
-							{
+							if ( ! ((( ( ( ( ( ( ( ( c >= 97 ) && ( c <= 122 ) ) || ( ( c >= 65 ) && ( c <= 90 ) ) ) || ( ( c >= 48 ) && ( c <= 57 ) ) ) || ( c == 58 ) ) || ( c == 46 ) ) || ( c == 95 ) ) || ( c == 45 ) ))) ) {
 								string tmp = default(string);
-								if (( start == __temp_p294 )) 
-								{
+								if (( start == __temp_p317 )) {
 									throw global::haxe.lang.HaxeException.wrap("Expected attribute name");
 								}
 								
-								tmp = global::haxe.lang.StringExt.substr(str, start, new global::haxe.lang.Null<int>(( __temp_p294 - start ), true));
+								tmp = global::haxe.lang.StringExt.substr(str, start, new global::haxe.lang.Null<int>(( __temp_p317 - start ), true));
 								aname = tmp;
-								if (xml.exists(aname)) 
-								{
+								if (xml.exists(aname)) {
 									throw global::haxe.lang.HaxeException.wrap("Duplicate attribute");
 								}
 								
@@ -421,8 +378,7 @@ namespace haxe.xml
 						
 						case 6:
 						{
-							switch (c)
-							{
+							switch (c){
 								case 61:
 								{
 									state = 0;
@@ -444,12 +400,11 @@ namespace haxe.xml
 						
 						case 7:
 						{
-							switch (c)
-							{
+							switch (c){
 								case 34:case 39:
 								{
 									state = 8;
-									start = __temp_p294;
+									start = __temp_p317;
 									break;
 								}
 								
@@ -467,9 +422,8 @@ namespace haxe.xml
 						
 						case 8:
 						{
-							if (( c == (( (( ((uint) (start) ) < str.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(str[start])) )) : (-1) )) )) 
-							{
-								string val = global::haxe.lang.StringExt.substr(str, ( start + 1 ), new global::haxe.lang.Null<int>(( ( __temp_p294 - start ) - 1 ), true));
+							if (( c == (( (( ((uint) (start) ) < str.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(str[start])) )) : (-1) )) )) {
+								string val = global::haxe.lang.StringExt.substr(str, ( start + 1 ), new global::haxe.lang.Null<int>(( ( __temp_p317 - start ) - 1 ), true));
 								xml.@set(aname, val);
 								state = 0;
 								next = 4;
@@ -481,8 +435,8 @@ namespace haxe.xml
 						
 						case 9:
 						{
-							__temp_p294 = global::haxe.xml.Parser.doParse(str, new global::haxe.lang.Null<int>(__temp_p294, true), xml);
-							start = __temp_p294;
+							__temp_p317 = global::haxe.xml.Parser.doParse(str, new global::haxe.lang.Null<int>(__temp_p317, true), xml);
+							start = __temp_p317;
 							state = 1;
 							break;
 						}
@@ -490,8 +444,7 @@ namespace haxe.xml
 						
 						case 11:
 						{
-							switch (c)
-							{
+							switch (c){
 								case 62:
 								{
 									state = 1;
@@ -512,16 +465,14 @@ namespace haxe.xml
 						
 						case 12:
 						{
-							switch (c)
-							{
+							switch (c){
 								case 62:
 								{
-									if (( nsubs == 0 )) 
-									{
+									if (( nsubs == 0 )) {
 										parent.addChild(global::haxe.root.Xml.createPCData(""));
 									}
 									
-									return __temp_p294;
+									return __temp_p317;
 								}
 								
 								
@@ -537,17 +488,14 @@ namespace haxe.xml
 						
 						case 10:
 						{
-							if ( ! ((( ( ( ( ( ( ( ( c >= 97 ) && ( c <= 122 ) ) || ( ( c >= 65 ) && ( c <= 90 ) ) ) || ( ( c >= 48 ) && ( c <= 57 ) ) ) || ( c == 58 ) ) || ( c == 46 ) ) || ( c == 95 ) ) || ( c == 45 ) ))) ) 
-							{
-								if (( start == __temp_p294 )) 
-								{
+							if ( ! ((( ( ( ( ( ( ( ( c >= 97 ) && ( c <= 122 ) ) || ( ( c >= 65 ) && ( c <= 90 ) ) ) || ( ( c >= 48 ) && ( c <= 57 ) ) ) || ( c == 58 ) ) || ( c == 46 ) ) || ( c == 95 ) ) || ( c == 45 ) ))) ) {
+								if (( start == __temp_p317 )) {
 									throw global::haxe.lang.HaxeException.wrap("Expected node name");
 								}
 								
-								string v = global::haxe.lang.StringExt.substr(str, start, new global::haxe.lang.Null<int>(( __temp_p294 - start ), true));
-								if ( ! (string.Equals(v, parent._get_nodeName())) ) 
-								{
-									throw global::haxe.lang.HaxeException.wrap(global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat("Expected </", parent._get_nodeName()), ">"));
+								string v = global::haxe.lang.StringExt.substr(str, start, new global::haxe.lang.Null<int>(( __temp_p317 - start ), true));
+								if ( ! (string.Equals(v, parent.get_nodeName())) ) {
+									throw global::haxe.lang.HaxeException.wrap(global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat("Expected </", parent.get_nodeName()), ">"));
 								}
 								
 								state = 0;
@@ -561,36 +509,33 @@ namespace haxe.xml
 						
 						case 15:
 						{
-							bool __temp_boolv644 = ( c == 45 );
-							bool __temp_boolv643 = false;
-							bool __temp_boolv642 = false;
-							if (__temp_boolv644) 
-							{
-								int __temp_stmt645 = default(int);
+							bool __temp_boolv662 = ( c == 45 );
+							bool __temp_boolv661 = false;
+							bool __temp_boolv660 = false;
+							if (__temp_boolv662) {
+								int __temp_stmt663 = default(int);
 								{
-									int index7 = ( __temp_p294 + 1 );
-									__temp_stmt645 = ( (( ((uint) (index7) ) < str.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(str[index7])) )) : (-1) );
+									int index7 = ( __temp_p317 + 1 );
+									__temp_stmt663 = ( (( ((uint) (index7) ) < str.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(str[index7])) )) : (-1) );
 								}
 								
-								__temp_boolv643 = ( __temp_stmt645 == 45 );
-								if (__temp_boolv643) 
-								{
-									int __temp_stmt646 = default(int);
+								__temp_boolv661 = ( __temp_stmt663 == 45 );
+								if (__temp_boolv661) {
+									int __temp_stmt664 = default(int);
 									{
-										int index8 = ( __temp_p294 + 2 );
-										__temp_stmt646 = ( (( ((uint) (index8) ) < str.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(str[index8])) )) : (-1) );
+										int index8 = ( __temp_p317 + 2 );
+										__temp_stmt664 = ( (( ((uint) (index8) ) < str.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(str[index8])) )) : (-1) );
 									}
 									
-									__temp_boolv642 = ( __temp_stmt646 == 62 );
+									__temp_boolv660 = ( __temp_stmt664 == 62 );
 								}
 								
 							}
 							
-							bool __temp_stmt641 = ( ( __temp_boolv644 && __temp_boolv643 ) && __temp_boolv642 );
-							if (__temp_stmt641) 
-							{
-								parent.addChild(global::haxe.root.Xml.createComment(global::haxe.lang.StringExt.substr(str, start, new global::haxe.lang.Null<int>(( __temp_p294 - start ), true))));
-								__temp_p294 += 2;
+							bool __temp_stmt659 = ( ( __temp_boolv662 && __temp_boolv661 ) && __temp_boolv660 );
+							if (__temp_stmt659) {
+								parent.addChild(global::haxe.root.Xml.createComment(global::haxe.lang.StringExt.substr(str, start, new global::haxe.lang.Null<int>(( __temp_p317 - start ), true))));
+								__temp_p317 += 2;
 								state = 1;
 							}
 							
@@ -600,21 +545,16 @@ namespace haxe.xml
 						
 						case 16:
 						{
-							if (( c == 91 )) 
-							{
+							if (( c == 91 )) {
 								nbrackets++;
 							}
-							 else 
-							{
-								if (( c == 93 )) 
-								{
+							 else {
+								if (( c == 93 )) {
 									nbrackets--;
 								}
-								 else 
-								{
-									if (( ( c == 62 ) && ( nbrackets == 0 ) )) 
-									{
-										parent.addChild(global::haxe.root.Xml.createDocType(global::haxe.lang.StringExt.substr(str, start, new global::haxe.lang.Null<int>(( __temp_p294 - start ), true))));
+								 else {
+									if (( ( c == 62 ) && ( nbrackets == 0 ) )) {
+										parent.addChild(global::haxe.root.Xml.createDocType(global::haxe.lang.StringExt.substr(str, start, new global::haxe.lang.Null<int>(( __temp_p317 - start ), true))));
 										state = 1;
 									}
 									
@@ -628,24 +568,22 @@ namespace haxe.xml
 						
 						case 14:
 						{
-							bool __temp_boolv649 = ( c == 63 );
-							bool __temp_boolv648 = false;
-							if (__temp_boolv649) 
-							{
-								int __temp_stmt650 = default(int);
+							bool __temp_boolv667 = ( c == 63 );
+							bool __temp_boolv666 = false;
+							if (__temp_boolv667) {
+								int __temp_stmt668 = default(int);
 								{
-									int index9 = ( __temp_p294 + 1 );
-									__temp_stmt650 = ( (( ((uint) (index9) ) < str.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(str[index9])) )) : (-1) );
+									int index9 = ( __temp_p317 + 1 );
+									__temp_stmt668 = ( (( ((uint) (index9) ) < str.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(str[index9])) )) : (-1) );
 								}
 								
-								__temp_boolv648 = ( __temp_stmt650 == 62 );
+								__temp_boolv666 = ( __temp_stmt668 == 62 );
 							}
 							
-							bool __temp_stmt647 = ( __temp_boolv649 && __temp_boolv648 );
-							if (__temp_stmt647) 
-							{
-								__temp_p294++;
-								string str1 = global::haxe.lang.StringExt.substr(str, ( start + 1 ), new global::haxe.lang.Null<int>(( ( __temp_p294 - start ) - 2 ), true));
+							bool __temp_stmt665 = ( __temp_boolv667 && __temp_boolv666 );
+							if (__temp_stmt665) {
+								__temp_p317++;
+								string str1 = global::haxe.lang.StringExt.substr(str, ( start + 1 ), new global::haxe.lang.Null<int>(( ( __temp_p317 - start ) - 2 ), true));
 								parent.addChild(global::haxe.root.Xml.createProcessingInstruction(str1));
 								state = 1;
 							}
@@ -656,42 +594,35 @@ namespace haxe.xml
 						
 						case 18:
 						{
-							if (( c == 59 )) 
-							{
-								string s = global::haxe.lang.StringExt.substr(str, start, new global::haxe.lang.Null<int>(( __temp_p294 - start ), true));
-								if (( (( (( ((uint) (0) ) < s.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(s[0])) )) : (-1) )) == 35 )) 
-								{
+							if (( c == 59 )) {
+								string s = global::haxe.lang.StringExt.substr(str, start, new global::haxe.lang.Null<int>(( __temp_p317 - start ), true));
+								if (( (( (( ((uint) (0) ) < s.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(s[0])) )) : (-1) )) == 35 )) {
 									global::haxe.lang.Null<int> i = default(global::haxe.lang.Null<int>);
-									if (( (( (( ((uint) (1) ) < s.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(s[1])) )) : (-1) )) == 120 )) 
-									{
-										i = new global::haxe.lang.Null<int>(global::Std.parseInt(global::haxe.lang.Runtime.concat("0", global::haxe.lang.StringExt.substr(s, 1, new global::haxe.lang.Null<int>(( s.Length - 1 ), true)))).@value, true);
+									if (( (( (( ((uint) (1) ) < s.Length )) ? (((int) (global::haxe.lang.Runtime.toInt(s[1])) )) : (-1) )) == 120 )) {
+										i = global::haxe.root.Std.parseInt(global::haxe.lang.Runtime.concat("0", global::haxe.lang.StringExt.substr(s, 1, new global::haxe.lang.Null<int>(( s.Length - 1 ), true))));
 									}
-									 else 
-									{
-										i = new global::haxe.lang.Null<int>(global::Std.parseInt(global::haxe.lang.StringExt.substr(s, 1, new global::haxe.lang.Null<int>(( s.Length - 1 ), true))).@value, true);
+									 else {
+										i = global::haxe.root.Std.parseInt(global::haxe.lang.StringExt.substr(s, 1, new global::haxe.lang.Null<int>(( s.Length - 1 ), true)));
 									}
 									
 									{
-										object x = new string(((char) (i.@value) ), 1);
-										buf.b.Append(((object) (global::Std.@string(x)) ));
+										string x = new string(((char) (i.@value) ), 1);
+										buf.b.Append(((object) (global::haxe.root.Std.@string(x)) ));
 									}
 									
 								}
-								 else 
-								{
-									if ( ! (global::haxe.xml.Parser.escapes.exists(s)) ) 
-									{
-										buf.b.Append(((object) (global::Std.@string(global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat("&", s), ";"))) ));
+								 else {
+									if ( ! (global::haxe.xml.Parser.escapes.exists(s)) ) {
+										buf.b.Append(((object) (global::haxe.root.Std.@string(global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat("&", s), ";"))) ));
 									}
-									 else 
-									{
-										object x1 = global::haxe.lang.Runtime.toString(global::haxe.xml.Parser.escapes.@get(s).@value);
-										buf.b.Append(((object) (global::Std.@string(x1)) ));
+									 else {
+										string x1 = global::haxe.lang.Runtime.toString(global::haxe.xml.Parser.escapes.@get(s).@value);
+										buf.b.Append(((object) (global::haxe.root.Std.@string(x1)) ));
 									}
 									
 								}
 								
-								start = ( __temp_p294 + 1 );
+								start = ( __temp_p317 + 1 );
 								state = next;
 							}
 							
@@ -702,13 +633,11 @@ namespace haxe.xml
 					}
 					
 					{
-						int index10 =  ++ __temp_p294;
-						if (( ((uint) (index10) ) < str.Length )) 
-						{
+						int index10 =  ++ __temp_p317;
+						if (( ((uint) (index10) ) < str.Length )) {
 							c = ((int) (global::haxe.lang.Runtime.toInt(str[index10])) );
 						}
-						 else 
-						{
+						 else {
 							c = -1;
 						}
 						
@@ -716,20 +645,17 @@ namespace haxe.xml
 					
 				}
 				
-				if (( state == 1 )) 
-				{
-					start = __temp_p294;
+				if (( state == 1 )) {
+					start = __temp_p317;
 					state = 13;
 				}
 				
-				if (( state == 13 )) 
-				{
-					if (( ( __temp_p294 != start ) || ( nsubs == 0 ) )) 
-					{
-						parent.addChild(global::haxe.root.Xml.createPCData(global::haxe.lang.Runtime.concat(buf.toString(), global::haxe.lang.StringExt.substr(str, start, new global::haxe.lang.Null<int>(( __temp_p294 - start ), true)))));
+				if (( state == 13 )) {
+					if (( ( __temp_p317 != start ) || ( nsubs == 0 ) )) {
+						parent.addChild(global::haxe.root.Xml.createPCData(global::haxe.lang.Runtime.concat(buf.toString(), global::haxe.lang.StringExt.substr(str, start, new global::haxe.lang.Null<int>(( __temp_p317 - start ), true)))));
 					}
 					
-					return __temp_p294;
+					return __temp_p317;
 				}
 				
 				throw global::haxe.lang.HaxeException.wrap("Unexpected end");
@@ -737,19 +663,15 @@ namespace haxe.xml
 		}
 		
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::haxe.xml.Parser(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::haxe.xml.Parser();
 			}
 		}

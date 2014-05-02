@@ -1,13 +1,9 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.importer
-{
-	public  class GpxRhythm : global::haxe.lang.HxObject 
-	{
-		public    GpxRhythm(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+namespace alphatab.importer{
+	public  class GpxRhythm : global::haxe.lang.HxObject {
+		public    GpxRhythm(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -15,39 +11,31 @@ namespace alphatab.importer
 		}
 		
 		
-		public    GpxRhythm()
-		{
-			unchecked 
-			{
+		public    GpxRhythm(){
+			unchecked {
 				global::alphatab.importer.GpxRhythm.__hx_ctor_alphatab_importer_GpxRhythm(this);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_importer_GpxRhythm(global::alphatab.importer.GpxRhythm __temp_me62)
-		{
-			unchecked 
-			{
-				__temp_me62.tupletNumerator = 1;
-				__temp_me62.tupletDenominator = 1;
-				__temp_me62.@value = global::alphatab.model.Duration.Quarter;
+		public static   void __hx_ctor_alphatab_importer_GpxRhythm(global::alphatab.importer.GpxRhythm __temp_me76){
+			unchecked {
+				__temp_me76.tupletNumerator = 1;
+				__temp_me76.tupletDenominator = 1;
+				__temp_me76.@value = global::alphatab.model.Duration.Quarter;
 			}
 		}
 		
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.importer.GpxRhythm(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.importer.GpxRhythm();
 			}
 		}
@@ -61,12 +49,9 @@ namespace alphatab.importer
 		
 		public  global::alphatab.model.Duration @value;
 		
-		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 438479229:
 					{
 						this.tupletNumerator = ((int) (@value) );
@@ -99,12 +84,9 @@ namespace alphatab.importer
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 834174833:
 					{
 						this.@value = ((global::alphatab.model.Duration) (@value) );
@@ -144,12 +126,9 @@ namespace alphatab.importer
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 834174833:
 					{
 						return this.@value;
@@ -185,12 +164,9 @@ namespace alphatab.importer
 		}
 		
 		
-		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 438479229:
 					{
 						return ((double) (this.tupletNumerator) );
@@ -220,10 +196,8 @@ namespace alphatab.importer
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("value");
 				baseArr.push("tupletNumerator");
 				baseArr.push("tupletDenominator");
@@ -242,20 +216,15 @@ namespace alphatab.importer
 
 
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.importer
-{
-	public  class GpxParser : global::haxe.lang.HxObject 
-	{
-		static GpxParser() 
-		{
+namespace alphatab.importer{
+	public  class GpxParser : global::haxe.lang.HxObject {
+		static GpxParser() {
 			global::alphatab.importer.GpxParser.InvalidId = "-1";
 			global::alphatab.importer.GpxParser.BendPointPositionFactor = 0.6;
 			global::alphatab.importer.GpxParser.BendPointValueFactor = 0.04;
 		}
-		public    GpxParser(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+		public    GpxParser(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -263,19 +232,15 @@ namespace alphatab.importer
 		}
 		
 		
-		public    GpxParser()
-		{
-			unchecked 
-			{
+		public    GpxParser(){
+			unchecked {
 				global::alphatab.importer.GpxParser.__hx_ctor_alphatab_importer_GpxParser(this);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_importer_GpxParser(global::alphatab.importer.GpxParser __temp_me63)
-		{
-			unchecked 
-			{
+		public static   void __hx_ctor_alphatab_importer_GpxParser(global::alphatab.importer.GpxParser __temp_me77){
+			unchecked {
 				{
 				}
 				
@@ -289,19 +254,15 @@ namespace alphatab.importer
 		
 		public static  double BendPointValueFactor;
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.importer.GpxParser(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.importer.GpxParser();
 			}
 		}
@@ -339,10 +300,8 @@ namespace alphatab.importer
 		
 		public  global::haxe.ds.StringMap<bool> _tappedNotes;
 		
-		public virtual   void parseXml(string xml)
-		{
-			unchecked 
-			{
+		public virtual   void parseXml(string xml){
+			unchecked {
 				this._automations = new global::haxe.ds.StringMap<object>();
 				this._tracksMapping = new global::haxe.root.Array<object>();
 				this._tracksById = new global::haxe.ds.StringMap<object>();
@@ -364,28 +323,21 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseDom(global::haxe.root.Xml xml)
-		{
-			unchecked 
-			{
-				if (( xml.nodeType == global::haxe.root.Xml.Document )) 
-				{
+		public virtual   void parseDom(global::haxe.root.Xml xml){
+			unchecked {
+				if (( xml.nodeType == global::haxe.root.Xml.Document )) {
 					xml = xml.firstElement();
 				}
 				
-				if (string.Equals(xml._get_nodeName(), "GPIF")) 
-				{
+				if (string.Equals(xml.get_nodeName(), "GPIF")) {
 					this.score = new global::alphatab.model.Score();
 					{
-						object __temp_iterator416 = xml.iterator();
-						while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator416, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-						{
-							global::haxe.root.Xml n = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator416, "next", 1224901875, default(global::haxe.root.Array))) );
-							if (( n.nodeType == global::haxe.root.Xml.Element )) 
-							{
-								string _g = n._get_nodeName();
-								switch (_g)
-								{
+						object __temp_iterator446 = xml.iterator();
+						while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator446, "hasNext", 407283053, default(global::haxe.root.Array)))){
+							global::haxe.root.Xml n = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator446, "next", 1224901875, default(global::haxe.root.Array))) );
+							if (( n.nodeType == global::haxe.root.Xml.Element )) {
+								string _g = n.get_nodeName();
+								switch (_g){
 									case "Score":
 									{
 										this.parseScoreNode(n);
@@ -458,8 +410,7 @@ namespace alphatab.importer
 					}
 					
 				}
-				 else 
-				{
+				 else {
 					throw global::haxe.lang.HaxeException.wrap(global::alphatab.importer.ScoreImporter.UnsupportedFormat);
 				}
 				
@@ -468,20 +419,16 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   string getValue(global::haxe.root.Xml n)
-		{
-			unchecked 
-			{
-				if (( ( n.nodeType == global::haxe.root.Xml.Element ) || ( n.nodeType == global::haxe.root.Xml.Document ) )) 
-				{
+		public virtual   string getValue(global::haxe.root.Xml n){
+			unchecked {
+				if (( ( n.nodeType == global::haxe.root.Xml.Element ) || ( n.nodeType == global::haxe.root.Xml.Document ) )) {
 					global::haxe.root.StringBuf txt = new global::haxe.root.StringBuf();
 					{
-						object __temp_iterator417 = n.iterator();
-						while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator417, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-						{
-							global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator417, "next", 1224901875, default(global::haxe.root.Array))) );
-							object x = this.getValue(c);
-							txt.b.Append(((object) (global::Std.@string(x)) ));
+						object __temp_iterator447 = n.iterator();
+						while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator447, "hasNext", 407283053, default(global::haxe.root.Array)))){
+							global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator447, "next", 1224901875, default(global::haxe.root.Array))) );
+							string x = this.getValue(c);
+							txt.b.Append(((object) (global::haxe.root.Std.@string(x)) ));
 						}
 						
 					}
@@ -492,28 +439,22 @@ namespace alphatab.importer
 					}
 					
 				}
-				 else 
-				{
-					return n._get_nodeValue();
+				 else {
+					return n.get_nodeValue();
 				}
 				
 			}
 		}
 		
 		
-		public virtual   global::haxe.root.Xml findChildElement(global::haxe.root.Xml node, string name)
-		{
-			unchecked 
-			{
+		public virtual   global::haxe.root.Xml findChildElement(global::haxe.root.Xml node, string name){
+			unchecked {
 				{
-					object __temp_iterator418 = node.iterator();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator418, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator418, "next", 1224901875, default(global::haxe.root.Array))) );
-						if (( c.nodeType == global::haxe.root.Xml.Element )) 
-						{
-							if (string.Equals(c._get_nodeName(), name)) 
-							{
+					object __temp_iterator448 = node.iterator();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator448, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator448, "next", 1224901875, default(global::haxe.root.Array))) );
+						if (( c.nodeType == global::haxe.root.Xml.Element )) {
+							if (string.Equals(c.get_nodeName(), name)) {
 								return c;
 							}
 							
@@ -528,20 +469,15 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseScoreNode(global::haxe.root.Xml node)
-		{
-			unchecked 
-			{
+		public virtual   void parseScoreNode(global::haxe.root.Xml node){
+			unchecked {
 				{
-					object __temp_iterator419 = node.iterator();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator419, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator419, "next", 1224901875, default(global::haxe.root.Array))) );
-						if (( c.nodeType == global::haxe.root.Xml.Element )) 
-						{
-							string _g = c._get_nodeName();
-							switch (_g)
-							{
+					object __temp_iterator449 = node.iterator();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator449, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator449, "next", 1224901875, default(global::haxe.root.Array))) );
+						if (( c.nodeType == global::haxe.root.Xml.Element )) {
+							string _g = c.get_nodeName();
+							switch (_g){
 								case "Title":
 								{
 									this.score.title = this.getValue(c.firstChild());
@@ -586,8 +522,7 @@ namespace alphatab.importer
 								
 								case "WordsAndMusic":
 								{
-									if (( ( c.firstChild() != default(global::haxe.root.Xml) ) &&  ! (string.Equals(c.firstChild().toString(), ""))  )) 
-									{
+									if (( ( c.firstChild() != default(global::haxe.root.Xml) ) &&  ! (string.Equals(c.firstChild().toString(), ""))  )) {
 										this.score.words = this.getValue(c.firstChild());
 										this.score.music = this.getValue(c.firstChild());
 									}
@@ -622,20 +557,15 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseMasterTrackNode(global::haxe.root.Xml node)
-		{
-			unchecked 
-			{
+		public virtual   void parseMasterTrackNode(global::haxe.root.Xml node){
+			unchecked {
 				{
-					object __temp_iterator420 = node.iterator();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator420, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator420, "next", 1224901875, default(global::haxe.root.Array))) );
-						if (( c.nodeType == global::haxe.root.Xml.Element )) 
-						{
-							string _g = c._get_nodeName();
-							switch (_g)
-							{
+					object __temp_iterator450 = node.iterator();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator450, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator450, "next", 1224901875, default(global::haxe.root.Array))) );
+						if (( c.nodeType == global::haxe.root.Xml.Element )) {
+							string _g = c.get_nodeName();
+							switch (_g){
 								case "Automations":
 								{
 									this.parseAutomations(c);
@@ -662,20 +592,15 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseAutomations(global::haxe.root.Xml node)
-		{
-			unchecked 
-			{
+		public virtual   void parseAutomations(global::haxe.root.Xml node){
+			unchecked {
 				{
-					object __temp_iterator421 = node.iterator();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator421, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator421, "next", 1224901875, default(global::haxe.root.Array))) );
-						if (( c.nodeType == global::haxe.root.Xml.Element )) 
-						{
-							string _g = c._get_nodeName();
-							switch (_g)
-							{
+					object __temp_iterator451 = node.iterator();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator451, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator451, "next", 1224901875, default(global::haxe.root.Array))) );
+						if (( c.nodeType == global::haxe.root.Xml.Element )) {
+							string _g = c.get_nodeName();
+							switch (_g){
 								case "Automation":
 								{
 									this.parseAutomation(c);
@@ -695,10 +620,8 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseAutomation(global::haxe.root.Xml node)
-		{
-			unchecked 
-			{
+		public virtual   void parseAutomation(global::haxe.root.Xml node){
+			unchecked {
 				string type = default(string);
 				bool isLinear = false;
 				string barId = default(string);
@@ -707,15 +630,12 @@ namespace alphatab.importer
 				int reference = 0;
 				string text = default(string);
 				{
-					object __temp_iterator422 = node.iterator();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator422, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator422, "next", 1224901875, default(global::haxe.root.Array))) );
-						if (( c.nodeType == global::haxe.root.Xml.Element )) 
-						{
-							string _g = c._get_nodeName();
-							switch (_g)
-							{
+					object __temp_iterator452 = node.iterator();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator452, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator452, "next", 1224901875, default(global::haxe.root.Array))) );
+						if (( c.nodeType == global::haxe.root.Xml.Element )) {
+							string _g = c.get_nodeName();
+							switch (_g){
 								case "Type":
 								{
 									type = this.getValue(c);
@@ -739,7 +659,7 @@ namespace alphatab.importer
 								
 								case "Position":
 								{
-									ratioPosition = global::Std.parseFloat(this.getValue(c));
+									ratioPosition = global::haxe.root.Std.parseFloat(this.getValue(c));
 									break;
 								}
 								
@@ -747,8 +667,8 @@ namespace alphatab.importer
 								case "Value":
 								{
 									global::haxe.root.Array<object> parts = global::haxe.lang.StringExt.split(this.getValue(c), " ");
-									@value = global::Std.parseFloat(global::haxe.lang.Runtime.toString(parts[0]));
-									reference = global::Std.parseInt(global::haxe.lang.Runtime.toString(parts[1])).@value;
+									@value = global::haxe.root.Std.parseFloat(global::haxe.lang.Runtime.toString(parts[0]));
+									reference = global::haxe.root.Std.parseInt(global::haxe.lang.Runtime.toString(parts[1])).@value;
 									break;
 								}
 								
@@ -768,14 +688,12 @@ namespace alphatab.importer
 					
 				}
 				
-				if (string.Equals(type, default(string))) 
-				{
+				if (string.Equals(type, default(string))) {
 					return ;
 				}
 				
 				global::alphatab.model.Automation automation = default(global::alphatab.model.Automation);
-				switch (type)
-				{
+				switch (type){
 					case "Tempo":
 					{
 						automation = global::alphatab.model.Automation.builtTempoAutomation(isLinear, ratioPosition, @value, reference);
@@ -786,10 +704,8 @@ namespace alphatab.importer
 				}
 				
 				automation.text = text;
-				if (( automation != default(global::alphatab.model.Automation) )) 
-				{
-					if ( ! (this._automations.exists(barId)) ) 
-					{
+				if (( automation != default(global::alphatab.model.Automation) )) {
+					if ( ! (this._automations.exists(barId)) ) {
 						this._automations.@set(barId, new global::haxe.root.Array<object>());
 					}
 					
@@ -800,20 +716,15 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseTracksNode(global::haxe.root.Xml node)
-		{
-			unchecked 
-			{
+		public virtual   void parseTracksNode(global::haxe.root.Xml node){
+			unchecked {
 				{
-					object __temp_iterator423 = node.iterator();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator423, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator423, "next", 1224901875, default(global::haxe.root.Array))) );
-						if (( c.nodeType == global::haxe.root.Xml.Element )) 
-						{
-							string _g = c._get_nodeName();
-							switch (_g)
-							{
+					object __temp_iterator453 = node.iterator();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator453, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator453, "next", 1224901875, default(global::haxe.root.Array))) );
+						if (( c.nodeType == global::haxe.root.Xml.Element )) {
+							string _g = c.get_nodeName();
+							switch (_g){
 								case "Track":
 								{
 									this.parseTrack(c);
@@ -833,22 +744,17 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseTrack(global::haxe.root.Xml node)
-		{
-			unchecked 
-			{
+		public virtual   void parseTrack(global::haxe.root.Xml node){
+			unchecked {
 				global::alphatab.model.Track track = new global::alphatab.model.Track();
 				string trackId = node.@get("id");
 				{
-					object __temp_iterator424 = node.iterator();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator424, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator424, "next", 1224901875, default(global::haxe.root.Array))) );
-						if (( c.nodeType == global::haxe.root.Xml.Element )) 
-						{
-							string _g = c._get_nodeName();
-							switch (_g)
-							{
+					object __temp_iterator454 = node.iterator();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator454, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator454, "next", 1224901875, default(global::haxe.root.Array))) );
+						if (( c.nodeType == global::haxe.root.Xml.Element )) {
+							string _g = c.get_nodeName();
+							switch (_g){
 								case "Name":
 								{
 									track.name = this.getValue(c);
@@ -899,21 +805,16 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseDiagramCollection(global::alphatab.model.Track track, global::haxe.root.Xml node)
-		{
-			unchecked 
-			{
+		public virtual   void parseDiagramCollection(global::alphatab.model.Track track, global::haxe.root.Xml node){
+			unchecked {
 				global::haxe.root.Xml items = this.findChildElement(node, "Items");
 				{
-					object __temp_iterator425 = items.iterator();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator425, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator425, "next", 1224901875, default(global::haxe.root.Array))) );
-						if (( c.nodeType == global::haxe.root.Xml.Element )) 
-						{
-							string _g = c._get_nodeName();
-							switch (_g)
-							{
+					object __temp_iterator455 = items.iterator();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator455, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator455, "next", 1224901875, default(global::haxe.root.Array))) );
+						if (( c.nodeType == global::haxe.root.Xml.Element )) {
+							string _g = c.get_nodeName();
+							switch (_g){
 								case "Item":
 								{
 									this.parseDiagramItem(track, c);
@@ -933,10 +834,8 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseDiagramItem(global::alphatab.model.Track track, global::haxe.root.Xml node)
-		{
-			unchecked 
-			{
+		public virtual   void parseDiagramItem(global::alphatab.model.Track track, global::haxe.root.Xml node){
+			unchecked {
 				global::alphatab.model.Chord chord = new global::alphatab.model.Chord();
 				string chordId = node.@get("id");
 				chord.name = node.@get("name");
@@ -945,20 +844,15 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseTrackProperties(global::alphatab.model.Track track, global::haxe.root.Xml node)
-		{
-			unchecked 
-			{
+		public virtual   void parseTrackProperties(global::alphatab.model.Track track, global::haxe.root.Xml node){
+			unchecked {
 				{
-					object __temp_iterator426 = node.iterator();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator426, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator426, "next", 1224901875, default(global::haxe.root.Array))) );
-						if (( c.nodeType == global::haxe.root.Xml.Element )) 
-						{
-							string _g = c._get_nodeName();
-							switch (_g)
-							{
+					object __temp_iterator456 = node.iterator();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator456, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator456, "next", 1224901875, default(global::haxe.root.Array))) );
+						if (( c.nodeType == global::haxe.root.Xml.Element )) {
+							string _g = c.get_nodeName();
+							switch (_g){
 								case "Property":
 								{
 									this.parseTrackProperty(track, c);
@@ -978,23 +872,19 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseTrackProperty(global::alphatab.model.Track track, global::haxe.root.Xml node)
-		{
-			unchecked 
-			{
+		public virtual   void parseTrackProperty(global::alphatab.model.Track track, global::haxe.root.Xml node){
+			unchecked {
 				string propertyName = node.@get("name");
-				switch (propertyName)
-				{
+				switch (propertyName){
 					case "Tuning":
 					{
 						global::haxe.root.Array<object> tuningParts = global::haxe.lang.StringExt.split(this.getValue(this.findChildElement(node, "Pitches")), " ");
 						{
 							int _g = 0;
-							while (( _g < tuningParts.length ))
-							{
+							while (( _g < tuningParts.length )){
 								string s = global::haxe.lang.Runtime.toString(tuningParts[_g]);
 								 ++ _g;
-								track.tuning.push(global::Std.parseInt(s).@value);
+								track.tuning.push(global::haxe.root.Std.parseInt(s).@value);
 							}
 							
 						}
@@ -1013,7 +903,7 @@ namespace alphatab.importer
 					
 					case "CapoFret":
 					{
-						track.capo = global::Std.parseInt(this.getValue(this.findChildElement(node, "Fret"))).@value;
+						track.capo = global::haxe.root.Std.parseInt(this.getValue(this.findChildElement(node, "Fret"))).@value;
 						break;
 					}
 					
@@ -1024,33 +914,26 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseGeneralMidi(global::alphatab.model.Track track, global::haxe.root.Xml node)
-		{
-			unchecked 
-			{
-				track.playbackInfo.port = global::Std.parseInt(this.getValue(this.findChildElement(node, "Port"))).@value;
-				track.playbackInfo.program = global::Std.parseInt(this.getValue(this.findChildElement(node, "Program"))).@value;
-				track.playbackInfo.primaryChannel = global::Std.parseInt(this.getValue(this.findChildElement(node, "PrimaryChannel"))).@value;
-				track.playbackInfo.secondaryChannel = global::Std.parseInt(this.getValue(this.findChildElement(node, "SecondaryChannel"))).@value;
+		public virtual   void parseGeneralMidi(global::alphatab.model.Track track, global::haxe.root.Xml node){
+			unchecked {
+				track.playbackInfo.port = global::haxe.root.Std.parseInt(this.getValue(this.findChildElement(node, "Port"))).@value;
+				track.playbackInfo.program = global::haxe.root.Std.parseInt(this.getValue(this.findChildElement(node, "Program"))).@value;
+				track.playbackInfo.primaryChannel = global::haxe.root.Std.parseInt(this.getValue(this.findChildElement(node, "PrimaryChannel"))).@value;
+				track.playbackInfo.secondaryChannel = global::haxe.root.Std.parseInt(this.getValue(this.findChildElement(node, "SecondaryChannel"))).@value;
 				track.isPercussion = string.Equals(node.@get("table"), "Percussion");
 			}
 		}
 		
 		
-		public virtual   void parseMasterBarsNode(global::haxe.root.Xml node)
-		{
-			unchecked 
-			{
+		public virtual   void parseMasterBarsNode(global::haxe.root.Xml node){
+			unchecked {
 				{
-					object __temp_iterator427 = node.iterator();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator427, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator427, "next", 1224901875, default(global::haxe.root.Array))) );
-						if (( c.nodeType == global::haxe.root.Xml.Element )) 
-						{
-							string _g = c._get_nodeName();
-							switch (_g)
-							{
+					object __temp_iterator457 = node.iterator();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator457, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator457, "next", 1224901875, default(global::haxe.root.Array))) );
+						if (( c.nodeType == global::haxe.root.Xml.Element )) {
+							string _g = c.get_nodeName();
+							switch (_g){
 								case "MasterBar":
 								{
 									this.parseMasterBar(c);
@@ -1070,26 +953,21 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseMasterBar(global::haxe.root.Xml node)
-		{
-			unchecked 
-			{
+		public virtual   void parseMasterBar(global::haxe.root.Xml node){
+			unchecked {
 				global::alphatab.model.MasterBar masterBar = new global::alphatab.model.MasterBar();
 				{
-					object __temp_iterator428 = node.iterator();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator428, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator428, "next", 1224901875, default(global::haxe.root.Array))) );
-						if (( c.nodeType == global::haxe.root.Xml.Element )) 
-						{
-							string _g = c._get_nodeName();
-							switch (_g)
-							{
+					object __temp_iterator458 = node.iterator();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator458, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator458, "next", 1224901875, default(global::haxe.root.Array))) );
+						if (( c.nodeType == global::haxe.root.Xml.Element )) {
+							string _g = c.get_nodeName();
+							switch (_g){
 								case "Time":
 								{
 									global::haxe.root.Array<object> timeParts = global::haxe.lang.StringExt.split(this.getValue(c), "/");
-									masterBar.timeSignatureNumerator = global::Std.parseInt(global::haxe.lang.Runtime.toString(timeParts[0])).@value;
-									masterBar.timeSignatureDenominator = global::Std.parseInt(global::haxe.lang.Runtime.toString(timeParts[1])).@value;
+									masterBar.timeSignatureNumerator = global::haxe.root.Std.parseInt(global::haxe.lang.Runtime.toString(timeParts[0])).@value;
+									masterBar.timeSignatureDenominator = global::haxe.root.Std.parseInt(global::haxe.lang.Runtime.toString(timeParts[1])).@value;
 									break;
 								}
 								
@@ -1112,14 +990,12 @@ namespace alphatab.importer
 								
 								case "Repeat":
 								{
-									if (string.Equals(c.@get("start").ToLower(), "true")) 
-									{
+									if (string.Equals(c.@get("start").ToLower(), "true")) {
 										masterBar.isRepeatStart = true;
 									}
 									
-									if (( string.Equals(c.@get("end").ToLower(), "true") &&  ! (string.Equals(c.@get("count"), default(string)))  )) 
-									{
-										masterBar.repeatCount = global::Std.parseInt(c.@get("count")).@value;
+									if (( string.Equals(c.@get("end").ToLower(), "true") &&  ! (string.Equals(c.@get("count"), default(string)))  )) {
+										masterBar.repeatCount = global::haxe.root.Std.parseInt(c.@get("count")).@value;
 									}
 									
 									break;
@@ -1133,10 +1009,9 @@ namespace alphatab.importer
 									{
 										int _g2 = 0;
 										int _g1 = alternateEndings.length;
-										while (( _g2 < _g1 ))
-										{
+										while (( _g2 < _g1 )){
 											int k = _g2++;
-											i |= ( 1 << ( -1 + global::Std.parseInt(global::haxe.lang.Runtime.toString(alternateEndings[i])).@value ) );
+											i |= ( 1 << ( -1 + global::haxe.root.Std.parseInt(global::haxe.lang.Runtime.toString(alternateEndings[i])).@value ) );
 										}
 										
 									}
@@ -1156,8 +1031,7 @@ namespace alphatab.importer
 								case "TripletFeel":
 								{
 									string _g11 = this.getValue(c);
-									switch (_g11)
-									{
+									switch (_g11){
 										case "NoTripletFeel":
 										{
 											masterBar.tripletFeel = global::alphatab.model.TripletFeel.NoTripletFeel;
@@ -1213,6 +1087,13 @@ namespace alphatab.importer
 								}
 								
 								
+								case "Key":
+								{
+									masterBar.keySignature = global::haxe.root.Std.parseInt(this.getValue(this.findChildElement(c, "AccidentalCount"))).@value;
+									break;
+								}
+								
+								
 							}
 							
 						}
@@ -1226,20 +1107,15 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseBars(global::haxe.root.Xml node)
-		{
-			unchecked 
-			{
+		public virtual   void parseBars(global::haxe.root.Xml node){
+			unchecked {
 				{
-					object __temp_iterator429 = node.iterator();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator429, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator429, "next", 1224901875, default(global::haxe.root.Array))) );
-						if (( c.nodeType == global::haxe.root.Xml.Element )) 
-						{
-							string _g = c._get_nodeName();
-							switch (_g)
-							{
+					object __temp_iterator459 = node.iterator();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator459, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator459, "next", 1224901875, default(global::haxe.root.Array))) );
+						if (( c.nodeType == global::haxe.root.Xml.Element )) {
+							string _g = c.get_nodeName();
+							switch (_g){
 								case "Bar":
 								{
 									this.parseBar(c);
@@ -1259,22 +1135,17 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseBar(global::haxe.root.Xml node)
-		{
-			unchecked 
-			{
+		public virtual   void parseBar(global::haxe.root.Xml node){
+			unchecked {
 				global::alphatab.model.Bar bar = new global::alphatab.model.Bar();
 				string barId = node.@get("id");
 				{
-					object __temp_iterator430 = node.iterator();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator430, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator430, "next", 1224901875, default(global::haxe.root.Array))) );
-						if (( c.nodeType == global::haxe.root.Xml.Element )) 
-						{
-							string _g = c._get_nodeName();
-							switch (_g)
-							{
+					object __temp_iterator460 = node.iterator();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator460, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator460, "next", 1224901875, default(global::haxe.root.Array))) );
+						if (( c.nodeType == global::haxe.root.Xml.Element )) {
+							string _g = c.get_nodeName();
+							switch (_g){
 								case "Voices":
 								{
 									this._voicesOfBar.@set(barId, global::haxe.lang.StringExt.split(this.getValue(c), " "));
@@ -1285,8 +1156,7 @@ namespace alphatab.importer
 								case "Clef":
 								{
 									string _g1 = this.getValue(c);
-									switch (_g1)
-									{
+									switch (_g1){
 										case "Neutral":
 										{
 											bar.clef = global::alphatab.model.Clef.Neutral;
@@ -1341,20 +1211,15 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseVoices(global::haxe.root.Xml node)
-		{
-			unchecked 
-			{
+		public virtual   void parseVoices(global::haxe.root.Xml node){
+			unchecked {
 				{
-					object __temp_iterator431 = node.iterator();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator431, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator431, "next", 1224901875, default(global::haxe.root.Array))) );
-						if (( c.nodeType == global::haxe.root.Xml.Element )) 
-						{
-							string _g = c._get_nodeName();
-							switch (_g)
-							{
+					object __temp_iterator461 = node.iterator();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator461, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator461, "next", 1224901875, default(global::haxe.root.Array))) );
+						if (( c.nodeType == global::haxe.root.Xml.Element )) {
+							string _g = c.get_nodeName();
+							switch (_g){
 								case "Voice":
 								{
 									this.parseVoice(c);
@@ -1374,22 +1239,17 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseVoice(global::haxe.root.Xml node)
-		{
-			unchecked 
-			{
+		public virtual   void parseVoice(global::haxe.root.Xml node){
+			unchecked {
 				global::alphatab.model.Voice voice = new global::alphatab.model.Voice();
 				string voiceId = node.@get("id");
 				{
-					object __temp_iterator432 = node.iterator();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator432, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator432, "next", 1224901875, default(global::haxe.root.Array))) );
-						if (( c.nodeType == global::haxe.root.Xml.Element )) 
-						{
-							string _g = c._get_nodeName();
-							switch (_g)
-							{
+					object __temp_iterator462 = node.iterator();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator462, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator462, "next", 1224901875, default(global::haxe.root.Array))) );
+						if (( c.nodeType == global::haxe.root.Xml.Element )) {
+							string _g = c.get_nodeName();
+							switch (_g){
 								case "Beats":
 								{
 									this._beatsOfVoice.@set(voiceId, global::haxe.lang.StringExt.split(this.getValue(c), " "));
@@ -1410,20 +1270,15 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseBeats(global::haxe.root.Xml node)
-		{
-			unchecked 
-			{
+		public virtual   void parseBeats(global::haxe.root.Xml node){
+			unchecked {
 				{
-					object __temp_iterator433 = node.iterator();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator433, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator433, "next", 1224901875, default(global::haxe.root.Array))) );
-						if (( c.nodeType == global::haxe.root.Xml.Element )) 
-						{
-							string _g = c._get_nodeName();
-							switch (_g)
-							{
+					object __temp_iterator463 = node.iterator();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator463, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator463, "next", 1224901875, default(global::haxe.root.Array))) );
+						if (( c.nodeType == global::haxe.root.Xml.Element )) {
+							string _g = c.get_nodeName();
+							switch (_g){
 								case "Beat":
 								{
 									this.parseBeat(c);
@@ -1443,22 +1298,17 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseBeat(global::haxe.root.Xml node)
-		{
-			unchecked 
-			{
+		public virtual   void parseBeat(global::haxe.root.Xml node){
+			unchecked {
 				global::alphatab.model.Beat beat = new global::alphatab.model.Beat();
 				string beatId = node.@get("id");
 				{
-					object __temp_iterator434 = node.iterator();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator434, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator434, "next", 1224901875, default(global::haxe.root.Array))) );
-						if (( c.nodeType == global::haxe.root.Xml.Element )) 
-						{
-							string _g = c._get_nodeName();
-							switch (_g)
-							{
+					object __temp_iterator464 = node.iterator();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator464, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator464, "next", 1224901875, default(global::haxe.root.Array))) );
+						if (( c.nodeType == global::haxe.root.Xml.Element )) {
+							string _g = c.get_nodeName();
+							switch (_g){
 								case "Notes":
 								{
 									this._notesOfBeat.@set(beatId, global::haxe.lang.StringExt.split(this.getValue(c), " "));
@@ -1475,8 +1325,7 @@ namespace alphatab.importer
 								
 								case "Fadding":
 								{
-									if (string.Equals(this.getValue(c), "FadeIn")) 
-									{
+									if (string.Equals(this.getValue(c), "FadeIn")) {
 										beat.fadeIn = true;
 									}
 									
@@ -1487,25 +1336,24 @@ namespace alphatab.importer
 								case "Tremolo":
 								{
 									string _g1 = this.getValue(c);
-									switch (_g1)
-									{
+									switch (_g1){
 										case "1/2":
 										{
-											beat.tremoloSpeed = new global::haxe.lang.Null<global::alphatab.model.Duration>(new global::haxe.lang.Null<global::alphatab.model.Duration>(global::alphatab.model.Duration.Eighth, true).@value, true);
+											beat.tremoloSpeed = new global::haxe.lang.Null<global::alphatab.model.Duration>(global::alphatab.model.Duration.Eighth, true);
 											break;
 										}
 										
 										
 										case "1/4":
 										{
-											beat.tremoloSpeed = new global::haxe.lang.Null<global::alphatab.model.Duration>(new global::haxe.lang.Null<global::alphatab.model.Duration>(global::alphatab.model.Duration.Sixteenth, true).@value, true);
+											beat.tremoloSpeed = new global::haxe.lang.Null<global::alphatab.model.Duration>(global::alphatab.model.Duration.Sixteenth, true);
 											break;
 										}
 										
 										
 										case "1/8":
 										{
-											beat.tremoloSpeed = new global::haxe.lang.Null<global::alphatab.model.Duration>(new global::haxe.lang.Null<global::alphatab.model.Duration>(global::alphatab.model.Duration.ThirtySecond, true).@value, true);
+											beat.tremoloSpeed = new global::haxe.lang.Null<global::alphatab.model.Duration>(global::alphatab.model.Duration.ThirtySecond, true);
 											break;
 										}
 										
@@ -1526,8 +1374,7 @@ namespace alphatab.importer
 								case "Hairpin":
 								{
 									string _g11 = this.getValue(c);
-									switch (_g11)
-									{
+									switch (_g11){
 										case "Crescendo":
 										{
 											beat.crescendo = global::alphatab.rendering.glyphs.CrescendoType.Crescendo;
@@ -1550,12 +1397,10 @@ namespace alphatab.importer
 								
 								case "Arpeggio":
 								{
-									if (string.Equals(this.getValue(c), "Up")) 
-									{
+									if (string.Equals(this.getValue(c), "Up")) {
 										beat.brushType = global::alphatab.model.BrushType.ArpeggioUp;
 									}
-									 else 
-									{
+									 else {
 										beat.brushType = global::alphatab.model.BrushType.ArpeggioDown;
 									}
 									
@@ -1580,8 +1425,7 @@ namespace alphatab.importer
 								case "Dynamic":
 								{
 									string _g12 = this.getValue(c);
-									switch (_g12)
-									{
+									switch (_g12){
 										case "PPP":
 										{
 											beat.dynamicValue = global::alphatab.model.DynamicValue.PPP;
@@ -1647,8 +1491,7 @@ namespace alphatab.importer
 								case "GraceNotes":
 								{
 									string _g13 = this.getValue(c);
-									switch (_g13)
-									{
+									switch (_g13){
 										case "OnBeat":
 										{
 											beat.graceType = global::alphatab.model.GraceType.OnBeat;
@@ -1682,10 +1525,8 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseBeatProperties(global::haxe.root.Xml node, global::alphatab.model.Beat beat)
-		{
-			unchecked 
-			{
+		public virtual   void parseBeatProperties(global::haxe.root.Xml node, global::alphatab.model.Beat beat){
+			unchecked {
 				bool isWhammy = false;
 				global::alphatab.model.BendPoint whammyOrigin = default(global::alphatab.model.BendPoint);
 				global::haxe.lang.Null<int> whammyMiddleValue = default(global::haxe.lang.Null<int>);
@@ -1693,28 +1534,22 @@ namespace alphatab.importer
 				global::haxe.lang.Null<int> whammyMiddleOffset2 = default(global::haxe.lang.Null<int>);
 				global::alphatab.model.BendPoint whammyDestination = default(global::alphatab.model.BendPoint);
 				{
-					object __temp_iterator435 = node.iterator();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator435, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator435, "next", 1224901875, default(global::haxe.root.Array))) );
-						if (( c.nodeType == global::haxe.root.Xml.Element )) 
-						{
-							string _g = c._get_nodeName();
-							switch (_g)
-							{
+					object __temp_iterator465 = node.iterator();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator465, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator465, "next", 1224901875, default(global::haxe.root.Array))) );
+						if (( c.nodeType == global::haxe.root.Xml.Element )) {
+							string _g = c.get_nodeName();
+							switch (_g){
 								case "Property":
 								{
 									string name = c.@get("name");
-									switch (name)
-									{
+									switch (name){
 										case "Brush":
 										{
-											if (string.Equals(this.getValue(this.findChildElement(c, "Direction")), "Up")) 
-											{
+											if (string.Equals(this.getValue(this.findChildElement(c, "Direction")), "Up")) {
 												beat.brushType = global::alphatab.model.BrushType.BrushUp;
 											}
-											 else 
-											{
+											 else {
 												beat.brushType = global::alphatab.model.BrushType.BrushDown;
 											}
 											
@@ -1724,12 +1559,10 @@ namespace alphatab.importer
 										
 										case "PickStroke":
 										{
-											if (string.Equals(this.getValue(this.findChildElement(c, "Direction")), "Up")) 
-											{
+											if (string.Equals(this.getValue(this.findChildElement(c, "Direction")), "Up")) {
 												beat.pickStroke = global::alphatab.model.PickStrokeType.Up;
 											}
-											 else 
-											{
+											 else {
 												beat.pickStroke = global::alphatab.model.PickStrokeType.Down;
 											}
 											
@@ -1739,8 +1572,7 @@ namespace alphatab.importer
 										
 										case "Slapped":
 										{
-											if (( this.findChildElement(c, "Enable") != default(global::haxe.root.Xml) )) 
-											{
+											if (( this.findChildElement(c, "Enable") != default(global::haxe.root.Xml) )) {
 												beat.slap = true;
 											}
 											
@@ -1750,8 +1582,7 @@ namespace alphatab.importer
 										
 										case "Popped":
 										{
-											if (( this.findChildElement(c, "Enable") != default(global::haxe.root.Xml) )) 
-											{
+											if (( this.findChildElement(c, "Enable") != default(global::haxe.root.Xml) )) {
 												beat.pop = true;
 											}
 											
@@ -1762,8 +1593,7 @@ namespace alphatab.importer
 										case "VibratoWTremBar":
 										{
 											string _g1 = this.getValue(this.findChildElement(c, "Strength"));
-											switch (_g1)
-											{
+											switch (_g1){
 												case "Wide":
 												{
 													beat.vibrato = global::alphatab.model.VibratoType.Wide;
@@ -1802,13 +1632,12 @@ namespace alphatab.importer
 										
 										case "WhammyBarOriginValue":
 										{
-											if (( whammyOrigin == default(global::alphatab.model.BendPoint) )) 
-											{
+											if (( whammyOrigin == default(global::alphatab.model.BendPoint) )) {
 												whammyOrigin = new global::alphatab.model.BendPoint(((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
 											}
 											
 											{
-												double x = ( global::Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.04 );
+												double x = ( global::haxe.root.Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.04 );
 												whammyOrigin.@value = ((int) (x) );
 											}
 											
@@ -1818,13 +1647,12 @@ namespace alphatab.importer
 										
 										case "WhammyBarOriginOffset":
 										{
-											if (( whammyOrigin == default(global::alphatab.model.BendPoint) )) 
-											{
+											if (( whammyOrigin == default(global::alphatab.model.BendPoint) )) {
 												whammyOrigin = new global::alphatab.model.BendPoint(((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
 											}
 											
 											{
-												double x1 = ( global::Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.6 );
+												double x1 = ( global::haxe.root.Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.6 );
 												whammyOrigin.offset = ((int) (x1) );
 											}
 											
@@ -1834,37 +1662,36 @@ namespace alphatab.importer
 										
 										case "WhammyBarMiddleValue":
 										{
-											double x2 = ( global::Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.04 );
-											whammyMiddleValue = new global::haxe.lang.Null<int>(new global::haxe.lang.Null<int>(((int) (x2) ), true).@value, true);
+											double x2 = ( global::haxe.root.Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.04 );
+											whammyMiddleValue = new global::haxe.lang.Null<int>(((int) (x2) ), true);
 											break;
 										}
 										
 										
 										case "WhammyBarMiddleOffset1":
 										{
-											double x3 = ( global::Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.6 );
-											whammyMiddleOffset1 = new global::haxe.lang.Null<int>(new global::haxe.lang.Null<int>(((int) (x3) ), true).@value, true);
+											double x3 = ( global::haxe.root.Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.6 );
+											whammyMiddleOffset1 = new global::haxe.lang.Null<int>(((int) (x3) ), true);
 											break;
 										}
 										
 										
 										case "WhammyBarMiddleOffset2":
 										{
-											double x4 = ( global::Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.6 );
-											whammyMiddleOffset2 = new global::haxe.lang.Null<int>(new global::haxe.lang.Null<int>(((int) (x4) ), true).@value, true);
+											double x4 = ( global::haxe.root.Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.6 );
+											whammyMiddleOffset2 = new global::haxe.lang.Null<int>(((int) (x4) ), true);
 											break;
 										}
 										
 										
 										case "WhammyBarDestinationValue":
 										{
-											if (( whammyDestination == default(global::alphatab.model.BendPoint) )) 
-											{
+											if (( whammyDestination == default(global::alphatab.model.BendPoint) )) {
 												whammyDestination = new global::alphatab.model.BendPoint(new global::haxe.lang.Null<int>(60, true), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
 											}
 											
 											{
-												double x5 = ( global::Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.04 );
+												double x5 = ( global::haxe.root.Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.04 );
 												whammyDestination.@value = ((int) (x5) );
 											}
 											
@@ -1874,13 +1701,12 @@ namespace alphatab.importer
 										
 										case "WhammyBarDestinationOffset":
 										{
-											if (( whammyDestination == default(global::alphatab.model.BendPoint) )) 
-											{
+											if (( whammyDestination == default(global::alphatab.model.BendPoint) )) {
 												whammyDestination = new global::alphatab.model.BendPoint(((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
 											}
 											
 											{
-												double x6 = ( global::Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.6 );
+												double x6 = ( global::haxe.root.Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.6 );
 												whammyDestination.offset = ((int) (x6) );
 											}
 											
@@ -1902,32 +1728,26 @@ namespace alphatab.importer
 					
 				}
 				
-				if (isWhammy) 
-				{
-					if (( whammyOrigin == default(global::alphatab.model.BendPoint) )) 
-					{
+				if (isWhammy) {
+					if (( whammyOrigin == default(global::alphatab.model.BendPoint) )) {
 						whammyOrigin = new global::alphatab.model.BendPoint(((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
 					}
 					
-					if (( whammyDestination == default(global::alphatab.model.BendPoint) )) 
-					{
+					if (( whammyDestination == default(global::alphatab.model.BendPoint) )) {
 						whammyDestination = new global::alphatab.model.BendPoint(new global::haxe.lang.Null<int>(60, true), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
 					}
 					
 					global::haxe.root.Array<object> whammy = new global::haxe.root.Array<object>();
 					whammy.push(whammyOrigin);
-					if (( ( ! (global::haxe.lang.Runtime.eq((whammyMiddleOffset1).toDynamic(), (default(global::haxe.lang.Null<int>)).toDynamic())) ) && ( ! (global::haxe.lang.Runtime.eq((whammyMiddleValue).toDynamic(), (default(global::haxe.lang.Null<int>)).toDynamic())) ) )) 
-					{
+					if (( whammyMiddleOffset1.hasValue && whammyMiddleValue.hasValue )) {
 						whammy.push(new global::alphatab.model.BendPoint(((global::haxe.lang.Null<int>) (whammyMiddleOffset1) ), ((global::haxe.lang.Null<int>) (whammyMiddleValue) )));
 					}
 					
-					if (( ( ! (global::haxe.lang.Runtime.eq((whammyMiddleOffset2).toDynamic(), (default(global::haxe.lang.Null<int>)).toDynamic())) ) && ( ! (global::haxe.lang.Runtime.eq((whammyMiddleValue).toDynamic(), (default(global::haxe.lang.Null<int>)).toDynamic())) ) )) 
-					{
+					if (( whammyMiddleOffset2.hasValue && whammyMiddleValue.hasValue )) {
 						whammy.push(new global::alphatab.model.BendPoint(((global::haxe.lang.Null<int>) (whammyMiddleOffset2) ), ((global::haxe.lang.Null<int>) (whammyMiddleValue) )));
 					}
 					
-					if (( ( global::haxe.lang.Runtime.eq((whammyMiddleOffset1).toDynamic(), (default(global::haxe.lang.Null<int>)).toDynamic()) && global::haxe.lang.Runtime.eq((whammyMiddleOffset2).toDynamic(), (default(global::haxe.lang.Null<int>)).toDynamic()) ) && ( ! (global::haxe.lang.Runtime.eq((whammyMiddleValue).toDynamic(), (default(global::haxe.lang.Null<int>)).toDynamic())) ) )) 
-					{
+					if (( (  ! (whammyMiddleOffset1.hasValue)  &&  ! (whammyMiddleOffset2.hasValue)  ) && whammyMiddleValue.hasValue )) {
 						whammy.push(new global::alphatab.model.BendPoint(new global::haxe.lang.Null<int>(30, true), ((global::haxe.lang.Null<int>) (whammyMiddleValue) )));
 					}
 					
@@ -1939,20 +1759,15 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseNotes(global::haxe.root.Xml node)
-		{
-			unchecked 
-			{
+		public virtual   void parseNotes(global::haxe.root.Xml node){
+			unchecked {
 				{
-					object __temp_iterator436 = node.iterator();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator436, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator436, "next", 1224901875, default(global::haxe.root.Array))) );
-						if (( c.nodeType == global::haxe.root.Xml.Element )) 
-						{
-							string _g = c._get_nodeName();
-							switch (_g)
-							{
+					object __temp_iterator466 = node.iterator();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator466, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator466, "next", 1224901875, default(global::haxe.root.Array))) );
+						if (( c.nodeType == global::haxe.root.Xml.Element )) {
+							string _g = c.get_nodeName();
+							switch (_g){
 								case "Note":
 								{
 									this.parseNote(c);
@@ -1972,22 +1787,17 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseNote(global::haxe.root.Xml node)
-		{
-			unchecked 
-			{
+		public virtual   void parseNote(global::haxe.root.Xml node){
+			unchecked {
 				global::alphatab.model.Note note = new global::alphatab.model.Note();
 				string noteId = node.@get("id");
 				{
-					object __temp_iterator437 = node.iterator();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator437, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator437, "next", 1224901875, default(global::haxe.root.Array))) );
-						if (( c.nodeType == global::haxe.root.Xml.Element )) 
-						{
-							string _g = c._get_nodeName();
-							switch (_g)
-							{
+					object __temp_iterator467 = node.iterator();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator467, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator467, "next", 1224901875, default(global::haxe.root.Array))) );
+						if (( c.nodeType == global::haxe.root.Xml.Element )) {
+							string _g = c.get_nodeName();
+							switch (_g){
 								case "Properties":
 								{
 									this.parseNoteProperties(c, note, noteId);
@@ -1997,8 +1807,7 @@ namespace alphatab.importer
 								
 								case "AntiAccent":
 								{
-									if (string.Equals(this.getValue(c).ToLower(), "normal")) 
-									{
+									if (string.Equals(this.getValue(c).ToLower(), "normal")) {
 										note.isGhost = true;
 									}
 									
@@ -2015,7 +1824,7 @@ namespace alphatab.importer
 								
 								case "Trill":
 								{
-									note.trillValue = global::Std.parseInt(this.getValue(c)).@value;
+									note.trillValue = global::haxe.root.Std.parseInt(this.getValue(c)).@value;
 									note.trillSpeed = global::alphatab.model.Duration.Sixteenth;
 									break;
 								}
@@ -2023,19 +1832,16 @@ namespace alphatab.importer
 								
 								case "Accent":
 								{
-									global::haxe.lang.Null<int> accentFlags = global::Std.parseInt(this.getValue(c));
-									if (( (( accentFlags.@value & 1 )) != 0 )) 
-									{
+									global::haxe.lang.Null<int> accentFlags = global::haxe.root.Std.parseInt(this.getValue(c));
+									if (( (( accentFlags.@value & 1 )) != 0 )) {
 										note.isStaccato = true;
 									}
 									
-									if (( (( accentFlags.@value & 4 )) != 0 )) 
-									{
+									if (( (( accentFlags.@value & 4 )) != 0 )) {
 										note.accentuated = global::alphatab.model.AccentuationType.Heavy;
 									}
 									
-									if (( (( accentFlags.@value & 8 )) != 0 )) 
-									{
+									if (( (( accentFlags.@value & 8 )) != 0 )) {
 										note.accentuated = global::alphatab.model.AccentuationType.Normal;
 									}
 									
@@ -2045,13 +1851,11 @@ namespace alphatab.importer
 								
 								case "Tie":
 								{
-									if (string.Equals(c.@get("origin").ToLower(), "true")) 
-									{
+									if (string.Equals(c.@get("origin").ToLower(), "true")) {
 										note.isTieOrigin = true;
 									}
 									
-									if (string.Equals(c.@get("destination").ToLower(), "true")) 
-									{
+									if (string.Equals(c.@get("destination").ToLower(), "true")) {
 										note.isTieDestination = true;
 									}
 									
@@ -2062,8 +1866,7 @@ namespace alphatab.importer
 								case "Vibrato":
 								{
 									string _g1 = this.getValue(c);
-									switch (_g1)
-									{
+									switch (_g1){
 										case "Slight":
 										{
 											note.vibrato = global::alphatab.model.VibratoType.Slight;
@@ -2097,10 +1900,8 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseNoteProperties(global::haxe.root.Xml node, global::alphatab.model.Note note, string noteId)
-		{
-			unchecked 
-			{
+		public virtual   void parseNoteProperties(global::haxe.root.Xml node, global::alphatab.model.Note note, string noteId){
+			unchecked {
 				bool isBended = false;
 				global::alphatab.model.BendPoint bendOrigin = default(global::alphatab.model.BendPoint);
 				global::haxe.lang.Null<int> bendMiddleValue = default(global::haxe.lang.Null<int>);
@@ -2108,30 +1909,26 @@ namespace alphatab.importer
 				global::haxe.lang.Null<int> bendMiddleOffset2 = default(global::haxe.lang.Null<int>);
 				global::alphatab.model.BendPoint bendDestination = default(global::alphatab.model.BendPoint);
 				{
-					object __temp_iterator438 = node.iterator();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator438, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator438, "next", 1224901875, default(global::haxe.root.Array))) );
-						if (( c.nodeType == global::haxe.root.Xml.Element )) 
-						{
-							string _g = c._get_nodeName();
-							switch (_g)
-							{
+					object __temp_iterator468 = node.iterator();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator468, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator468, "next", 1224901875, default(global::haxe.root.Array))) );
+						if (( c.nodeType == global::haxe.root.Xml.Element )) {
+							string _g = c.get_nodeName();
+							switch (_g){
 								case "Property":
 								{
 									string name = c.@get("name");
-									switch (name)
-									{
+									switch (name){
 										case "String":
 										{
-											note.@string = ( global::Std.parseInt(this.getValue(this.findChildElement(c, "String"))).@value + 1 );
+											note.@string = ( global::haxe.root.Std.parseInt(this.getValue(this.findChildElement(c, "String"))).@value + 1 );
 											break;
 										}
 										
 										
 										case "Fret":
 										{
-											note.fret = global::Std.parseInt(this.getValue(this.findChildElement(c, "Fret"))).@value;
+											note.fret = global::haxe.root.Std.parseInt(this.getValue(this.findChildElement(c, "Fret"))).@value;
 											break;
 										}
 										
@@ -2146,11 +1943,9 @@ namespace alphatab.importer
 										case "HarmonicType":
 										{
 											global::haxe.root.Xml htype = this.findChildElement(c, "HType");
-											if (( htype != default(global::haxe.root.Xml) )) 
-											{
+											if (( htype != default(global::haxe.root.Xml) )) {
 												string _g1 = this.getValue(htype);
-												switch (_g1)
-												{
+												switch (_g1){
 													case "NoHarmonic":
 													{
 														note.harmonicType = global::alphatab.model.HarmonicType.None;
@@ -2211,9 +2006,8 @@ namespace alphatab.importer
 										case "HarmonicFret":
 										{
 											global::haxe.root.Xml hfret = this.findChildElement(c, "HFret");
-											if (( hfret != default(global::haxe.root.Xml) )) 
-											{
-												note.harmonicValue = global::Std.parseFloat(this.getValue(hfret));
+											if (( hfret != default(global::haxe.root.Xml) )) {
+												note.harmonicValue = global::haxe.root.Std.parseFloat(this.getValue(hfret));
 											}
 											
 											break;
@@ -2222,8 +2016,7 @@ namespace alphatab.importer
 										
 										case "PalmMuted":
 										{
-											if (( this.findChildElement(c, "Enable") != default(global::haxe.root.Xml) )) 
-											{
+											if (( this.findChildElement(c, "Enable") != default(global::haxe.root.Xml) )) {
 												note.isPalmMute = true;
 											}
 											
@@ -2233,7 +2026,7 @@ namespace alphatab.importer
 										
 										case "Octave":
 										{
-											note.octave = global::Std.parseInt(this.getValue(this.findChildElement(c, "Number"))).@value;
+											note.octave = global::haxe.root.Std.parseInt(this.getValue(this.findChildElement(c, "Number"))).@value;
 											break;
 										}
 										
@@ -2247,13 +2040,12 @@ namespace alphatab.importer
 										
 										case "BendOriginValue":
 										{
-											if (( bendOrigin == default(global::alphatab.model.BendPoint) )) 
-											{
+											if (( bendOrigin == default(global::alphatab.model.BendPoint) )) {
 												bendOrigin = new global::alphatab.model.BendPoint(((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
 											}
 											
 											{
-												double x = ( global::Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.04 );
+												double x = ( global::haxe.root.Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.04 );
 												bendOrigin.@value = ((int) (x) );
 											}
 											
@@ -2263,13 +2055,12 @@ namespace alphatab.importer
 										
 										case "BendOriginOffset":
 										{
-											if (( bendOrigin == default(global::alphatab.model.BendPoint) )) 
-											{
+											if (( bendOrigin == default(global::alphatab.model.BendPoint) )) {
 												bendOrigin = new global::alphatab.model.BendPoint(((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
 											}
 											
 											{
-												double x1 = ( global::Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.6 );
+												double x1 = ( global::haxe.root.Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.6 );
 												bendOrigin.offset = ((int) (x1) );
 											}
 											
@@ -2279,37 +2070,36 @@ namespace alphatab.importer
 										
 										case "BendMiddleValue":
 										{
-											double x2 = ( global::Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.04 );
-											bendMiddleValue = new global::haxe.lang.Null<int>(new global::haxe.lang.Null<int>(((int) (x2) ), true).@value, true);
+											double x2 = ( global::haxe.root.Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.04 );
+											bendMiddleValue = new global::haxe.lang.Null<int>(((int) (x2) ), true);
 											break;
 										}
 										
 										
 										case "BendMiddleOffset1":
 										{
-											double x3 = ( global::Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.6 );
-											bendMiddleOffset1 = new global::haxe.lang.Null<int>(new global::haxe.lang.Null<int>(((int) (x3) ), true).@value, true);
+											double x3 = ( global::haxe.root.Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.6 );
+											bendMiddleOffset1 = new global::haxe.lang.Null<int>(((int) (x3) ), true);
 											break;
 										}
 										
 										
 										case "BendMiddleOffset2":
 										{
-											double x4 = ( global::Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.6 );
-											bendMiddleOffset2 = new global::haxe.lang.Null<int>(new global::haxe.lang.Null<int>(((int) (x4) ), true).@value, true);
+											double x4 = ( global::haxe.root.Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.6 );
+											bendMiddleOffset2 = new global::haxe.lang.Null<int>(((int) (x4) ), true);
 											break;
 										}
 										
 										
 										case "BendDestinationValue":
 										{
-											if (( bendDestination == default(global::alphatab.model.BendPoint) )) 
-											{
+											if (( bendDestination == default(global::alphatab.model.BendPoint) )) {
 												bendDestination = new global::alphatab.model.BendPoint(new global::haxe.lang.Null<int>(60, true), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
 											}
 											
 											{
-												double x5 = ( global::Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.04 );
+												double x5 = ( global::haxe.root.Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.04 );
 												bendDestination.@value = ((int) (x5) );
 											}
 											
@@ -2319,13 +2109,12 @@ namespace alphatab.importer
 										
 										case "BendDestinationOffset":
 										{
-											if (( bendDestination == default(global::alphatab.model.BendPoint) )) 
-											{
+											if (( bendDestination == default(global::alphatab.model.BendPoint) )) {
 												bendDestination = new global::alphatab.model.BendPoint(((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
 											}
 											
 											{
-												double x6 = ( global::Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.6 );
+												double x6 = ( global::haxe.root.Std.parseFloat(this.getValue(this.findChildElement(c, "Float"))) * 0.6 );
 												bendDestination.offset = ((int) (x6) );
 											}
 											
@@ -2335,8 +2124,7 @@ namespace alphatab.importer
 										
 										case "HopoOrigin":
 										{
-											if (( this.findChildElement(c, "Enable") != default(global::haxe.root.Xml) )) 
-											{
+											if (( this.findChildElement(c, "Enable") != default(global::haxe.root.Xml) )) {
 												note.isHammerPullOrigin = true;
 											}
 											
@@ -2355,34 +2143,28 @@ namespace alphatab.importer
 										
 										case "Slide":
 										{
-											global::haxe.lang.Null<int> slideFlags = global::Std.parseInt(this.getValue(this.findChildElement(c, "Flags")));
-											if (( (( slideFlags.@value & 1 )) != 0 )) 
-											{
+											global::haxe.lang.Null<int> slideFlags = global::haxe.root.Std.parseInt(this.getValue(this.findChildElement(c, "Flags")));
+											if (( (( slideFlags.@value & 1 )) != 0 )) {
 												note.slideType = global::alphatab.model.SlideType.Shift;
 											}
 											
-											if (( (( slideFlags.@value & 2 )) != 0 )) 
-											{
+											if (( (( slideFlags.@value & 2 )) != 0 )) {
 												note.slideType = global::alphatab.model.SlideType.Legato;
 											}
 											
-											if (( (( slideFlags.@value & 4 )) != 0 )) 
-											{
+											if (( (( slideFlags.@value & 4 )) != 0 )) {
 												note.slideType = global::alphatab.model.SlideType.OutDown;
 											}
 											
-											if (( (( slideFlags.@value & 8 )) != 0 )) 
-											{
+											if (( (( slideFlags.@value & 8 )) != 0 )) {
 												note.slideType = global::alphatab.model.SlideType.OutUp;
 											}
 											
-											if (( (( slideFlags.@value & 16 )) != 0 )) 
-											{
+											if (( (( slideFlags.@value & 16 )) != 0 )) {
 												note.slideType = global::alphatab.model.SlideType.IntoFromBelow;
 											}
 											
-											if (( (( slideFlags.@value & 32 )) != 0 )) 
-											{
+											if (( (( slideFlags.@value & 32 )) != 0 )) {
 												note.slideType = global::alphatab.model.SlideType.IntoFromAbove;
 											}
 											
@@ -2404,32 +2186,26 @@ namespace alphatab.importer
 					
 				}
 				
-				if (isBended) 
-				{
-					if (( bendOrigin == default(global::alphatab.model.BendPoint) )) 
-					{
+				if (isBended) {
+					if (( bendOrigin == default(global::alphatab.model.BendPoint) )) {
 						bendOrigin = new global::alphatab.model.BendPoint(((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
 					}
 					
-					if (( bendDestination == default(global::alphatab.model.BendPoint) )) 
-					{
+					if (( bendDestination == default(global::alphatab.model.BendPoint) )) {
 						bendDestination = new global::alphatab.model.BendPoint(new global::haxe.lang.Null<int>(60, true), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
 					}
 					
 					global::haxe.root.Array<object> bend = new global::haxe.root.Array<object>();
 					bend.push(bendOrigin);
-					if (( ( ! (global::haxe.lang.Runtime.eq((bendMiddleOffset1).toDynamic(), (default(global::haxe.lang.Null<int>)).toDynamic())) ) && ( ! (global::haxe.lang.Runtime.eq((bendMiddleValue).toDynamic(), (default(global::haxe.lang.Null<int>)).toDynamic())) ) )) 
-					{
+					if (( bendMiddleOffset1.hasValue && bendMiddleValue.hasValue )) {
 						bend.push(new global::alphatab.model.BendPoint(((global::haxe.lang.Null<int>) (bendMiddleOffset1) ), ((global::haxe.lang.Null<int>) (bendMiddleValue) )));
 					}
 					
-					if (( ( ! (global::haxe.lang.Runtime.eq((bendMiddleOffset2).toDynamic(), (default(global::haxe.lang.Null<int>)).toDynamic())) ) && ( ! (global::haxe.lang.Runtime.eq((bendMiddleValue).toDynamic(), (default(global::haxe.lang.Null<int>)).toDynamic())) ) )) 
-					{
+					if (( bendMiddleOffset2.hasValue && bendMiddleValue.hasValue )) {
 						bend.push(new global::alphatab.model.BendPoint(((global::haxe.lang.Null<int>) (bendMiddleOffset2) ), ((global::haxe.lang.Null<int>) (bendMiddleValue) )));
 					}
 					
-					if (( ( global::haxe.lang.Runtime.eq((bendMiddleOffset1).toDynamic(), (default(global::haxe.lang.Null<int>)).toDynamic()) && global::haxe.lang.Runtime.eq((bendMiddleOffset2).toDynamic(), (default(global::haxe.lang.Null<int>)).toDynamic()) ) && ( ! (global::haxe.lang.Runtime.eq((bendMiddleValue).toDynamic(), (default(global::haxe.lang.Null<int>)).toDynamic())) ) )) 
-					{
+					if (( (  ! (bendMiddleOffset1.hasValue)  &&  ! (bendMiddleOffset2.hasValue)  ) && bendMiddleValue.hasValue )) {
 						bend.push(new global::alphatab.model.BendPoint(new global::haxe.lang.Null<int>(30, true), ((global::haxe.lang.Null<int>) (bendMiddleValue) )));
 					}
 					
@@ -2441,20 +2217,15 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseRhythms(global::haxe.root.Xml node)
-		{
-			unchecked 
-			{
+		public virtual   void parseRhythms(global::haxe.root.Xml node){
+			unchecked {
 				{
-					object __temp_iterator439 = node.iterator();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator439, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator439, "next", 1224901875, default(global::haxe.root.Array))) );
-						if (( c.nodeType == global::haxe.root.Xml.Element )) 
-						{
-							string _g = c._get_nodeName();
-							switch (_g)
-							{
+					object __temp_iterator469 = node.iterator();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator469, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator469, "next", 1224901875, default(global::haxe.root.Array))) );
+						if (( c.nodeType == global::haxe.root.Xml.Element )) {
+							string _g = c.get_nodeName();
+							switch (_g){
 								case "Rhythm":
 								{
 									this.parseRhythm(c);
@@ -2474,27 +2245,21 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void parseRhythm(global::haxe.root.Xml node)
-		{
-			unchecked 
-			{
+		public virtual   void parseRhythm(global::haxe.root.Xml node){
+			unchecked {
 				global::alphatab.importer.GpxRhythm rhythm = new global::alphatab.importer.GpxRhythm();
 				string rhythmId = node.@get("id");
 				{
-					object __temp_iterator440 = node.iterator();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator440, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator440, "next", 1224901875, default(global::haxe.root.Array))) );
-						if (( c.nodeType == global::haxe.root.Xml.Element )) 
-						{
-							string _g = c._get_nodeName();
-							switch (_g)
-							{
+					object __temp_iterator470 = node.iterator();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator470, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						global::haxe.root.Xml c = ((global::haxe.root.Xml) (global::haxe.lang.Runtime.callField(__temp_iterator470, "next", 1224901875, default(global::haxe.root.Array))) );
+						if (( c.nodeType == global::haxe.root.Xml.Element )) {
+							string _g = c.get_nodeName();
+							switch (_g){
 								case "NoteValue":
 								{
 									string _g1 = this.getValue(c);
-									switch (_g1)
-									{
+									switch (_g1){
 										case "Whole":
 										{
 											rhythm.@value = global::alphatab.model.Duration.Whole;
@@ -2552,15 +2317,15 @@ namespace alphatab.importer
 								
 								case "PrimaryTuplet":
 								{
-									rhythm.tupletNumerator = global::Std.parseInt(c.@get("num")).@value;
-									rhythm.tupletDenominator = global::Std.parseInt(c.@get("den")).@value;
+									rhythm.tupletNumerator = global::haxe.root.Std.parseInt(c.@get("num")).@value;
+									rhythm.tupletDenominator = global::haxe.root.Std.parseInt(c.@get("den")).@value;
 									break;
 								}
 								
 								
 								case "AugmentationDot":
 								{
-									rhythm.dots = global::Std.parseInt(c.@get("count")).@value;
+									rhythm.dots = global::haxe.root.Std.parseInt(c.@get("count")).@value;
 									break;
 								}
 								
@@ -2578,15 +2343,12 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void buildModel()
-		{
-			unchecked 
-			{
+		public virtual   void buildModel(){
+			unchecked {
 				{
-					object __temp_iterator441 = this._beatById.keys();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator441, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						string beatId = global::haxe.lang.Runtime.toString(global::haxe.lang.Runtime.callField(__temp_iterator441, "next", 1224901875, default(global::haxe.root.Array)));
+					object __temp_iterator471 = this._beatById.keys();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator471, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						string beatId = global::haxe.lang.Runtime.toString(global::haxe.lang.Runtime.callField(__temp_iterator471, "next", 1224901875, default(global::haxe.root.Array)));
 						global::alphatab.model.Beat beat = ((global::alphatab.model.Beat) (this._beatById.@get(beatId).@value) );
 						string rhythmId = global::haxe.lang.Runtime.toString(this._rhythmOfBeat.@get(beatId).@value);
 						global::alphatab.importer.GpxRhythm rhythm = ((global::alphatab.importer.GpxRhythm) (this._rhythmById.@get(rhythmId).@value) );
@@ -2594,19 +2356,15 @@ namespace alphatab.importer
 						beat.dots = rhythm.dots;
 						beat.tupletNumerator = rhythm.tupletNumerator;
 						beat.tupletDenominator = rhythm.tupletDenominator;
-						if (this._notesOfBeat.exists(beatId)) 
-						{
+						if (this._notesOfBeat.exists(beatId)) {
 							int _g = 0;
 							global::haxe.root.Array<object> _g1 = ((global::haxe.root.Array<object>) (global::haxe.root.Array<object>.__hx_cast<object>(((global::haxe.root.Array) (this._notesOfBeat.@get(beatId).@value) ))) );
-							while (( _g < _g1.length ))
-							{
+							while (( _g < _g1.length )){
 								string noteId = global::haxe.lang.Runtime.toString(_g1[_g]);
 								 ++ _g;
-								if ( ! (string.Equals(noteId, "-1")) ) 
-								{
+								if ( ! (string.Equals(noteId, "-1")) ) {
 									beat.addNote(((global::alphatab.model.Note) (this._noteById.@get(noteId).@value) ));
-									if (this._tappedNotes.exists(noteId)) 
-									{
+									if (this._tappedNotes.exists(noteId)) {
 										beat.tap = true;
 									}
 									
@@ -2621,21 +2379,17 @@ namespace alphatab.importer
 				}
 				
 				{
-					object __temp_iterator442 = this._voiceById.keys();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator442, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						string voiceId = global::haxe.lang.Runtime.toString(global::haxe.lang.Runtime.callField(__temp_iterator442, "next", 1224901875, default(global::haxe.root.Array)));
+					object __temp_iterator472 = this._voiceById.keys();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator472, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						string voiceId = global::haxe.lang.Runtime.toString(global::haxe.lang.Runtime.callField(__temp_iterator472, "next", 1224901875, default(global::haxe.root.Array)));
 						global::alphatab.model.Voice voice = ((global::alphatab.model.Voice) (this._voiceById.@get(voiceId).@value) );
-						if (this._beatsOfVoice.exists(voiceId)) 
-						{
+						if (this._beatsOfVoice.exists(voiceId)) {
 							int _g2 = 0;
 							global::haxe.root.Array<object> _g11 = ((global::haxe.root.Array<object>) (global::haxe.root.Array<object>.__hx_cast<object>(((global::haxe.root.Array) (this._beatsOfVoice.@get(voiceId).@value) ))) );
-							while (( _g2 < _g11.length ))
-							{
+							while (( _g2 < _g11.length )){
 								string beatId1 = global::haxe.lang.Runtime.toString(_g11[_g2]);
 								 ++ _g2;
-								if ( ! (string.Equals(beatId1, "-1")) ) 
-								{
+								if ( ! (string.Equals(beatId1, "-1")) ) {
 									voice.addBeat(((global::alphatab.model.Beat) (this._beatById.@get(beatId1).@value) ).clone());
 								}
 								
@@ -2648,22 +2402,26 @@ namespace alphatab.importer
 				}
 				
 				{
-					object __temp_iterator443 = this._barsById.keys();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator443, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						string barId = global::haxe.lang.Runtime.toString(global::haxe.lang.Runtime.callField(__temp_iterator443, "next", 1224901875, default(global::haxe.root.Array)));
+					object __temp_iterator473 = this._barsById.keys();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator473, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						string barId = global::haxe.lang.Runtime.toString(global::haxe.lang.Runtime.callField(__temp_iterator473, "next", 1224901875, default(global::haxe.root.Array)));
 						global::alphatab.model.Bar bar = ((global::alphatab.model.Bar) (this._barsById.@get(barId).@value) );
-						if (this._voicesOfBar.exists(barId)) 
-						{
+						if (this._voicesOfBar.exists(barId)) {
 							int _g3 = 0;
 							global::haxe.root.Array<object> _g12 = ((global::haxe.root.Array<object>) (global::haxe.root.Array<object>.__hx_cast<object>(((global::haxe.root.Array) (this._voicesOfBar.@get(barId).@value) ))) );
-							while (( _g3 < _g12.length ))
-							{
+							while (( _g3 < _g12.length )){
 								string voiceId1 = global::haxe.lang.Runtime.toString(_g12[_g3]);
 								 ++ _g3;
-								if ( ! (string.Equals(voiceId1, "-1")) ) 
-								{
+								if ( ! (string.Equals(voiceId1, "-1")) ) {
 									bar.addVoice(((global::alphatab.model.Voice) (this._voiceById.@get(voiceId1).@value) ));
+								}
+								 else {
+									global::alphatab.model.Voice voice1 = new global::alphatab.model.Voice();
+									bar.addVoice(voice1);
+									global::alphatab.model.Beat beat1 = new global::alphatab.model.Beat();
+									beat1.isEmpty = true;
+									beat1.duration = global::alphatab.model.Duration.Quarter;
+									voice1.addBeat(beat1);
 								}
 								
 							}
@@ -2678,8 +2436,7 @@ namespace alphatab.importer
 				{
 					int _g4 = 0;
 					global::haxe.root.Array<object> _g13 = this._tracksMapping;
-					while (( _g4 < _g13.length ))
-					{
+					while (( _g4 < _g13.length )){
 						string trackId = global::haxe.lang.Runtime.toString(_g13[_g4]);
 						 ++ _g4;
 						global::alphatab.model.Track track = ((global::alphatab.model.Track) (this._tracksById.@get(trackId).@value) );
@@ -2687,13 +2444,11 @@ namespace alphatab.importer
 						{
 							int _g21 = 0;
 							global::haxe.root.Array<object> _g31 = this._barsOfMasterBar;
-							while (( _g21 < _g31.length ))
-							{
+							while (( _g21 < _g31.length )){
 								global::haxe.root.Array<object> barIds = ((global::haxe.root.Array<object>) (global::haxe.root.Array<object>.__hx_cast<object>(((global::haxe.root.Array) (_g31[_g21]) ))) );
 								 ++ _g21;
 								string barId1 = global::haxe.lang.Runtime.toString(barIds[trackIndex]);
-								if ( ! (string.Equals(barId1, "-1")) ) 
-								{
+								if ( ! (string.Equals(barId1, "-1")) ) {
 									track.addBar(((global::alphatab.model.Bar) (this._barsById.@get(barId1).@value) ));
 								}
 								
@@ -2707,24 +2462,20 @@ namespace alphatab.importer
 				}
 				
 				{
-					object __temp_iterator444 = this._automations.keys();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator444, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						string barId2 = global::haxe.lang.Runtime.toString(global::haxe.lang.Runtime.callField(__temp_iterator444, "next", 1224901875, default(global::haxe.root.Array)));
+					object __temp_iterator474 = this._automations.keys();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator474, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						string barId2 = global::haxe.lang.Runtime.toString(global::haxe.lang.Runtime.callField(__temp_iterator474, "next", 1224901875, default(global::haxe.root.Array)));
 						global::alphatab.model.Bar bar1 = ((global::alphatab.model.Bar) (this._barsById.@get(barId2).@value) );
 						{
 							int _g5 = 0;
 							global::haxe.root.Array<object> _g14 = bar1.voices;
-							while (( _g5 < _g14.length ))
-							{
+							while (( _g5 < _g14.length )){
 								global::alphatab.model.Voice v = ((global::alphatab.model.Voice) (_g14[_g5]) );
 								 ++ _g5;
-								if (( v.beats.length > 0 )) 
-								{
+								if (( v.beats.length > 0 )) {
 									int _g22 = 0;
 									global::haxe.root.Array<object> _g32 = ((global::haxe.root.Array<object>) (global::haxe.root.Array<object>.__hx_cast<object>(((global::haxe.root.Array) (this._automations.@get(barId2).@value) ))) );
-									while (( _g22 < _g32.length ))
-									{
+									while (( _g22 < _g32.length )){
 										global::alphatab.model.Automation automation = ((global::alphatab.model.Automation) (_g32[_g22]) );
 										 ++ _g22;
 										((global::alphatab.model.Beat) (v.beats[0]) ).automations.push(automation);
@@ -2743,8 +2494,7 @@ namespace alphatab.importer
 				{
 					int _g6 = 0;
 					global::haxe.root.Array<object> _g15 = this._masterBars;
-					while (( _g6 < _g15.length ))
-					{
+					while (( _g6 < _g15.length )){
 						global::alphatab.model.MasterBar masterBar = ((global::alphatab.model.MasterBar) (_g15[_g6]) );
 						 ++ _g6;
 						this.score.addMasterBar(masterBar);
@@ -2753,22 +2503,18 @@ namespace alphatab.importer
 				}
 				
 				{
-					object __temp_iterator445 = this._automations.keys();
-					while (((bool) (global::haxe.lang.Runtime.callField(__temp_iterator445, "hasNext", 407283053, default(global::haxe.root.Array))) ))
-					{
-						string barId3 = global::haxe.lang.Runtime.toString(global::haxe.lang.Runtime.callField(__temp_iterator445, "next", 1224901875, default(global::haxe.root.Array)));
+					object __temp_iterator475 = this._automations.keys();
+					while (global::haxe.lang.Runtime.toBool(global::haxe.lang.Runtime.callField(__temp_iterator475, "hasNext", 407283053, default(global::haxe.root.Array)))){
+						string barId3 = global::haxe.lang.Runtime.toString(global::haxe.lang.Runtime.callField(__temp_iterator475, "next", 1224901875, default(global::haxe.root.Array)));
 						global::haxe.root.Array<object> automations = ((global::haxe.root.Array<object>) (global::haxe.root.Array<object>.__hx_cast<object>(((global::haxe.root.Array) (this._automations.@get(barId3).@value) ))) );
 						global::alphatab.model.Bar bar2 = ((global::alphatab.model.Bar) (this._barsById.@get(barId3).@value) );
 						{
 							int _g7 = 0;
-							while (( _g7 < automations.length ))
-							{
+							while (( _g7 < automations.length )){
 								global::alphatab.model.Automation automation1 = ((global::alphatab.model.Automation) (automations[_g7]) );
 								 ++ _g7;
-								if (( automation1.type == global::alphatab.model.AutomationType.Tempo )) 
-								{
-									if (string.Equals(barId3, "0")) 
-									{
+								if (( automation1.type == global::alphatab.model.AutomationType.Tempo )) {
+									if (string.Equals(barId3, "0")) {
 										this.score.tempo = ((int) (automation1.@value) );
 										this.score.tempoLabel = automation1.text;
 									}
@@ -2788,12 +2534,9 @@ namespace alphatab.importer
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 223988822:
 					{
 						this._tappedNotes = ((global::haxe.ds.StringMap<bool>) (global::haxe.ds.StringMap<object>.__hx_cast<bool>(((global::haxe.ds.StringMap) (@value) ))) );
@@ -2917,189 +2660,186 @@ namespace alphatab.importer
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 550203803:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("buildModel"), ((int) (550203803) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("buildModel") ), ((int) (550203803) ))) );
 					}
 					
 					
 					case 1105941737:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseRhythm"), ((int) (1105941737) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseRhythm") ), ((int) (1105941737) ))) );
 					}
 					
 					
 					case 1811871594:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseRhythms"), ((int) (1811871594) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseRhythms") ), ((int) (1811871594) ))) );
 					}
 					
 					
 					case 1234579992:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseNoteProperties"), ((int) (1234579992) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseNoteProperties") ), ((int) (1234579992) ))) );
 					}
 					
 					
 					case 1353738693:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseNote"), ((int) (1353738693) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseNote") ), ((int) (1353738693) ))) );
 					}
 					
 					
 					case 1236017934:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseNotes"), ((int) (1236017934) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseNotes") ), ((int) (1236017934) ))) );
 					}
 					
 					
 					case 465864860:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseBeatProperties"), ((int) (465864860) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseBeatProperties") ), ((int) (465864860) ))) );
 					}
 					
 					
 					case 1220162377:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseBeat"), ((int) (1220162377) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseBeat") ), ((int) (1220162377) ))) );
 					}
 					
 					
 					case 1513270538:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseBeats"), ((int) (1513270538) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseBeats") ), ((int) (1513270538) ))) );
 					}
 					
 					
 					case 1691905151:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseVoice"), ((int) (1691905151) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseVoice") ), ((int) (1691905151) ))) );
 					}
 					
 					
 					case 1485210388:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseVoices"), ((int) (1485210388) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseVoices") ), ((int) (1485210388) ))) );
 					}
 					
 					
 					case 1449966432:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseBar"), ((int) (1449966432) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseBar") ), ((int) (1449966432) ))) );
 					}
 					
 					
 					case 1219967251:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseBars"), ((int) (1219967251) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseBars") ), ((int) (1219967251) ))) );
 					}
 					
 					
 					case 1134013342:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseMasterBar"), ((int) (1134013342) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseMasterBar") ), ((int) (1134013342) ))) );
 					}
 					
 					
 					case 1998021559:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseMasterBarsNode"), ((int) (1998021559) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseMasterBarsNode") ), ((int) (1998021559) ))) );
 					}
 					
 					
 					case 250834870:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseGeneralMidi"), ((int) (250834870) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseGeneralMidi") ), ((int) (250834870) ))) );
 					}
 					
 					
 					case 625209805:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseTrackProperty"), ((int) (625209805) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseTrackProperty") ), ((int) (625209805) ))) );
 					}
 					
 					
 					case 1936847723:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseTrackProperties"), ((int) (1936847723) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseTrackProperties") ), ((int) (1936847723) ))) );
 					}
 					
 					
 					case 1517203539:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseDiagramItem"), ((int) (1517203539) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseDiagramItem") ), ((int) (1517203539) ))) );
 					}
 					
 					
 					case 336701854:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseDiagramCollection"), ((int) (336701854) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseDiagramCollection") ), ((int) (336701854) ))) );
 					}
 					
 					
 					case 1073796440:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseTrack"), ((int) (1073796440) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseTrack") ), ((int) (1073796440) ))) );
 					}
 					
 					
 					case 1580906429:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseTracksNode"), ((int) (1580906429) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseTracksNode") ), ((int) (1580906429) ))) );
 					}
 					
 					
 					case 1273099754:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseAutomation"), ((int) (1273099754) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseAutomation") ), ((int) (1273099754) ))) );
 					}
 					
 					
 					case 433403721:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseAutomations"), ((int) (433403721) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseAutomations") ), ((int) (433403721) ))) );
 					}
 					
 					
 					case 1390889528:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseMasterTrackNode"), ((int) (1390889528) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseMasterTrackNode") ), ((int) (1390889528) ))) );
 					}
 					
 					
 					case 485419969:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseScoreNode"), ((int) (485419969) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseScoreNode") ), ((int) (485419969) ))) );
 					}
 					
 					
 					case 1967318617:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("findChildElement"), ((int) (1967318617) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("findChildElement") ), ((int) (1967318617) ))) );
 					}
 					
 					
 					case 294620923:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("getValue"), ((int) (294620923) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("getValue") ), ((int) (294620923) ))) );
 					}
 					
 					
 					case 1450069007:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseDom"), ((int) (1450069007) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseDom") ), ((int) (1450069007) ))) );
 					}
 					
 					
 					case 1451063140:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseXml"), ((int) (1451063140) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseXml") ), ((int) (1451063140) ))) );
 					}
 					
 					
@@ -3210,12 +2950,9 @@ namespace alphatab.importer
 		}
 		
 		
-		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs){
+			unchecked {
+				switch (hash){
 					case 550203803:
 					{
 						this.buildModel();
@@ -3436,10 +3173,8 @@ namespace alphatab.importer
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("_tappedNotes");
 				baseArr.push("_notesOfBeat");
 				baseArr.push("_noteById");

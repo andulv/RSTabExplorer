@@ -1,37 +1,28 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.importer
-{
-	public  class Gp3To5Importer : global::alphatab.importer.ScoreImporter 
-	{
-		static Gp3To5Importer() 
-		{
+namespace alphatab.importer{
+	public  class Gp3To5Importer : global::alphatab.importer.ScoreImporter {
+		static Gp3To5Importer() {
 			global::alphatab.importer.Gp3To5Importer.VersionString = "FICHIER GUITAR PRO ";
 			global::alphatab.importer.Gp3To5Importer.BendStep = ((double) (25) );
 		}
-		public    Gp3To5Importer(global::haxe.lang.EmptyObject empty) : base(global::haxe.lang.EmptyObject.EMPTY)
-		{
-			unchecked 
-			{
+		public    Gp3To5Importer(global::haxe.lang.EmptyObject empty) : base(global::haxe.lang.EmptyObject.EMPTY){
+			unchecked {
 			}
 		}
 		
 		
-		public    Gp3To5Importer() : base(global::haxe.lang.EmptyObject.EMPTY)
-		{
-			unchecked 
-			{
+		public    Gp3To5Importer() : base(global::haxe.lang.EmptyObject.EMPTY){
+			unchecked {
 				global::alphatab.importer.Gp3To5Importer.__hx_ctor_alphatab_importer_Gp3To5Importer(this);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_importer_Gp3To5Importer(global::alphatab.importer.Gp3To5Importer __temp_me57)
-		{
-			unchecked 
-			{
-				global::alphatab.importer.ScoreImporter.__hx_ctor_alphatab_importer_ScoreImporter(__temp_me57);
-				__temp_me57._globalTripletFeel = global::alphatab.model.TripletFeel.NoTripletFeel;
+		public static   void __hx_ctor_alphatab_importer_Gp3To5Importer(global::alphatab.importer.Gp3To5Importer __temp_me71){
+			unchecked {
+				global::alphatab.importer.ScoreImporter.__hx_ctor_alphatab_importer_ScoreImporter(__temp_me71);
+				__temp_me71._globalTripletFeel = global::alphatab.model.TripletFeel.NoTripletFeel;
 			}
 		}
 		
@@ -40,19 +31,15 @@ namespace alphatab.importer
 		
 		public static  double BendStep;
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.importer.Gp3To5Importer(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.importer.Gp3To5Importer();
 			}
 		}
@@ -82,57 +69,46 @@ namespace alphatab.importer
 		
 		public  global::haxe.root.Array<object> _playbackInfos;
 		
-		public override   global::alphatab.model.Score readScore()
-		{
-			unchecked 
-			{
+		public override   global::alphatab.model.Score readScore(){
+			unchecked {
 				this.readVersion();
 				this._score = new global::alphatab.model.Score();
 				this.readScoreInformation();
-				if (( this._versionNumber < 500 )) 
-				{
-					if (( this._data.readByte() != 0 )) 
-					{
+				if (( this._versionNumber < 500 )) {
+					if (( this._data.readByte() != 0 )) {
 						this._globalTripletFeel = global::alphatab.model.TripletFeel.Triplet8th;
 					}
-					 else 
-					{
+					 else {
 						this._globalTripletFeel = global::alphatab.model.TripletFeel.NoTripletFeel;
 					}
 					
 				}
 				
-				if (( this._versionNumber >= 400 )) 
-				{
+				if (( this._versionNumber >= 400 )) {
 					this.readLyrics();
 				}
 				
-				if (( this._versionNumber >= 510 )) 
-				{
+				if (( this._versionNumber >= 510 )) {
 					this._data.read(19);
 				}
 				
-				if (( this._versionNumber >= 500 )) 
-				{
+				if (( this._versionNumber >= 500 )) {
 					this.readPageSetup();
 					this._score.tempoLabel = this.readStringIntByte();
 				}
 				
 				this._score.tempo = this.readInt32();
-				if (( this._versionNumber >= 510 )) 
-				{
-					bool __temp_expr501 = ( this._data.readByte() != 0 );
+				if (( this._versionNumber >= 510 )) {
+					bool __temp_expr530 = ( this._data.readByte() != 0 );
 				}
 				
 				this._keySignature = this.readInt32();
-				if (( this._versionNumber >= 400 )) 
-				{
+				if (( this._versionNumber >= 400 )) {
 					this._octave = this._data.readByte();
 				}
 				
 				this.readPlaybackInfos();
-				if (( this._versionNumber >= 500 )) 
-				{
+				if (( this._versionNumber >= 500 )) {
 					this._data.read(38);
 					this._data.read(4);
 				}
@@ -142,44 +118,37 @@ namespace alphatab.importer
 				this.readMasterBars();
 				this.readTracks();
 				this.readBars();
-				this.finish(this._score);
+				this._score.finish();
 				return this._score;
 			}
 		}
 		
 		
-		public virtual   void readVersion()
-		{
-			unchecked 
-			{
+		public virtual   void readVersion(){
+			unchecked {
 				string version = this.readStringByteLength(30);
-				if ( ! (version.StartsWith("FICHIER GUITAR PRO ")) ) 
-				{
+				if ( ! (version.StartsWith("FICHIER GUITAR PRO ")) ) {
 					throw global::haxe.lang.HaxeException.wrap(global::alphatab.importer.ScoreImporter.UnsupportedFormat);
 				}
 				
 				version = global::haxe.lang.StringExt.substr(version, ( "FICHIER GUITAR PRO ".Length + 1 ), default(global::haxe.lang.Null<int>));
 				int dot = global::haxe.lang.StringExt.indexOf(version, ".", default(global::haxe.lang.Null<int>));
-				this._versionNumber = ( ( 100 * global::Std.parseInt(global::haxe.lang.StringExt.substr(version, 0, new global::haxe.lang.Null<int>(dot, true))).@value ) + global::Std.parseInt(global::haxe.lang.StringExt.substr(version, ( dot + 1 ), default(global::haxe.lang.Null<int>))).@value );
+				this._versionNumber = ( ( 100 * global::haxe.root.Std.parseInt(global::haxe.lang.StringExt.substr(version, 0, new global::haxe.lang.Null<int>(dot, true))).@value ) + global::haxe.root.Std.parseInt(global::haxe.lang.StringExt.substr(version, ( dot + 1 ), default(global::haxe.lang.Null<int>))).@value );
 			}
 		}
 		
 		
-		public virtual   void readScoreInformation()
-		{
-			unchecked 
-			{
+		public virtual   void readScoreInformation(){
+			unchecked {
 				this._score.title = this.readStringIntUnused();
 				this._score.subTitle = this.readStringIntUnused();
 				this._score.artist = this.readStringIntUnused();
 				this._score.album = this.readStringIntUnused();
 				this._score.words = this.readStringIntUnused();
-				if (( this._versionNumber >= 500 )) 
-				{
+				if (( this._versionNumber >= 500 )) {
 					this._score.music = this.readStringIntUnused();
 				}
-				 else 
-				{
+				 else {
 					this._score.music = this._score.words;
 				}
 				
@@ -190,17 +159,15 @@ namespace alphatab.importer
 				global::haxe.root.StringBuf notice = new global::haxe.root.StringBuf();
 				{
 					int _g = 0;
-					while (( _g < ((int) (noticeLines) ) ))
-					{
+					while (( _g < ((int) (noticeLines) ) )){
 						int i = _g++;
-						if (( i > 0 )) 
-						{
+						if (( i > 0 )) {
 							notice.b.Append(((object) ("\n") ));
 						}
 						
 						{
-							object x = this.readStringIntUnused();
-							notice.b.Append(((object) (global::Std.@string(x)) ));
+							string x = this.readStringIntUnused();
+							notice.b.Append(((object) (global::haxe.root.Std.@string(x)) ));
 						}
 						
 					}
@@ -212,17 +179,14 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void readLyrics()
-		{
-			unchecked 
-			{
+		public virtual   void readLyrics(){
+			unchecked {
 				this._lyrics = new global::haxe.root.Array<object>();
 				this._lyricsIndex = new global::haxe.root.Array<int>();
 				this._lyricsTrack = this.readInt32();
 				{
 					int _g = 0;
-					while (( _g < 5 ))
-					{
+					while (( _g < 5 )){
 						int i = _g++;
 						this._lyricsIndex.push(( this.readInt32() - 1 ));
 						this._lyrics.push(this.readString(this.readInt32()));
@@ -234,15 +198,12 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void readPageSetup()
-		{
-			unchecked 
-			{
+		public virtual   void readPageSetup(){
+			unchecked {
 				this._data.read(30);
 				{
 					int _g = 0;
-					while (( _g < 10 ))
-					{
+					while (( _g < 10 )){
 						int i = _g++;
 						this.readStringIntByte();
 					}
@@ -253,15 +214,12 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void readPlaybackInfos()
-		{
-			unchecked 
-			{
+		public virtual   void readPlaybackInfos(){
+			unchecked {
 				this._playbackInfos = new global::haxe.root.Array<object>();
 				{
 					int _g = 0;
-					while (( _g < 64 ))
-					{
+					while (( _g < 64 )){
 						int i = _g++;
 						global::alphatab.model.PlaybackInformation info = new global::alphatab.model.PlaybackInformation();
 						info.primaryChannel = i;
@@ -279,14 +237,11 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void readMasterBars()
-		{
-			unchecked 
-			{
+		public virtual   void readMasterBars(){
+			unchecked {
 				int _g1 = 0;
 				int _g = this._barCount;
-				while (( _g1 < _g ))
-				{
+				while (( _g1 < _g )){
 					int i = _g1++;
 					this.readMasterBar();
 				}
@@ -295,60 +250,47 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void readMasterBar()
-		{
-			unchecked 
-			{
+		public virtual   void readMasterBar(){
+			unchecked {
 				global::alphatab.model.MasterBar previousMasterBar = default(global::alphatab.model.MasterBar);
-				if (( this._score.masterBars.length > 0 )) 
-				{
+				if (( this._score.masterBars.length > 0 )) {
 					previousMasterBar = ((global::alphatab.model.MasterBar) (this._score.masterBars[( this._score.masterBars.length - 1 )]) );
 				}
 				
 				global::alphatab.model.MasterBar newMasterBar = new global::alphatab.model.MasterBar();
 				int flags = this._data.readByte();
-				if (( (( flags & 1 )) != 0 )) 
-				{
+				if (( (( flags & 1 )) != 0 )) {
 					newMasterBar.timeSignatureNumerator = this._data.readByte();
 				}
-				 else 
-				{
-					if (( previousMasterBar != default(global::alphatab.model.MasterBar) )) 
-					{
+				 else {
+					if (( previousMasterBar != default(global::alphatab.model.MasterBar) )) {
 						newMasterBar.timeSignatureNumerator = previousMasterBar.timeSignatureNumerator;
 					}
 					
 				}
 				
-				if (( (( flags & 2 )) != 0 )) 
-				{
+				if (( (( flags & 2 )) != 0 )) {
 					newMasterBar.timeSignatureDenominator = this._data.readByte();
 				}
-				 else 
-				{
-					if (( previousMasterBar != default(global::alphatab.model.MasterBar) )) 
-					{
+				 else {
+					if (( previousMasterBar != default(global::alphatab.model.MasterBar) )) {
 						newMasterBar.timeSignatureDenominator = previousMasterBar.timeSignatureDenominator;
 					}
 					
 				}
 				
 				newMasterBar.isRepeatStart = ( (( flags & 4 )) != 0 );
-				if (( (( flags & 8 )) != 0 )) 
-				{
-					if (( this._versionNumber >= 500 )) 
-					{
+				if (( (( flags & 8 )) != 0 )) {
+					if (( this._versionNumber >= 500 )) {
 						newMasterBar.repeatCount = this._data.readByte();
 					}
-					 else 
-					{
+					 else {
 						newMasterBar.repeatCount = 1;
 					}
 					
 				}
 				
-				if (( (( flags & 32 )) != 0 )) 
-				{
+				if (( (( flags & 32 )) != 0 )) {
 					global::alphatab.model.Section section = new global::alphatab.model.Section();
 					section.text = this.readStringIntByte();
 					section.marker = "";
@@ -356,21 +298,16 @@ namespace alphatab.importer
 					newMasterBar.section = section;
 				}
 				
-				if (( (( flags & 16 )) != 0 )) 
-				{
-					if (( this._versionNumber < 500 )) 
-					{
+				if (( (( flags & 16 )) != 0 )) {
+					if (( this._versionNumber < 500 )) {
 						global::alphatab.model.MasterBar currentMasterBar = previousMasterBar;
 						int existentAlternatives = 0;
-						while (( currentMasterBar != default(global::alphatab.model.MasterBar) ))
-						{
-							if (( ( currentMasterBar.repeatCount > 0 ) && ( currentMasterBar != previousMasterBar ) )) 
-							{
+						while (( currentMasterBar != default(global::alphatab.model.MasterBar) )){
+							if (( ( currentMasterBar.repeatCount > 0 ) && ( currentMasterBar != previousMasterBar ) )) {
 								break;
 							}
 							
-							if (currentMasterBar.isRepeatStart) 
-							{
+							if (currentMasterBar.isRepeatStart) {
 								break;
 							}
 							
@@ -381,12 +318,10 @@ namespace alphatab.importer
 						int repeatMask = this._data.readByte();
 						{
 							int _g = 0;
-							while (( _g < 8 ))
-							{
+							while (( _g < 8 )){
 								int i = _g++;
 								int repeating = ( 1 << i );
-								if (( ( repeatMask > i ) && ( (( existentAlternatives & repeating )) == 0 ) )) 
-								{
+								if (( ( repeatMask > i ) && ( (( existentAlternatives & repeating )) == 0 ) )) {
 									repeatAlternative |= repeating;
 								}
 								
@@ -396,42 +331,34 @@ namespace alphatab.importer
 						
 						newMasterBar.alternateEndings = repeatAlternative;
 					}
-					 else 
-					{
+					 else {
 						newMasterBar.alternateEndings = this._data.readByte();
 					}
 					
 				}
 				
-				if (( (( flags & 64 )) != 0 )) 
-				{
+				if (( (( flags & 64 )) != 0 )) {
 					newMasterBar.keySignature = this._data.readInt8();
 					this._data.readByte();
 				}
-				 else 
-				{
-					if (( previousMasterBar != default(global::alphatab.model.MasterBar) )) 
-					{
+				 else {
+					if (( previousMasterBar != default(global::alphatab.model.MasterBar) )) {
 						newMasterBar.keySignature = previousMasterBar.keySignature;
 					}
 					
 				}
 				
-				if (( ( this._versionNumber >= 500 ) && ( (( flags & 3 )) != 0 ) )) 
-				{
+				if (( ( this._versionNumber >= 500 ) && ( (( flags & 3 )) != 0 ) )) {
 					this._data.read(4);
 				}
 				
-				if (( ( this._versionNumber >= 500 ) && ( (( flags & 16 )) == 0 ) )) 
-				{
+				if (( ( this._versionNumber >= 500 ) && ( (( flags & 16 )) == 0 ) )) {
 					newMasterBar.alternateEndings = this._data.readByte();
 				}
 				
-				if (( this._versionNumber >= 500 )) 
-				{
+				if (( this._versionNumber >= 500 )) {
 					int tripletFeel = this._data.readByte();
-					switch (tripletFeel)
-					{
+					switch (tripletFeel){
 						case 1:
 						{
 							newMasterBar.tripletFeel = global::alphatab.model.TripletFeel.Triplet8th;
@@ -450,8 +377,7 @@ namespace alphatab.importer
 					
 					this._data.readByte();
 				}
-				 else 
-				{
+				 else {
 					newMasterBar.tripletFeel = this._globalTripletFeel;
 				}
 				
@@ -461,14 +387,11 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void readTracks()
-		{
-			unchecked 
-			{
+		public virtual   void readTracks(){
+			unchecked {
 				int _g1 = 0;
 				int _g = this._trackCount;
-				while (( _g1 < _g ))
-				{
+				while (( _g1 < _g )){
 					int i = _g1++;
 					this.readTrack();
 				}
@@ -477,10 +400,8 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void readTrack()
-		{
-			unchecked 
-			{
+		public virtual   void readTrack(){
+			unchecked {
 				global::alphatab.model.Track newTrack = new global::alphatab.model.Track();
 				this._score.addTrack(newTrack);
 				int flags = this._data.readByte();
@@ -489,12 +410,10 @@ namespace alphatab.importer
 				int stringCount = this.readInt32();
 				{
 					int _g = 0;
-					while (( _g < 7 ))
-					{
+					while (( _g < 7 )){
 						int i = _g++;
 						int tuning = this.readInt32();
-						if (( stringCount > i )) 
-						{
+						if (( stringCount > i )) {
 							newTrack.tuning.push(tuning);
 						}
 						
@@ -506,8 +425,7 @@ namespace alphatab.importer
 				int index = ( this.readInt32() - 1 );
 				int effectChannel = ( this.readInt32() - 1 );
 				this._data.read(4);
-				if (( ( index >= 0 ) && ( index < this._playbackInfos.length ) )) 
-				{
+				if (( ( index >= 0 ) && ( index < this._playbackInfos.length ) )) {
 					global::alphatab.model.PlaybackInformation info = ((global::alphatab.model.PlaybackInformation) (this._playbackInfos[index]) );
 					info.port = port;
 					info.isSolo = ( (( flags & 16 )) != 0 );
@@ -518,15 +436,13 @@ namespace alphatab.importer
 				
 				newTrack.capo = this.readInt32();
 				newTrack.color = this.readColor();
-				if (( this._versionNumber >= 500 )) 
-				{
+				if (( this._versionNumber >= 500 )) {
 					this._data.readByte();
 					this._data.readByte();
 					this._data.read(43);
 				}
 				
-				if (( this._versionNumber >= 510 )) 
-				{
+				if (( this._versionNumber >= 510 )) {
 					this._data.read(4);
 					this.readStringIntByte();
 					this.readStringIntByte();
@@ -536,20 +452,16 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void readBars()
-		{
-			unchecked 
-			{
+		public virtual   void readBars(){
+			unchecked {
 				int _g1 = 0;
 				int _g = this._barCount;
-				while (( _g1 < _g ))
-				{
+				while (( _g1 < _g )){
 					int b = _g1++;
 					{
 						int _g3 = 0;
 						int _g2 = this._trackCount;
-						while (( _g3 < _g2 ))
-						{
+						while (( _g3 < _g2 )){
 							int t = _g3++;
 							this.readBar(((global::alphatab.model.Track) (this._score.tracks[t]) ));
 						}
@@ -562,28 +474,23 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void readBar(global::alphatab.model.Track track)
-		{
-			unchecked 
-			{
+		public virtual   void readBar(global::alphatab.model.Track track){
+			unchecked {
 				global::alphatab.model.Bar newBar = new global::alphatab.model.Bar();
-				if (track.isPercussion) 
-				{
+				if (track.isPercussion) {
 					newBar.clef = global::alphatab.model.Clef.Neutral;
 				}
 				
 				track.addBar(newBar);
 				int voiceCount = 1;
-				if (( this._versionNumber >= 500 )) 
-				{
+				if (( this._versionNumber >= 500 )) {
 					this._data.readByte();
 					voiceCount = 2;
 				}
 				
 				{
 					int _g = 0;
-					while (( _g < ((int) (voiceCount) ) ))
-					{
+					while (( _g < ((int) (voiceCount) ) )){
 						int v = _g++;
 						this.readVoice(track, newBar);
 					}
@@ -594,13 +501,10 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void readVoice(global::alphatab.model.Track track, global::alphatab.model.Bar bar)
-		{
-			unchecked 
-			{
+		public virtual   void readVoice(global::alphatab.model.Track track, global::alphatab.model.Bar bar){
+			unchecked {
 				int beatCount = this.readInt32();
-				if (( beatCount == 0 )) 
-				{
+				if (( beatCount == 0 )) {
 					return ;
 				}
 				
@@ -608,8 +512,7 @@ namespace alphatab.importer
 				bar.addVoice(newVoice);
 				{
 					int _g = 0;
-					while (( _g < ((int) (beatCount) ) ))
-					{
+					while (( _g < ((int) (beatCount) ) )){
 						int i = _g++;
 						this.readBeat(track, bar, newVoice);
 					}
@@ -620,27 +523,22 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void readBeat(global::alphatab.model.Track track, global::alphatab.model.Bar bar, global::alphatab.model.Voice voice)
-		{
-			unchecked 
-			{
+		public virtual   void readBeat(global::alphatab.model.Track track, global::alphatab.model.Bar bar, global::alphatab.model.Voice voice){
+			unchecked {
 				global::alphatab.model.Beat newBeat = new global::alphatab.model.Beat();
 				int flags = this._data.readByte();
-				if (( (( flags & 1 )) != 0 )) 
-				{
+				if (( (( flags & 1 )) != 0 )) {
 					newBeat.dots = 1;
 				}
 				
-				if (( (( flags & 64 )) != 0 )) 
-				{
+				if (( (( flags & 64 )) != 0 )) {
 					int type = this._data.readByte();
 					newBeat.isEmpty = ( (( type & 2 )) == 0 );
 				}
 				
 				voice.addBeat(newBeat);
 				int duration = this._data.readInt8();
-				switch (duration)
-				{
+				switch (duration){
 					case -2:
 					{
 						newBeat.duration = global::alphatab.model.Duration.Whole;
@@ -698,13 +596,11 @@ namespace alphatab.importer
 					
 				}
 				
-				if (( (( flags & 32 )) != 0 )) 
-				{
+				if (( (( flags & 32 )) != 0 )) {
 					newBeat.tupletNumerator = this.readInt32();
 					{
 						int _g = newBeat.tupletNumerator;
-						switch (_g)
-						{
+						switch (_g){
 							case 1:
 							{
 								newBeat.tupletDenominator = 1;
@@ -755,44 +651,36 @@ namespace alphatab.importer
 					
 				}
 				
-				if (( (( flags & 2 )) != 0 )) 
-				{
+				if (( (( flags & 2 )) != 0 )) {
 					this.readChord(newBeat);
 				}
 				
-				if (( (( flags & 4 )) != 0 )) 
-				{
+				if (( (( flags & 4 )) != 0 )) {
 					newBeat.text = this.readStringIntUnused();
 				}
 				
-				if (( (( flags & 8 )) != 0 )) 
-				{
+				if (( (( flags & 8 )) != 0 )) {
 					this.readBeatEffects(newBeat);
 				}
 				
-				if (( (( flags & 16 )) != 0 )) 
-				{
+				if (( (( flags & 16 )) != 0 )) {
 					this.readMixTableChange(newBeat);
 				}
 				
 				int stringFlags = this._data.readByte();
 				int i = 6;
-				while (( i >= 0 ))
-				{
-					if (( ( (( stringFlags & ( 1 << i ) )) != 0 ) && ( ( 6 - i ) < track.tuning.length ) )) 
-					{
+				while (( i >= 0 )){
+					if (( ( (( stringFlags & ( 1 << i ) )) != 0 ) && ( ( 6 - i ) < track.tuning.length ) )) {
 						this.readNote(track, bar, voice, newBeat, ( 6 - i ));
 					}
 					
 					i--;
 				}
 				
-				if (( this._versionNumber >= 500 )) 
-				{
+				if (( this._versionNumber >= 500 )) {
 					this._data.readByte();
 					int flag = this._data.readByte();
-					if (( (( flag & 8 )) != 0 )) 
-					{
+					if (( (( flag & 8 )) != 0 )) {
 						this._data.readByte();
 					}
 					
@@ -802,26 +690,21 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void readChord(global::alphatab.model.Beat beat)
-		{
-			unchecked 
-			{
+		public virtual   void readChord(global::alphatab.model.Beat beat){
+			unchecked {
 				global::alphatab.model.Chord chord = new global::alphatab.model.Chord();
 				string chordId = global::alphatab.util.Guid.generate();
-				if (( this._versionNumber >= 500 )) 
-				{
+				if (( this._versionNumber >= 500 )) {
 					this._data.read(17);
 					chord.name = this.readStringByteLength(21);
 					this._data.read(4);
 					chord.firstFret = this.readInt32();
 					{
 						int _g = 0;
-						while (( _g < 7 ))
-						{
+						while (( _g < 7 )){
 							int i = _g++;
 							int fret = this.readInt32();
-							if (( i < chord.strings.length )) 
-							{
+							if (( i < chord.strings.length )) {
 								chord.strings.push(fret);
 							}
 							
@@ -831,24 +714,19 @@ namespace alphatab.importer
 					
 					this._data.read(32);
 				}
-				 else 
-				{
-					if (( this._data.readByte() != 0 )) 
-					{
-						if (( this._versionNumber >= 400 )) 
-						{
+				 else {
+					if (( this._data.readByte() != 0 )) {
+						if (( this._versionNumber >= 400 )) {
 							this._data.read(16);
 							chord.name = this.readStringByteLength(21);
 							this._data.read(4);
 							chord.firstFret = this.readInt32();
 							{
 								int _g1 = 0;
-								while (( _g1 < 7 ))
-								{
+								while (( _g1 < 7 )){
 									int i1 = _g1++;
 									int fret1 = this.readInt32();
-									if (( i1 < chord.strings.length )) 
-									{
+									if (( i1 < chord.strings.length )) {
 										chord.strings.push(fret1);
 									}
 									
@@ -858,15 +736,13 @@ namespace alphatab.importer
 							
 							this._data.read(32);
 						}
-						 else 
-						{
+						 else {
 							this._data.read(25);
 							chord.name = this.readStringByteLength(34);
 							chord.firstFret = this.readInt32();
 							{
 								int _g2 = 0;
-								while (( _g2 < 6 ))
-								{
+								while (( _g2 < 6 )){
 									int i2 = _g2++;
 									int fret2 = this.readInt32();
 									chord.strings.push(fret2);
@@ -878,29 +754,23 @@ namespace alphatab.importer
 						}
 						
 					}
-					 else 
-					{
+					 else {
 						int strings = default(int);
-						if (( this._versionNumber >= 406 )) 
-						{
+						if (( this._versionNumber >= 406 )) {
 							strings = 7;
 						}
-						 else 
-						{
+						 else {
 							strings = 6;
 						}
 						
 						chord.name = this.readStringIntByte();
 						chord.firstFret = this.readInt32();
-						if (( chord.firstFret > 0 )) 
-						{
+						if (( chord.firstFret > 0 )) {
 							int _g3 = 0;
-							while (( _g3 < strings ))
-							{
+							while (( _g3 < strings )){
 								int i3 = _g3++;
 								int fret3 = this.readInt32();
-								if (( i3 < chord.strings.length )) 
-								{
+								if (( i3 < chord.strings.length )) {
 									chord.strings.push(fret3);
 								}
 								
@@ -912,8 +782,7 @@ namespace alphatab.importer
 					
 				}
 				
-				if (( chord.name.Length > 0 )) 
-				{
+				if (( chord.name.Length > 0 )) {
 					beat.voice.bar.track.chords.@set(chordId, chord);
 					beat.chordId = chordId;
 				}
@@ -922,29 +791,23 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void readBeatEffects(global::alphatab.model.Beat beat)
-		{
-			unchecked 
-			{
+		public virtual   void readBeatEffects(global::alphatab.model.Beat beat){
+			unchecked {
 				int flags = this._data.readByte();
 				int flags2 = 0;
-				if (( this._versionNumber >= 400 )) 
-				{
+				if (( this._versionNumber >= 400 )) {
 					flags2 = this._data.readByte();
 				}
 				
 				beat.fadeIn = ( (( flags & 16 )) != 0 );
-				if (( (( flags & 2 )) != 0 )) 
-				{
+				if (( (( flags & 2 )) != 0 )) {
 					beat.vibrato = global::alphatab.model.VibratoType.Slight;
 				}
 				
 				beat.hasRasgueado = ( (( flags2 & 1 )) != 0 );
-				if (( ( (( flags & 32 )) != 0 ) && ( this._versionNumber >= 400 ) )) 
-				{
+				if (( ( (( flags & 32 )) != 0 ) && ( this._versionNumber >= 400 ) )) {
 					int slapPop = this._data.readInt8();
-					switch (slapPop)
-					{
+					switch (slapPop){
 						case 1:
 						{
 							beat.tap = true;
@@ -969,13 +832,10 @@ namespace alphatab.importer
 					}
 					
 				}
-				 else 
-				{
-					if (( (( flags & 32 )) != 0 )) 
-					{
+				 else {
+					if (( (( flags & 32 )) != 0 )) {
 						int slapPop1 = this._data.readInt8();
-						switch (slapPop1)
-						{
+						switch (slapPop1){
 							case 1:
 							{
 								beat.tap = true;
@@ -1004,35 +864,28 @@ namespace alphatab.importer
 					
 				}
 				
-				if (( (( flags2 & 4 )) != 0 )) 
-				{
+				if (( (( flags2 & 4 )) != 0 )) {
 					this.readTremoloBarEffect(beat);
 				}
 				
-				if (( (( flags & 64 )) != 0 )) 
-				{
+				if (( (( flags & 64 )) != 0 )) {
 					int strokeUp = default(int);
 					int strokeDown = default(int);
-					if (( this._versionNumber < 500 )) 
-					{
+					if (( this._versionNumber < 500 )) {
 						strokeDown = this._data.readByte();
 						strokeUp = this._data.readByte();
 					}
-					 else 
-					{
+					 else {
 						strokeUp = this._data.readByte();
 						strokeDown = this._data.readByte();
 					}
 					
-					if (( strokeUp > 0 )) 
-					{
+					if (( strokeUp > 0 )) {
 						beat.brushType = global::alphatab.model.BrushType.BrushUp;
 						beat.brushDuration = this.toStrokeValue(strokeUp);
 					}
-					 else 
-					{
-						if (( strokeDown > 0 )) 
-						{
+					 else {
+						if (( strokeDown > 0 )) {
 							beat.brushType = global::alphatab.model.BrushType.BrushDown;
 							beat.brushDuration = this.toStrokeValue(strokeDown);
 						}
@@ -1041,11 +894,9 @@ namespace alphatab.importer
 					
 				}
 				
-				if (( (( flags2 & 2 )) != 0 )) 
-				{
+				if (( (( flags2 & 2 )) != 0 )) {
 					int _g = this._data.readInt8();
-					switch (_g)
-					{
+					switch (_g){
 						case 0:
 						{
 							beat.pickStroke = global::alphatab.model.PickStrokeType.None;
@@ -1075,18 +926,14 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void readTremoloBarEffect(global::alphatab.model.Beat beat)
-		{
-			unchecked 
-			{
+		public virtual   void readTremoloBarEffect(global::alphatab.model.Beat beat){
+			unchecked {
 				this._data.readByte();
 				this.readInt32();
 				int pointCount = this.readInt32();
-				if (( pointCount > 0 )) 
-				{
+				if (( pointCount > 0 )) {
 					int _g = 0;
-					while (( _g < ((int) (pointCount) ) ))
-					{
+					while (( _g < ((int) (pointCount) ) )){
 						int i = _g++;
 						global::alphatab.model.BendPoint point = new global::alphatab.model.BendPoint(((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
 						point.offset = this.readInt32();
@@ -1095,7 +942,7 @@ namespace alphatab.importer
 							point.@value = ((int) (x) );
 						}
 						
-						bool __temp_expr502 = ( this._data.readByte() != 0 );
+						bool __temp_expr531 = ( this._data.readByte() != 0 );
 						beat.whammyBarPoints.push(point);
 					}
 					
@@ -1105,12 +952,9 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   int toStrokeValue(int @value)
-		{
-			unchecked 
-			{
-				switch (@value)
-				{
+		public virtual   int toStrokeValue(int @value){
+			unchecked {
+				switch (@value){
 					case 1:
 					{
 						return 30;
@@ -1158,14 +1002,11 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void readMixTableChange(global::alphatab.model.Beat beat)
-		{
-			unchecked 
-			{
+		public virtual   void readMixTableChange(global::alphatab.model.Beat beat){
+			unchecked {
 				global::alphatab.importer.MixTableChange tableChange = new global::alphatab.importer.MixTableChange();
 				tableChange.instrument = this._data.readInt8();
-				if (( this._versionNumber >= 500 )) 
-				{
+				if (( this._versionNumber >= 500 )) {
 					this._data.read(16);
 				}
 				
@@ -1175,70 +1016,57 @@ namespace alphatab.importer
 				int reverb = this._data.readInt8();
 				int phaser = this._data.readInt8();
 				int tremolo = this._data.readInt8();
-				if (( this._versionNumber >= 500 )) 
-				{
+				if (( this._versionNumber >= 500 )) {
 					tableChange.tempoName = this.readStringIntByte();
 				}
 				
 				tableChange.tempo = this.readInt32();
-				if (( tableChange.volume >= 0 )) 
-				{
+				if (( tableChange.volume >= 0 )) {
 					this._data.readByte();
 				}
 				
-				if (( tableChange.balance >= 0 )) 
-				{
+				if (( tableChange.balance >= 0 )) {
 					this._data.readByte();
 				}
 				
-				if (( chorus >= 0 )) 
-				{
+				if (( chorus >= 0 )) {
 					this._data.readByte();
 				}
 				
-				if (( reverb >= 0 )) 
-				{
+				if (( reverb >= 0 )) {
 					this._data.readByte();
 				}
 				
-				if (( phaser >= 0 )) 
-				{
+				if (( phaser >= 0 )) {
 					this._data.readByte();
 				}
 				
-				if (( tremolo >= 0 )) 
-				{
+				if (( tremolo >= 0 )) {
 					this._data.readByte();
 				}
 				
-				if (( tableChange.tempo >= 0 )) 
-				{
+				if (( tableChange.tempo >= 0 )) {
 					tableChange.duration = this._data.readInt8();
-					if (( this._versionNumber >= 510 )) 
-					{
+					if (( this._versionNumber >= 510 )) {
 						this._data.readByte();
 					}
 					
 				}
 				
-				if (( this._versionNumber >= 400 )) 
-				{
+				if (( this._versionNumber >= 400 )) {
 					this._data.readByte();
 				}
 				
-				if (( this._versionNumber >= 500 )) 
-				{
+				if (( this._versionNumber >= 500 )) {
 					this._data.readByte();
 				}
 				
-				if (( this._versionNumber >= 510 )) 
-				{
+				if (( this._versionNumber >= 510 )) {
 					this.readStringIntByte();
 					this.readStringIntByte();
 				}
 				
-				if (( tableChange.volume >= 0 )) 
-				{
+				if (( tableChange.volume >= 0 )) {
 					global::alphatab.model.Automation volumeAutomation = new global::alphatab.model.Automation();
 					volumeAutomation.isLinear = true;
 					volumeAutomation.type = global::alphatab.model.AutomationType.Volume;
@@ -1246,8 +1074,7 @@ namespace alphatab.importer
 					beat.automations.push(volumeAutomation);
 				}
 				
-				if (( tableChange.balance >= 0 )) 
-				{
+				if (( tableChange.balance >= 0 )) {
 					global::alphatab.model.Automation balanceAutomation = new global::alphatab.model.Automation();
 					balanceAutomation.isLinear = true;
 					balanceAutomation.type = global::alphatab.model.AutomationType.Balance;
@@ -1255,8 +1082,7 @@ namespace alphatab.importer
 					beat.automations.push(balanceAutomation);
 				}
 				
-				if (( tableChange.instrument >= 0 )) 
-				{
+				if (( tableChange.instrument >= 0 )) {
 					global::alphatab.model.Automation instrumentAutomation = new global::alphatab.model.Automation();
 					instrumentAutomation.isLinear = true;
 					instrumentAutomation.type = global::alphatab.model.AutomationType.Instrument;
@@ -1264,58 +1090,48 @@ namespace alphatab.importer
 					beat.automations.push(instrumentAutomation);
 				}
 				
-				if (( tableChange.tempo >= 0 )) 
-				{
+				if (( tableChange.tempo >= 0 )) {
 					global::alphatab.model.Automation tempoAutomation = new global::alphatab.model.Automation();
 					tempoAutomation.isLinear = true;
 					tempoAutomation.type = global::alphatab.model.AutomationType.Tempo;
 					tempoAutomation.@value = ((double) (tableChange.tempo) );
 					beat.automations.push(tempoAutomation);
-					global::alphatab.model.MasterBar __temp_stmt503 = default(global::alphatab.model.MasterBar);
+					global::alphatab.model.MasterBar __temp_stmt532 = default(global::alphatab.model.MasterBar);
 					{
 						global::alphatab.model.Bar _this = beat.voice.bar;
-						__temp_stmt503 = ((global::alphatab.model.MasterBar) (_this.track.score.masterBars[_this.index]) );
+						__temp_stmt532 = ((global::alphatab.model.MasterBar) (_this.track.score.masterBars[_this.index]) );
 					}
 					
-					__temp_stmt503.tempoAutomation = tempoAutomation;
+					__temp_stmt532.tempoAutomation = tempoAutomation;
 				}
 				
 			}
 		}
 		
 		
-		public virtual   void readNote(global::alphatab.model.Track track, global::alphatab.model.Bar bar, global::alphatab.model.Voice voice, global::alphatab.model.Beat beat, int stringIndex)
-		{
-			unchecked 
-			{
+		public virtual   void readNote(global::alphatab.model.Track track, global::alphatab.model.Bar bar, global::alphatab.model.Voice voice, global::alphatab.model.Beat beat, int stringIndex){
+			unchecked {
 				global::alphatab.model.Note newNote = new global::alphatab.model.Note();
 				newNote.@string = ( track.tuning.length - stringIndex );
 				int flags = this._data.readByte();
-				if (( (( flags & 2 )) != 0 )) 
-				{
+				if (( (( flags & 2 )) != 0 )) {
 					newNote.accentuated = global::alphatab.model.AccentuationType.Heavy;
 				}
-				 else 
-				{
-					if (( (( flags & 64 )) != 0 )) 
-					{
+				 else {
+					if (( (( flags & 64 )) != 0 )) {
 						newNote.accentuated = global::alphatab.model.AccentuationType.Normal;
 					}
 					
 				}
 				
 				newNote.isGhost = ( (( flags & 4 )) != 0 );
-				if (( (( flags & 32 )) != 0 )) 
-				{
+				if (( (( flags & 32 )) != 0 )) {
 					int noteType = this._data.readByte();
-					if (( noteType == 3 )) 
-					{
+					if (( noteType == 3 )) {
 						newNote.isDead = true;
 					}
-					 else 
-					{
-						if (( noteType == 2 )) 
-						{
+					 else {
+						if (( noteType == 2 )) {
 							newNote.isTieDestination = true;
 						}
 						
@@ -1323,29 +1139,24 @@ namespace alphatab.importer
 					
 				}
 				
-				if (( (( flags & 16 )) != 0 )) 
-				{
+				if (( (( flags & 16 )) != 0 )) {
 					int dynamicNumber = this._data.readInt8();
 					newNote.dynamicValue = this.toDynamicValue(dynamicNumber);
 					beat.dynamicValue = newNote.dynamicValue;
 				}
 				
-				if (( (( flags & 32 )) != 0 )) 
-				{
+				if (( (( flags & 32 )) != 0 )) {
 					newNote.fret = this._data.readInt8();
 				}
 				
-				if (( (( flags & 128 )) != 0 )) 
-				{
+				if (( (( flags & 128 )) != 0 )) {
 					newNote.leftHandFinger = this._data.readInt8();
 					newNote.rightHandFinger = this._data.readInt8();
 					newNote.isFingering = true;
 				}
 				
-				if (( this._versionNumber >= 500 )) 
-				{
-					if (( (( flags & 1 )) != 0 )) 
-					{
+				if (( this._versionNumber >= 500 )) {
+					if (( (( flags & 1 )) != 0 )) {
 						newNote.durationPercent = this.readDouble();
 					}
 					
@@ -1354,8 +1165,7 @@ namespace alphatab.importer
 				}
 				
 				beat.addNote(newNote);
-				if (( (( flags & 8 )) != 0 )) 
-				{
+				if (( (( flags & 8 )) != 0 )) {
 					this.readNoteEffects(track, voice, beat, newNote);
 				}
 				
@@ -1363,12 +1173,9 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   global::alphatab.model.DynamicValue toDynamicValue(int @value)
-		{
-			unchecked 
-			{
-				switch (@value)
-				{
+		public virtual   global::alphatab.model.DynamicValue toDynamicValue(int @value){
+			unchecked {
+				switch (@value){
 					case 1:
 					{
 						return global::alphatab.model.DynamicValue.PPP;
@@ -1428,42 +1235,32 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void readNoteEffects(global::alphatab.model.Track track, global::alphatab.model.Voice voice, global::alphatab.model.Beat beat, global::alphatab.model.Note note)
-		{
-			unchecked 
-			{
+		public virtual   void readNoteEffects(global::alphatab.model.Track track, global::alphatab.model.Voice voice, global::alphatab.model.Beat beat, global::alphatab.model.Note note){
+			unchecked {
 				int flags = this._data.readByte();
 				int flags2 = 0;
-				if (( this._versionNumber >= 400 )) 
-				{
+				if (( this._versionNumber >= 400 )) {
 					flags2 = this._data.readByte();
 				}
 				
-				if (( (( flags & 1 )) != 0 )) 
-				{
+				if (( (( flags & 1 )) != 0 )) {
 					this.readBend(note);
 				}
 				
-				if (( (( flags & 16 )) != 0 )) 
-				{
+				if (( (( flags & 16 )) != 0 )) {
 					this.readGrace(voice, note);
 				}
 				
-				if (( (( flags2 & 4 )) != 0 )) 
-				{
+				if (( (( flags2 & 4 )) != 0 )) {
 					this.readTremoloPicking(beat);
 				}
 				
-				if (( (( flags2 & 8 )) != 0 )) 
-				{
+				if (( (( flags2 & 8 )) != 0 )) {
 					this.readSlide(note);
 				}
-				 else 
-				{
-					if (( this._versionNumber < 400 )) 
-					{
-						if (( (( flags & 4 )) != 0 )) 
-						{
+				 else {
+					if (( this._versionNumber < 400 )) {
+						if (( (( flags & 4 )) != 0 )) {
 							note.slideType = global::alphatab.model.SlideType.Shift;
 						}
 						
@@ -1471,22 +1268,17 @@ namespace alphatab.importer
 					
 				}
 				
-				if (( (( flags2 & 16 )) != 0 )) 
-				{
+				if (( (( flags2 & 16 )) != 0 )) {
 					this.readArtificialHarmonic(note);
 				}
-				 else 
-				{
-					if (( this._versionNumber < 400 )) 
-					{
-						if (( (( flags & 4 )) != 0 )) 
-						{
+				 else {
+					if (( this._versionNumber < 400 )) {
+						if (( (( flags & 4 )) != 0 )) {
 							note.harmonicType = global::alphatab.model.HarmonicType.Natural;
 							note.harmonicValue = this.deltaFretToHarmonicValue(note.fret);
 						}
 						
-						if (( (( flags & 8 )) != 0 )) 
-						{
+						if (( (( flags & 8 )) != 0 )) {
 							note.harmonicType = global::alphatab.model.HarmonicType.Artificial;
 						}
 						
@@ -1494,15 +1286,13 @@ namespace alphatab.importer
 					
 				}
 				
-				if (( (( flags2 & 32 )) != 0 )) 
-				{
+				if (( (( flags2 & 32 )) != 0 )) {
 					this.readTrill(note);
 				}
 				
 				note.isLetRing = ( (( flags & 8 )) != 0 );
 				note.isHammerPullOrigin = ( (( flags & 2 )) != 0 );
-				if (( (( flags2 & 64 )) != 0 )) 
-				{
+				if (( (( flags2 & 64 )) != 0 )) {
 					note.vibrato = global::alphatab.model.VibratoType.Slight;
 				}
 				
@@ -1512,18 +1302,14 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void readBend(global::alphatab.model.Note note)
-		{
-			unchecked 
-			{
+		public virtual   void readBend(global::alphatab.model.Note note){
+			unchecked {
 				this._data.readByte();
 				this.readInt32();
 				int pointCount = this.readInt32();
-				if (( pointCount > 0 )) 
-				{
+				if (( pointCount > 0 )) {
 					int _g = 0;
-					while (( _g < ((int) (pointCount) ) ))
-					{
+					while (( _g < ((int) (pointCount) ) )){
 						int i = _g++;
 						global::alphatab.model.BendPoint point = new global::alphatab.model.BendPoint(((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
 						point.offset = this.readInt32();
@@ -1532,7 +1318,7 @@ namespace alphatab.importer
 							point.@value = ((int) (x) );
 						}
 						
-						bool __temp_expr504 = ( this._data.readByte() != 0 );
+						bool __temp_expr533 = ( this._data.readByte() != 0 );
 						note.bendPoints.push(point);
 					}
 					
@@ -1542,10 +1328,8 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void readGrace(global::alphatab.model.Voice voice, global::alphatab.model.Note note)
-		{
-			unchecked 
-			{
+		public virtual   void readGrace(global::alphatab.model.Voice voice, global::alphatab.model.Note note){
+			unchecked {
 				global::alphatab.model.Beat graceBeat = new global::alphatab.model.Beat();
 				global::alphatab.model.Note graceNote = new global::alphatab.model.Note();
 				graceNote.@string = note.@string;
@@ -1553,8 +1337,7 @@ namespace alphatab.importer
 				graceBeat.duration = global::alphatab.model.Duration.ThirtySecond;
 				graceBeat.dynamicValue = this.toDynamicValue(this._data.readInt8());
 				int transition = this._data.readInt8();
-				switch (transition)
-				{
+				switch (transition){
 					case 0:
 					{
 						{
@@ -1594,20 +1377,16 @@ namespace alphatab.importer
 				
 				graceNote.dynamicValue = graceBeat.dynamicValue;
 				this._data.read(1);
-				if (( this._versionNumber < 500 )) 
-				{
+				if (( this._versionNumber < 500 )) {
 					graceBeat.graceType = global::alphatab.model.GraceType.BeforeBeat;
 				}
-				 else 
-				{
+				 else {
 					int flags = this._data.readByte();
 					graceNote.isDead = ( (( flags & 1 )) != 0 );
-					if (( (( flags & 2 )) != 0 )) 
-					{
+					if (( (( flags & 2 )) != 0 )) {
 						graceBeat.graceType = global::alphatab.model.GraceType.OnBeat;
 					}
-					 else 
-					{
+					 else {
 						graceBeat.graceType = global::alphatab.model.GraceType.BeforeBeat;
 					}
 					
@@ -1619,30 +1398,27 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void readTremoloPicking(global::alphatab.model.Beat beat)
-		{
-			unchecked 
-			{
+		public virtual   void readTremoloPicking(global::alphatab.model.Beat beat){
+			unchecked {
 				int speed = this._data.readByte();
-				switch (speed)
-				{
+				switch (speed){
 					case 1:
 					{
-						beat.tremoloSpeed = new global::haxe.lang.Null<global::alphatab.model.Duration>(new global::haxe.lang.Null<global::alphatab.model.Duration>(global::alphatab.model.Duration.Eighth, true).@value, true);
+						beat.tremoloSpeed = new global::haxe.lang.Null<global::alphatab.model.Duration>(global::alphatab.model.Duration.Eighth, true);
 						break;
 					}
 					
 					
 					case 2:
 					{
-						beat.tremoloSpeed = new global::haxe.lang.Null<global::alphatab.model.Duration>(new global::haxe.lang.Null<global::alphatab.model.Duration>(global::alphatab.model.Duration.Sixteenth, true).@value, true);
+						beat.tremoloSpeed = new global::haxe.lang.Null<global::alphatab.model.Duration>(global::alphatab.model.Duration.Sixteenth, true);
 						break;
 					}
 					
 					
 					case 3:
 					{
-						beat.tremoloSpeed = new global::haxe.lang.Null<global::alphatab.model.Duration>(new global::haxe.lang.Null<global::alphatab.model.Duration>(global::alphatab.model.Duration.ThirtySecond, true).@value, true);
+						beat.tremoloSpeed = new global::haxe.lang.Null<global::alphatab.model.Duration>(global::alphatab.model.Duration.ThirtySecond, true);
 						break;
 					}
 					
@@ -1653,15 +1429,11 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void readSlide(global::alphatab.model.Note note)
-		{
-			unchecked 
-			{
-				if (( this._versionNumber >= 500 )) 
-				{
+		public virtual   void readSlide(global::alphatab.model.Note note){
+			unchecked {
+				if (( this._versionNumber >= 500 )) {
 					int type = this._data.readByte();
-					switch (type)
-					{
+					switch (type){
 						case 1:
 						{
 							note.slideType = global::alphatab.model.SlideType.Shift;
@@ -1713,11 +1485,9 @@ namespace alphatab.importer
 					}
 					
 				}
-				 else 
-				{
+				 else {
 					int type1 = this._data.readInt8();
-					switch (type1)
-					{
+					switch (type1){
 						case 1:
 						{
 							note.slideType = global::alphatab.model.SlideType.Shift;
@@ -1774,15 +1544,11 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void readArtificialHarmonic(global::alphatab.model.Note note)
-		{
-			unchecked 
-			{
+		public virtual   void readArtificialHarmonic(global::alphatab.model.Note note){
+			unchecked {
 				int type = this._data.readByte();
-				if (( this._versionNumber >= 500 )) 
-				{
-					switch (type)
-					{
+				if (( this._versionNumber >= 500 )) {
+					switch (type){
 						case 1:
 						{
 							note.harmonicType = global::alphatab.model.HarmonicType.Natural;
@@ -1828,12 +1594,9 @@ namespace alphatab.importer
 					}
 					
 				}
-				 else 
-				{
-					if (( this._versionNumber >= 400 )) 
-					{
-						switch (type)
-						{
+				 else {
+					if (( this._versionNumber >= 400 )) {
+						switch (type){
 							case 1:
 							{
 								note.harmonicType = global::alphatab.model.HarmonicType.Natural;
@@ -1907,12 +1670,9 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   double deltaFretToHarmonicValue(int deltaFret)
-		{
-			unchecked 
-			{
-				switch (deltaFret)
-				{
+		public virtual   double deltaFretToHarmonicValue(int deltaFret){
+			unchecked {
+				switch (deltaFret){
 					case 2:
 					{
 						return 2.4;
@@ -1966,15 +1726,12 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   void readTrill(global::alphatab.model.Note note)
-		{
-			unchecked 
-			{
+		public virtual   void readTrill(global::alphatab.model.Note note){
+			unchecked {
 				note.trillValue = ( this._data.readByte() + note.beat.voice.bar.track.tuning[( ( note.beat.voice.bar.track.tuning.length - (( note.@string - 1 )) ) - 1 )] );
 				{
 					int _g = this._data.readByte();
-					switch (_g)
-					{
+					switch (_g){
 						case 1:
 						{
 							note.trillSpeed = global::alphatab.model.Duration.Sixteenth;
@@ -2004,27 +1761,22 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   double readDouble()
-		{
-			unchecked 
-			{
+		public virtual   double readDouble(){
+			unchecked {
 				global::haxe.io.Bytes bytes = global::haxe.io.Bytes.alloc(8);
 				this._data.readBytes(bytes, 0, 8);
 				global::haxe.root.Array<int> indices = default(global::haxe.root.Array<int>);
-				if ( ! (this._data.bigEndian) ) 
-				{
+				if ( ! (this._data.bigEndian) ) {
 					indices = new global::haxe.root.Array<int>(new int[]{7, 6, 5, 4, 3, 2, 1, 0});
 				}
-				 else 
-				{
+				 else {
 					indices = new global::haxe.root.Array<int>(new int[]{0, 1, 2, 3, 4, 5, 6, 7});
 				}
 				
 				int sign = ( 1 - (( ( ((int) (bytes.b[indices[0]]) ) >> 7 ) << 1 )) );
 				int exp = ( (( ( ( ((int) (bytes.b[indices[0]]) ) << 4 ) & 2047 ) | ( ((int) (bytes.b[indices[1]]) ) >> 4 ) )) - 1023 );
 				int sig = this.getDoubleSig(bytes, indices);
-				if (( ( sig == 0 ) && ( exp == -1023 ) )) 
-				{
+				if (( ( sig == 0 ) && ( exp == -1023 ) )) {
 					return 0.0;
 				}
 				
@@ -2033,19 +1785,15 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   int getDoubleSig(global::haxe.io.Bytes bytes, global::haxe.root.Array<int> indices)
-		{
-			unchecked 
-			{
+		public virtual   int getDoubleSig(global::haxe.io.Bytes bytes, global::haxe.root.Array<int> indices){
+			unchecked {
 				return ( ( ( ( ( ( ( (( ((int) (bytes.b[indices[1]]) ) & 15 )) << 48 ) | ( ((int) (bytes.b[indices[2]]) ) << 40 ) ) | ( ((int) (bytes.b[indices[3]]) ) << 32 ) ) | ( ((int) (bytes.b[indices[4]]) ) << 24 ) ) | ( ((int) (bytes.b[indices[5]]) ) << 16 ) ) | ( ((int) (bytes.b[indices[6]]) ) << 8 ) ) | ((int) (bytes.b[indices[7]]) ) );
 			}
 		}
 		
 		
-		public virtual   global::alphatab.platform.model.Color readColor()
-		{
-			unchecked 
-			{
+		public virtual   global::alphatab.platform.model.Color readColor(){
+			unchecked {
 				int r = this._data.readByte();
 				int g = this._data.readByte();
 				int b = this._data.readByte();
@@ -2055,28 +1803,22 @@ namespace alphatab.importer
 		}
 		
 		
-		public   bool readBool()
-		{
-			unchecked 
-			{
+		public   bool readBool(){
+			unchecked {
 				return ( this._data.readByte() != 0 );
 			}
 		}
 		
 		
-		public   int readUInt8()
-		{
-			unchecked 
-			{
+		public   int readUInt8(){
+			unchecked {
 				return this._data.readByte();
 			}
 		}
 		
 		
-		public virtual   int readInt32()
-		{
-			unchecked 
-			{
+		public virtual   int readInt32(){
+			unchecked {
 				int ch1 = this._data.readByte();
 				int ch2 = this._data.readByte();
 				int ch3 = this._data.readByte();
@@ -2086,29 +1828,23 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   string readStringIntUnused()
-		{
-			unchecked 
-			{
+		public virtual   string readStringIntUnused(){
+			unchecked {
 				this._data.read(4);
 				return this.readString(this._data.readByte());
 			}
 		}
 		
 		
-		public   string readStringInt()
-		{
-			unchecked 
-			{
+		public   string readStringInt(){
+			unchecked {
 				return this.readString(this.readInt32());
 			}
 		}
 		
 		
-		public virtual   string readStringIntByte()
-		{
-			unchecked 
-			{
+		public virtual   string readStringIntByte(){
+			unchecked {
 				int length = ( this.readInt32() - 1 );
 				this._data.readByte();
 				return this.readString(length);
@@ -2116,10 +1852,8 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   string readString(int length)
-		{
-			unchecked 
-			{
+		public virtual   string readString(int length){
+			unchecked {
 				global::haxe.io.Bytes b = global::haxe.io.Bytes.alloc(length);
 				this._data.readFullBytes(b, 0, length);
 				return global::System.Text.Encoding.Default.GetString(((byte[]) (b.b) ), ((int) (0) ), ((int) (length) ));
@@ -2127,14 +1861,11 @@ namespace alphatab.importer
 		}
 		
 		
-		public virtual   string readStringByteLength(int length)
-		{
-			unchecked 
-			{
+		public virtual   string readStringByteLength(int length){
+			unchecked {
 				int stringLength = this._data.readByte();
 				string @string = this.readString(stringLength);
-				if (( stringLength < length )) 
-				{
+				if (( stringLength < length )) {
 					this._data.read(( length - stringLength ));
 				}
 				
@@ -2143,21 +1874,16 @@ namespace alphatab.importer
 		}
 		
 		
-		public   void skip(int count)
-		{
-			unchecked 
-			{
+		public   void skip(int count){
+			unchecked {
 				this._data.read(count);
 			}
 		}
 		
 		
-		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1249074019:
 					{
 						this._trackCount = ((int) (@value) );
@@ -2218,12 +1944,9 @@ namespace alphatab.importer
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1368126571:
 					{
 						this._playbackInfos = ((global::haxe.root.Array<object>) (global::haxe.root.Array<object>.__hx_cast<object>(((global::haxe.root.Array) (@value) ))) );
@@ -2319,255 +2042,252 @@ namespace alphatab.importer
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1280644735:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("skip"), ((int) (1280644735) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("skip") ), ((int) (1280644735) ))) );
 					}
 					
 					
 					case 559254965:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readStringByteLength"), ((int) (559254965) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readStringByteLength") ), ((int) (559254965) ))) );
 					}
 					
 					
 					case 179047623:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readString"), ((int) (179047623) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readString") ), ((int) (179047623) ))) );
 					}
 					
 					
 					case 62672272:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readStringIntByte"), ((int) (62672272) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readStringIntByte") ), ((int) (62672272) ))) );
 					}
 					
 					
 					case 1529130600:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readStringInt"), ((int) (1529130600) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readStringInt") ), ((int) (1529130600) ))) );
 					}
 					
 					
 					case 1772779934:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readStringIntUnused"), ((int) (1772779934) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readStringIntUnused") ), ((int) (1772779934) ))) );
 					}
 					
 					
 					case 252174360:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readInt32"), ((int) (252174360) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readInt32") ), ((int) (252174360) ))) );
 					}
 					
 					
 					case 1599970376:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readUInt8"), ((int) (1599970376) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readUInt8") ), ((int) (1599970376) ))) );
 					}
 					
 					
 					case 1762877088:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readBool"), ((int) (1762877088) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readBool") ), ((int) (1762877088) ))) );
 					}
 					
 					
 					case 457424429:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readColor"), ((int) (457424429) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readColor") ), ((int) (457424429) ))) );
 					}
 					
 					
 					case 1695828234:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("getDoubleSig"), ((int) (1695828234) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("getDoubleSig") ), ((int) (1695828234) ))) );
 					}
 					
 					
 					case 742854407:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readDouble"), ((int) (742854407) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readDouble") ), ((int) (742854407) ))) );
 					}
 					
 					
 					case 1728902453:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readTrill"), ((int) (1728902453) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readTrill") ), ((int) (1728902453) ))) );
 					}
 					
 					
 					case 29588086:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("deltaFretToHarmonicValue"), ((int) (29588086) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("deltaFretToHarmonicValue") ), ((int) (29588086) ))) );
 					}
 					
 					
 					case 1776938941:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readArtificialHarmonic"), ((int) (1776938941) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readArtificialHarmonic") ), ((int) (1776938941) ))) );
 					}
 					
 					
 					case 1336873467:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readSlide"), ((int) (1336873467) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readSlide") ), ((int) (1336873467) ))) );
 					}
 					
 					
 					case 854748907:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readTremoloPicking"), ((int) (854748907) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readTremoloPicking") ), ((int) (854748907) ))) );
 					}
 					
 					
 					case 1792102594:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readGrace"), ((int) (1792102594) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readGrace") ), ((int) (1792102594) ))) );
 					}
 					
 					
 					case 1762379567:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readBend"), ((int) (1762379567) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readBend") ), ((int) (1762379567) ))) );
 					}
 					
 					
 					case 152811322:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readNoteEffects"), ((int) (152811322) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readNoteEffects") ), ((int) (152811322) ))) );
 					}
 					
 					
 					case 628441485:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("toDynamicValue"), ((int) (628441485) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("toDynamicValue") ), ((int) (628441485) ))) );
 					}
 					
 					
 					case 1895953000:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readNote"), ((int) (1895953000) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readNote") ), ((int) (1895953000) ))) );
 					}
 					
 					
 					case 1559296472:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readMixTableChange"), ((int) (1559296472) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readMixTableChange") ), ((int) (1559296472) ))) );
 					}
 					
 					
 					case 1272889054:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("toStrokeValue"), ((int) (1272889054) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("toStrokeValue") ), ((int) (1272889054) ))) );
 					}
 					
 					
 					case 1401458574:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readTremoloBarEffect"), ((int) (1401458574) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readTremoloBarEffect") ), ((int) (1401458574) ))) );
 					}
 					
 					
 					case 768599606:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readBeatEffects"), ((int) (768599606) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readBeatEffects") ), ((int) (768599606) ))) );
 					}
 					
 					
 					case 379947302:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readChord"), ((int) (379947302) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readChord") ), ((int) (379947302) ))) );
 					}
 					
 					
 					case 1762376684:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readBeat"), ((int) (1762376684) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readBeat") ), ((int) (1762376684) ))) );
 					}
 					
 					
 					case 199127676:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readVoice"), ((int) (199127676) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readVoice") ), ((int) (199127676) ))) );
 					}
 					
 					
 					case 46422045:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readBar"), ((int) (46422045) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readBar") ), ((int) (46422045) ))) );
 					}
 					
 					
 					case 1762181558:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readBars"), ((int) (1762181558) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readBars") ), ((int) (1762181558) ))) );
 					}
 					
 					
 					case 1728502613:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readTrack"), ((int) (1728502613) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readTrack") ), ((int) (1728502613) ))) );
 					}
 					
 					
 					case 1056509822:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readTracks"), ((int) (1056509822) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readTracks") ), ((int) (1056509822) ))) );
 					}
 					
 					
 					case 316994587:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readMasterBar"), ((int) (316994587) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readMasterBar") ), ((int) (316994587) ))) );
 					}
 					
 					
 					case 1970316280:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readMasterBars"), ((int) (1970316280) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readMasterBars") ), ((int) (1970316280) ))) );
 					}
 					
 					
 					case 1086991092:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readPlaybackInfos"), ((int) (1086991092) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readPlaybackInfos") ), ((int) (1086991092) ))) );
 					}
 					
 					
 					case 867499896:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readPageSetup"), ((int) (867499896) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readPageSetup") ), ((int) (867499896) ))) );
 					}
 					
 					
 					case 523068202:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readLyrics"), ((int) (523068202) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readLyrics") ), ((int) (523068202) ))) );
 					}
 					
 					
 					case 1244852144:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readScoreInformation"), ((int) (1244852144) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readScoreInformation") ), ((int) (1244852144) ))) );
 					}
 					
 					
 					case 1339914850:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readVersion"), ((int) (1339914850) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readVersion") ), ((int) (1339914850) ))) );
 					}
 					
 					
 					case 1237368860:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readScore"), ((int) (1237368860) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readScore") ), ((int) (1237368860) ))) );
 					}
 					
 					
@@ -2654,12 +2374,9 @@ namespace alphatab.importer
 		}
 		
 		
-		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1249074019:
 					{
 						return ((double) (this._trackCount) );
@@ -2713,12 +2430,9 @@ namespace alphatab.importer
 		}
 		
 		
-		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs){
+			unchecked {
+				switch (hash){
 					case 1237368860:
 					{
 						return global::haxe.lang.Runtime.slowCallField(this, field, dynargs);
@@ -3003,10 +2717,8 @@ namespace alphatab.importer
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("_playbackInfos");
 				baseArr.push("_trackCount");
 				baseArr.push("_barCount");

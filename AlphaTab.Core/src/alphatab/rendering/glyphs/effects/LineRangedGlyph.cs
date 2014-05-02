@@ -1,41 +1,32 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.rendering.glyphs.effects
-{
-	public  class LineRangedGlyph : global::alphatab.rendering.Glyph, global::alphatab.rendering.glyphs.IMultiBeatEffectGlyph 
-	{
-		static LineRangedGlyph() 
-		{
+namespace alphatab.rendering.glyphs.effects{
+	public  class LineRangedGlyph : global::alphatab.rendering.Glyph, global::alphatab.rendering.glyphs.IMultiBeatEffectGlyph {
+		static LineRangedGlyph() {
 			global::alphatab.rendering.glyphs.effects.LineRangedGlyph.LineSpacing = 3;
 			global::alphatab.rendering.glyphs.effects.LineRangedGlyph.LineTopPadding = 8;
 			global::alphatab.rendering.glyphs.effects.LineRangedGlyph.LineTopOffset = 6;
 			global::alphatab.rendering.glyphs.effects.LineRangedGlyph.LineSize = 8;
 		}
-		public    LineRangedGlyph(global::haxe.lang.EmptyObject empty) : base(global::haxe.lang.EmptyObject.EMPTY)
-		{
-			unchecked 
-			{
+		public    LineRangedGlyph(global::haxe.lang.EmptyObject empty) : base(global::haxe.lang.EmptyObject.EMPTY){
+			unchecked {
 			}
 		}
 		
 		
-		public    LineRangedGlyph(global::haxe.lang.Null<int> x, global::haxe.lang.Null<int> y, string label) : base(global::haxe.lang.EmptyObject.EMPTY)
-		{
-			unchecked 
-			{
+		public    LineRangedGlyph(global::haxe.lang.Null<int> x, global::haxe.lang.Null<int> y, string label) : base(global::haxe.lang.EmptyObject.EMPTY){
+			unchecked {
 				global::alphatab.rendering.glyphs.effects.LineRangedGlyph.__hx_ctor_alphatab_rendering_glyphs_effects_LineRangedGlyph(this, x, y, label);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_rendering_glyphs_effects_LineRangedGlyph(global::alphatab.rendering.glyphs.effects.LineRangedGlyph __temp_me245, global::haxe.lang.Null<int> x, global::haxe.lang.Null<int> y, string label)
-		{
-			unchecked 
-			{
-				int __temp_y244 = ( (global::haxe.lang.Runtime.eq((y).toDynamic(), (default(global::haxe.lang.Null<int>)).toDynamic())) ? (((int) (0) )) : (y.@value) );
-				int __temp_x243 = ( (global::haxe.lang.Runtime.eq((x).toDynamic(), (default(global::haxe.lang.Null<int>)).toDynamic())) ? (((int) (0) )) : (x.@value) );
-				global::alphatab.rendering.Glyph.__hx_ctor_alphatab_rendering_Glyph(__temp_me245, new global::haxe.lang.Null<int>(__temp_x243, true), new global::haxe.lang.Null<int>(__temp_y244, true));
-				__temp_me245._label = label;
+		public static   void __hx_ctor_alphatab_rendering_glyphs_effects_LineRangedGlyph(global::alphatab.rendering.glyphs.effects.LineRangedGlyph __temp_me260, global::haxe.lang.Null<int> x, global::haxe.lang.Null<int> y, string label){
+			unchecked {
+				global::alphatab.rendering.Glyph.__hx_ctor_alphatab_rendering_Glyph(__temp_me260, ( ( ! (x.hasValue) ) ? (new global::haxe.lang.Null<int>(0, true)) : (x) ), ( ( ! (y.hasValue) ) ? (new global::haxe.lang.Null<int>(0, true)) : (y) ));
+				int __temp_y259 = ( ( ! (y.hasValue) ) ? (((int) (0) )) : (y.@value) );
+				int __temp_x258 = ( ( ! (x.hasValue) ) ? (((int) (0) )) : (x.@value) );
+				__temp_me260._label = label;
 			}
 		}
 		
@@ -48,19 +39,15 @@ namespace alphatab.rendering.glyphs.effects
 		
 		public static  int LineSize;
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.rendering.glyphs.effects.LineRangedGlyph(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.rendering.glyphs.effects.LineRangedGlyph(global::haxe.lang.Null<object>.ofDynamic<int>(arr[0]), global::haxe.lang.Null<object>.ofDynamic<int>(arr[1]), global::haxe.lang.Runtime.toString(arr[2]));
 			}
 		}
@@ -70,19 +57,15 @@ namespace alphatab.rendering.glyphs.effects
 		
 		public  string _label;
 		
-		public virtual   void expandedTo(global::alphatab.model.Beat beat)
-		{
-			unchecked 
-			{
+		public virtual   void expandedTo(global::alphatab.model.Beat beat){
+			unchecked {
 				this._isExpanded = true;
 			}
 		}
 		
 		
-		public override   void paint(int cx, int cy, global::alphatab.platform.ICanvas canvas)
-		{
-			unchecked 
-			{
+		public override   void paint(int cx, int cy, global::alphatab.platform.ICanvas canvas){
+			unchecked {
 				double step = ( 11 * this.renderer.stave.staveGroup.layout.renderer.settings.scale );
 				int loops = default(int);
 				{
@@ -100,27 +83,24 @@ namespace alphatab.rendering.glyphs.effects
 				canvas.setTextAlign(global::alphatab.platform.model.TextAlign.Left);
 				double textWidth = canvas.measureText(this._label);
 				canvas.fillText(this._label, ((double) (( cx + this.x )) ), ((double) (( cy + this.y )) ));
-				if (this._isExpanded) 
-				{
+				if (this._isExpanded) {
 					int lineSpacing = ((int) (( 3 * this.renderer.stave.staveGroup.layout.renderer.settings.scale )) );
 					double startX = ( ( ( cx + this.x ) + textWidth ) + lineSpacing );
 					int endX = ( ( ( ( cx + this.x ) + this.width ) - lineSpacing ) - lineSpacing );
 					int lineY = ( ( cy + this.y ) + ((int) (( 8 * this.renderer.stave.staveGroup.layout.renderer.settings.scale )) ) );
 					int lineSize = ((int) (( 8 * this.renderer.stave.staveGroup.layout.renderer.settings.scale )) );
-					if (( endX > startX )) 
-					{
+					if (( endX > startX )) {
 						double lineX = startX;
-						while (( lineX < endX ))
-						{
+						while (( lineX < endX )){
 							canvas.beginPath();
 							canvas.moveTo(lineX, ((double) (lineY) ));
-							int __temp_stmt606 = default(int);
+							int __temp_stmt636 = default(int);
 							{
 								double x1 = global::System.Math.Min(((double) (( lineX + lineSize )) ), ((double) (endX) ));
-								__temp_stmt606 = ((int) (x1) );
+								__temp_stmt636 = ((int) (x1) );
 							}
 							
-							canvas.lineTo(((double) (__temp_stmt606) ), ((double) (lineY) ));
+							canvas.lineTo(((double) (__temp_stmt636) ), ((double) (lineY) ));
 							lineX += ((double) (( lineSize + lineSpacing )) );
 							canvas.stroke();
 						}
@@ -137,12 +117,9 @@ namespace alphatab.rendering.glyphs.effects
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1805014325:
 					{
 						this._label = global::haxe.lang.Runtime.toString(@value);
@@ -152,7 +129,7 @@ namespace alphatab.rendering.glyphs.effects
 					
 					case 1191702626:
 					{
-						this._isExpanded = ((bool) (@value) );
+						this._isExpanded = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
@@ -168,21 +145,18 @@ namespace alphatab.rendering.glyphs.effects
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1028568990:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("paint"), ((int) (1028568990) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("paint") ), ((int) (1028568990) ))) );
 					}
 					
 					
 					case 1486936852:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("expandedTo"), ((int) (1486936852) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("expandedTo") ), ((int) (1486936852) ))) );
 					}
 					
 					
@@ -209,12 +183,9 @@ namespace alphatab.rendering.glyphs.effects
 		}
 		
 		
-		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs){
+			unchecked {
+				switch (hash){
 					case 1028568990:
 					{
 						return global::haxe.lang.Runtime.slowCallField(this, field, dynargs);
@@ -240,10 +211,8 @@ namespace alphatab.rendering.glyphs.effects
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("_label");
 				baseArr.push("_isExpanded");
 				{

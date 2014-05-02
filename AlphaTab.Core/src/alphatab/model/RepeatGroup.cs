@@ -1,13 +1,9 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.model
-{
-	public  class RepeatGroup : global::haxe.lang.HxObject 
-	{
-		public    RepeatGroup(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+namespace alphatab.model{
+	public  class RepeatGroup : global::haxe.lang.HxObject {
+		public    RepeatGroup(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -15,40 +11,32 @@ namespace alphatab.model
 		}
 		
 		
-		public    RepeatGroup()
-		{
-			unchecked 
-			{
+		public    RepeatGroup(){
+			unchecked {
 				global::alphatab.model.RepeatGroup.__hx_ctor_alphatab_model_RepeatGroup(this);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_model_RepeatGroup(global::alphatab.model.RepeatGroup __temp_me83)
-		{
-			unchecked 
-			{
-				__temp_me83.masterBars = new global::haxe.root.Array<object>();
-				__temp_me83.closings = new global::haxe.root.Array<object>();
-				__temp_me83.openings = new global::haxe.root.Array<object>();
-				__temp_me83.isClosed = false;
+		public static   void __hx_ctor_alphatab_model_RepeatGroup(global::alphatab.model.RepeatGroup __temp_me97){
+			unchecked {
+				__temp_me97.masterBars = new global::haxe.root.Array<object>();
+				__temp_me97.closings = new global::haxe.root.Array<object>();
+				__temp_me97.openings = new global::haxe.root.Array<object>();
+				__temp_me97.isClosed = false;
 			}
 		}
 		
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.model.RepeatGroup(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.model.RepeatGroup();
 			}
 		}
@@ -62,26 +50,20 @@ namespace alphatab.model
 		
 		public  bool isClosed;
 		
-		public virtual   void addMasterBar(global::alphatab.model.MasterBar masterBar)
-		{
-			unchecked 
-			{
-				if (( this.openings.length == 0 )) 
-				{
+		public virtual   void addMasterBar(global::alphatab.model.MasterBar masterBar){
+			unchecked {
+				if (( this.openings.length == 0 )) {
 					this.openings.push(masterBar);
 				}
 				
 				this.masterBars.push(masterBar);
 				masterBar.repeatGroup = this;
-				if (( masterBar.repeatCount > 0 )) 
-				{
+				if (( masterBar.repeatCount > 0 )) {
 					this.closings.push(masterBar);
 					this.isClosed = true;
 				}
-				 else 
-				{
-					if (this.isClosed) 
-					{
+				 else {
+					if (this.isClosed) {
 						this.isClosed = false;
 						this.openings.push(masterBar);
 					}
@@ -92,15 +74,12 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1723548982:
 					{
-						this.isClosed = ((bool) (@value) );
+						this.isClosed = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
@@ -137,15 +116,12 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 2127207408:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("addMasterBar"), ((int) (2127207408) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("addMasterBar") ), ((int) (2127207408) ))) );
 					}
 					
 					
@@ -184,12 +160,9 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs){
+			unchecked {
+				switch (hash){
 					case 2127207408:
 					{
 						this.addMasterBar(((global::alphatab.model.MasterBar) (dynargs[0]) ));
@@ -209,10 +182,8 @@ namespace alphatab.model
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("isClosed");
 				baseArr.push("closings");
 				baseArr.push("openings");

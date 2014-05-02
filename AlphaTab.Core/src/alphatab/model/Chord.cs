@@ -1,13 +1,9 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.model
-{
-	public  class Chord : global::haxe.lang.HxObject 
-	{
-		public    Chord(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+namespace alphatab.model{
+	public  class Chord : global::haxe.lang.HxObject {
+		public    Chord(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -15,37 +11,29 @@ namespace alphatab.model
 		}
 		
 		
-		public    Chord()
-		{
-			unchecked 
-			{
+		public    Chord(){
+			unchecked {
 				global::alphatab.model.Chord.__hx_ctor_alphatab_model_Chord(this);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_model_Chord(global::alphatab.model.Chord __temp_me78)
-		{
-			unchecked 
-			{
-				__temp_me78.strings = new global::haxe.root.Array<int>();
+		public static   void __hx_ctor_alphatab_model_Chord(global::alphatab.model.Chord __temp_me92){
+			unchecked {
+				__temp_me92.strings = new global::haxe.root.Array<int>();
 			}
 		}
 		
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.model.Chord(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.model.Chord();
 			}
 		}
@@ -57,12 +45,9 @@ namespace alphatab.model
 		
 		public  global::haxe.root.Array<int> strings;
 		
-		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 2056329483:
 					{
 						this.firstFret = ((int) (@value) );
@@ -81,12 +66,9 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 2029227650:
 					{
 						this.strings = ((global::haxe.root.Array<int>) (global::haxe.root.Array<object>.__hx_cast<int>(((global::haxe.root.Array) (@value) ))) );
@@ -119,12 +101,9 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 2029227650:
 					{
 						return this.strings;
@@ -154,12 +133,9 @@ namespace alphatab.model
 		}
 		
 		
-		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 2056329483:
 					{
 						return ((double) (this.firstFret) );
@@ -177,10 +153,8 @@ namespace alphatab.model
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("strings");
 				baseArr.push("firstFret");
 				baseArr.push("name");

@@ -1,19 +1,14 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.platform.model
-{
-	public  class Font : global::haxe.lang.HxObject 
-	{
-		static Font() 
-		{
+namespace alphatab.platform.model{
+	public  class Font : global::haxe.lang.HxObject {
+		static Font() {
 			global::alphatab.platform.model.Font.StylePlain = 0;
 			global::alphatab.platform.model.Font.StyleBold = 1;
 			global::alphatab.platform.model.Font.StyleItalic = 2;
 		}
-		public    Font(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+		public    Font(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -21,23 +16,19 @@ namespace alphatab.platform.model
 		}
 		
 		
-		public    Font(string family, double size, global::haxe.lang.Null<int> style)
-		{
-			unchecked 
-			{
+		public    Font(string family, double size, global::haxe.lang.Null<int> style){
+			unchecked {
 				global::alphatab.platform.model.Font.__hx_ctor_alphatab_platform_model_Font(this, family, size, style);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_platform_model_Font(global::alphatab.platform.model.Font __temp_me22, string family, double size, global::haxe.lang.Null<int> style)
-		{
-			unchecked 
-			{
-				int __temp_style21 = ( (global::haxe.lang.Runtime.eq((style).toDynamic(), (default(global::haxe.lang.Null<int>)).toDynamic())) ? (((int) (0) )) : (style.@value) );
-				__temp_me22._family = family;
-				__temp_me22._size = size;
-				__temp_me22._style = __temp_style21;
+		public static   void __hx_ctor_alphatab_platform_model_Font(global::alphatab.platform.model.Font __temp_me23, string family, double size, global::haxe.lang.Null<int> style){
+			unchecked {
+				int __temp_style22 = ( ( ! (style.hasValue) ) ? (((int) (0) )) : (style.@value) );
+				__temp_me23._family = family;
+				__temp_me23._size = size;
+				__temp_me23._style = __temp_style22;
 			}
 		}
 		
@@ -48,19 +39,15 @@ namespace alphatab.platform.model
 		
 		public static  int StyleItalic;
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.platform.model.Font(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.platform.model.Font(global::haxe.lang.Runtime.toString(arr[0]), ((double) (global::haxe.lang.Runtime.toDouble(arr[1])) ), global::haxe.lang.Null<object>.ofDynamic<int>(arr[2]));
 			}
 		}
@@ -72,118 +59,93 @@ namespace alphatab.platform.model
 		
 		public  int _style;
 		
-		public virtual   string getFamily()
-		{
-			unchecked 
-			{
+		public virtual   string getFamily(){
+			unchecked {
 				return this._family;
 			}
 		}
 		
 		
-		public virtual   void setFamily(string family)
-		{
-			unchecked 
-			{
+		public virtual   void setFamily(string family){
+			unchecked {
 				this._family = family;
 			}
 		}
 		
 		
-		public virtual   double getSize()
-		{
-			unchecked 
-			{
+		public virtual   double getSize(){
+			unchecked {
 				return this._size;
 			}
 		}
 		
 		
-		public virtual   void setSize(double size)
-		{
-			unchecked 
-			{
+		public virtual   void setSize(double size){
+			unchecked {
 				this._size = size;
 			}
 		}
 		
 		
-		public virtual   int getStyle()
-		{
-			unchecked 
-			{
+		public virtual   int getStyle(){
+			unchecked {
 				return this._style;
 			}
 		}
 		
 		
-		public virtual   void setStyle(int style)
-		{
-			unchecked 
-			{
+		public virtual   void setStyle(int style){
+			unchecked {
 				this._style = style;
 			}
 		}
 		
 		
-		public   bool isBold()
-		{
-			unchecked 
-			{
+		public   bool isBold(){
+			unchecked {
 				return ( (( this.getStyle() & 1 )) != 0 );
 			}
 		}
 		
 		
-		public   bool isItalic()
-		{
-			unchecked 
-			{
+		public   bool isItalic(){
+			unchecked {
 				return ( (( this.getStyle() & 2 )) != 0 );
 			}
 		}
 		
 		
-		public virtual   global::alphatab.platform.model.Font clone()
-		{
-			unchecked 
-			{
-				return new global::alphatab.platform.model.Font(global::haxe.lang.Runtime.toString(this._family), ((double) (this._size) ), new global::haxe.lang.Null<int>(this._style, true));
+		public virtual   global::alphatab.platform.model.Font clone(){
+			unchecked {
+				return new global::alphatab.platform.model.Font(((string) (this._family) ), ((double) (this._size) ), new global::haxe.lang.Null<int>(this._style, true));
 			}
 		}
 		
 		
-		public virtual   string toCssString()
-		{
-			unchecked 
-			{
+		public virtual   string toCssString(){
+			unchecked {
 				global::haxe.root.StringBuf buf = new global::haxe.root.StringBuf();
-				if (( (( this.getStyle() & 1 )) != 0 )) 
-				{
+				if (( (( this.getStyle() & 1 )) != 0 )) {
 					buf.b.Append(((object) ("bold ") ));
 				}
 				
-				if (( (( this.getStyle() & 2 )) != 0 )) 
-				{
+				if (( (( this.getStyle() & 2 )) != 0 )) {
 					buf.b.Append(((object) ("italic ") ));
 				}
 				
-				buf.b.Append(((object) (global::Std.@string(this._size)) ));
+				buf.b.Append(((object) (global::haxe.root.Std.@string(this._size)) ));
 				buf.b.Append(((object) ("px") ));
 				buf.b.Append(((object) ("\'") ));
-				buf.b.Append(((object) (global::Std.@string(this._family)) ));
+				buf.b.Append(((object) (global::haxe.root.Std.@string(this._family)) ));
 				buf.b.Append(((object) ("\'") ));
 				return buf.toString();
 			}
 		}
 		
 		
-		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 322674:
 					{
 						this._style = ((int) (@value) );
@@ -209,12 +171,9 @@ namespace alphatab.platform.model
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 322674:
 					{
 						this._style = ((int) (global::haxe.lang.Runtime.toInt(@value)) );
@@ -247,69 +206,66 @@ namespace alphatab.platform.model
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 533940217:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("toCssString"), ((int) (533940217) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("toCssString") ), ((int) (533940217) ))) );
 					}
 					
 					
 					case 1214452573:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("clone"), ((int) (1214452573) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("clone") ), ((int) (1214452573) ))) );
 					}
 					
 					
 					case 1590545018:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("isItalic"), ((int) (1590545018) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("isItalic") ), ((int) (1590545018) ))) );
 					}
 					
 					
 					case 1585596047:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("isBold"), ((int) (1585596047) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("isBold") ), ((int) (1585596047) ))) );
 					}
 					
 					
 					case 307367471:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("setStyle"), ((int) (307367471) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("setStyle") ), ((int) (307367471) ))) );
 					}
 					
 					
 					case 1676981435:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("getStyle"), ((int) (1676981435) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("getStyle") ), ((int) (1676981435) ))) );
 					}
 					
 					
 					case 299360643:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("setSize"), ((int) (299360643) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("setSize") ), ((int) (299360643) ))) );
 					}
 					
 					
 					case 517361783:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("getSize"), ((int) (517361783) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("getSize") ), ((int) (517361783) ))) );
 					}
 					
 					
 					case 1246287078:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("setFamily"), ((int) (1246287078) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("setFamily") ), ((int) (1246287078) ))) );
 					}
 					
 					
 					case 1727523034:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("getFamily"), ((int) (1727523034) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("getFamily") ), ((int) (1727523034) ))) );
 					}
 					
 					
@@ -342,12 +298,9 @@ namespace alphatab.platform.model
 		}
 		
 		
-		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 322674:
 					{
 						return ((double) (this._style) );
@@ -371,12 +324,9 @@ namespace alphatab.platform.model
 		}
 		
 		
-		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs){
+			unchecked {
+				switch (hash){
 					case 533940217:
 					{
 						return this.toCssString();
@@ -452,10 +402,8 @@ namespace alphatab.platform.model
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("_style");
 				baseArr.push("_size");
 				baseArr.push("_family");

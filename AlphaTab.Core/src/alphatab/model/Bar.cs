@@ -1,13 +1,9 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.model
-{
-	public  class Bar : global::haxe.lang.HxObject 
-	{
-		public    Bar(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+namespace alphatab.model{
+	public  class Bar : global::haxe.lang.HxObject {
+		public    Bar(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -15,38 +11,30 @@ namespace alphatab.model
 		}
 		
 		
-		public    Bar()
-		{
-			unchecked 
-			{
+		public    Bar(){
+			unchecked {
 				global::alphatab.model.Bar.__hx_ctor_alphatab_model_Bar(this);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_model_Bar(global::alphatab.model.Bar __temp_me73)
-		{
-			unchecked 
-			{
-				__temp_me73.voices = new global::haxe.root.Array<object>();
-				__temp_me73.clef = global::alphatab.model.Clef.G2;
+		public static   void __hx_ctor_alphatab_model_Bar(global::alphatab.model.Bar __temp_me87){
+			unchecked {
+				__temp_me87.voices = new global::haxe.root.Array<object>();
+				__temp_me87.clef = global::alphatab.model.Clef.G2;
 			}
 		}
 		
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.model.Bar(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.model.Bar();
 			}
 		}
@@ -64,10 +52,12 @@ namespace alphatab.model
 		
 		public  global::haxe.root.Array<object> voices;
 		
-		public virtual   void addVoice(global::alphatab.model.Voice voice)
-		{
-			unchecked 
-			{
+		public  global::haxe.lang.Null<global::alphatab.model.Duration> minDuration;
+		
+		public  global::haxe.lang.Null<global::alphatab.model.Duration> maxDuration;
+		
+		public virtual   void addVoice(global::alphatab.model.Voice voice){
+			unchecked {
 				voice.bar = this;
 				voice.index = this.voices.length;
 				this.voices.push(voice);
@@ -75,28 +65,22 @@ namespace alphatab.model
 		}
 		
 		
-		public   global::alphatab.model.MasterBar getMasterBar()
-		{
-			unchecked 
-			{
+		public   global::alphatab.model.MasterBar getMasterBar(){
+			unchecked {
 				return ((global::alphatab.model.MasterBar) (this.track.score.masterBars[this.index]) );
 			}
 		}
 		
 		
-		public virtual   bool isEmpty()
-		{
-			unchecked 
-			{
+		public virtual   bool isEmpty(){
+			unchecked {
 				{
 					int _g = 0;
 					global::haxe.root.Array<object> _g1 = this.voices;
-					while (( _g < _g1.length ))
-					{
+					while (( _g < _g1.length )){
 						global::alphatab.model.Voice v = ((global::alphatab.model.Voice) (_g1[_g]) );
 						 ++ _g;
-						if ( ! (v.isEmpty()) ) 
-						{
+						if ( ! (v.isEmpty()) ) {
 							return false;
 						}
 						
@@ -109,12 +93,31 @@ namespace alphatab.model
 		}
 		
 		
-		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public virtual   void finish(){
+			unchecked {
+				int _g = 0;
+				global::haxe.root.Array<object> _g1 = this.voices;
+				while (( _g < _g1.length )){
+					global::alphatab.model.Voice v = ((global::alphatab.model.Voice) (_g1[_g]) );
+					 ++ _g;
+					v.finish();
+					if (( (  ! (v.minDuration.hasValue)  ||  ! (this.minDuration.hasValue)  ) || ( global::alphatab.model.ModelUtils.getDurationValue(this.minDuration.@value) > global::alphatab.model.ModelUtils.getDurationValue(v.minDuration.@value) ) )) {
+						this.minDuration = v.minDuration;
+					}
+					
+					if (( (  ! (v.maxDuration.hasValue)  ||  ! (this.maxDuration.hasValue)  ) || ( global::alphatab.model.ModelUtils.getDurationValue(this.maxDuration.@value) < global::alphatab.model.ModelUtils.getDurationValue(v.maxDuration.@value) ) )) {
+						this.maxDuration = v.maxDuration;
+					}
+					
+				}
+				
+			}
+		}
+		
+		
+		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1041537810:
 					{
 						this.index = ((int) (@value) );
@@ -133,12 +136,23 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
+					case 173283864:
+					{
+						this.maxDuration = global::haxe.lang.Null<object>.ofDynamic<global::alphatab.model.Duration>(@value);
+						return @value;
+					}
+					
+					
+					case 1329184518:
+					{
+						this.minDuration = global::haxe.lang.Null<object>.ofDynamic<global::alphatab.model.Duration>(@value);
+						return @value;
+					}
+					
+					
 					case 1565120129:
 					{
 						this.voices = ((global::haxe.root.Array<object>) (global::haxe.root.Array<object>.__hx_cast<object>(((global::haxe.root.Array) (@value) ))) );
@@ -192,27 +206,42 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
+					case 109002835:
+					{
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("finish") ), ((int) (109002835) ))) );
+					}
+					
+					
 					case 207609411:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("isEmpty"), ((int) (207609411) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("isEmpty") ), ((int) (207609411) ))) );
 					}
 					
 					
 					case 248321755:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("getMasterBar"), ((int) (248321755) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("getMasterBar") ), ((int) (248321755) ))) );
 					}
 					
 					
 					case 877939665:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("addVoice"), ((int) (877939665) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("addVoice") ), ((int) (877939665) ))) );
+					}
+					
+					
+					case 173283864:
+					{
+						return (this.maxDuration).toDynamic();
+					}
+					
+					
+					case 1329184518:
+					{
+						return (this.minDuration).toDynamic();
 					}
 					
 					
@@ -263,12 +292,9 @@ namespace alphatab.model
 		}
 		
 		
-		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1041537810:
 					{
 						return ((double) (this.index) );
@@ -286,12 +312,16 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs){
+			unchecked {
+				switch (hash){
+					case 109002835:
+					{
+						this.finish();
+						break;
+					}
+					
+					
 					case 207609411:
 					{
 						return this.isEmpty();
@@ -323,10 +353,10 @@ namespace alphatab.model
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
+				baseArr.push("maxDuration");
+				baseArr.push("minDuration");
 				baseArr.push("voices");
 				baseArr.push("track");
 				baseArr.push("clef");

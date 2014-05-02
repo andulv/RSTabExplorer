@@ -1,13 +1,9 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.rendering
-{
-	public  class ScoreRenderer : global::haxe.lang.HxObject 
-	{
-		public    ScoreRenderer(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+namespace alphatab.rendering{
+	public  class ScoreRenderer : global::haxe.lang.HxObject {
+		public    ScoreRenderer(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -15,49 +11,39 @@ namespace alphatab.rendering
 		}
 		
 		
-		public    ScoreRenderer(global::alphatab.Settings settings, object param)
-		{
-			unchecked 
-			{
+		public    ScoreRenderer(global::alphatab.Settings settings, object param){
+			unchecked {
 				global::alphatab.rendering.ScoreRenderer.__hx_ctor_alphatab_rendering_ScoreRenderer(this, settings, param);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_rendering_ScoreRenderer(global::alphatab.rendering.ScoreRenderer __temp_me101, global::alphatab.Settings settings, object param)
-		{
-			unchecked 
-			{
-				__temp_me101.settings = settings;
-				__temp_me101._renderFinishedListeners = new global::haxe.root.Array<object>();
-				__temp_me101.renderingResources = new global::alphatab.rendering.RenderingResources(((double) (1) ));
-				if (( string.Equals(settings.engine, default(string)) ||  ! (global::alphatab.Environment.renderEngines.exists(settings.engine))  )) 
-				{
-					__temp_me101.canvas = ((global::alphatab.platform.ICanvas) (((global::haxe.lang.Function) (global::alphatab.Environment.renderEngines.@get("default").@value) ).__hx_invoke1_o(default(double), param)) );
+		public static   void __hx_ctor_alphatab_rendering_ScoreRenderer(global::alphatab.rendering.ScoreRenderer __temp_me116, global::alphatab.Settings settings, object param){
+			unchecked {
+				__temp_me116.settings = settings;
+				__temp_me116._renderFinishedListeners = new global::haxe.root.Array<object>();
+				__temp_me116.renderingResources = new global::alphatab.rendering.RenderingResources(((double) (1) ));
+				if (( string.Equals(settings.engine, default(string)) ||  ! (global::alphatab.Environment.renderEngines.exists(settings.engine))  )) {
+					__temp_me116.canvas = ((global::alphatab.platform.ICanvas) (((global::haxe.lang.Function) (global::alphatab.Environment.renderEngines.@get("default").@value) ).__hx_invoke1_o(default(double), param)) );
 				}
-				 else 
-				{
-					__temp_me101.canvas = ((global::alphatab.platform.ICanvas) (((global::haxe.lang.Function) (global::alphatab.Environment.renderEngines.@get(settings.engine).@value) ).__hx_invoke1_o(default(double), param)) );
+				 else {
+					__temp_me116.canvas = ((global::alphatab.platform.ICanvas) (((global::haxe.lang.Function) (global::alphatab.Environment.renderEngines.@get(settings.engine).@value) ).__hx_invoke1_o(default(double), param)) );
 				}
 				
-				__temp_me101.recreateLayout();
+				__temp_me116.recreateLayout();
 			}
 		}
 		
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.rendering.ScoreRenderer(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.rendering.ScoreRenderer(((global::alphatab.Settings) (arr[0]) ), ((object) (arr[1]) ));
 			}
 		}
@@ -69,7 +55,7 @@ namespace alphatab.rendering
 		
 		public  global::alphatab.model.Score score;
 		
-		public  global::alphatab.model.Track track;
+		public  global::haxe.root.Array<object> tracks;
 		
 		public  string _currentLayoutMode;
 		
@@ -79,18 +65,13 @@ namespace alphatab.rendering
 		
 		public  global::alphatab.Settings settings;
 		
-		public virtual   void recreateLayout()
-		{
-			unchecked 
-			{
-				if ( ! (string.Equals(this._currentLayoutMode, this.settings.layout.mode)) ) 
-				{
-					if (( ( this.settings.layout == default(global::alphatab.LayoutSettings) ) ||  ! (global::alphatab.Environment.layoutEngines.exists(this.settings.layout.mode))  )) 
-					{
+		public virtual   void recreateLayout(){
+			unchecked {
+				if ( ! (string.Equals(this._currentLayoutMode, this.settings.layout.mode)) ) {
+					if (( ( this.settings.layout == default(global::alphatab.LayoutSettings) ) ||  ! (global::alphatab.Environment.layoutEngines.exists(this.settings.layout.mode))  )) {
 						this.layout = ((global::alphatab.rendering.layout.ScoreLayout) (((global::haxe.lang.Function) (global::alphatab.Environment.layoutEngines.@get("default").@value) ).__hx_invoke1_o(default(double), this)) );
 					}
-					 else 
-					{
+					 else {
 						this.layout = ((global::alphatab.rendering.layout.ScoreLayout) (((global::haxe.lang.Function) (global::alphatab.Environment.layoutEngines.@get(this.settings.layout.mode).@value) ).__hx_invoke1_o(default(double), this)) );
 					}
 					
@@ -101,22 +82,29 @@ namespace alphatab.rendering
 		}
 		
 		
-		public virtual   void render(global::alphatab.model.Track track)
-		{
-			unchecked 
-			{
-				this.track = track;
+		public virtual   void render(global::alphatab.model.Track track){
+			unchecked {
+				this.tracks = new global::haxe.root.Array<object>(new object[]{track});
 				this.invalidate();
 			}
 		}
 		
 		
-		public virtual   void invalidate()
-		{
-			unchecked 
-			{
-				if (( this.renderingResources.scale != this.settings.scale )) 
-				{
+		public virtual   void renderMultiple(global::haxe.root.Array<object> tracks){
+			unchecked {
+				this.tracks = tracks;
+				this.invalidate();
+			}
+		}
+		
+		
+		public virtual   void invalidate(){
+			unchecked {
+				if (( this.tracks.length == 0 )) {
+					return ;
+				}
+				
+				if (( this.renderingResources.scale != this.settings.scale )) {
 					this.renderingResources.init(this.settings.scale);
 					this.canvas.setLineWidth(this.settings.scale);
 				}
@@ -130,51 +118,42 @@ namespace alphatab.rendering
 		}
 		
 		
-		public virtual   global::alphatab.model.Score _get_score()
-		{
-			unchecked 
-			{
-				if (( this.track == default(global::alphatab.model.Track) )) 
-				{
+		public virtual   global::alphatab.model.Score get_score(){
+			unchecked {
+				if (( ( this.tracks == default(global::haxe.root.Array<object>) ) || ( this.tracks.length == 0 ) )) {
 					return default(global::alphatab.model.Score);
 				}
 				
-				return this.track.score;
+				return ((global::alphatab.model.Track) (this.tracks[0]) ).score;
 			}
 		}
 		
 		
-		public virtual   void doLayout()
-		{
-			unchecked 
-			{
+		public virtual   void doLayout(){
+			unchecked {
 				this.layout.doLayout();
-				int __temp_stmt566 = default(int);
+				int __temp_stmt596 = default(int);
 				{
 					double x = ( this.layout.height + ( this.renderingResources.copyrightFont.getSize() * 2 ) );
-					__temp_stmt566 = ((int) (x) );
+					__temp_stmt596 = ((int) (x) );
 				}
 				
-				this.canvas.setHeight(__temp_stmt566);
+				this.canvas.setHeight(__temp_stmt596);
 				this.canvas.setWidth(this.layout.width);
 			}
 		}
 		
 		
-		public virtual   void paintScore()
-		{
-			unchecked 
-			{
+		public virtual   void paintScore(){
+			unchecked {
 				this.paintBackground();
 				this.layout.paintScore();
 			}
 		}
 		
 		
-		public virtual   void paintBackground()
-		{
-			unchecked 
-			{
+		public virtual   void paintBackground(){
+			unchecked {
 				string msg = "Rendered using alphaTab (http://www.alphaTab.net)";
 				this.canvas.setColor(new global::alphatab.platform.model.Color(((int) (62) ), ((int) (62) ), ((int) (62) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) )));
 				this.canvas.setFont(this.renderingResources.copyrightFont);
@@ -185,36 +164,28 @@ namespace alphatab.rendering
 		}
 		
 		
-		public virtual   void addRenderFinishedListener(global::haxe.lang.Function listener)
-		{
-			unchecked 
-			{
+		public virtual   void addRenderFinishedListener(global::haxe.lang.Function listener){
+			unchecked {
 				this._renderFinishedListeners.push(listener);
 			}
 		}
 		
 		
-		public virtual   void removeRenderFinishedListener(global::haxe.lang.Function listener)
-		{
-			unchecked 
-			{
+		public virtual   void removeRenderFinishedListener(global::haxe.lang.Function listener){
+			unchecked {
 				this._renderFinishedListeners.@remove(listener);
 			}
 		}
 		
 		
-		public virtual   void raiseRenderFinished()
-		{
-			unchecked 
-			{
+		public virtual   void raiseRenderFinished(){
+			unchecked {
 				int _g = 0;
 				global::haxe.root.Array<object> _g1 = this._renderFinishedListeners;
-				while (( _g < _g1.length ))
-				{
+				while (( _g < _g1.length )){
 					global::haxe.lang.Function l = ((global::haxe.lang.Function) (_g1[_g]) );
 					 ++ _g;
-					if (( l != default(global::haxe.lang.Function) )) 
-					{
+					if (( l != default(global::haxe.lang.Function) )) {
 						l.__hx_invoke0_o();
 					}
 					
@@ -224,12 +195,18 @@ namespace alphatab.rendering
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public virtual   global::alphatab.rendering.utils.BoundingsLookup buildBoundingsLookup(){
+			unchecked {
+				global::alphatab.rendering.utils.BoundingsLookup lookup = new global::alphatab.rendering.utils.BoundingsLookup();
+				this.layout.buildBoundingsLookup(lookup);
+				return lookup;
+			}
+		}
+		
+		
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 188579043:
 					{
 						this.settings = ((global::alphatab.Settings) (@value) );
@@ -258,9 +235,9 @@ namespace alphatab.rendering
 					}
 					
 					
-					case 371166859:
+					case 1165831048:
 					{
-						this.track = ((global::alphatab.model.Track) (@value) );
+						this.tracks = ((global::haxe.root.Array<object>) (global::haxe.root.Array<object>.__hx_cast<object>(((global::haxe.root.Array) (@value) ))) );
 						return @value;
 					}
 					
@@ -297,69 +274,78 @@ namespace alphatab.rendering
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
+					case 776879323:
+					{
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("buildBoundingsLookup") ), ((int) (776879323) ))) );
+					}
+					
+					
 					case 1658175220:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("raiseRenderFinished"), ((int) (1658175220) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("raiseRenderFinished") ), ((int) (1658175220) ))) );
 					}
 					
 					
 					case 1008896224:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("removeRenderFinishedListener"), ((int) (1008896224) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("removeRenderFinishedListener") ), ((int) (1008896224) ))) );
 					}
 					
 					
 					case 1495460989:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("addRenderFinishedListener"), ((int) (1495460989) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("addRenderFinishedListener") ), ((int) (1495460989) ))) );
 					}
 					
 					
 					case 1334722860:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("paintBackground"), ((int) (1334722860) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("paintBackground") ), ((int) (1334722860) ))) );
 					}
 					
 					
 					case 1331941076:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("paintScore"), ((int) (1331941076) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("paintScore") ), ((int) (1331941076) ))) );
 					}
 					
 					
 					case 1825584277:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("doLayout"), ((int) (1825584277) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("doLayout") ), ((int) (1825584277) ))) );
 					}
 					
 					
 					case 1015205801:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("get_score"), ((int) (1015205801) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("get_score") ), ((int) (1015205801) ))) );
 					}
 					
 					
 					case 120199547:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("invalidate"), ((int) (120199547) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("invalidate") ), ((int) (120199547) ))) );
+					}
+					
+					
+					case 241454982:
+					{
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("renderMultiple") ), ((int) (241454982) ))) );
 					}
 					
 					
 					case 86600534:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("render"), ((int) (86600534) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("render") ), ((int) (86600534) ))) );
 					}
 					
 					
 					case 825135865:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("recreateLayout"), ((int) (825135865) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("recreateLayout") ), ((int) (825135865) ))) );
 					}
 					
 					
@@ -387,20 +373,18 @@ namespace alphatab.rendering
 					}
 					
 					
-					case 371166859:
+					case 1165831048:
 					{
-						return this.track;
+						return this.tracks;
 					}
 					
 					
 					case 2027516754:
 					{
-						if (handleProperties) 
-						{
-							return this._get_score();
+						if (handleProperties) {
+							return this.get_score();
 						}
-						 else 
-						{
+						 else {
 							return this.score;
 						}
 						
@@ -430,12 +414,15 @@ namespace alphatab.rendering
 		}
 		
 		
-		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs){
+			unchecked {
+				switch (hash){
+					case 776879323:
+					{
+						return this.buildBoundingsLookup();
+					}
+					
+					
 					case 1658175220:
 					{
 						this.raiseRenderFinished();
@@ -480,13 +467,20 @@ namespace alphatab.rendering
 					
 					case 1015205801:
 					{
-						return this._get_score();
+						return this.get_score();
 					}
 					
 					
 					case 120199547:
 					{
 						this.invalidate();
+						break;
+					}
+					
+					
+					case 241454982:
+					{
+						this.renderMultiple(((global::haxe.root.Array<object>) (global::haxe.root.Array<object>.__hx_cast<object>(((global::haxe.root.Array) (dynargs[0]) ))) ));
 						break;
 					}
 					
@@ -517,15 +511,13 @@ namespace alphatab.rendering
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("settings");
 				baseArr.push("renderingResources");
 				baseArr.push("layout");
 				baseArr.push("_currentLayoutMode");
-				baseArr.push("track");
+				baseArr.push("tracks");
 				baseArr.push("score");
 				baseArr.push("canvas");
 				baseArr.push("_renderFinishedListeners");

@@ -1,56 +1,43 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.rendering.glyphs
-{
-	public  class BeatContainerGlyph : global::alphatab.rendering.Glyph, global::alphatab.rendering.glyphs.ISupportsFinalize 
-	{
-		static BeatContainerGlyph() 
-		{
-			global::alphatab.rendering.glyphs.BeatContainerGlyph.PixelPerTick = 0.041666666666666664;
+namespace alphatab.rendering.glyphs{
+	public  class BeatContainerGlyph : global::alphatab.rendering.Glyph, global::alphatab.rendering.glyphs.ISupportsFinalize {
+		static BeatContainerGlyph() {
+			global::alphatab.rendering.glyphs.BeatContainerGlyph.SizeTable = new global::haxe.root.Array<int>(new int[]{82, 43, 30, 22, 18, 14, 14});
 		}
-		public    BeatContainerGlyph(global::haxe.lang.EmptyObject empty) : base(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ))
-		{
-			unchecked 
-			{
+		public    BeatContainerGlyph(global::haxe.lang.EmptyObject empty) : base(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) )){
+			unchecked {
 			}
 		}
 		
 		
-		public    BeatContainerGlyph(global::alphatab.model.Beat beat) : base(global::haxe.lang.EmptyObject.EMPTY)
-		{
-			unchecked 
-			{
+		public    BeatContainerGlyph(global::alphatab.model.Beat beat) : base(global::haxe.lang.EmptyObject.EMPTY){
+			unchecked {
 				global::alphatab.rendering.glyphs.BeatContainerGlyph.__hx_ctor_alphatab_rendering_glyphs_BeatContainerGlyph(this, beat);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_rendering_glyphs_BeatContainerGlyph(global::alphatab.rendering.glyphs.BeatContainerGlyph __temp_me130, global::alphatab.model.Beat beat)
-		{
-			unchecked 
-			{
-				global::alphatab.rendering.Glyph.__hx_ctor_alphatab_rendering_Glyph(__temp_me130, new global::haxe.lang.Null<int>(0, true), new global::haxe.lang.Null<int>(0, true));
-				__temp_me130.beat = beat;
-				__temp_me130.ties = new global::haxe.root.Array<object>();
+		public static   void __hx_ctor_alphatab_rendering_glyphs_BeatContainerGlyph(global::alphatab.rendering.glyphs.BeatContainerGlyph __temp_me145, global::alphatab.model.Beat beat){
+			unchecked {
+				global::alphatab.rendering.Glyph.__hx_ctor_alphatab_rendering_Glyph(__temp_me145, new global::haxe.lang.Null<int>(0, true), new global::haxe.lang.Null<int>(0, true));
+				__temp_me145.beat = beat;
+				__temp_me145.ties = new global::haxe.root.Array<object>();
 			}
 		}
 		
 		
-		public static  double PixelPerTick;
+		public static  global::haxe.root.Array<int> SizeTable;
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.rendering.glyphs.BeatContainerGlyph(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.rendering.glyphs.BeatContainerGlyph(((global::alphatab.model.Beat) (arr[0]) ));
 			}
 		}
@@ -66,22 +53,17 @@ namespace alphatab.rendering.glyphs
 		
 		public  global::haxe.root.Array<object> ties;
 		
-		public virtual   void finalizeGlyph(global::alphatab.rendering.layout.ScoreLayout layout)
-		{
-			unchecked 
-			{
-				if (( this.preNotes is global::alphatab.rendering.glyphs.ISupportsFinalize )) 
-				{
+		public virtual   void finalizeGlyph(global::alphatab.rendering.layout.ScoreLayout layout){
+			unchecked {
+				if (( this.preNotes is global::alphatab.rendering.glyphs.ISupportsFinalize )) {
 					(((global::alphatab.rendering.glyphs.ISupportsFinalize) (((object) (this.preNotes) )) )).finalizeGlyph(layout);
 				}
 				
-				if (( this.onNotes is global::alphatab.rendering.glyphs.ISupportsFinalize )) 
-				{
+				if (( this.onNotes is global::alphatab.rendering.glyphs.ISupportsFinalize )) {
 					(((global::alphatab.rendering.glyphs.ISupportsFinalize) (((object) (this.onNotes) )) )).finalizeGlyph(layout);
 				}
 				
-				if (( this.postNotes is global::alphatab.rendering.glyphs.ISupportsFinalize )) 
-				{
+				if (( this.postNotes is global::alphatab.rendering.glyphs.ISupportsFinalize )) {
 					(((global::alphatab.rendering.glyphs.ISupportsFinalize) (((object) (this.postNotes) )) )).finalizeGlyph(layout);
 				}
 				
@@ -89,22 +71,17 @@ namespace alphatab.rendering.glyphs
 		}
 		
 		
-		public virtual   void registerMaxSizes(global::alphatab.rendering.staves.BarSizeInfo sizes)
-		{
-			unchecked 
-			{
-				if (( sizes.getPreNoteSize(this.beat.start) < this.preNotes.width )) 
-				{
+		public virtual   void registerMaxSizes(global::alphatab.rendering.staves.BarSizeInfo sizes){
+			unchecked {
+				if (( sizes.getPreNoteSize(this.beat.start) < this.preNotes.width )) {
 					sizes.preNoteSizes.@set(this.beat.start, this.preNotes.width);
 				}
 				
-				if (( sizes.getOnNoteSize(this.beat.start) < this.onNotes.width )) 
-				{
+				if (( sizes.getOnNoteSize(this.beat.start) < this.onNotes.width )) {
 					sizes.onNoteSizes.@set(this.beat.start, this.onNotes.width);
 				}
 				
-				if (( sizes.getPostNoteSize(this.beat.start) < this.postNotes.width )) 
-				{
+				if (( sizes.getPostNoteSize(this.beat.start) < this.postNotes.width )) {
 					sizes.postNoteSizes.@set(this.beat.start, this.postNotes.width);
 				}
 				
@@ -112,33 +89,28 @@ namespace alphatab.rendering.glyphs
 		}
 		
 		
-		public virtual   void applySizes(global::alphatab.rendering.staves.BarSizeInfo sizes)
-		{
-			unchecked 
-			{
+		public virtual   void applySizes(global::alphatab.rendering.staves.BarSizeInfo sizes){
+			unchecked {
 				int size = default(int);
 				int diff = default(int);
 				size = sizes.getPreNoteSize(this.beat.start);
 				diff = ( size - this.preNotes.width );
 				this.preNotes.x = 0;
-				if (( diff > 0 )) 
-				{
+				if (( diff > 0 )) {
 					this.preNotes.applyGlyphSpacing(diff);
 				}
 				
 				size = sizes.getOnNoteSize(this.beat.start);
 				diff = ( size - this.onNotes.width );
 				this.onNotes.x = ( this.preNotes.x + this.preNotes.width );
-				if (( diff > 0 )) 
-				{
+				if (( diff > 0 )) {
 					this.onNotes.applyGlyphSpacing(diff);
 				}
 				
 				size = sizes.getPostNoteSize(this.beat.start);
 				diff = ( size - this.postNotes.width );
 				this.postNotes.x = ( this.onNotes.x + this.onNotes.width );
-				if (( diff > 0 )) 
-				{
+				if (( diff > 0 )) {
 					this.postNotes.applyGlyphSpacing(diff);
 				}
 				
@@ -147,19 +119,15 @@ namespace alphatab.rendering.glyphs
 		}
 		
 		
-		public virtual   int calculateWidth()
-		{
-			unchecked 
-			{
+		public virtual   int calculateWidth(){
+			unchecked {
 				return ( this.postNotes.x + this.postNotes.width );
 			}
 		}
 		
 		
-		public override   void doLayout()
-		{
-			unchecked 
-			{
+		public override   void doLayout(){
+			unchecked {
 				this.preNotes.x = 0;
 				this.preNotes.index = 0;
 				this.preNotes.renderer = this.renderer;
@@ -176,8 +144,7 @@ namespace alphatab.rendering.glyphs
 				this.postNotes.container = this;
 				this.postNotes.doLayout();
 				int i = ( this.beat.notes.length - 1 );
-				while (( i >= 0 ))
-				{
+				while (( i >= 0 )){
 					this.createTies(((global::alphatab.model.Note) (this.beat.notes[i--]) ));
 				}
 				
@@ -186,10 +153,8 @@ namespace alphatab.rendering.glyphs
 		}
 		
 		
-		public virtual   void createTies(global::alphatab.model.Note n)
-		{
-			unchecked 
-			{
+		public virtual   void createTies(global::alphatab.model.Note n){
+			unchecked {
 				{
 				}
 				
@@ -197,18 +162,15 @@ namespace alphatab.rendering.glyphs
 		}
 		
 		
-		public override   void paint(int cx, int cy, global::alphatab.platform.ICanvas canvas)
-		{
-			unchecked 
-			{
+		public override   void paint(int cx, int cy, global::alphatab.platform.ICanvas canvas){
+			unchecked {
 				this.preNotes.paint(( cx + this.x ), ( cy + this.y ), canvas);
 				this.onNotes.paint(( cx + this.x ), ( cy + this.y ), canvas);
 				this.postNotes.paint(( cx + this.x ), ( cy + this.y ), canvas);
 				{
 					int _g = 0;
 					global::haxe.root.Array<object> _g1 = this.ties;
-					while (( _g < _g1.length ))
-					{
+					while (( _g < _g1.length )){
 						global::alphatab.rendering.Glyph t = ((global::alphatab.rendering.Glyph) (_g1[_g]) );
 						 ++ _g;
 						t.renderer = this.renderer;
@@ -221,12 +183,9 @@ namespace alphatab.rendering.glyphs
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1291633955:
 					{
 						this.ties = ((global::haxe.root.Array<object>) (global::haxe.root.Array<object>.__hx_cast<object>(((global::haxe.root.Array) (@value) ))) );
@@ -273,51 +232,48 @@ namespace alphatab.rendering.glyphs
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1028568990:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("paint"), ((int) (1028568990) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("paint") ), ((int) (1028568990) ))) );
 					}
 					
 					
 					case 1602913855:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("createTies"), ((int) (1602913855) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("createTies") ), ((int) (1602913855) ))) );
 					}
 					
 					
 					case 1825584277:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("doLayout"), ((int) (1825584277) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("doLayout") ), ((int) (1825584277) ))) );
 					}
 					
 					
 					case 1829781184:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("calculateWidth"), ((int) (1829781184) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("calculateWidth") ), ((int) (1829781184) ))) );
 					}
 					
 					
 					case 673875012:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("applySizes"), ((int) (673875012) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("applySizes") ), ((int) (673875012) ))) );
 					}
 					
 					
 					case 632903889:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("registerMaxSizes"), ((int) (632903889) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("registerMaxSizes") ), ((int) (632903889) ))) );
 					}
 					
 					
 					case 1308691246:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("finalizeGlyph"), ((int) (1308691246) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("finalizeGlyph") ), ((int) (1308691246) ))) );
 					}
 					
 					
@@ -362,12 +318,9 @@ namespace alphatab.rendering.glyphs
 		}
 		
 		
-		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs){
+			unchecked {
+				switch (hash){
 					case 1825584277:case 1028568990:
 					{
 						return global::haxe.lang.Runtime.slowCallField(this, field, dynargs);
@@ -420,10 +373,8 @@ namespace alphatab.rendering.glyphs
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("ties");
 				baseArr.push("postNotes");
 				baseArr.push("onNotes");

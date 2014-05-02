@@ -1,13 +1,9 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.rendering.utils
-{
-	public  class TupletHelper : global::haxe.lang.HxObject 
-	{
-		public    TupletHelper(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+namespace alphatab.rendering.utils{
+	public  class TupletHelper : global::haxe.lang.HxObject {
+		public    TupletHelper(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -15,38 +11,30 @@ namespace alphatab.rendering.utils
 		}
 		
 		
-		public    TupletHelper(int voice)
-		{
-			unchecked 
-			{
+		public    TupletHelper(int voice){
+			unchecked {
 				global::alphatab.rendering.utils.TupletHelper.__hx_ctor_alphatab_rendering_utils_TupletHelper(this, voice);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_rendering_utils_TupletHelper(global::alphatab.rendering.utils.TupletHelper __temp_me272, int voice)
-		{
-			unchecked 
-			{
-				__temp_me272.voiceIndex = voice;
-				__temp_me272.beats = new global::haxe.root.Array<object>();
+		public static   void __hx_ctor_alphatab_rendering_utils_TupletHelper(global::alphatab.rendering.utils.TupletHelper __temp_me294, int voice){
+			unchecked {
+				__temp_me294.voiceIndex = voice;
+				__temp_me294.beats = new global::haxe.root.Array<object>();
 			}
 		}
 		
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.rendering.utils.TupletHelper(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.rendering.utils.TupletHelper(((int) (global::haxe.lang.Runtime.toInt(arr[0])) ));
 			}
 		}
@@ -60,36 +48,27 @@ namespace alphatab.rendering.utils
 		
 		public  bool _isFinished;
 		
-		public   bool isFull()
-		{
-			unchecked 
-			{
+		public   bool isFull(){
+			unchecked {
 				return ( this.beats.length == this.tuplet );
 			}
 		}
 		
 		
-		public virtual   void finish()
-		{
-			unchecked 
-			{
+		public virtual   void finish(){
+			unchecked {
 				this._isFinished = true;
 			}
 		}
 		
 		
-		public virtual   bool check(global::alphatab.model.Beat beat)
-		{
-			unchecked 
-			{
-				if (( this.beats.length == 0 )) 
-				{
+		public virtual   bool check(global::alphatab.model.Beat beat){
+			unchecked {
+				if (( this.beats.length == 0 )) {
 					this.tuplet = beat.tupletNumerator;
 				}
-				 else 
-				{
-					if (( ( ( ( beat.voice.index != this.voiceIndex ) || ( beat.tupletNumerator != this.tuplet ) ) || ( this.beats.length == this.tuplet ) ) || this._isFinished )) 
-					{
+				 else {
+					if (( ( ( ( beat.voice.index != this.voiceIndex ) || ( beat.tupletNumerator != this.tuplet ) ) || ( this.beats.length == this.tuplet ) ) || this._isFinished )) {
 						return false;
 					}
 					
@@ -101,12 +80,9 @@ namespace alphatab.rendering.utils
 		}
 		
 		
-		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 161606508:
 					{
 						this.tuplet = ((int) (@value) );
@@ -132,15 +108,12 @@ namespace alphatab.rendering.utils
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1648849563:
 					{
-						this._isFinished = ((bool) (@value) );
+						this._isFinished = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
@@ -177,27 +150,24 @@ namespace alphatab.rendering.utils
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1169594568:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("check"), ((int) (1169594568) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("check") ), ((int) (1169594568) ))) );
 					}
 					
 					
 					case 109002835:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("finish"), ((int) (109002835) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("finish") ), ((int) (109002835) ))) );
 					}
 					
 					
 					case 1630252697:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("isFull"), ((int) (1630252697) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("isFull") ), ((int) (1630252697) ))) );
 					}
 					
 					
@@ -236,12 +206,9 @@ namespace alphatab.rendering.utils
 		}
 		
 		
-		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 161606508:
 					{
 						return ((double) (this.tuplet) );
@@ -265,12 +232,9 @@ namespace alphatab.rendering.utils
 		}
 		
 		
-		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs){
+			unchecked {
+				switch (hash){
 					case 1169594568:
 					{
 						return this.check(((global::alphatab.model.Beat) (dynargs[0]) ));
@@ -302,10 +266,8 @@ namespace alphatab.rendering.utils
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("_isFinished");
 				baseArr.push("tuplet");
 				baseArr.push("voiceIndex");

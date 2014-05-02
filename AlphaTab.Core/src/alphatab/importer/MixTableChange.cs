@@ -1,13 +1,9 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.importer
-{
-	public  class MixTableChange : global::haxe.lang.HxObject 
-	{
-		public    MixTableChange(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+namespace alphatab.importer{
+	public  class MixTableChange : global::haxe.lang.HxObject {
+		public    MixTableChange(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -15,42 +11,34 @@ namespace alphatab.importer
 		}
 		
 		
-		public    MixTableChange()
-		{
-			unchecked 
-			{
+		public    MixTableChange(){
+			unchecked {
 				global::alphatab.importer.MixTableChange.__hx_ctor_alphatab_importer_MixTableChange(this);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_importer_MixTableChange(global::alphatab.importer.MixTableChange __temp_me64)
-		{
-			unchecked 
-			{
-				__temp_me64.volume = -1;
-				__temp_me64.balance = -1;
-				__temp_me64.instrument = -1;
-				__temp_me64.tempoName = default(string);
-				__temp_me64.tempo = -1;
-				__temp_me64.duration = 0;
+		public static   void __hx_ctor_alphatab_importer_MixTableChange(global::alphatab.importer.MixTableChange __temp_me78){
+			unchecked {
+				__temp_me78.volume = -1;
+				__temp_me78.balance = -1;
+				__temp_me78.instrument = -1;
+				__temp_me78.tempoName = default(string);
+				__temp_me78.tempo = -1;
+				__temp_me78.duration = 0;
 			}
 		}
 		
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.importer.MixTableChange(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.importer.MixTableChange();
 			}
 		}
@@ -68,12 +56,9 @@ namespace alphatab.importer
 		
 		public  int duration;
 		
-		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 344854356:
 					{
 						this.duration = ((int) (@value) );
@@ -120,12 +105,9 @@ namespace alphatab.importer
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 344854356:
 					{
 						this.duration = ((int) (global::haxe.lang.Runtime.toInt(@value)) );
@@ -179,12 +161,9 @@ namespace alphatab.importer
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 344854356:
 					{
 						return this.duration;
@@ -232,12 +211,9 @@ namespace alphatab.importer
 		}
 		
 		
-		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 344854356:
 					{
 						return ((double) (this.duration) );
@@ -279,10 +255,8 @@ namespace alphatab.importer
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("duration");
 				baseArr.push("tempo");
 				baseArr.push("tempoName");

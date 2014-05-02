@@ -1,13 +1,9 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.model
-{
-	public  class Automation : global::haxe.lang.HxObject 
-	{
-		public    Automation(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+namespace alphatab.model{
+	public  class Automation : global::haxe.lang.HxObject {
+		public    Automation(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -15,19 +11,15 @@ namespace alphatab.model
 		}
 		
 		
-		public    Automation()
-		{
-			unchecked 
-			{
+		public    Automation(){
+			unchecked {
 				global::alphatab.model.Automation.__hx_ctor_alphatab_model_Automation(this);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_model_Automation(global::alphatab.model.Automation __temp_me72)
-		{
-			unchecked 
-			{
+		public static   void __hx_ctor_alphatab_model_Automation(global::alphatab.model.Automation __temp_me86){
+			unchecked {
 				{
 				}
 				
@@ -35,12 +27,9 @@ namespace alphatab.model
 		}
 		
 		
-		public static   global::alphatab.model.Automation builtTempoAutomation(bool isLinear, double ratioPosition, double @value, int reference)
-		{
-			unchecked 
-			{
-				if (( ( reference < 1 ) || ( reference > 5 ) )) 
-				{
+		public static   global::alphatab.model.Automation builtTempoAutomation(bool isLinear, double ratioPosition, double @value, int reference){
+			unchecked {
+				if (( ( reference < 1 ) || ( reference > 5 ) )) {
 					reference = 2;
 				}
 				
@@ -56,19 +45,15 @@ namespace alphatab.model
 		}
 		
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.model.Automation(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.model.Automation();
 			}
 		}
@@ -84,10 +69,8 @@ namespace alphatab.model
 		
 		public  string text;
 		
-		public virtual   global::alphatab.model.Automation clone()
-		{
-			unchecked 
-			{
+		public virtual   global::alphatab.model.Automation clone(){
+			unchecked {
 				global::alphatab.model.Automation a = new global::alphatab.model.Automation();
 				a.isLinear = this.isLinear;
 				a.type = this.type;
@@ -97,12 +80,9 @@ namespace alphatab.model
 		}
 		
 		
-		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1475155156:
 					{
 						this.ratioPosition = ((double) (@value) );
@@ -128,12 +108,9 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1291439277:
 					{
 						this.text = global::haxe.lang.Runtime.toString(@value);
@@ -164,7 +141,7 @@ namespace alphatab.model
 					
 					case 1158278511:
 					{
-						this.isLinear = ((bool) (@value) );
+						this.isLinear = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
@@ -180,15 +157,12 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1214452573:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("clone"), ((int) (1214452573) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("clone") ), ((int) (1214452573) ))) );
 					}
 					
 					
@@ -233,12 +207,9 @@ namespace alphatab.model
 		}
 		
 		
-		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1475155156:
 					{
 						return this.ratioPosition;
@@ -262,12 +233,9 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs){
+			unchecked {
+				switch (hash){
 					case 1214452573:
 					{
 						return this.clone();
@@ -285,10 +253,8 @@ namespace alphatab.model
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("text");
 				baseArr.push("ratioPosition");
 				baseArr.push("value");

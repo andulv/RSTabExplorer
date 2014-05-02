@@ -1,13 +1,9 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.model
-{
-	public  class Track : global::haxe.lang.HxObject 
-	{
-		public    Track(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+namespace alphatab.model{
+	public  class Track : global::haxe.lang.HxObject {
+		public    Track(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -15,41 +11,35 @@ namespace alphatab.model
 		}
 		
 		
-		public    Track()
-		{
-			unchecked 
-			{
+		public    Track(){
+			unchecked {
 				global::alphatab.model.Track.__hx_ctor_alphatab_model_Track(this);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_model_Track(global::alphatab.model.Track __temp_me86)
-		{
-			unchecked 
-			{
-				__temp_me86.tuning = new global::haxe.root.Array<int>();
-				__temp_me86.bars = new global::haxe.root.Array<object>();
-				__temp_me86.chords = new global::haxe.ds.StringMap<object>();
-				__temp_me86.playbackInfo = new global::alphatab.model.PlaybackInformation();
-				__temp_me86.color = new global::alphatab.platform.model.Color(((int) (200) ), ((int) (0) ), ((int) (0) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
+		public static   void __hx_ctor_alphatab_model_Track(global::alphatab.model.Track __temp_me100){
+			unchecked {
+				__temp_me100.name = "";
+				__temp_me100.shortName = "";
+				__temp_me100.tuning = new global::haxe.root.Array<int>();
+				__temp_me100.bars = new global::haxe.root.Array<object>();
+				__temp_me100.chords = new global::haxe.ds.StringMap<object>();
+				__temp_me100.playbackInfo = new global::alphatab.model.PlaybackInformation();
+				__temp_me100.color = new global::alphatab.platform.model.Color(((int) (200) ), ((int) (0) ), ((int) (0) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
 			}
 		}
 		
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.model.Track(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.model.Track();
 			}
 		}
@@ -79,14 +69,11 @@ namespace alphatab.model
 		
 		public  global::haxe.ds.StringMap<object> chords;
 		
-		public virtual   void addBar(global::alphatab.model.Bar bar)
-		{
-			unchecked 
-			{
+		public virtual   void addBar(global::alphatab.model.Bar bar){
+			unchecked {
 				bar.track = this;
 				bar.index = this.bars.length;
-				if (( this.bars.length > 0 )) 
-				{
+				if (( this.bars.length > 0 )) {
 					bar.previousBar = ((global::alphatab.model.Bar) (this.bars[( this.bars.length - 1 )]) );
 					bar.previousBar.nextBar = bar;
 				}
@@ -96,12 +83,34 @@ namespace alphatab.model
 		}
 		
 		
-		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
+		public virtual   void finish(){
+			unchecked {
+				if (( string.Equals(this.shortName, default(string)) || ( this.shortName.Length == 0 ) )) {
+					this.shortName = this.name;
+					if (( this.shortName.Length > 10 )) {
+						this.shortName = global::haxe.lang.StringExt.substr(this.shortName, 0, new global::haxe.lang.Null<int>(10, true));
+					}
+					
+				}
+				
 				{
+					int _g = 0;
+					global::haxe.root.Array<object> _g1 = this.bars;
+					while (( _g < _g1.length )){
+						global::alphatab.model.Bar bar = ((global::alphatab.model.Bar) (_g1[_g]) );
+						 ++ _g;
+						bar.finish();
+					}
+					
+				}
+				
+			}
+		}
+		
+		
+		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1041537810:
 					{
 						this.index = ((int) (@value) );
@@ -127,12 +136,9 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1085707415:
 					{
 						this.chords = ((global::haxe.ds.StringMap<object>) (global::haxe.ds.StringMap<object>.__hx_cast<object>(((global::haxe.ds.StringMap) (@value) ))) );
@@ -156,7 +162,7 @@ namespace alphatab.model
 					
 					case 73353859:
 					{
-						this.isPercussion = ((bool) (@value) );
+						this.isPercussion = global::haxe.lang.Runtime.toBool(@value);
 						return @value;
 					}
 					
@@ -228,15 +234,18 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
+					case 109002835:
+					{
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("finish") ), ((int) (109002835) ))) );
+					}
+					
+					
 					case 519815730:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("addBar"), ((int) (519815730) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("addBar") ), ((int) (519815730) ))) );
 					}
 					
 					
@@ -323,12 +332,9 @@ namespace alphatab.model
 		}
 		
 		
-		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1041537810:
 					{
 						return ((double) (this.index) );
@@ -352,12 +358,16 @@ namespace alphatab.model
 		}
 		
 		
-		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs){
+			unchecked {
+				switch (hash){
+					case 109002835:
+					{
+						this.finish();
+						break;
+					}
+					
+					
 					case 519815730:
 					{
 						this.addBar(((global::alphatab.model.Bar) (dynargs[0]) ));
@@ -377,10 +387,8 @@ namespace alphatab.model
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("chords");
 				baseArr.push("bars");
 				baseArr.push("score");

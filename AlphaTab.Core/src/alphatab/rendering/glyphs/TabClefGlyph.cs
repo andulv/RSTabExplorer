@@ -1,77 +1,59 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.rendering.glyphs
-{
-	public  class TabClefGlyph : global::alphatab.rendering.Glyph 
-	{
-		public    TabClefGlyph(global::haxe.lang.EmptyObject empty) : base(global::haxe.lang.EmptyObject.EMPTY)
-		{
-			unchecked 
-			{
+namespace alphatab.rendering.glyphs{
+	public  class TabClefGlyph : global::alphatab.rendering.Glyph {
+		public    TabClefGlyph(global::haxe.lang.EmptyObject empty) : base(global::haxe.lang.EmptyObject.EMPTY){
+			unchecked {
 			}
 		}
 		
 		
-		public    TabClefGlyph() : base(global::haxe.lang.EmptyObject.EMPTY)
-		{
-			unchecked 
-			{
+		public    TabClefGlyph() : base(global::haxe.lang.EmptyObject.EMPTY){
+			unchecked {
 				global::alphatab.rendering.glyphs.TabClefGlyph.__hx_ctor_alphatab_rendering_glyphs_TabClefGlyph(this);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_rendering_glyphs_TabClefGlyph(global::alphatab.rendering.glyphs.TabClefGlyph __temp_me216)
-		{
-			unchecked 
-			{
-				global::alphatab.rendering.Glyph.__hx_ctor_alphatab_rendering_Glyph(__temp_me216, new global::haxe.lang.Null<int>(0, true), new global::haxe.lang.Null<int>(0, true));
+		public static   void __hx_ctor_alphatab_rendering_glyphs_TabClefGlyph(global::alphatab.rendering.glyphs.TabClefGlyph __temp_me231){
+			unchecked {
+				global::alphatab.rendering.Glyph.__hx_ctor_alphatab_rendering_Glyph(__temp_me231, new global::haxe.lang.Null<int>(0, true), new global::haxe.lang.Null<int>(0, true));
 			}
 		}
 		
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.rendering.glyphs.TabClefGlyph(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.rendering.glyphs.TabClefGlyph();
 			}
 		}
 		
 		
-		public override   void doLayout()
-		{
-			unchecked 
-			{
+		public override   void doLayout(){
+			unchecked {
 				this.width = ((int) (( 28 * this.renderer.stave.staveGroup.layout.renderer.settings.scale )) );
 			}
 		}
 		
 		
-		public override   bool canScale()
-		{
-			unchecked 
-			{
+		public override   bool canScale(){
+			unchecked {
 				return false;
 			}
 		}
 		
 		
-		public override   void paint(int cx, int cy, global::alphatab.platform.ICanvas canvas)
-		{
-			unchecked 
-			{
+		public override   void paint(int cx, int cy, global::alphatab.platform.ICanvas canvas){
+			unchecked {
 				global::alphatab.rendering.TabBarRenderer tabBarRenderer = ((global::alphatab.rendering.TabBarRenderer) (this.renderer) );
-				global::alphatab.model.Track track = this.renderer.stave.staveGroup.layout.renderer.track;
+				global::alphatab.model.Track track = this.renderer.bar.track;
 				global::alphatab.rendering.RenderingResources res = this.renderer.stave.staveGroup.layout.renderer.renderingResources;
 				double startY = ( ( cy + this.y ) + ( ( 10 * this.renderer.stave.staveGroup.layout.renderer.settings.scale ) * 0.6 ) );
 				int endY = ( ( cy + this.y ) + tabBarRenderer.getTabY(track.tuning.length, new global::haxe.lang.Null<int>(-2, true)) );
@@ -79,8 +61,7 @@ namespace alphatab.rendering.glyphs
 				double correction = ((double) (0) );
 				{
 					int _g = track.tuning.length;
-					switch (_g)
-					{
+					switch (_g){
 						case 4:
 						{
 							fontScale = 0.6;
@@ -133,27 +114,24 @@ namespace alphatab.rendering.glyphs
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1028568990:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("paint"), ((int) (1028568990) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("paint") ), ((int) (1028568990) ))) );
 					}
 					
 					
 					case 1734479962:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("canScale"), ((int) (1734479962) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("canScale") ), ((int) (1734479962) ))) );
 					}
 					
 					
 					case 1825584277:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("doLayout"), ((int) (1825584277) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("doLayout") ), ((int) (1825584277) ))) );
 					}
 					
 					

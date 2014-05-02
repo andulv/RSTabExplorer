@@ -1,51 +1,39 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.rendering.glyphs
-{
-	public  class CircleGlyph : global::alphatab.rendering.Glyph 
-	{
-		public    CircleGlyph(global::haxe.lang.EmptyObject empty) : base(global::haxe.lang.EmptyObject.EMPTY)
-		{
-			unchecked 
-			{
+namespace alphatab.rendering.glyphs{
+	public  class CircleGlyph : global::alphatab.rendering.Glyph {
+		public    CircleGlyph(global::haxe.lang.EmptyObject empty) : base(global::haxe.lang.EmptyObject.EMPTY){
+			unchecked {
 			}
 		}
 		
 		
-		public    CircleGlyph(global::haxe.lang.Null<int> x, global::haxe.lang.Null<int> y, double size) : base(global::haxe.lang.EmptyObject.EMPTY)
-		{
-			unchecked 
-			{
+		public    CircleGlyph(global::haxe.lang.Null<int> x, global::haxe.lang.Null<int> y, double size) : base(global::haxe.lang.EmptyObject.EMPTY){
+			unchecked {
 				global::alphatab.rendering.glyphs.CircleGlyph.__hx_ctor_alphatab_rendering_glyphs_CircleGlyph(this, x, y, size);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_rendering_glyphs_CircleGlyph(global::alphatab.rendering.glyphs.CircleGlyph __temp_me138, global::haxe.lang.Null<int> x, global::haxe.lang.Null<int> y, double size)
-		{
-			unchecked 
-			{
-				int __temp_y137 = ( (global::haxe.lang.Runtime.eq((y).toDynamic(), (default(global::haxe.lang.Null<int>)).toDynamic())) ? (((int) (0) )) : (y.@value) );
-				int __temp_x136 = ( (global::haxe.lang.Runtime.eq((x).toDynamic(), (default(global::haxe.lang.Null<int>)).toDynamic())) ? (((int) (0) )) : (x.@value) );
-				global::alphatab.rendering.Glyph.__hx_ctor_alphatab_rendering_Glyph(__temp_me138, new global::haxe.lang.Null<int>(__temp_x136, true), new global::haxe.lang.Null<int>(__temp_y137, true));
-				__temp_me138._size = size;
+		public static   void __hx_ctor_alphatab_rendering_glyphs_CircleGlyph(global::alphatab.rendering.glyphs.CircleGlyph __temp_me153, global::haxe.lang.Null<int> x, global::haxe.lang.Null<int> y, double size){
+			unchecked {
+				global::alphatab.rendering.Glyph.__hx_ctor_alphatab_rendering_Glyph(__temp_me153, ( ( ! (x.hasValue) ) ? (new global::haxe.lang.Null<int>(0, true)) : (x) ), ( ( ! (y.hasValue) ) ? (new global::haxe.lang.Null<int>(0, true)) : (y) ));
+				int __temp_y152 = ( ( ! (y.hasValue) ) ? (((int) (0) )) : (y.@value) );
+				int __temp_x151 = ( ( ! (x.hasValue) ) ? (((int) (0) )) : (x.@value) );
+				__temp_me153._size = size;
 			}
 		}
 		
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.rendering.glyphs.CircleGlyph(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.rendering.glyphs.CircleGlyph(global::haxe.lang.Null<object>.ofDynamic<int>(arr[0]), global::haxe.lang.Null<object>.ofDynamic<int>(arr[1]), ((double) (global::haxe.lang.Runtime.toDouble(arr[2])) ));
 			}
 		}
@@ -53,28 +41,22 @@ namespace alphatab.rendering.glyphs
 		
 		public  double _size;
 		
-		public override   void doLayout()
-		{
-			unchecked 
-			{
+		public override   void doLayout(){
+			unchecked {
 				this.width = ((int) (( this._size + ( 3 * this.renderer.stave.staveGroup.layout.renderer.settings.scale ) )) );
 			}
 		}
 		
 		
-		public override   bool canScale()
-		{
-			unchecked 
-			{
+		public override   bool canScale(){
+			unchecked {
 				return false;
 			}
 		}
 		
 		
-		public override   void paint(int cx, int cy, global::alphatab.platform.ICanvas canvas)
-		{
-			unchecked 
-			{
+		public override   void paint(int cx, int cy, global::alphatab.platform.ICanvas canvas){
+			unchecked {
 				canvas.beginPath();
 				canvas.circle(((double) (( cx + this.x )) ), ((double) (( cy + this.y )) ), this._size);
 				canvas.fill();
@@ -82,12 +64,9 @@ namespace alphatab.rendering.glyphs
 		}
 		
 		
-		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 2137308320:
 					{
 						this._size = ((double) (@value) );
@@ -106,12 +85,9 @@ namespace alphatab.rendering.glyphs
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 2137308320:
 					{
 						this._size = ((double) (global::haxe.lang.Runtime.toDouble(@value)) );
@@ -130,27 +106,24 @@ namespace alphatab.rendering.glyphs
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1028568990:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("paint"), ((int) (1028568990) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("paint") ), ((int) (1028568990) ))) );
 					}
 					
 					
 					case 1734479962:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("canScale"), ((int) (1734479962) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("canScale") ), ((int) (1734479962) ))) );
 					}
 					
 					
 					case 1825584277:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("doLayout"), ((int) (1825584277) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("doLayout") ), ((int) (1825584277) ))) );
 					}
 					
 					
@@ -171,12 +144,9 @@ namespace alphatab.rendering.glyphs
 		}
 		
 		
-		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 2137308320:
 					{
 						return this._size;
@@ -194,10 +164,8 @@ namespace alphatab.rendering.glyphs
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("_size");
 				{
 					base.__hx_getFields(baseArr);

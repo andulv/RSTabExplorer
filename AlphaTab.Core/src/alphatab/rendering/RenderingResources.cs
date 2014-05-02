@@ -1,13 +1,9 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.rendering
-{
-	public  class RenderingResources : global::haxe.lang.HxObject 
-	{
-		public    RenderingResources(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+namespace alphatab.rendering{
+	public  class RenderingResources : global::haxe.lang.HxObject {
+		public    RenderingResources(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -15,37 +11,29 @@ namespace alphatab.rendering
 		}
 		
 		
-		public    RenderingResources(double scale)
-		{
-			unchecked 
-			{
+		public    RenderingResources(double scale){
+			unchecked {
 				global::alphatab.rendering.RenderingResources.__hx_ctor_alphatab_rendering_RenderingResources(this, scale);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_rendering_RenderingResources(global::alphatab.rendering.RenderingResources __temp_me97, double scale)
-		{
-			unchecked 
-			{
-				__temp_me97.init(scale);
+		public static   void __hx_ctor_alphatab_rendering_RenderingResources(global::alphatab.rendering.RenderingResources __temp_me111, double scale){
+			unchecked {
+				__temp_me111.init(scale);
 			}
 		}
 		
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.rendering.RenderingResources(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.rendering.RenderingResources(((double) (global::haxe.lang.Runtime.toDouble(arr[0])) ));
 			}
 		}
@@ -81,37 +69,32 @@ namespace alphatab.rendering
 		
 		public  double scale;
 		
-		public virtual   void init(double scale)
-		{
-			unchecked 
-			{
+		public virtual   void init(double scale){
+			unchecked {
 				this.scale = scale;
 				string sansFont = "Arial";
 				string serifFont = "Georgia";
-				this.effectFont = new global::alphatab.platform.model.Font(global::haxe.lang.Runtime.toString(serifFont), ((double) (( 12 * scale )) ), new global::haxe.lang.Null<int>(2, true));
-				this.copyrightFont = new global::alphatab.platform.model.Font(global::haxe.lang.Runtime.toString(sansFont), ((double) (( 12 * scale )) ), new global::haxe.lang.Null<int>(1, true));
-				this.titleFont = new global::alphatab.platform.model.Font(global::haxe.lang.Runtime.toString(serifFont), ((double) (( 32 * scale )) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
-				this.subTitleFont = new global::alphatab.platform.model.Font(global::haxe.lang.Runtime.toString(serifFont), ((double) (( 20 * scale )) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
-				this.wordsFont = new global::alphatab.platform.model.Font(global::haxe.lang.Runtime.toString(serifFont), ((double) (( 15 * scale )) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
-				this.tablatureFont = new global::alphatab.platform.model.Font(global::haxe.lang.Runtime.toString(sansFont), ((double) (( 13 * scale )) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
-				this.graceFont = new global::alphatab.platform.model.Font(global::haxe.lang.Runtime.toString(sansFont), ((double) (( 11 * scale )) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
+				this.effectFont = new global::alphatab.platform.model.Font(((string) (serifFont) ), ((double) (( 12 * scale )) ), new global::haxe.lang.Null<int>(2, true));
+				this.copyrightFont = new global::alphatab.platform.model.Font(((string) (sansFont) ), ((double) (( 12 * scale )) ), new global::haxe.lang.Null<int>(1, true));
+				this.titleFont = new global::alphatab.platform.model.Font(((string) (serifFont) ), ((double) (( 32 * scale )) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
+				this.subTitleFont = new global::alphatab.platform.model.Font(((string) (serifFont) ), ((double) (( 20 * scale )) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
+				this.wordsFont = new global::alphatab.platform.model.Font(((string) (serifFont) ), ((double) (( 15 * scale )) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
+				this.tablatureFont = new global::alphatab.platform.model.Font(((string) (sansFont) ), ((double) (( 13 * scale )) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
+				this.graceFont = new global::alphatab.platform.model.Font(((string) (sansFont) ), ((double) (( 11 * scale )) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
 				this.staveLineColor = new global::alphatab.platform.model.Color(((int) (165) ), ((int) (165) ), ((int) (165) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
 				this.barSeperatorColor = new global::alphatab.platform.model.Color(((int) (34) ), ((int) (34) ), ((int) (17) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
-				this.barNumberFont = new global::alphatab.platform.model.Font(global::haxe.lang.Runtime.toString(sansFont), ((double) (( 11 * scale )) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
+				this.barNumberFont = new global::alphatab.platform.model.Font(((string) (sansFont) ), ((double) (( 11 * scale )) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
 				this.barNumberColor = new global::alphatab.platform.model.Color(((int) (200) ), ((int) (0) ), ((int) (0) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
-				this.markerFont = new global::alphatab.platform.model.Font(global::haxe.lang.Runtime.toString(serifFont), ((double) (( 14 * scale )) ), new global::haxe.lang.Null<int>(1, true));
-				this.tabClefFont = new global::alphatab.platform.model.Font(global::haxe.lang.Runtime.toString(sansFont), ((double) (( 18 * scale )) ), new global::haxe.lang.Null<int>(1, true));
+				this.markerFont = new global::alphatab.platform.model.Font(((string) (serifFont) ), ((double) (( 14 * scale )) ), new global::haxe.lang.Null<int>(1, true));
+				this.tabClefFont = new global::alphatab.platform.model.Font(((string) (sansFont) ), ((double) (( 18 * scale )) ), new global::haxe.lang.Null<int>(1, true));
 				this.mainGlyphColor = new global::alphatab.platform.model.Color(((int) (0) ), ((int) (0) ), ((int) (0) ), ((global::haxe.lang.Null<int>) (default(global::haxe.lang.Null<int>)) ));
 			}
 		}
 		
 		
-		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 2026819210:
 					{
 						this.scale = ((double) (@value) );
@@ -130,12 +113,9 @@ namespace alphatab.rendering
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 2026819210:
 					{
 						this.scale = ((double) (global::haxe.lang.Runtime.toDouble(@value)) );
@@ -252,15 +232,12 @@ namespace alphatab.rendering
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1169898256:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("init"), ((int) (1169898256) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("init") ), ((int) (1169898256) ))) );
 					}
 					
 					
@@ -365,12 +342,9 @@ namespace alphatab.rendering
 		}
 		
 		
-		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 2026819210:
 					{
 						return this.scale;
@@ -388,12 +362,9 @@ namespace alphatab.rendering
 		}
 		
 		
-		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs){
+			unchecked {
+				switch (hash){
 					case 1169898256:
 					{
 						this.init(((double) (global::haxe.lang.Runtime.toDouble(dynargs[0])) ));
@@ -413,10 +384,8 @@ namespace alphatab.rendering
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("scale");
 				baseArr.push("mainGlyphColor");
 				baseArr.push("tabClefFont");

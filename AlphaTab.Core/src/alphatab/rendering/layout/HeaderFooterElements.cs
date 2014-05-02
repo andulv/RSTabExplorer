@@ -1,11 +1,8 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.rendering.layout
-{
-	public  class HeaderFooterElements : global::haxe.lang.HxObject 
-	{
-		static HeaderFooterElements() 
-		{
+namespace alphatab.rendering.layout{
+	public  class HeaderFooterElements : global::haxe.lang.HxObject {
+		static HeaderFooterElements() {
 			global::alphatab.rendering.layout.HeaderFooterElements.None = 0;
 			global::alphatab.rendering.layout.HeaderFooterElements.Title = 1;
 			global::alphatab.rendering.layout.HeaderFooterElements.SubTitle = 2;
@@ -18,10 +15,8 @@ namespace alphatab.rendering.layout
 			global::alphatab.rendering.layout.HeaderFooterElements.PageNumber = 256;
 			global::alphatab.rendering.layout.HeaderFooterElements.All = 511;
 		}
-		public    HeaderFooterElements(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+		public    HeaderFooterElements(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -29,19 +24,15 @@ namespace alphatab.rendering.layout
 		}
 		
 		
-		public    HeaderFooterElements()
-		{
-			unchecked 
-			{
+		public    HeaderFooterElements(){
+			unchecked {
 				global::alphatab.rendering.layout.HeaderFooterElements.__hx_ctor_alphatab_rendering_layout_HeaderFooterElements(this);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_rendering_layout_HeaderFooterElements(global::alphatab.rendering.layout.HeaderFooterElements __temp_me263)
-		{
-			unchecked 
-			{
+		public static   void __hx_ctor_alphatab_rendering_layout_HeaderFooterElements(global::alphatab.rendering.layout.HeaderFooterElements __temp_me278){
+			unchecked {
 				{
 				}
 				
@@ -71,19 +62,15 @@ namespace alphatab.rendering.layout
 		
 		public static  int All;
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.rendering.layout.HeaderFooterElements(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.rendering.layout.HeaderFooterElements();
 			}
 		}

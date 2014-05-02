@@ -1,9 +1,7 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace haxe.lang
-{
-	public  class Runtime 
-	{
+namespace haxe.lang{
+	public  class Runtime {
 		
 	public static object getField(haxe.lang.HxObject obj, string field, int fieldHash, bool throwErrors)
 	{
@@ -31,14 +29,11 @@ namespace haxe.lang
 	{
 		return obj.__hx_invokeField(field, (fieldHash == 0) ? haxe.lang.FieldLookup.hash(field) : fieldHash, args);
 	}
-		static Runtime() 
-		{
+		static Runtime() {
 			global::haxe.lang.Runtime.undefined = new global::haxe.lang.DynamicObject(new global::haxe.root.Array<int>(new int[]{}), new global::haxe.root.Array<object>(new object[]{}), new global::haxe.root.Array<int>(new int[]{}), new global::haxe.root.Array<double>(new double[]{}));
 		}
-		public    Runtime()
-		{
-			unchecked 
-			{
+		public    Runtime(){
+			unchecked {
 				{
 				}
 				
@@ -48,16 +43,14 @@ namespace haxe.lang
 		
 		public static  object undefined;
 		
-		public static   object closure(object obj, int hash, string field)
-		{
+		public static   object closure(object obj, int hash, string field){
 			
 		return new haxe.lang.Closure(obj, field, hash);
 	
 		}
 		
 		
-		public static   bool eq(object v1, object v2)
-		{
+		public static   bool eq(object v1, object v2){
 			
 			if (System.Object.ReferenceEquals(v1, v2))
 				return true;
@@ -80,13 +73,33 @@ namespace haxe.lang
 				if (t1 == t2)
 					return v1c.Equals(v2c);
 
+				if (t1 == System.TypeCode.String || t2 == System.TypeCode.String)
+					return false;
+
 				switch(t1)
 				{
+					case System.TypeCode.Decimal:
+						return v1c.ToDecimal(null) == v2c.ToDecimal(null);
 					case System.TypeCode.Int64:
 					case System.TypeCode.UInt64:
-						return v1c.ToUInt64(null) == v2c.ToUInt64(null);
+						if (t2 == System.TypeCode.Decimal)
+							return v1c.ToDecimal(null) == v2c.ToDecimal(null);
+						else
+							return v1c.ToUInt64(null) == v2c.ToUInt64(null);
 					default:
-						return v1c.ToDouble(null) == v2c.ToDouble(null);
+						switch(t2)
+						{
+							case System.TypeCode.Decimal:
+								return v1c.ToDecimal(null) == v2c.ToDecimal(null);
+							case System.TypeCode.Int64:
+							case System.TypeCode.UInt64:
+								if (t2 == System.TypeCode.Decimal)
+									return v1c.ToDecimal(null) == v2c.ToDecimal(null);
+								else
+									return v1c.ToUInt64(null) == v2c.ToUInt64(null);
+							default:
+								return v1c.ToDouble(null) == v2c.ToDouble(null);
+						}
 				}
 			}
 
@@ -110,8 +123,7 @@ namespace haxe.lang
 		}
 		
 		
-		public static   bool refEq(object v1, object v2)
-		{
+		public static   bool refEq(object v1, object v2){
 			
 			if (v1 is System.Type)
 				return typeEq(v1 as System.Type, v2 as System.Type);
@@ -120,24 +132,21 @@ namespace haxe.lang
 		}
 		
 		
-		public static   double toDouble(object obj)
-		{
+		public static   double toDouble(object obj){
 			
 		return (obj == null) ? 0.0 : (obj is double) ? (double)obj : ((System.IConvertible) obj).ToDouble(null);
 	
 		}
 		
 		
-		public static   int toInt(object obj)
-		{
+		public static   int toInt(object obj){
 			
 		return (obj == null) ? 0 : (obj is int) ? (int)obj : ((System.IConvertible) obj).ToInt32(null);
 	
 		}
 		
 		
-		public static   bool isInt(object obj)
-		{
+		public static   bool isInt(object obj){
 			
 			System.IConvertible cv1 = obj as System.IConvertible;
 			if (cv1 != null)
@@ -161,8 +170,30 @@ namespace haxe.lang
 		}
 		
 		
-		public static   int compare(object v1, object v2)
-		{
+		public static   bool isUInt(object obj){
+			
+			System.IConvertible cv1 = obj as System.IConvertible;
+			if (cv1 != null)
+			{
+                switch (cv1.GetTypeCode())
+                {
+                    case System.TypeCode.Double:
+                        double d = (double)obj;
+
+				        return d >= uint.MinValue && d <= uint.MaxValue && d == ( (uint)d );
+                    case System.TypeCode.UInt32:
+                        return true;
+                    default:
+                        return false;
+                }
+
+			}
+			return false;
+	
+		}
+		
+		
+		public static   int compare(object v1, object v2){
 			
 			if (v1 == v2) return 0;
 			if (v1 == null) return -1;
@@ -244,8 +275,7 @@ namespace haxe.lang
 		}
 		
 		
-		public static   object plus(object v1, object v2)
-		{
+		public static   object plus(object v1, object v2){
 			
 			if (v1 is string || v2 is string)
 				return Std.@string(v1) + Std.@string(v2);
@@ -268,8 +298,7 @@ namespace haxe.lang
 		}
 		
 		
-		public static   object slowGetField(object obj, string field, bool throwErrors)
-		{
+		public static   object slowGetField(object obj, string field, bool throwErrors){
 			
 
 		if (obj == null)
@@ -321,8 +350,7 @@ namespace haxe.lang
 		}
 		
 		
-		public static   bool slowHasField(object obj, string field)
-		{
+		public static   bool slowHasField(object obj, string field){
 			
 		if (obj == null) return false;
 		System.Type t = obj as System.Type;
@@ -347,8 +375,7 @@ namespace haxe.lang
 		}
 		
 		
-		public static   object slowSetField(object obj, string field, object @value)
-		{
+		public static   object slowSetField(object obj, string field, object @value){
 			
 		if (obj == null)
 			throw new System.NullReferenceException("Cannot access field '" + field + "' of null.");
@@ -394,12 +421,9 @@ namespace haxe.lang
 		}
 		
 		
-		public static   object callMethod(object obj, global::System.Reflection.MethodBase[] methods, int methodLength, global::haxe.root.Array args)
-		{
-			unchecked 
-			{
-				if (( methodLength == 0 )) 
-				{
+		public static   object callMethod(object obj, global::System.Reflection.MethodBase[] methods, int methodLength, global::haxe.root.Array args){
+			unchecked {
+				if (( methodLength == 0 )) {
 					throw global::haxe.lang.HaxeException.wrap("No available methods");
 				}
 				
@@ -409,12 +433,10 @@ namespace haxe.lang
 				int[] rates = new int[((int) (( methods as global::System.Array ).Length) )];
 				{
 					int _g = 0;
-					while (( _g < ((int) (length) ) ))
-					{
+					while (( _g < ((int) (length) ) )){
 						int i = _g++;
 						oargs[i] = args[i];
-						if (( ! (global::haxe.lang.Runtime.eq(args[i], default(object))) )) 
-						{
+						if (( ! (global::haxe.lang.Runtime.eq(args[i], default(object))) )) {
 							ts[i] = global::cs.Lib.nativeType(args[i]);
 						}
 						
@@ -423,45 +445,35 @@ namespace haxe.lang
 				}
 				
 				int last = 0;
-				if (( methodLength > 1 )) 
-				{
+				if (( methodLength > 1 )) {
 					{
 						int _g1 = 0;
-						while (( _g1 < methodLength ))
-						{
+						while (( _g1 < methodLength )){
 							int i1 = _g1++;
 							global::System.Reflection.ParameterInfo[] @params = methods[i1].GetParameters();
-							if (( ( @params as global::System.Array ).Length != length )) 
-							{
+							if (( ( @params as global::System.Array ).Length != length )) {
 								continue;
 							}
-							 else 
-							{
+							 else {
 								bool fits = true;
 								int crate = 0;
 								{
 									int _g2 = 0;
 									int _g11 = ( @params as global::System.Array ).Length;
-									while (( _g2 < _g11 ))
-									{
+									while (( _g2 < _g11 )){
 										int i2 = _g2++;
 										global::System.Type param = @params[i2].ParameterType;
-										string strParam = global::haxe.lang.Runtime.concat(global::Std.@string(param), "");
-										if (param.IsAssignableFrom(((global::System.Type) (ts[i2]) ))) 
-										{
+										string strParam = global::haxe.lang.Runtime.concat(global::haxe.root.Std.@string(param), "");
+										if (param.IsAssignableFrom(((global::System.Type) (ts[i2]) ))) {
 											continue;
 										}
-										 else 
-										{
-											if (( strParam.StartsWith("haxe.lang.Null") || ( (( global::haxe.lang.Runtime.eq(oargs[i2], default(object)) || ( oargs[i2] is global::System.IConvertible ) )) && (((global::System.Type) (typeof(global::System.IConvertible)) )).IsAssignableFrom(((global::System.Type) (param) )) ) )) 
-											{
+										 else {
+											if (( strParam.StartsWith("haxe.lang.Null") || ( (( global::haxe.lang.Runtime.eq(oargs[i2], default(object)) || ( oargs[i2] is global::System.IConvertible ) )) && (((global::System.Type) (typeof(global::System.IConvertible)) )).IsAssignableFrom(((global::System.Type) (param) )) ) )) {
 												crate++;
 												continue;
 											}
-											 else 
-											{
-												if ( ! (param.ContainsGenericParameters) ) 
-												{
+											 else {
+												if ( ! (param.ContainsGenericParameters) ) {
 													fits = false;
 													break;
 												}
@@ -474,8 +486,7 @@ namespace haxe.lang
 									
 								}
 								
-								if (fits) 
-								{
+								if (fits) {
 									rates[last] = crate;
 									methods[last++] = methods[i1];
 								}
@@ -488,29 +499,24 @@ namespace haxe.lang
 					
 					methodLength = last;
 				}
-				 else 
-				{
-					if (( ( methodLength == 1 ) && ( ( methods[0].GetParameters() as global::System.Array ).Length != length ) )) 
-					{
+				 else {
+					if (( ( methodLength == 1 ) && ( ( methods[0].GetParameters() as global::System.Array ).Length != length ) )) {
 						methodLength = 0;
 					}
 					
 				}
 				
-				if (( methodLength == 0 )) 
-				{
+				if (( methodLength == 0 )) {
 					throw global::haxe.lang.HaxeException.wrap(global::haxe.lang.Runtime.concat("Invalid calling parameters for method ", ( methods[0] as global::System.Reflection.MemberInfo ).Name));
 				}
 				
-				double best = global::Math.POSITIVE_INFINITY;
+				double best = global::haxe.root.Math.POSITIVE_INFINITY;
 				int bestMethod = 0;
 				{
 					int _g3 = 0;
-					while (( _g3 < methodLength ))
-					{
+					while (( _g3 < methodLength )){
 						int i3 = _g3++;
-						if (( rates[i3] < best )) 
-						{
+						if (( rates[i3] < best )) {
 							bestMethod = i3;
 							best = ((double) (rates[i3]) );
 						}
@@ -524,29 +530,22 @@ namespace haxe.lang
 				{
 					int _g12 = 0;
 					int _g4 = ( params1 as global::System.Array ).Length;
-					while (( _g12 < _g4 ))
-					{
+					while (( _g12 < _g4 )){
 						int i4 = _g12++;
 						global::System.Type param1 = params1[i4].ParameterType;
-						string strParam1 = global::haxe.lang.Runtime.concat(global::Std.@string(param1), "");
-						if (strParam1.StartsWith("haxe.lang.Null")) 
-						{
+						string strParam1 = global::haxe.lang.Runtime.concat(global::haxe.root.Std.@string(param1), "");
+						if (strParam1.StartsWith("haxe.lang.Null")) {
 							oargs[i4] = global::haxe.lang.Runtime.mkNullable(oargs[i4], param1);
 						}
-						 else 
-						{
-							if ((((global::System.Type) (typeof(global::System.IConvertible)) )).IsAssignableFrom(((global::System.Type) (param1) ))) 
-							{
-								if (global::haxe.lang.Runtime.eq(oargs[i4], default(object))) 
-								{
-									if (param1.IsValueType) 
-									{
+						 else {
+							if ((((global::System.Type) (typeof(global::System.IConvertible)) )).IsAssignableFrom(((global::System.Type) (param1) ))) {
+								if (global::haxe.lang.Runtime.eq(oargs[i4], default(object))) {
+									if (param1.IsValueType) {
 										oargs[i4] = global::System.Activator.CreateInstance(((global::System.Type) (param1) ));
 									}
 									
 								}
-								 else 
-								{
+								 else {
 									oargs[i4] = (((global::System.IConvertible) (oargs[i4]) )).ToType(((global::System.Type) (param1) ), ((global::System.IFormatProvider) (default(global::System.IFormatProvider)) ));
 								}
 								
@@ -558,15 +557,13 @@ namespace haxe.lang
 					
 				}
 				
-				if (( methods[0].ContainsGenericParameters && ( methods[0] is global::System.Reflection.MethodInfo ) )) 
-				{
+				if (( methods[0].ContainsGenericParameters && ( methods[0] is global::System.Reflection.MethodInfo ) )) {
 					global::System.Reflection.MethodInfo m = ((global::System.Reflection.MethodInfo) (methods[0]) );
 					global::System.Type[] tgs = ( m as global::System.Reflection.MethodBase ).GetGenericArguments();
 					{
 						int _g13 = 0;
 						int _g5 = ( tgs as global::System.Array ).Length;
-						while (( _g13 < _g5 ))
-						{
+						while (( _g13 < _g5 )){
 							int i5 = _g13++;
 							tgs[i5] = typeof(object);
 						}
@@ -579,8 +576,7 @@ namespace haxe.lang
 				}
 				
 				global::System.Reflection.MethodBase m1 = methods[0];
-				if (( global::haxe.lang.Runtime.eq(obj, default(object)) && ( m1 is global::System.Reflection.ConstructorInfo ) )) 
-				{
+				if (( global::haxe.lang.Runtime.eq(obj, default(object)) && ( m1 is global::System.Reflection.ConstructorInfo ) )) {
 					object ret = (((global::System.Reflection.ConstructorInfo) (m1) )).Invoke(((object[]) (oargs) ));
 					return global::haxe.lang.Runtime.unbox(ret);
 				}
@@ -591,16 +587,12 @@ namespace haxe.lang
 		}
 		
 		
-		public static   object unbox(object dyn)
-		{
-			unchecked 
-			{
-				if (( ( ! (global::haxe.lang.Runtime.eq(dyn, default(object))) ) && (global::haxe.lang.Runtime.concat(global::Std.@string(global::cs.Lib.nativeType(dyn)), "")).StartsWith("haxe.lang.Null") )) 
-				{
+		public static   object unbox(object dyn){
+			unchecked {
+				if (( ( ! (global::haxe.lang.Runtime.eq(dyn, default(object))) ) && (global::haxe.lang.Runtime.concat(global::haxe.root.Std.@string(global::cs.Lib.nativeType(dyn)), "")).StartsWith("haxe.lang.Null") )) {
 					return ((object) (global::haxe.lang.Runtime.callField(dyn, "toDynamic", 1705629508, default(global::haxe.root.Array))) );
 				}
-				 else 
-				{
+				 else {
 					return dyn;
 				}
 				
@@ -608,8 +600,7 @@ namespace haxe.lang
 		}
 		
 		
-		public static   object mkNullable(object obj, global::System.Type nullableType)
-		{
+		public static   object mkNullable(object obj, global::System.Type nullableType){
 			
 		if (nullableType.ContainsGenericParameters)
 			return haxe.lang.Null<object>.ofDynamic<object>(obj);
@@ -618,8 +609,7 @@ namespace haxe.lang
 		}
 		
 		
-		public static   object slowCallField(object obj, string field, global::haxe.root.Array args)
-		{
+		public static   object slowCallField(object obj, string field, global::haxe.root.Array args){
 			
 		if (field == "toString")
 		{
@@ -665,8 +655,7 @@ namespace haxe.lang
 		}
 		
 		
-		public static   object callField(object obj, string field, int fieldHash, global::haxe.root.Array args)
-		{
+		public static   object callField(object obj, string field, int fieldHash, global::haxe.root.Array args){
 			
 		haxe.lang.HxObject hxObj = obj as haxe.lang.HxObject;
 		if (hxObj != null)
@@ -677,8 +666,7 @@ namespace haxe.lang
 		}
 		
 		
-		public static   object getField(object obj, string field, int fieldHash, bool throwErrors)
-		{
+		public static   object getField(object obj, string field, int fieldHash, bool throwErrors){
 			
 
 		haxe.lang.HxObject hxObj = obj as haxe.lang.HxObject;
@@ -691,22 +679,20 @@ namespace haxe.lang
 		}
 		
 		
-		public static   double getField_f(object obj, string field, int fieldHash, bool throwErrors)
-		{
+		public static   double getField_f(object obj, string field, int fieldHash, bool throwErrors){
 			
 
 		haxe.lang.HxObject hxObj = obj as haxe.lang.HxObject;
 		if (hxObj != null)
 			return hxObj.__hx_getField_f(field, (fieldHash == 0) ? haxe.lang.FieldLookup.hash(field) : fieldHash, throwErrors, false);
 
-		return (double)slowGetField(obj, field, throwErrors);
+		return toDouble(slowGetField(obj, field, throwErrors));
 
 	
 		}
 		
 		
-		public static   object setField(object obj, string field, int fieldHash, object @value)
-		{
+		public static   object setField(object obj, string field, int fieldHash, object @value){
 			
 
 		haxe.lang.HxObject hxObj = obj as haxe.lang.HxObject;
@@ -719,37 +705,30 @@ namespace haxe.lang
 		}
 		
 		
-		public static   double setField_f(object obj, string field, int fieldHash, double @value)
-		{
+		public static   double setField_f(object obj, string field, int fieldHash, double @value){
 			
 
 		haxe.lang.HxObject hxObj = obj as haxe.lang.HxObject;
 		if (hxObj != null)
 			return hxObj.__hx_setField_f(field, (fieldHash == 0) ? haxe.lang.FieldLookup.hash(field) : fieldHash, value, false);
 
-		return (double)slowSetField(obj, field, value);
+		return toDouble(slowSetField(obj, field, value));
 
 	
 		}
 		
 		
-		public static   string toString(object obj)
-		{
-			unchecked 
-			{
-				if (global::haxe.lang.Runtime.eq(obj, default(object))) 
-				{
+		public static   string toString(object obj){
+			unchecked {
+				if (global::haxe.lang.Runtime.eq(obj, default(object))) {
 					return default(string);
 				}
 				
-				if (( obj is bool )) 
-				{
-					if (((bool) ((obj)) )) 
-					{
+				if (( obj is bool )) {
+					if (global::haxe.lang.Runtime.toBool((obj))) {
 						return "true";
 					}
-					 else 
-					{
+					 else {
 						return "false";
 					}
 					
@@ -760,8 +739,7 @@ namespace haxe.lang
 		}
 		
 		
-		public static   bool typeEq(global::System.Type t1, global::System.Type t2)
-		{
+		public static   bool typeEq(global::System.Type t1, global::System.Type t2){
 			
 			if (t1 == null || t2 == null)
 				return t1 == t2;
@@ -772,8 +750,7 @@ namespace haxe.lang
 		}
 		
 		
-		public static   To genericCast<To>(object obj)
-		{
+		public static   To genericCast<To>(object obj){
 			
 		if (obj is To)
 			return (To) obj;
@@ -783,16 +760,26 @@ namespace haxe.lang
 			return (To)(object) toDouble(obj);
 		else if (typeof(To) == typeof(int))
 			return (To)(object) toInt(obj);
+		else if (typeof(To) == typeof(float))
+			return (To)(object)(float)toDouble(obj);
+		else if (typeof(To) == typeof(long))
+			return (To)(object)(long)toDouble(obj);
 		else
 			return (To) obj;
 	
 		}
 		
 		
-		public static   string concat(string s1, string s2)
-		{
+		public static   string concat(string s1, string s2){
 			
 		return (s1 == null ? "null" : s1) + (s2 == null ? "null" : s2);
+	
+		}
+		
+		
+		public static   bool toBool(object dyn){
+			
+		return dyn == null ? false : ((bool) dyn);
 	
 		}
 		
@@ -802,10 +789,8 @@ namespace haxe.lang
 
 
 
-namespace haxe.lang
-{
-	public enum EmptyObject
-	{
+namespace haxe.lang{
+	public enum EmptyObject{
 		EMPTY
 	}
 }

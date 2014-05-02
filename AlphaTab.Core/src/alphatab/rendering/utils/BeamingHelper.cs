@@ -1,18 +1,14 @@
 using haxe.root;
-namespace alphatab.rendering.utils
-{
-	public enum BeamDirection
-	{
+namespace alphatab.rendering.utils{
+	public enum BeamDirection{
 		Up, Down
 	}
 }
 
 
 
-namespace alphatab.rendering.utils
-{
-	public enum BeamBarType
-	{
+namespace alphatab.rendering.utils{
+	public enum BeamBarType{
 		Full, PartLeft, PartRight
 	}
 }
@@ -20,18 +16,13 @@ namespace alphatab.rendering.utils
 
 
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.rendering.utils
-{
-	public  class BeamingHelper : global::haxe.lang.HxObject 
-	{
-		static BeamingHelper() 
-		{
+namespace alphatab.rendering.utils{
+	public  class BeamingHelper : global::haxe.lang.HxObject {
+		static BeamingHelper() {
 			global::alphatab.rendering.utils.BeamingHelper.ScoreMiddleKeys = new global::haxe.root.Array<int>(new int[]{48, 45, 38, 59});
 		}
-		public    BeamingHelper(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+		public    BeamingHelper(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -39,66 +30,52 @@ namespace alphatab.rendering.utils
 		}
 		
 		
-		public    BeamingHelper(global::alphatab.model.Track track)
-		{
-			unchecked 
-			{
+		public    BeamingHelper(global::alphatab.model.Track track){
+			unchecked {
 				global::alphatab.rendering.utils.BeamingHelper.__hx_ctor_alphatab_rendering_utils_BeamingHelper(this, track);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_rendering_utils_BeamingHelper(global::alphatab.rendering.utils.BeamingHelper __temp_me268, global::alphatab.model.Track track)
-		{
-			unchecked 
-			{
-				__temp_me268.beats = new global::haxe.root.Array<object>();
-				__temp_me268._track = track;
-				__temp_me268._beatLineXPositions = new global::haxe.ds.IntMap<object>();
-				__temp_me268.maxDuration = global::alphatab.model.Duration.Whole;
+		public static   void __hx_ctor_alphatab_rendering_utils_BeamingHelper(global::alphatab.rendering.utils.BeamingHelper __temp_me286, global::alphatab.model.Track track){
+			unchecked {
+				__temp_me286.beats = new global::haxe.root.Array<object>();
+				__temp_me286._track = track;
+				__temp_me286._beatLineXPositions = new global::haxe.ds.IntMap<object>();
+				__temp_me286.maxDuration = global::alphatab.model.Duration.Whole;
 			}
 		}
 		
 		
 		public static  global::haxe.root.Array<int> ScoreMiddleKeys;
 		
-		public static   bool canJoin(global::alphatab.model.Beat b1, global::alphatab.model.Beat b2)
-		{
-			unchecked 
-			{
-				if (( ( ( ( b1 == default(global::alphatab.model.Beat) ) || ( b2 == default(global::alphatab.model.Beat) ) ) || b1.isRest() ) || b2.isRest() )) 
-				{
+		public static   bool canJoin(global::alphatab.model.Beat b1, global::alphatab.model.Beat b2){
+			unchecked {
+				if (( ( ( ( b1 == default(global::alphatab.model.Beat) ) || ( b2 == default(global::alphatab.model.Beat) ) ) || b1.isRest() ) || b2.isRest() )) {
 					return false;
 				}
 				
 				global::alphatab.model.Bar m1 = b1.voice.bar;
 				global::alphatab.model.Bar m2 = b1.voice.bar;
-				if (( m1 != m2 )) 
-				{
+				if (( m1 != m2 )) {
 					return false;
 				}
 				
 				int start1 = b1.start;
 				int start2 = b2.start;
-				if ((  ! (global::alphatab.rendering.utils.BeamingHelper.canJoinDuration(b1.duration))  ||  ! (global::alphatab.rendering.utils.BeamingHelper.canJoinDuration(b2.duration))  )) 
-				{
+				if ((  ! (global::alphatab.rendering.utils.BeamingHelper.canJoinDuration(b1.duration))  ||  ! (global::alphatab.rendering.utils.BeamingHelper.canJoinDuration(b2.duration))  )) {
 					return ( start1 == start2 );
 				}
 				
 				int divisionLength = 960;
 				{
 					int _g = ((global::alphatab.model.MasterBar) (m1.track.score.masterBars[m1.index]) ).timeSignatureDenominator;
-					switch (_g)
-					{
+					switch (_g){
 						case 8:
 						{
-							if (( ( ((global::alphatab.model.MasterBar) (m1.track.score.masterBars[m1.index]) ).timeSignatureNumerator % 3 ) == 0 )) 
-							{
-								{
-									double x = global::System.Math.Floor(((double) (480.0) ));
-									divisionLength += ((int) (x) );
-								}
-								
+							if (( ( ((global::alphatab.model.MasterBar) (m1.track.score.masterBars[m1.index]) ).timeSignatureNumerator % 3 ) == 0 )) {
+								double x = global::System.Math.Floor(((double) (480.0) ));
+								divisionLength += ((int) (x) );
 							}
 							
 							break;
@@ -116,21 +93,16 @@ namespace alphatab.rendering.utils
 		}
 		
 		
-		public static   void calculateDivision(global::alphatab.model.Beat b, int l)
-		{
-			unchecked 
-			{
+		public static   void calculateDivision(global::alphatab.model.Beat b, int l){
+			unchecked {
 				int start = 0;
 			}
 		}
 		
 		
-		public static   bool canJoinDuration(global::alphatab.model.Duration d)
-		{
-			unchecked 
-			{
-				switch (global::haxe.root.Type.enumIndex(d))
-				{
+		public static   bool canJoinDuration(global::alphatab.model.Duration d){
+			unchecked {
+				switch (global::haxe.root.Type.enumIndex(d)){
 					case 0:case 1:case 2:
 					{
 						return false;
@@ -148,19 +120,15 @@ namespace alphatab.rendering.utils
 		}
 		
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.rendering.utils.BeamingHelper(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.rendering.utils.BeamingHelper(((global::alphatab.model.Track) (arr[0]) ));
 			}
 		}
@@ -188,16 +156,12 @@ namespace alphatab.rendering.utils
 		
 		public  global::alphatab.model.Track _track;
 		
-		public virtual   int getValue(global::alphatab.model.Note n)
-		{
-			unchecked 
-			{
-				if (this._track.isPercussion) 
-				{
+		public virtual   int getValue(global::alphatab.model.Note n){
+			unchecked {
+				if (this._track.isPercussion) {
 					return global::alphatab.rendering.utils.PercussionMapper.mapValue(n);
 				}
-				 else 
-				{
+				 else {
 					return ( n.fret + n.beat.voice.bar.track.tuning[( ( n.beat.voice.bar.track.tuning.length - (( n.@string - 1 )) ) - 1 )] );
 				}
 				
@@ -207,18 +171,13 @@ namespace alphatab.rendering.utils
 		
 		public  global::haxe.ds.IntMap<object> _beatLineXPositions;
 		
-		public virtual   int getBeatLineX(global::alphatab.model.Beat beat)
-		{
-			unchecked 
-			{
-				if (this._beatLineXPositions.exists(beat.index)) 
-				{
-					if (( this.getDirection() == global::alphatab.rendering.utils.BeamDirection.Up )) 
-					{
+		public virtual   int getBeatLineX(global::alphatab.model.Beat beat){
+			unchecked {
+				if (this._beatLineXPositions.exists(beat.index)) {
+					if (( this.getDirection() == global::alphatab.rendering.utils.BeamDirection.Up )) {
 						return ((int) (global::haxe.lang.Runtime.getField_f((this._beatLineXPositions.@get(beat.index)).toDynamic(), "up", 26203, true)) );
 					}
-					 else 
-					{
+					 else {
 						return ((int) (global::haxe.lang.Runtime.getField_f((this._beatLineXPositions.@get(beat.index)).toDynamic(), "down", 1114503266, true)) );
 					}
 					
@@ -229,31 +188,32 @@ namespace alphatab.rendering.utils
 		}
 		
 		
-		public virtual   void registerBeatLineX(global::alphatab.model.Beat beat, int up, int down)
-		{
-			unchecked 
-			{
+		public   bool hasBeatLineX(global::alphatab.model.Beat beat){
+			unchecked {
+				return this._beatLineXPositions.exists(beat.index);
+			}
+		}
+		
+		
+		public virtual   void registerBeatLineX(global::alphatab.model.Beat beat, int up, int down){
+			unchecked {
 				this._beatLineXPositions.@set(beat.index, new global::haxe.lang.DynamicObject(new global::haxe.root.Array<int>(new int[]{}), new global::haxe.root.Array<object>(new object[]{}), new global::haxe.root.Array<int>(new int[]{26203, 1114503266}), new global::haxe.root.Array<double>(new double[]{((double) (up) ), ((double) (down) )})));
 			}
 		}
 		
 		
-		public virtual   global::alphatab.rendering.utils.BeamDirection getDirection()
-		{
-			unchecked 
-			{
+		public virtual   global::alphatab.rendering.utils.BeamDirection getDirection(){
+			unchecked {
 				int avg = default(int);
 				{
 					double x = ( ((double) ((( this.getValue(this.maxNote) + this.getValue(this.minNote) ))) ) / 2 );
 					avg = ((int) (x) );
 				}
 				
-				if (( avg <= global::alphatab.rendering.utils.BeamingHelper.ScoreMiddleKeys[( global::haxe.root.Type.enumIndex(this._lastBeat.voice.bar.clef) - 1 )] )) 
-				{
+				if (( avg <= global::alphatab.rendering.utils.BeamingHelper.ScoreMiddleKeys[( global::haxe.root.Type.enumIndex(this._lastBeat.voice.bar.clef) - 1 )] )) {
 					return global::alphatab.rendering.utils.BeamDirection.Up;
 				}
-				 else 
-				{
+				 else {
 					return global::alphatab.rendering.utils.BeamDirection.Down;
 				}
 				
@@ -261,37 +221,29 @@ namespace alphatab.rendering.utils
 		}
 		
 		
-		public virtual   bool checkBeat(global::alphatab.model.Beat beat)
-		{
-			unchecked 
-			{
-				if (( this.voice == default(global::alphatab.model.Voice) )) 
-				{
+		public virtual   bool checkBeat(global::alphatab.model.Beat beat){
+			unchecked {
+				if (( this.voice == default(global::alphatab.model.Voice) )) {
 					this.voice = beat.voice;
 				}
 				
 				bool @add = false;
-				if (( this.beats.length == 0 )) 
-				{
+				if (( this.beats.length == 0 )) {
 					@add = true;
 				}
-				 else 
-				{
-					if (global::alphatab.rendering.utils.BeamingHelper.canJoin(this._lastBeat, beat)) 
-					{
+				 else {
+					if (global::alphatab.rendering.utils.BeamingHelper.canJoin(this._lastBeat, beat)) {
 						@add = true;
 					}
 					
 				}
 				
-				if (@add) 
-				{
+				if (@add) {
 					this._lastBeat = beat;
 					this.beats.push(beat);
 					this.checkNote(beat.minNote());
 					this.checkNote(beat.maxNote());
-					if (( global::alphatab.model.ModelUtils.getDurationValue(this.maxDuration) < global::alphatab.model.ModelUtils.getDurationValue(beat.duration) )) 
-					{
+					if (( global::alphatab.model.ModelUtils.getDurationValue(this.maxDuration) < global::alphatab.model.ModelUtils.getDurationValue(beat.duration) )) {
 						this.maxDuration = beat.duration;
 					}
 					
@@ -302,27 +254,15 @@ namespace alphatab.rendering.utils
 		}
 		
 		
-		public virtual   void checkNote(global::alphatab.model.Note note)
-		{
-			unchecked 
-			{
-				int @value = ( note.fret + note.beat.voice.bar.track.tuning[( ( note.beat.voice.bar.track.tuning.length - (( note.@string - 1 )) ) - 1 )] );
-				if (( ( this.firstMinNote == default(global::alphatab.model.Note) ) || ( note.beat.index < this.firstMinNote.beat.index ) )) 
-				{
+		public virtual   void checkNote(global::alphatab.model.Note note){
+			unchecked {
+				int @value = this.getValue(note);
+				if (( ( this.firstMinNote == default(global::alphatab.model.Note) ) || ( note.beat.start < this.firstMinNote.beat.start ) )) {
 					this.firstMinNote = note;
 				}
-				 else 
-				{
-					if (( note.beat.index == this.firstMinNote.beat.index )) 
-					{
-						int __temp_stmt609 = default(int);
-						{
-							global::alphatab.model.Note _this = this.firstMinNote;
-							__temp_stmt609 = ( _this.fret + _this.beat.voice.bar.track.tuning[( ( _this.beat.voice.bar.track.tuning.length - (( _this.@string - 1 )) ) - 1 )] );
-						}
-						
-						if (( ( note.fret + note.beat.voice.bar.track.tuning[( ( note.beat.voice.bar.track.tuning.length - (( note.@string - 1 )) ) - 1 )] ) < __temp_stmt609 )) 
-						{
+				 else {
+					if (( note.beat.start == this.firstMinNote.beat.start )) {
+						if (( @value < this.getValue(this.firstMinNote) )) {
 							this.firstMinNote = note;
 						}
 						
@@ -330,22 +270,12 @@ namespace alphatab.rendering.utils
 					
 				}
 				
-				if (( ( this.firstMaxNote == default(global::alphatab.model.Note) ) || ( note.beat.index < this.firstMaxNote.beat.index ) )) 
-				{
+				if (( ( this.firstMaxNote == default(global::alphatab.model.Note) ) || ( note.beat.start < this.firstMaxNote.beat.start ) )) {
 					this.firstMaxNote = note;
 				}
-				 else 
-				{
-					if (( note.beat.index == this.firstMaxNote.beat.index )) 
-					{
-						int __temp_stmt610 = default(int);
-						{
-							global::alphatab.model.Note _this1 = this.firstMaxNote;
-							__temp_stmt610 = ( _this1.fret + _this1.beat.voice.bar.track.tuning[( ( _this1.beat.voice.bar.track.tuning.length - (( _this1.@string - 1 )) ) - 1 )] );
-						}
-						
-						if (( ( note.fret + note.beat.voice.bar.track.tuning[( ( note.beat.voice.bar.track.tuning.length - (( note.@string - 1 )) ) - 1 )] ) > __temp_stmt610 )) 
-						{
+				 else {
+					if (( note.beat.start == this.firstMaxNote.beat.start )) {
+						if (( @value > this.getValue(this.firstMaxNote) )) {
 							this.firstMaxNote = note;
 						}
 						
@@ -353,22 +283,12 @@ namespace alphatab.rendering.utils
 					
 				}
 				
-				if (( ( this.lastMinNote == default(global::alphatab.model.Note) ) || ( note.beat.index > this.lastMinNote.beat.index ) )) 
-				{
+				if (( ( this.lastMinNote == default(global::alphatab.model.Note) ) || ( note.beat.start > this.lastMinNote.beat.start ) )) {
 					this.lastMinNote = note;
 				}
-				 else 
-				{
-					if (( note.beat.index == this.lastMinNote.beat.index )) 
-					{
-						int __temp_stmt611 = default(int);
-						{
-							global::alphatab.model.Note _this2 = this.lastMinNote;
-							__temp_stmt611 = ( _this2.fret + _this2.beat.voice.bar.track.tuning[( ( _this2.beat.voice.bar.track.tuning.length - (( _this2.@string - 1 )) ) - 1 )] );
-						}
-						
-						if (( ( note.fret + note.beat.voice.bar.track.tuning[( ( note.beat.voice.bar.track.tuning.length - (( note.@string - 1 )) ) - 1 )] ) < __temp_stmt611 )) 
-						{
+				 else {
+					if (( note.beat.start == this.lastMinNote.beat.start )) {
+						if (( @value < this.getValue(this.lastMinNote) )) {
 							this.lastMinNote = note;
 						}
 						
@@ -376,22 +296,12 @@ namespace alphatab.rendering.utils
 					
 				}
 				
-				if (( ( this.lastMaxNote == default(global::alphatab.model.Note) ) || ( note.beat.index > this.lastMaxNote.beat.index ) )) 
-				{
+				if (( ( this.lastMaxNote == default(global::alphatab.model.Note) ) || ( note.beat.start > this.lastMaxNote.beat.start ) )) {
 					this.lastMaxNote = note;
 				}
-				 else 
-				{
-					if (( note.beat.index == this.lastMaxNote.beat.index )) 
-					{
-						int __temp_stmt612 = default(int);
-						{
-							global::alphatab.model.Note _this3 = this.lastMaxNote;
-							__temp_stmt612 = ( _this3.fret + _this3.beat.voice.bar.track.tuning[( ( _this3.beat.voice.bar.track.tuning.length - (( _this3.@string - 1 )) ) - 1 )] );
-						}
-						
-						if (( ( note.fret + note.beat.voice.bar.track.tuning[( ( note.beat.voice.bar.track.tuning.length - (( note.@string - 1 )) ) - 1 )] ) > __temp_stmt612 )) 
-						{
+				 else {
+					if (( note.beat.start == this.lastMaxNote.beat.start )) {
+						if (( @value > this.getValue(this.lastMaxNote) )) {
 							this.lastMaxNote = note;
 						}
 						
@@ -399,41 +309,11 @@ namespace alphatab.rendering.utils
 					
 				}
 				
-				bool __temp_stmt614 = ( this.maxNote == default(global::alphatab.model.Note) );
-				bool __temp_boolv615 = false;
-				if ( ! (__temp_stmt614) ) 
-				{
-					int __temp_stmt616 = default(int);
-					{
-						global::alphatab.model.Note _this4 = this.maxNote;
-						__temp_stmt616 = ( _this4.fret + _this4.beat.voice.bar.track.tuning[( ( _this4.beat.voice.bar.track.tuning.length - (( _this4.@string - 1 )) ) - 1 )] );
-					}
-					
-					__temp_boolv615 = ( @value > __temp_stmt616 );
-				}
-				
-				bool __temp_stmt613 = ( __temp_stmt614 || __temp_boolv615 );
-				if (__temp_stmt613) 
-				{
+				if (( ( this.maxNote == default(global::alphatab.model.Note) ) || ( @value > this.getValue(this.maxNote) ) )) {
 					this.maxNote = note;
 				}
 				
-				bool __temp_stmt618 = ( this.minNote == default(global::alphatab.model.Note) );
-				bool __temp_boolv619 = false;
-				if ( ! (__temp_stmt618) ) 
-				{
-					int __temp_stmt620 = default(int);
-					{
-						global::alphatab.model.Note _this5 = this.minNote;
-						__temp_stmt620 = ( _this5.fret + _this5.beat.voice.bar.track.tuning[( ( _this5.beat.voice.bar.track.tuning.length - (( _this5.@string - 1 )) ) - 1 )] );
-					}
-					
-					__temp_boolv619 = ( @value < __temp_stmt620 );
-				}
-				
-				bool __temp_stmt617 = ( __temp_stmt618 || __temp_boolv619 );
-				if (__temp_stmt617) 
-				{
+				if (( ( this.minNote == default(global::alphatab.model.Note) ) || ( @value < this.getValue(this.minNote) ) )) {
 					this.minNote = note;
 				}
 				
@@ -441,33 +321,25 @@ namespace alphatab.rendering.utils
 		}
 		
 		
-		public virtual   int calculateBeamY(int stemSize, int xCorrection, int xPosition, double scale, global::haxe.lang.Function yPosition)
-		{
-			unchecked 
-			{
+		public virtual   int calculateBeamY(int stemSize, int xCorrection, int xPosition, double scale, global::haxe.lang.Function yPosition){
+			unchecked {
 				global::alphatab.rendering.utils.BeamDirection direction = this.getDirection();
-				if (( this.beats.length == 1 )) 
-				{
-					if (( this.getDirection() == global::alphatab.rendering.utils.BeamDirection.Up )) 
-					{
+				if (( this.beats.length == 1 )) {
+					if (( this.getDirection() == global::alphatab.rendering.utils.BeamDirection.Up )) {
 						return ( ((int) (yPosition.__hx_invoke1_f(default(double), this.maxNote)) ) - stemSize );
 					}
-					 else 
-					{
+					 else {
 						return ( ((int) (yPosition.__hx_invoke1_f(default(double), this.minNote)) ) + stemSize );
 					}
 					
 				}
 				
 				int maxDistance = ((int) (( 10 * scale )) );
-				if (( ( ( direction == global::alphatab.rendering.utils.BeamDirection.Down ) && ( this.minNote != this.firstMinNote ) ) && ( this.minNote != this.lastMinNote ) )) 
-				{
+				if (( ( ( direction == global::alphatab.rendering.utils.BeamDirection.Down ) && ( this.minNote != this.firstMinNote ) ) && ( this.minNote != this.lastMinNote ) )) {
 					return ( ((int) (yPosition.__hx_invoke1_f(default(double), this.minNote)) ) + stemSize );
 				}
-				 else 
-				{
-					if (( ( ( direction == global::alphatab.rendering.utils.BeamDirection.Up ) && ( this.maxNote != this.firstMaxNote ) ) && ( this.maxNote != this.lastMaxNote ) )) 
-					{
+				 else {
+					if (( ( ( direction == global::alphatab.rendering.utils.BeamDirection.Up ) && ( this.maxNote != this.firstMaxNote ) ) && ( this.maxNote != this.lastMaxNote ) )) {
 						return ( ((int) (yPosition.__hx_invoke1_f(default(double), this.maxNote)) ) - stemSize );
 					}
 					
@@ -475,43 +347,35 @@ namespace alphatab.rendering.utils
 				
 				int startX = ( this.getBeatLineX(this.firstMinNote.beat) + xCorrection );
 				int startY = default(int);
-				if (( direction == global::alphatab.rendering.utils.BeamDirection.Up )) 
-				{
+				if (( direction == global::alphatab.rendering.utils.BeamDirection.Up )) {
 					startY = ( ((int) (yPosition.__hx_invoke1_f(default(double), this.firstMaxNote)) ) - stemSize );
 				}
-				 else 
-				{
+				 else {
 					startY = ( ((int) (yPosition.__hx_invoke1_f(default(double), this.firstMinNote)) ) + stemSize );
 				}
 				
 				int endX = ( this.getBeatLineX(this.lastMaxNote.beat) + xCorrection );
 				int endY = default(int);
-				if (( direction == global::alphatab.rendering.utils.BeamDirection.Up )) 
-				{
+				if (( direction == global::alphatab.rendering.utils.BeamDirection.Up )) {
 					endY = ( ((int) (yPosition.__hx_invoke1_f(default(double), this.lastMaxNote)) ) - stemSize );
 				}
-				 else 
-				{
+				 else {
 					endY = ( ((int) (yPosition.__hx_invoke1_f(default(double), this.lastMinNote)) ) + stemSize );
 				}
 				
-				if (( ( ( direction == global::alphatab.rendering.utils.BeamDirection.Down ) && ( startY > endY ) ) && ( ( startY - endY ) > maxDistance ) )) 
-				{
+				if (( ( ( direction == global::alphatab.rendering.utils.BeamDirection.Down ) && ( startY > endY ) ) && ( ( startY - endY ) > maxDistance ) )) {
 					endY = ( startY - maxDistance );
 				}
 				
-				if (( ( ( direction == global::alphatab.rendering.utils.BeamDirection.Down ) && ( endY > startY ) ) && ( ( endY - startY ) > maxDistance ) )) 
-				{
+				if (( ( ( direction == global::alphatab.rendering.utils.BeamDirection.Down ) && ( endY > startY ) ) && ( ( endY - startY ) > maxDistance ) )) {
 					startY = ( endY - maxDistance );
 				}
 				
-				if (( ( ( direction == global::alphatab.rendering.utils.BeamDirection.Up ) && ( startY < endY ) ) && ( ( endY - startY ) > maxDistance ) )) 
-				{
+				if (( ( ( direction == global::alphatab.rendering.utils.BeamDirection.Up ) && ( startY < endY ) ) && ( ( endY - startY ) > maxDistance ) )) {
 					endY = ( startY + maxDistance );
 				}
 				
-				if (( ( ( direction == global::alphatab.rendering.utils.BeamDirection.Up ) && ( endY < startY ) ) && ( ( startY - endY ) > maxDistance ) )) 
-				{
+				if (( ( ( direction == global::alphatab.rendering.utils.BeamDirection.Up ) && ( endY < startY ) ) && ( ( startY - endY ) > maxDistance ) )) {
 					startY = ( endY + maxDistance );
 				}
 				
@@ -520,12 +384,9 @@ namespace alphatab.rendering.utils
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 448361819:
 					{
 						this._beatLineXPositions = ((global::haxe.ds.IntMap<object>) (global::haxe.ds.IntMap<object>.__hx_cast<object>(((global::haxe.ds.IntMap) (@value) ))) );
@@ -621,45 +482,48 @@ namespace alphatab.rendering.utils
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1392437444:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("calculateBeamY"), ((int) (1392437444) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("calculateBeamY") ), ((int) (1392437444) ))) );
 					}
 					
 					
 					case 485089498:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("checkNote"), ((int) (485089498) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("checkNote") ), ((int) (485089498) ))) );
 					}
 					
 					
 					case 351513182:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("checkBeat"), ((int) (351513182) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("checkBeat") ), ((int) (351513182) ))) );
 					}
 					
 					
 					case 529989321:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("getDirection"), ((int) (529989321) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("getDirection") ), ((int) (529989321) ))) );
 					}
 					
 					
 					case 1751332267:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("registerBeatLineX"), ((int) (1751332267) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("registerBeatLineX") ), ((int) (1751332267) ))) );
+					}
+					
+					
+					case 165299668:
+					{
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("hasBeatLineX") ), ((int) (165299668) ))) );
 					}
 					
 					
 					case 199163160:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("getBeatLineX"), ((int) (199163160) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("getBeatLineX") ), ((int) (199163160) ))) );
 					}
 					
 					
@@ -671,7 +535,7 @@ namespace alphatab.rendering.utils
 					
 					case 294620923:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("getValue"), ((int) (294620923) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("getValue") ), ((int) (294620923) ))) );
 					}
 					
 					
@@ -752,12 +616,9 @@ namespace alphatab.rendering.utils
 		}
 		
 		
-		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs){
+			unchecked {
+				switch (hash){
 					case 1392437444:
 					{
 						return this.calculateBeamY(((int) (global::haxe.lang.Runtime.toInt(dynargs[0])) ), ((int) (global::haxe.lang.Runtime.toInt(dynargs[1])) ), ((int) (global::haxe.lang.Runtime.toInt(dynargs[2])) ), ((double) (global::haxe.lang.Runtime.toDouble(dynargs[3])) ), ((global::haxe.lang.Function) (dynargs[4]) ));
@@ -790,6 +651,12 @@ namespace alphatab.rendering.utils
 					}
 					
 					
+					case 165299668:
+					{
+						return this.hasBeatLineX(((global::alphatab.model.Beat) (dynargs[0]) ));
+					}
+					
+					
 					case 199163160:
 					{
 						return this.getBeatLineX(((global::alphatab.model.Beat) (dynargs[0]) ));
@@ -814,10 +681,8 @@ namespace alphatab.rendering.utils
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("_beatLineXPositions");
 				baseArr.push("_track");
 				baseArr.push("maxNote");

@@ -1,56 +1,43 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.io
-{
-	public  class BitInput : global::haxe.io.Input 
-	{
-		static BitInput() 
-		{
+namespace alphatab.io{
+	public  class BitInput : global::haxe.io.Input {
+		static BitInput() {
 			global::alphatab.io.BitInput.ByteSize = 8;
 		}
-		public    BitInput(global::haxe.lang.EmptyObject empty) : base(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ))
-		{
-			unchecked 
-			{
+		public    BitInput(global::haxe.lang.EmptyObject empty) : base(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) )){
+			unchecked {
 			}
 		}
 		
 		
-		public    BitInput(global::haxe.io.BytesInput input)
-		{
-			unchecked 
-			{
+		public    BitInput(global::haxe.io.BytesInput input){
+			unchecked {
 				global::alphatab.io.BitInput.__hx_ctor_alphatab_io_BitInput(this, input);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_io_BitInput(global::alphatab.io.BitInput __temp_me67, global::haxe.io.BytesInput input)
-		{
-			unchecked 
-			{
-				__temp_me67._input = input;
-				__temp_me67._readBytes = 0;
-				__temp_me67._position = 8;
+		public static   void __hx_ctor_alphatab_io_BitInput(global::alphatab.io.BitInput __temp_me81, global::haxe.io.BytesInput input){
+			unchecked {
+				__temp_me81._input = input;
+				__temp_me81._readBytes = 0;
+				__temp_me81._position = 8;
 			}
 		}
 		
 		
 		public static  int ByteSize;
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.io.BitInput(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.io.BitInput(((global::haxe.io.BytesInput) (arr[0]) ));
 			}
 		}
@@ -64,32 +51,25 @@ namespace alphatab.io
 		
 		public  int _readBytes;
 		
-		public virtual   int getReadBytes()
-		{
-			unchecked 
-			{
+		public virtual   int getReadBytes(){
+			unchecked {
 				return this._readBytes;
 			}
 		}
 		
 		
-		public override   int readByte()
-		{
-			unchecked 
-			{
+		public override   int readByte(){
+			unchecked {
 				return this.readBits(8);
 			}
 		}
 		
 		
-		public virtual   int readBits(int count)
-		{
-			unchecked 
-			{
+		public virtual   int readBits(int count){
+			unchecked {
 				int bits = 0;
 				int i = ( count - 1 );
-				while (( i >= 0 ))
-				{
+				while (( i >= 0 )){
 					bits |= ( this.readBit() << i );
 					i--;
 				}
@@ -99,14 +79,11 @@ namespace alphatab.io
 		}
 		
 		
-		public virtual   int readBitsReversed(int count)
-		{
-			unchecked 
-			{
+		public virtual   int readBitsReversed(int count){
+			unchecked {
 				int bits = 0;
 				int i = 0;
-				while (( i < count ))
-				{
+				while (( i < count )){
 					bits |= ( this.readBit() << i );
 					i++;
 				}
@@ -116,13 +93,10 @@ namespace alphatab.io
 		}
 		
 		
-		public virtual   int readBit()
-		{
-			unchecked 
-			{
+		public virtual   int readBit(){
+			unchecked {
 				int bit = -1;
-				if (( this._position >= 8 )) 
-				{
+				if (( this._position >= 8 )) {
 					this._currentByte = this._input.readByte();
 					this._readBytes++;
 					this._position = 0;
@@ -135,12 +109,9 @@ namespace alphatab.io
 		}
 		
 		
-		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1780601078:
 					{
 						this._readBytes = ((int) (@value) );
@@ -173,12 +144,9 @@ namespace alphatab.io
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1780601078:
 					{
 						this._readBytes = ((int) (global::haxe.lang.Runtime.toInt(@value)) );
@@ -218,39 +186,36 @@ namespace alphatab.io
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 46423831:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readBit"), ((int) (46423831) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readBit") ), ((int) (46423831) ))) );
 					}
 					
 					
 					case 197276318:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readBitsReversed"), ((int) (197276318) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readBitsReversed") ), ((int) (197276318) ))) );
 					}
 					
 					
 					case 1762579836:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readBits"), ((int) (1762579836) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readBits") ), ((int) (1762579836) ))) );
 					}
 					
 					
 					case 1763375486:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("readByte"), ((int) (1763375486) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("readByte") ), ((int) (1763375486) ))) );
 					}
 					
 					
 					case 500560319:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("getReadBytes"), ((int) (500560319) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("getReadBytes") ), ((int) (500560319) ))) );
 					}
 					
 					
@@ -289,12 +254,9 @@ namespace alphatab.io
 		}
 		
 		
-		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1780601078:
 					{
 						return ((double) (this._readBytes) );
@@ -324,12 +286,9 @@ namespace alphatab.io
 		}
 		
 		
-		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs){
+			unchecked {
+				switch (hash){
 					case 1763375486:
 					{
 						return global::haxe.lang.Runtime.slowCallField(this, field, dynargs);
@@ -371,10 +330,8 @@ namespace alphatab.io
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("_readBytes");
 				baseArr.push("_input");
 				baseArr.push("_position");

@@ -1,13 +1,9 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace haxe.lang
-{
-	public  class StringExt 
-	{
-		public    StringExt()
-		{
-			unchecked 
-			{
+namespace haxe.lang{
+	public  class StringExt {
+		public    StringExt(){
+			unchecked {
 				{
 				}
 				
@@ -15,8 +11,7 @@ namespace haxe.lang
 		}
 		
 		
-		public static   string charAt(string me, int index)
-		{
+		public static   string charAt(string me, int index){
 			
 			if ( ((uint) index) >= me.Length)
 				return "";
@@ -26,8 +21,7 @@ namespace haxe.lang
 		}
 		
 		
-		public static   global::haxe.lang.Null<int> charCodeAt(string me, int index)
-		{
+		public static   global::haxe.lang.Null<int> charCodeAt(string me, int index){
 			
 			if ( ((uint) index) >= me.Length)
 				return default(haxe.lang.Null<int>);
@@ -37,8 +31,7 @@ namespace haxe.lang
 		}
 		
 		
-		public static   int indexOf(string me, string str, global::haxe.lang.Null<int> startIndex)
-		{
+		public static   int indexOf(string me, string str, global::haxe.lang.Null<int> startIndex){
 			
 			uint sIndex = (startIndex.hasValue) ? ((uint) startIndex.@value) : 0;
 			if (sIndex >= me.Length)
@@ -48,8 +41,7 @@ namespace haxe.lang
 		}
 		
 		
-		public static   int lastIndexOf(string me, string str, global::haxe.lang.Null<int> startIndex)
-		{
+		public static   int lastIndexOf(string me, string str, global::haxe.lang.Null<int> startIndex){
 			
 			int sIndex = (startIndex.hasValue) ? (startIndex.@value) : (me.Length - 1);
 			if (sIndex >= me.Length)
@@ -84,8 +76,7 @@ namespace haxe.lang
 		}
 		
 		
-		public static   global::haxe.root.Array<object> split(string me, string delimiter)
-		{
+		public static   global::haxe.root.Array<object> split(string me, string delimiter){
 			
 			string[] native;
 			if (delimiter.Length == 0)
@@ -102,8 +93,7 @@ namespace haxe.lang
 		}
 		
 		
-		public static   string substr(string me, int pos, global::haxe.lang.Null<int> len)
-		{
+		public static   string substr(string me, int pos, global::haxe.lang.Null<int> len){
 			
 			int meLen = me.Length;
 			int targetLen = meLen;
@@ -135,8 +125,7 @@ namespace haxe.lang
 		}
 		
 		
-		public static   string substring(string me, int startIndex, global::haxe.lang.Null<int> endIndex)
-		{
+		public static   string substring(string me, int startIndex, global::haxe.lang.Null<int> endIndex){
 			
 		int endIdx;
 		int len = me.Length;
@@ -165,33 +154,35 @@ namespace haxe.lang
 		}
 		
 		
-		public static   string toLowerCase(string me)
-		{
+		public static   string toString(string me){
+			unchecked {
+				return me;
+			}
+		}
+		
+		
+		public static   string toLowerCase(string me){
 			
 			return me.ToLower();
 	
 		}
 		
 		
-		public static   string toUpperCase(string me)
-		{
+		public static   string toUpperCase(string me){
 			
 			return me.ToUpper();
 	
 		}
 		
 		
-		public static   string toNativeString(string me)
-		{
-			unchecked 
-			{
+		public static   string toNativeString(string me){
+			unchecked {
 				return me;
 			}
 		}
 		
 		
-		public static   string fromCharCode(int code)
-		{
+		public static   string fromCharCode(int code){
 			
 			return new string( (char) code, 1 );
 	
@@ -204,18 +195,13 @@ namespace haxe.lang
 
 
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace haxe.lang
-{
-	public  class StringRefl 
-	{
-		static StringRefl() 
-		{
+namespace haxe.lang{
+	public  class StringRefl {
+		static StringRefl() {
 			global::haxe.lang.StringRefl.fields = new global::haxe.root.Array<object>(new object[]{"length", "toUpperCase", "toLowerCase", "charAt", "charCodeAt", "indexOf", "lastIndexOf", "split", "substr", "substring"});
 		}
-		public    StringRefl()
-		{
-			unchecked 
-			{
+		public    StringRefl(){
+			unchecked {
 				{
 				}
 				
@@ -225,12 +211,9 @@ namespace haxe.lang
 		
 		public static  global::haxe.root.Array<object> fields;
 		
-		public static   object handleGetField(string str, string f, bool throwErrors)
-		{
-			unchecked 
-			{
-				switch (f)
-				{
+		public static   object handleGetField(string str, string f, bool throwErrors){
+			unchecked {
+				switch (f){
 					case "length":
 					{
 						return str.Length;
@@ -239,18 +222,16 @@ namespace haxe.lang
 					
 					case "toUpperCase":case "toLowerCase":case "charAt":case "charCodeAt":case "indexOf":case "lastIndexOf":case "split":case "substr":case "substring":
 					{
-						return new global::haxe.lang.Closure(((object) (str) ), global::haxe.lang.Runtime.toString(f), ((int) (0) ));
+						return new global::haxe.lang.Closure(((object) (str) ), ((string) (f) ), ((int) (0) ));
 					}
 					
 					
 					default:
 					{
-						if (throwErrors) 
-						{
+						if (throwErrors) {
 							throw global::haxe.lang.HaxeException.wrap(global::haxe.lang.Runtime.concat(global::haxe.lang.Runtime.concat("Field not found: \'", f), "\' in String"));
 						}
-						 else 
-						{
+						 else {
 							return default(object);
 						}
 						
@@ -262,17 +243,13 @@ namespace haxe.lang
 		}
 		
 		
-		public static   object handleCallField(string str, string f, global::haxe.root.Array args)
-		{
-			unchecked 
-			{
+		public static   object handleCallField(string str, string f, global::haxe.root.Array args){
+			unchecked {
 				global::haxe.root.Array _args = new global::haxe.root.Array<object>(new object[]{str});
-				if (( args == default(global::haxe.root.Array) )) 
-				{
+				if (( args == default(global::haxe.root.Array) )) {
 					args = _args;
 				}
-				 else 
-				{
+				 else {
 					args = ((global::haxe.root.Array) (global::haxe.lang.Runtime.callField(_args, "concat", 1204816148, new global::haxe.root.Array<object>(new object[]{args}))) );
 				}
 				

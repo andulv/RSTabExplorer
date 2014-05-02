@@ -1,13 +1,9 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.audio
-{
-	public  class GeneralMidi : global::haxe.lang.HxObject 
-	{
-		public    GeneralMidi(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+namespace alphatab.audio{
+	public  class GeneralMidi : global::haxe.lang.HxObject {
+		public    GeneralMidi(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -15,19 +11,15 @@ namespace alphatab.audio
 		}
 		
 		
-		public    GeneralMidi()
-		{
-			unchecked 
-			{
+		public    GeneralMidi(){
+			unchecked {
 				global::alphatab.audio.GeneralMidi.__hx_ctor_alphatab_audio_GeneralMidi(this);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_audio_GeneralMidi(global::alphatab.audio.GeneralMidi __temp_me52)
-		{
-			unchecked 
-			{
+		public static   void __hx_ctor_alphatab_audio_GeneralMidi(global::alphatab.audio.GeneralMidi __temp_me54){
+			unchecked {
 				{
 				}
 				
@@ -37,12 +29,9 @@ namespace alphatab.audio
 		
 		public static  global::haxe.ds.StringMap<int> _values;
 		
-		public static   int getValue(string name)
-		{
-			unchecked 
-			{
-				if (( global::alphatab.audio.GeneralMidi._values == default(global::haxe.ds.StringMap<int>) )) 
-				{
+		public static   int getValue(string name){
+			unchecked {
+				if (( global::alphatab.audio.GeneralMidi._values == default(global::haxe.ds.StringMap<int>) )) {
 					global::alphatab.audio.GeneralMidi._values = new global::haxe.ds.StringMap<int>();
 					global::alphatab.audio.GeneralMidi._values.@set("acousticgrandpiano", 0);
 					global::alphatab.audio.GeneralMidi._values.@set("brightacousticpiano", 1);
@@ -175,12 +164,10 @@ namespace alphatab.audio
 				}
 				
 				name = global::haxe.root.StringTools.replace(name.ToLower(), " ", "");
-				if (global::alphatab.audio.GeneralMidi._values.exists(name)) 
-				{
+				if (global::alphatab.audio.GeneralMidi._values.exists(name)) {
 					return global::alphatab.audio.GeneralMidi._values.@get(name).@value;
 				}
-				 else 
-				{
+				 else {
 					return 0;
 				}
 				
@@ -188,19 +175,15 @@ namespace alphatab.audio
 		}
 		
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.audio.GeneralMidi(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.audio.GeneralMidi();
 			}
 		}

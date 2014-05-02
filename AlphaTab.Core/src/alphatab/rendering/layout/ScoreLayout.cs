@@ -1,13 +1,9 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.rendering.layout
-{
-	public  class ScoreLayout : global::haxe.lang.HxObject 
-	{
-		public    ScoreLayout(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+namespace alphatab.rendering.layout{
+	public  class ScoreLayout : global::haxe.lang.HxObject {
+		public    ScoreLayout(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -15,37 +11,29 @@ namespace alphatab.rendering.layout
 		}
 		
 		
-		public    ScoreLayout(global::alphatab.rendering.ScoreRenderer renderer)
-		{
-			unchecked 
-			{
+		public    ScoreLayout(global::alphatab.rendering.ScoreRenderer renderer){
+			unchecked {
 				global::alphatab.rendering.layout.ScoreLayout.__hx_ctor_alphatab_rendering_layout_ScoreLayout(this, renderer);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_rendering_layout_ScoreLayout(global::alphatab.rendering.layout.ScoreLayout __temp_me24, global::alphatab.rendering.ScoreRenderer renderer)
-		{
-			unchecked 
-			{
-				__temp_me24.renderer = renderer;
+		public static   void __hx_ctor_alphatab_rendering_layout_ScoreLayout(global::alphatab.rendering.layout.ScoreLayout __temp_me25, global::alphatab.rendering.ScoreRenderer renderer){
+			unchecked {
+				__temp_me25.renderer = renderer;
 			}
 		}
 		
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.rendering.layout.ScoreLayout(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.rendering.layout.ScoreLayout(((global::alphatab.rendering.ScoreRenderer) (arr[0]) ));
 			}
 		}
@@ -57,10 +45,8 @@ namespace alphatab.rendering.layout
 		
 		public  int height;
 		
-		public virtual   void doLayout()
-		{
-			unchecked 
-			{
+		public virtual   void doLayout(){
+			unchecked {
 				{
 				}
 				
@@ -68,10 +54,8 @@ namespace alphatab.rendering.layout
 		}
 		
 		
-		public virtual   void paintScore()
-		{
-			unchecked 
-			{
+		public virtual   void paintScore(){
+			unchecked {
 				{
 				}
 				
@@ -79,33 +63,52 @@ namespace alphatab.rendering.layout
 		}
 		
 		
-		public   double getScale()
-		{
-			unchecked 
-			{
+		public virtual   void buildBoundingsLookup(global::alphatab.rendering.utils.BoundingsLookup lookup){
+			unchecked {
+				{
+				}
+				
+			}
+		}
+		
+		
+		public   double getScale(){
+			unchecked {
 				return this.renderer.settings.scale;
 			}
 		}
 		
 		
-		public virtual   global::alphatab.rendering.staves.StaveGroup createEmptyStaveGroup()
-		{
-			unchecked 
-			{
+		public virtual   global::alphatab.rendering.staves.StaveGroup createEmptyStaveGroup(){
+			unchecked {
 				global::alphatab.rendering.staves.StaveGroup @group = new global::alphatab.rendering.staves.StaveGroup();
 				@group.layout = this;
+				bool isFirstTrack = true;
 				{
 					int _g = 0;
-					global::haxe.root.Array<object> _g1 = this.renderer.settings.staves;
-					while (( _g < _g1.length ))
-					{
-						global::alphatab.StaveSettings s = ((global::alphatab.StaveSettings) (_g1[_g]) );
+					global::haxe.root.Array<object> _g1 = this.renderer.tracks;
+					while (( _g < _g1.length )){
+						global::alphatab.model.Track track = ((global::alphatab.model.Track) (_g1[_g]) );
 						 ++ _g;
-						if (global::alphatab.Environment.staveFactories.exists(s.id)) 
 						{
-							@group.addStave(new global::alphatab.rendering.staves.Stave(((global::alphatab.rendering.BarRendererFactory) (((global::haxe.lang.Function) (global::alphatab.Environment.staveFactories.@get(s.id).@value) ).__hx_invoke1_o(default(double), this)) )));
+							int _g2 = 0;
+							global::haxe.root.Array<object> _g3 = this.renderer.settings.staves;
+							while (( _g2 < _g3.length )){
+								global::alphatab.StaveSettings s = ((global::alphatab.StaveSettings) (_g3[_g2]) );
+								 ++ _g2;
+								if (global::alphatab.Environment.staveFactories.exists(s.id)) {
+									global::alphatab.rendering.BarRendererFactory factory = ((global::alphatab.rendering.BarRendererFactory) (((global::haxe.lang.Function) (global::alphatab.Environment.staveFactories.@get(s.id).@value) ).__hx_invoke1_o(default(double), this)) );
+									if (( isFirstTrack ||  ! (factory.hideOnMultiTrack)  )) {
+										@group.addStave(track, new global::alphatab.rendering.staves.Stave(((global::alphatab.rendering.BarRendererFactory) (factory) )));
+									}
+									
+								}
+								
+							}
+							
 						}
 						
+						isFirstTrack = false;
 					}
 					
 				}
@@ -115,12 +118,9 @@ namespace alphatab.rendering.layout
 		}
 		
 		
-		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 38537191:
 					{
 						this.height = ((int) (@value) );
@@ -146,12 +146,9 @@ namespace alphatab.rendering.layout
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 38537191:
 					{
 						this.height = ((int) (global::haxe.lang.Runtime.toInt(@value)) );
@@ -184,33 +181,36 @@ namespace alphatab.rendering.layout
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1208461889:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("createEmptyStaveGroup"), ((int) (1208461889) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("createEmptyStaveGroup") ), ((int) (1208461889) ))) );
 					}
 					
 					
 					case 1487265300:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("getScale"), ((int) (1487265300) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("getScale") ), ((int) (1487265300) ))) );
+					}
+					
+					
+					case 776879323:
+					{
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("buildBoundingsLookup") ), ((int) (776879323) ))) );
 					}
 					
 					
 					case 1331941076:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("paintScore"), ((int) (1331941076) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("paintScore") ), ((int) (1331941076) ))) );
 					}
 					
 					
 					case 1825584277:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("doLayout"), ((int) (1825584277) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("doLayout") ), ((int) (1825584277) ))) );
 					}
 					
 					
@@ -243,12 +243,9 @@ namespace alphatab.rendering.layout
 		}
 		
 		
-		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 38537191:
 					{
 						return ((double) (this.height) );
@@ -272,12 +269,9 @@ namespace alphatab.rendering.layout
 		}
 		
 		
-		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs){
+			unchecked {
+				switch (hash){
 					case 1208461889:
 					{
 						return this.createEmptyStaveGroup();
@@ -287,6 +281,13 @@ namespace alphatab.rendering.layout
 					case 1487265300:
 					{
 						return this.getScale();
+					}
+					
+					
+					case 776879323:
+					{
+						this.buildBoundingsLookup(((global::alphatab.rendering.utils.BoundingsLookup) (dynargs[0]) ));
+						break;
 					}
 					
 					
@@ -316,10 +317,8 @@ namespace alphatab.rendering.layout
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("height");
 				baseArr.push("width");
 				baseArr.push("renderer");

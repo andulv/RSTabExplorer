@@ -1,13 +1,9 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.rendering
-{
-	public  class Glyph : global::haxe.lang.HxObject 
-	{
-		public    Glyph(global::haxe.lang.EmptyObject empty)
-		{
-			unchecked 
-			{
+namespace alphatab.rendering{
+	public  class Glyph : global::haxe.lang.HxObject {
+		public    Glyph(global::haxe.lang.EmptyObject empty){
+			unchecked {
 				{
 				}
 				
@@ -15,40 +11,32 @@ namespace alphatab.rendering
 		}
 		
 		
-		public    Glyph(global::haxe.lang.Null<int> x, global::haxe.lang.Null<int> y)
-		{
-			unchecked 
-			{
+		public    Glyph(global::haxe.lang.Null<int> x, global::haxe.lang.Null<int> y){
+			unchecked {
 				global::alphatab.rendering.Glyph.__hx_ctor_alphatab_rendering_Glyph(this, x, y);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_rendering_Glyph(global::alphatab.rendering.Glyph __temp_me96, global::haxe.lang.Null<int> x, global::haxe.lang.Null<int> y)
-		{
-			unchecked 
-			{
-				int __temp_y95 = ( (global::haxe.lang.Runtime.eq((y).toDynamic(), (default(global::haxe.lang.Null<int>)).toDynamic())) ? (((int) (0) )) : (y.@value) );
-				int __temp_x94 = ( (global::haxe.lang.Runtime.eq((x).toDynamic(), (default(global::haxe.lang.Null<int>)).toDynamic())) ? (((int) (0) )) : (x.@value) );
-				__temp_me96.x = __temp_x94;
-				__temp_me96.y = __temp_y95;
+		public static   void __hx_ctor_alphatab_rendering_Glyph(global::alphatab.rendering.Glyph __temp_me110, global::haxe.lang.Null<int> x, global::haxe.lang.Null<int> y){
+			unchecked {
+				int __temp_y109 = ( ( ! (y.hasValue) ) ? (((int) (0) )) : (y.@value) );
+				int __temp_x108 = ( ( ! (x.hasValue) ) ? (((int) (0) )) : (x.@value) );
+				__temp_me110.x = __temp_x108;
+				__temp_me110.y = __temp_y109;
 			}
 		}
 		
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.rendering.Glyph(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.rendering.Glyph(global::haxe.lang.Null<object>.ofDynamic<int>(arr[0]), global::haxe.lang.Null<object>.ofDynamic<int>(arr[1]));
 			}
 		}
@@ -64,12 +52,9 @@ namespace alphatab.rendering
 		
 		public  global::alphatab.rendering.BarRendererBase renderer;
 		
-		public virtual   void applyGlyphSpacing(int spacing)
-		{
-			unchecked 
-			{
-				if (this.canScale()) 
-				{
+		public virtual   void applyGlyphSpacing(int spacing){
+			unchecked {
+				if (this.canScale()) {
 					this.width += spacing;
 				}
 				
@@ -77,28 +62,22 @@ namespace alphatab.rendering
 		}
 		
 		
-		public   double getScale()
-		{
-			unchecked 
-			{
+		public   double getScale(){
+			unchecked {
 				return this.renderer.stave.staveGroup.layout.renderer.settings.scale;
 			}
 		}
 		
 		
-		public virtual   bool canScale()
-		{
-			unchecked 
-			{
+		public virtual   bool canScale(){
+			unchecked {
 				return true;
 			}
 		}
 		
 		
-		public virtual   void doLayout()
-		{
-			unchecked 
-			{
+		public virtual   void doLayout(){
+			unchecked {
 				{
 				}
 				
@@ -106,10 +85,8 @@ namespace alphatab.rendering
 		}
 		
 		
-		public virtual   void paint(int cx, int cy, global::alphatab.platform.ICanvas canvas)
-		{
-			unchecked 
-			{
+		public virtual   void paint(int cx, int cy, global::alphatab.platform.ICanvas canvas){
+			unchecked {
 				{
 				}
 				
@@ -117,12 +94,9 @@ namespace alphatab.rendering
 		}
 		
 		
-		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1247983110:
 					{
 						this.width = ((int) (@value) );
@@ -162,12 +136,9 @@ namespace alphatab.rendering
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 853263683:
 					{
 						this.renderer = ((global::alphatab.rendering.BarRendererBase) (@value) );
@@ -214,39 +185,36 @@ namespace alphatab.rendering
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1028568990:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("paint"), ((int) (1028568990) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("paint") ), ((int) (1028568990) ))) );
 					}
 					
 					
 					case 1825584277:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("doLayout"), ((int) (1825584277) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("doLayout") ), ((int) (1825584277) ))) );
 					}
 					
 					
 					case 1734479962:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("canScale"), ((int) (1734479962) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("canScale") ), ((int) (1734479962) ))) );
 					}
 					
 					
 					case 1487265300:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("getScale"), ((int) (1487265300) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("getScale") ), ((int) (1487265300) ))) );
 					}
 					
 					
 					case 1827465669:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("applyGlyphSpacing"), ((int) (1827465669) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("applyGlyphSpacing") ), ((int) (1827465669) ))) );
 					}
 					
 					
@@ -291,12 +259,9 @@ namespace alphatab.rendering
 		}
 		
 		
-		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1247983110:
 					{
 						return ((double) (this.width) );
@@ -332,12 +297,9 @@ namespace alphatab.rendering
 		}
 		
 		
-		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs){
+			unchecked {
+				switch (hash){
 					case 1028568990:
 					{
 						this.paint(((int) (global::haxe.lang.Runtime.toInt(dynargs[0])) ), ((int) (global::haxe.lang.Runtime.toInt(dynargs[1])) ), ((global::alphatab.platform.ICanvas) (dynargs[2]) ));
@@ -383,10 +345,8 @@ namespace alphatab.rendering
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("renderer");
 				baseArr.push("width");
 				baseArr.push("y");

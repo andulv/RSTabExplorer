@@ -1,53 +1,41 @@
 using haxe.root;
 #pragma warning disable 109, 114, 219, 429, 168, 162
-namespace alphatab.rendering.glyphs
-{
-	public  class SvgGlyph : global::alphatab.rendering.Glyph 
-	{
-		public    SvgGlyph(global::haxe.lang.EmptyObject empty) : base(global::haxe.lang.EmptyObject.EMPTY)
-		{
-			unchecked 
-			{
+namespace alphatab.rendering.glyphs{
+	public  class SvgGlyph : global::alphatab.rendering.Glyph {
+		public    SvgGlyph(global::haxe.lang.EmptyObject empty) : base(global::haxe.lang.EmptyObject.EMPTY){
+			unchecked {
 			}
 		}
 		
 		
-		public    SvgGlyph(global::haxe.lang.Null<int> x, global::haxe.lang.Null<int> y, global::alphatab.rendering.glyphs.LazySvg svg, double xScale, double yScale) : base(global::haxe.lang.EmptyObject.EMPTY)
-		{
-			unchecked 
-			{
+		public    SvgGlyph(global::haxe.lang.Null<int> x, global::haxe.lang.Null<int> y, global::alphatab.rendering.glyphs.LazySvg svg, double xScale, double yScale) : base(global::haxe.lang.EmptyObject.EMPTY){
+			unchecked {
 				global::alphatab.rendering.glyphs.SvgGlyph.__hx_ctor_alphatab_rendering_glyphs_SvgGlyph(this, x, y, svg, xScale, yScale);
 			}
 		}
 		
 		
-		public static   void __hx_ctor_alphatab_rendering_glyphs_SvgGlyph(global::alphatab.rendering.glyphs.SvgGlyph __temp_me109, global::haxe.lang.Null<int> x, global::haxe.lang.Null<int> y, global::alphatab.rendering.glyphs.LazySvg svg, double xScale, double yScale)
-		{
-			unchecked 
-			{
-				int __temp_y108 = ( (global::haxe.lang.Runtime.eq((y).toDynamic(), (default(global::haxe.lang.Null<int>)).toDynamic())) ? (((int) (0) )) : (y.@value) );
-				int __temp_x107 = ( (global::haxe.lang.Runtime.eq((x).toDynamic(), (default(global::haxe.lang.Null<int>)).toDynamic())) ? (((int) (0) )) : (x.@value) );
-				global::alphatab.rendering.Glyph.__hx_ctor_alphatab_rendering_Glyph(__temp_me109, new global::haxe.lang.Null<int>(__temp_x107, true), new global::haxe.lang.Null<int>(__temp_y108, true));
-				__temp_me109._svg = svg;
-				__temp_me109._xGlyphScale = ( xScale * 0.0099 );
-				__temp_me109._yGlyphScale = ( yScale * 0.0099 );
+		public static   void __hx_ctor_alphatab_rendering_glyphs_SvgGlyph(global::alphatab.rendering.glyphs.SvgGlyph __temp_me124, global::haxe.lang.Null<int> x, global::haxe.lang.Null<int> y, global::alphatab.rendering.glyphs.LazySvg svg, double xScale, double yScale){
+			unchecked {
+				global::alphatab.rendering.Glyph.__hx_ctor_alphatab_rendering_Glyph(__temp_me124, ( ( ! (x.hasValue) ) ? (new global::haxe.lang.Null<int>(0, true)) : (x) ), ( ( ! (y.hasValue) ) ? (new global::haxe.lang.Null<int>(0, true)) : (y) ));
+				int __temp_y123 = ( ( ! (y.hasValue) ) ? (((int) (0) )) : (y.@value) );
+				int __temp_x122 = ( ( ! (x.hasValue) ) ? (((int) (0) )) : (x.@value) );
+				__temp_me124._svg = svg;
+				__temp_me124._xGlyphScale = ( xScale * 0.0099 );
+				__temp_me124._yGlyphScale = ( yScale * 0.0099 );
 			}
 		}
 		
 		
-		public static  new object __hx_createEmpty()
-		{
-			unchecked 
-			{
+		public static  new object __hx_createEmpty(){
+			unchecked {
 				return new global::alphatab.rendering.glyphs.SvgGlyph(((global::haxe.lang.EmptyObject) (global::haxe.lang.EmptyObject.EMPTY) ));
 			}
 		}
 		
 		
-		public static  new object __hx_create(global::haxe.root.Array arr)
-		{
-			unchecked 
-			{
+		public static  new object __hx_create(global::haxe.root.Array arr){
+			unchecked {
 				return new global::alphatab.rendering.glyphs.SvgGlyph(global::haxe.lang.Null<object>.ofDynamic<int>(arr[0]), global::haxe.lang.Null<object>.ofDynamic<int>(arr[1]), ((global::alphatab.rendering.glyphs.LazySvg) (arr[2]) ), ((double) (global::haxe.lang.Runtime.toDouble(arr[3])) ), ((double) (global::haxe.lang.Runtime.toDouble(arr[4])) ));
 			}
 		}
@@ -73,12 +61,9 @@ namespace alphatab.rendering.glyphs
 		
 		public  double _lastControlY;
 		
-		public override   void paint(int cx, int cy, global::alphatab.platform.ICanvas canvas)
-		{
-			unchecked 
-			{
-				if (( this._svg == default(global::alphatab.rendering.glyphs.LazySvg) )) 
-				{
+		public override   void paint(int cx, int cy, global::alphatab.platform.ICanvas canvas){
+			unchecked {
+				if (( this._svg == default(global::alphatab.rendering.glyphs.LazySvg) )) {
 					return ;
 				}
 				
@@ -95,8 +80,7 @@ namespace alphatab.rendering.glyphs
 				{
 					int _g = 0;
 					global::haxe.root.Array<object> _g1 = this._svg.@get();
-					while (( _g < _g1.length ))
-					{
+					while (( _g < _g1.length )){
 						global::alphatab.rendering.glyphs.SvgCommand c = ((global::alphatab.rendering.glyphs.SvgCommand) (_g1[_g]) );
 						 ++ _g;
 						this.parseCommand(startX, startY, canvas, c);
@@ -109,16 +93,13 @@ namespace alphatab.rendering.glyphs
 		}
 		
 		
-		public virtual   void parseCommand(int cx, int cy, global::alphatab.platform.ICanvas canvas, global::alphatab.rendering.glyphs.SvgCommand cmd)
-		{
-			unchecked 
-			{
+		public virtual   void parseCommand(int cx, int cy, global::alphatab.platform.ICanvas canvas, global::alphatab.rendering.glyphs.SvgCommand cmd){
+			unchecked {
 				bool canContinue = default(bool);
 				int i = default(int);
 				{
 					string _g = cmd.cmd;
-					switch (_g)
-					{
+					switch (_g){
 						case "M":
 						{
 							this._currentX = ( cx + ( cmd.numbers[0] * this._xScale ) );
@@ -147,8 +128,7 @@ namespace alphatab.rendering.glyphs
 						case "L":
 						{
 							i = 0;
-							while (( i < cmd.numbers.length ))
-							{
+							while (( i < cmd.numbers.length )){
 								this._currentX = ( cx + ( cmd.numbers[i++] * this._xScale ) );
 								this._currentY = ( cy + ( cmd.numbers[i++] * this._yScale ) );
 								canvas.lineTo(this._currentX, this._currentY);
@@ -161,8 +141,7 @@ namespace alphatab.rendering.glyphs
 						case "l":
 						{
 							i = 0;
-							while (( i < cmd.numbers.length ))
-							{
+							while (( i < cmd.numbers.length )){
 								this._currentX += ( cmd.numbers[i++] * this._xScale );
 								this._currentY += ( cmd.numbers[i++] * this._yScale );
 								canvas.lineTo(this._currentX, this._currentY);
@@ -175,8 +154,7 @@ namespace alphatab.rendering.glyphs
 						case "V":
 						{
 							i = 0;
-							while (( i < cmd.numbers.length ))
-							{
+							while (( i < cmd.numbers.length )){
 								this._currentY = ( cy + ( cmd.numbers[i++] * this._yScale ) );
 								canvas.lineTo(this._currentX, this._currentY);
 							}
@@ -188,8 +166,7 @@ namespace alphatab.rendering.glyphs
 						case "v":
 						{
 							i = 0;
-							while (( i < cmd.numbers.length ))
-							{
+							while (( i < cmd.numbers.length )){
 								this._currentY += ( cmd.numbers[i++] * this._yScale );
 								canvas.lineTo(this._currentX, this._currentY);
 							}
@@ -201,8 +178,7 @@ namespace alphatab.rendering.glyphs
 						case "H":
 						{
 							i = 0;
-							while (( i < cmd.numbers.length ))
-							{
+							while (( i < cmd.numbers.length )){
 								this._currentX = ( cx + ( cmd.numbers[i++] * this._xScale ) );
 								canvas.lineTo(this._currentX, this._currentY);
 							}
@@ -214,8 +190,7 @@ namespace alphatab.rendering.glyphs
 						case "h":
 						{
 							i = 0;
-							while (( i < cmd.numbers.length ))
-							{
+							while (( i < cmd.numbers.length )){
 								this._currentX += ( cmd.numbers[i++] * this._xScale );
 								canvas.lineTo(this._currentX, this._currentY);
 							}
@@ -227,8 +202,7 @@ namespace alphatab.rendering.glyphs
 						case "C":
 						{
 							i = 0;
-							while (( i < cmd.numbers.length ))
-							{
+							while (( i < cmd.numbers.length )){
 								double x1 = ( cx + ( cmd.numbers[i++] * this._xScale ) );
 								double y1 = ( cy + ( cmd.numbers[i++] * this._yScale ) );
 								double x2 = ( cx + ( cmd.numbers[i++] * this._xScale ) );
@@ -249,8 +223,7 @@ namespace alphatab.rendering.glyphs
 						case "c":
 						{
 							i = 0;
-							while (( i < cmd.numbers.length ))
-							{
+							while (( i < cmd.numbers.length )){
 								double x11 = ( this._currentX + ( cmd.numbers[i++] * this._xScale ) );
 								double y11 = ( this._currentY + ( cmd.numbers[i++] * this._yScale ) );
 								double x21 = ( this._currentX + ( cmd.numbers[i++] * this._xScale ) );
@@ -271,28 +244,23 @@ namespace alphatab.rendering.glyphs
 						case "S":
 						{
 							i = 0;
-							while (( i < cmd.numbers.length ))
-							{
+							while (( i < cmd.numbers.length )){
 								double x12 = ( cx + ( cmd.numbers[i++] * this._xScale ) );
 								double y12 = ( cy + ( cmd.numbers[i++] * this._yScale ) );
 								canContinue = ( ( ( string.Equals(this._lastCmd, "c") || string.Equals(this._lastCmd, "C") ) || string.Equals(this._lastCmd, "S") ) || string.Equals(this._lastCmd, "s") );
 								double x22 = default(double);
-								if (canContinue) 
-								{
+								if (canContinue) {
 									x22 = ( this._currentX + (( this._currentX - this._lastControlX )) );
 								}
-								 else 
-								{
+								 else {
 									x22 = this._currentX;
 								}
 								
 								double y22 = default(double);
-								if (canContinue) 
-								{
+								if (canContinue) {
 									y22 = ( this._currentY + (( this._currentY - this._lastControlY )) );
 								}
-								 else 
-								{
+								 else {
 									y22 = this._currentY;
 								}
 								
@@ -312,28 +280,23 @@ namespace alphatab.rendering.glyphs
 						case "s":
 						{
 							i = 0;
-							while (( i < cmd.numbers.length ))
-							{
+							while (( i < cmd.numbers.length )){
 								double x13 = ( this._currentX + ( cmd.numbers[i++] * this._xScale ) );
 								double y13 = ( this._currentY + ( cmd.numbers[i++] * this._yScale ) );
 								canContinue = ( ( ( string.Equals(this._lastCmd, "c") || string.Equals(this._lastCmd, "C") ) || string.Equals(this._lastCmd, "S") ) || string.Equals(this._lastCmd, "s") );
 								double x23 = default(double);
-								if (canContinue) 
-								{
+								if (canContinue) {
 									x23 = ( this._currentX + (( this._currentX - this._lastControlX )) );
 								}
-								 else 
-								{
+								 else {
 									x23 = this._currentX;
 								}
 								
 								double y23 = default(double);
-								if (canContinue) 
-								{
+								if (canContinue) {
 									y23 = ( this._currentY + (( this._currentY - this._lastControlY )) );
 								}
-								 else 
-								{
+								 else {
 									y23 = this._currentY;
 								}
 								
@@ -353,8 +316,7 @@ namespace alphatab.rendering.glyphs
 						case "Q":
 						{
 							i = 0;
-							while (( i < cmd.numbers.length ))
-							{
+							while (( i < cmd.numbers.length )){
 								double x14 = ( cx + ( cmd.numbers[i++] * this._xScale ) );
 								double y14 = ( cy + ( cmd.numbers[i++] * this._yScale ) );
 								double x24 = ( cx + ( cmd.numbers[i++] * this._xScale ) );
@@ -373,8 +335,7 @@ namespace alphatab.rendering.glyphs
 						case "q":
 						{
 							i = 0;
-							while (( i < cmd.numbers.length ))
-							{
+							while (( i < cmd.numbers.length )){
 								double x15 = ( this._currentX + ( cmd.numbers[i++] * this._xScale ) );
 								double y15 = ( this._currentY + ( cmd.numbers[i++] * this._yScale ) );
 								double x25 = ( this._currentX + ( cmd.numbers[i++] * this._xScale ) );
@@ -393,28 +354,23 @@ namespace alphatab.rendering.glyphs
 						case "T":
 						{
 							i = 0;
-							while (( i < cmd.numbers.length ))
-							{
+							while (( i < cmd.numbers.length )){
 								double x16 = ( cx + ( cmd.numbers[i++] * this._xScale ) );
 								double y16 = ( cy + ( cmd.numbers[i++] * this._yScale ) );
 								canContinue = ( ( ( string.Equals(this._lastCmd, "q") || string.Equals(this._lastCmd, "Q") ) || string.Equals(this._lastCmd, "t") ) || string.Equals(this._lastCmd, "T") );
 								double cpx = default(double);
-								if (canContinue) 
-								{
+								if (canContinue) {
 									cpx = ( this._currentX + (( this._currentX - this._lastControlX )) );
 								}
-								 else 
-								{
+								 else {
 									cpx = this._currentX;
 								}
 								
 								double cpy = default(double);
-								if (canContinue) 
-								{
+								if (canContinue) {
 									cpy = ( this._currentY + (( this._currentY - this._lastControlY )) );
 								}
-								 else 
-								{
+								 else {
 									cpy = this._currentY;
 								}
 								
@@ -432,30 +388,25 @@ namespace alphatab.rendering.glyphs
 						case "t":
 						{
 							i = 0;
-							while (( i < cmd.numbers.length ))
-							{
+							while (( i < cmd.numbers.length )){
 								double x17 = ( this._currentX + ( cmd.numbers[i++] * this._xScale ) );
 								double y17 = ( this._currentY + ( cmd.numbers[i++] * this._yScale ) );
 								double cpx1 = ( this._currentX + (( this._currentX - this._lastControlX )) );
 								double cpy1 = ( this._currentY + (( this._currentY - this._lastControlY )) );
 								canContinue = ( ( ( string.Equals(this._lastCmd, "q") || string.Equals(this._lastCmd, "Q") ) || string.Equals(this._lastCmd, "t") ) || string.Equals(this._lastCmd, "T") );
 								double cpx2 = default(double);
-								if (canContinue) 
-								{
+								if (canContinue) {
 									cpx2 = ( this._currentX + (( this._currentX - this._lastControlX )) );
 								}
-								 else 
-								{
+								 else {
 									cpx2 = this._currentX;
 								}
 								
 								double cpy2 = default(double);
-								if (canContinue) 
-								{
+								if (canContinue) {
 									cpy2 = ( this._currentY + (( this._currentY - this._lastControlY )) );
 								}
-								 else 
-								{
+								 else {
 									cpy2 = this._currentY;
 								}
 								
@@ -477,12 +428,9 @@ namespace alphatab.rendering.glyphs
 		}
 		
 		
-		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_setField_f(string field, int hash, double @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 2075993521:
 					{
 						this._lastControlY = ((double) (@value) );
@@ -550,12 +498,9 @@ namespace alphatab.rendering.glyphs
 		}
 		
 		
-		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_setField(string field, int hash, object @value, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 2075993521:
 					{
 						this._lastControlY = ((double) (global::haxe.lang.Runtime.toDouble(@value)) );
@@ -637,21 +582,18 @@ namespace alphatab.rendering.glyphs
 		}
 		
 		
-		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_getField(string field, int hash, bool throwErrors, bool isCheck, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 1531430232:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("parseCommand"), ((int) (1531430232) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("parseCommand") ), ((int) (1531430232) ))) );
 					}
 					
 					
 					case 1028568990:
 					{
-						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), global::haxe.lang.Runtime.toString("paint"), ((int) (1028568990) ))) );
+						return ((global::haxe.lang.Function) (new global::haxe.lang.Closure(((object) (this) ), ((string) ("paint") ), ((int) (1028568990) ))) );
 					}
 					
 					
@@ -726,12 +668,9 @@ namespace alphatab.rendering.glyphs
 		}
 		
 		
-		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   double __hx_getField_f(string field, int hash, bool throwErrors, bool handleProperties){
+			unchecked {
+				switch (hash){
 					case 2075993521:
 					{
 						return this._lastControlY;
@@ -791,12 +730,9 @@ namespace alphatab.rendering.glyphs
 		}
 		
 		
-		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs)
-		{
-			unchecked 
-			{
-				switch (hash)
-				{
+		public override   object __hx_invokeField(string field, int hash, global::haxe.root.Array dynargs){
+			unchecked {
+				switch (hash){
 					case 1028568990:
 					{
 						return global::haxe.lang.Runtime.slowCallField(this, field, dynargs);
@@ -822,10 +758,8 @@ namespace alphatab.rendering.glyphs
 		}
 		
 		
-		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr)
-		{
-			unchecked 
-			{
+		public override   void __hx_getFields(global::haxe.root.Array<object> baseArr){
+			unchecked {
 				baseArr.push("_lastControlY");
 				baseArr.push("_lastControlX");
 				baseArr.push("_yGlyphScale");

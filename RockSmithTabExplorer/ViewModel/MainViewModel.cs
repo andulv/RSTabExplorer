@@ -15,23 +15,17 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library.
  */
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using alphatab.importer;
 using alphatab.model;
 using AlphaTab.Wpf.Share.Data;
 using AlphaTab.Wpf.Share.Utils;
-using AlphaTab.src.alphatab.importer;
 using System.Linq;
-using System.Xml.Linq;
 using RocksmithToolkitLib.Xml;
-using System.Windows;
 
-namespace AlphaTab.Wpf.Share.ViewModel
+namespace RockSmithTabExplorer.ViewModel
 {
     /// <summary>
     /// This viewmodel contains the data and logic for the main application window. 
@@ -46,8 +40,15 @@ namespace AlphaTab.Wpf.Share.ViewModel
         // those properties store the score information
         private Score _score;
         private int _currentTrackIndex;
-        ArcFileWrapper _archiveFile;
         private readonly RelayCommand _showScoreInfoCommand;
+
+        SongLoader songLoader;
+        SongManager songManager = new SongManager();
+        public SongManager SongManager
+        {
+            get { return songManager; }
+            private set { songManager = value; }
+        }
 
         public Score Score
         {
@@ -63,6 +64,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
                 OnPropertyChangedExplicit("ScoreTitle");
                 OnPropertyChangedExplicit("CurrentScoreTrack");
                 _showScoreInfoCommand.RaiseCanExecuteChanged();
+                TrackToolBarVisible = _score != null;
             }
         }
 
@@ -98,52 +100,9 @@ namespace AlphaTab.Wpf.Share.ViewModel
         #region Score Loading
 
         public ICommand OpenFileCommand { get; private set; }
+        public ICommand LoadDiskTracksCommand { get; private set; }
+        public ICommand LoadDLCTracksCommand { get; private set; }
 
-        /// <summary>
-        /// Opens a new file by loading the file path using the IO service. 
-        /// </summary>
-        public void OpenFile()
-        {
-            //InternalOpenRockSmithFile(@"d:\Program Files (x86)\Rocksmith 2014\songs.psarc");
-            //InternalOpenRockSmithFile(@"d:\Rocksmith\Metallica - Nothing Else Matters_p.psarc");
-
-            //var package=new RSPackageInfo(){FileName=@"d:\Program Files (x86)\Rocksmith 2014\songs.psarc"};
-            //ArchiveUtils.ExtractPackage(package, @"d:\Program Files (x86)\Extracted\");
-            OpenFile(_dialogService.OpenFile());
-            //InternalOpenRockSmithFile(@"d:\Program Files (x86)\Joy Division - Dead Souls_p_Pc\songs\bin\generic\deadsoulsjd_bass.xml");           
-            //InternalOpenRockSmithFile(@"d:\Program Files (x86)\Smells Like Teen Spirit_p_Pc\songs\bin\generic\smellsliketeenspirit_bass.xml");
-            //InternalOpenRockSmithFile(@"d:\Program Files (x86)\Metallica - Nothing Else Matters_p_Pc\songs\bin\generic\nothingelsematters_bass.xml");
-            //InternalOpenFile(@"E:\Tablature\Test tittel.gp5");
-        }
-
-        /// <summary>
-        /// Opens a new file from the specified file path.
-        /// </summary>
-        /// <param name="file">the path to the file to load</param>
-        private void OpenFile(string file)
-        {
-            if (!string.IsNullOrWhiteSpace(file) && File.Exists(file))
-            {
-                InternalOpenRockSmithFile(file);
-            }
-        }
-
-        protected void InternalOpenRockSmithFile(string file)
-        {
-            FileName = file;
-            _archiveFile = new ArcFileWrapper(file);
-            AvailableSongs = _archiveFile.GetAllSongInfos();
-            OnPropertyChanged("FileName");
-            OnPropertyChanged("AvailableSongs");
-
-            SelectedRockSmithSong = AvailableSongs.FirstOrDefault();
-        }
-
-
-        //Is set when file is opened (root of all things)
-        public IList<RSSongInfo> AvailableSongs { get; protected set; }
-
-        //Is set by user by selecting in listview. Automtically set when AvailableSongs is set.
         RSSongInfo _selectedRockSmithSong;
         public RSSongInfo SelectedRockSmithSong
         {
@@ -152,11 +111,43 @@ namespace AlphaTab.Wpf.Share.ViewModel
             {
                 _selectedRockSmithSong = value;
                 OnPropertyChanged();
-                if (value != null && value.TrackInfos != null)
-                    SelectedRockSmithTrack = value.TrackInfos.FirstOrDefault();
-                else
-                    SelectedRockSmithTrack = null;
+
+                setTrackFromPath();
             }
+        }
+
+        private void OnIsLoadingToggled(object sender, PropertyChangedEventArgs args)
+        {
+            IsLoading = songLoader.IsLoading;
+
+            // Update SelectedRockSmithSong on song load
+            if (args.PropertyName == "IsLoading" && songLoader.IsLoading == false)
+            {
+                SelectedRockSmithSong = songManager.GetFirstSong();
+            }
+        }
+
+        //Set from settings at startup, updated from dropdown.
+        private string _selectedGuitarPath;
+        private GuitarPath guitarPath;
+        public string SelectedGuitarPath
+        {
+            get { return _selectedGuitarPath; }
+            set
+            {
+                _selectedGuitarPath = value;
+                RockSmithTabExplorer.Properties.Settings.Default.GuitarPath = value;
+                RockSmithTabExplorer.Properties.Settings.Default.Save();
+                guitarPath = new GuitarPath(value);
+                OnPropertyChanged("SelectedGuitarPath");
+                setTrackFromPath();
+            }
+        }
+
+        private void setTrackFromPath()
+        {
+            if (SelectedRockSmithSong != null && SelectedRockSmithSong.TrackInfos != null)
+                SelectedRockSmithTrack = guitarPath.pickTrack(SelectedRockSmithSong.TrackInfos);
         }
 
         //Is set by user by selecting in dropdown. Automtically set when SelectedRockSmithSong is set.
@@ -169,7 +160,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
                 _selectedRockSmithTrack = value;
                 OnPropertyChanged();
                 if (value != null)
-                    TrackDetail = _archiveFile.GetTrackDetail(SelectedRockSmithSong.Key, value.Name);
+                    TrackDetail = songManager.GetTrackDetail(SelectedRockSmithSong.Key, value.Name);
                 else
                     TrackDetail = null;
             }
@@ -221,7 +212,7 @@ namespace AlphaTab.Wpf.Share.ViewModel
                 Score = null;
         }
 
-        public string FileName { get; protected set; }
+        public string FileNameStatus { get; protected set; }
 
         bool _levelOnlySelected;
         public bool LevelOnlySelected
@@ -235,7 +226,27 @@ namespace AlphaTab.Wpf.Share.ViewModel
             }
         }
 
+        bool _trackToolBarVisible = false;
+        public bool TrackToolBarVisible
+        {
+            get { return _trackToolBarVisible; }
+            private set
+            {
+                _trackToolBarVisible = value;
+                OnPropertyChanged("TrackToolBarVisible");
+            }
+        }
 
+        bool _isLoading = false;
+        public bool IsLoading
+        {
+            get { return _isLoading; }
+            private set
+            {
+                _isLoading = value;
+                OnPropertyChanged("IsLoading");
+            }
+        }
 
         #endregion
 
@@ -243,8 +254,19 @@ namespace AlphaTab.Wpf.Share.ViewModel
         {
             _dialogService = dialogService;
             _errorService = errorService;
-            OpenFileCommand = new RelayCommand(OpenFile);
+            songLoader = new SongLoader(_dialogService, songManager);
+
+            // Re-raise events for the view
+            songManager.PropertyChanged += (sender, args) => this.OnPropertyChanged(args.PropertyName);
+            songLoader.PropertyChanged += (sender, args) => this.OnPropertyChanged(args.PropertyName);
+            songLoader.PropertyChanged += OnIsLoadingToggled;
+
+            OpenFileCommand = new RelayCommand(songLoader.OpenFile);
+            LoadDiskTracksCommand = new RelayCommand(songLoader.LoadDiskTracks);
+            LoadDLCTracksCommand = new RelayCommand(songLoader.LoadDLCTracks);
             _showScoreInfoCommand = new RelayCommand(ShowScoreInfo, () => _score != null);
+
+            SelectedGuitarPath = RockSmithTabExplorer.Properties.Settings.Default.GuitarPath;
         }
 
 

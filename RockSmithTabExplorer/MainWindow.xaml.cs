@@ -17,7 +17,7 @@
  */
 using System.Windows;
 using AlphaTab.Wpf.Share.Data;
-using AlphaTab.Wpf.Share.ViewModel;
+using RockSmithTabExplorer.ViewModel;
 using System.Reflection;
 
 namespace AlphaTab.Wpf.Gdi

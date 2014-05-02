@@ -16,9 +16,9 @@
  * License along with this library.
  */
 using System.Windows;
-using alphatab.model;
 using AlphaTab.Wpf.Share.ViewModel;
 using Microsoft.Win32;
+using AlphaTab.Model;
 
 namespace AlphaTab.Wpf.Share.Data
 {

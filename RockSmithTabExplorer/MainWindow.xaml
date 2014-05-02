@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="clr-namespace:AlphaTab.Wpf.Share.Controls"
         xmlns:c="clr-namespace:RockSmithTabExplorer"
-        xmlns:wpf="clr-namespace:AlphaTab.Wpf;assembly=AlphaTab.Core"
+        xmlns:wpf="clr-namespace:AlphaTab.Platform.CSharp.Wpf;assembly=AlphaTab"
         Title="RockSmith Tab Explorer " Height="750" Width="800" WindowState="Maximized"
         DataContext="{Binding Main, Source={StaticResource Locator}}"
         >
@@ -235,7 +235,7 @@
                         <!-- The Background of the tablature -->
                         <Border VerticalAlignment="Top" Background="#F5F5F5" Name="TablatureContainer">
                             <!-- The Actual AlphaTab control with a binding to a track -->
-                            <wpf:AlphaTabGdi Name="TablatureControl" Track="{Binding CurrentScoreTrack}" RenderFinished="OnRenderFinished" />
+                            <wpf:AlphaTabImage Name="TablatureControl" Track="{Binding CurrentScoreTrack}" RenderFinished="OnRenderFinished" />
                         </Border>
                     </Grid>
                 </ScrollViewer>

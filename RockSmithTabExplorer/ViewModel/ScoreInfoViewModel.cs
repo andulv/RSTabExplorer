@@ -17,7 +17,7 @@
  */
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using alphatab.model;
+using AlphaTab.Model;
 
 namespace AlphaTab.Wpf.Share.ViewModel
 {
@@ -36,16 +36,16 @@ namespace AlphaTab.Wpf.Share.ViewModel
 
         public ScoreInfoViewModel(Score score)
         {
-            _tab = score.tab;
-            _words = score.words;
-            _title = score.title;
-            _subTitle = score.subTitle;
-            _notices = score.notices;
-            _music = score.music;
-            _instructions = score.instructions;
-            _copyright = score.copyright;
-            _artist = score.artist;
-            _album = score.album;
+            _tab = score.Tab;
+            _words = score.Words;
+            _title = score.Title;
+            _subTitle = score.SubTitle;
+            _notices = score.Notices;
+            _music = score.Music;
+            _instructions = score.Instructions;
+            _copyright = score.Copyright;
+            _artist = score.Artist;
+            _album = score.Album;
         }
 
         public string Album

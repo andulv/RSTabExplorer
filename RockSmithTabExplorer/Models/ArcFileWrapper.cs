@@ -1,4 +1,4 @@
-﻿using alphatab.model;
+﻿using AlphaTab.Model;
 using Newtonsoft.Json;
 using RockSmithTabExplorer.Utils;
 using RocksmithToolkitLib;
@@ -7,7 +7,6 @@ using RocksmithToolkitLib.DLCPackage.Manifest;
 using RocksmithToolkitLib.PSARC;
 using RocksmithToolkitLib.Sng2014HSL;
 using RocksmithToolkitLib.Xml;
-using sys.io;
 using System;
 using System.Collections.Generic;
 using System.IO;

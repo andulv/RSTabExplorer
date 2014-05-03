@@ -5,6 +5,7 @@ using System.Text;
 using AlphaTab.Wpf.Share.Data;
 using System.IO;
 using System.ComponentModel;
+using System.Windows;
 
 namespace RockSmithTabExplorer
 {
@@ -86,17 +87,24 @@ namespace RockSmithTabExplorer
 
         public void LoadDiskTracks()
         {
-            string rocksmithFolder = RocksmithLocator.Rocksmith2014Folder();
-            if (rocksmithFolder.Length != 0) OpenFile(rocksmithFolder + @"\songs.psarc");
+            LoadFromSteam((rocksmithFolder) => OpenFile(rocksmithFolder + @"\songs.psarc"));
         }
 
         public void LoadDLCTracks()
         {
+            LoadFromSteam((rocksmithFolder)=>OpenFiles(Directory.GetFiles(rocksmithFolder + @"\dlc", "*.psarc")));
+        }
+
+        private void LoadFromSteam(Action<string> loadAction)
+        {
             string rocksmithFolder = RocksmithLocator.Rocksmith2014Folder();
-            if (rocksmithFolder.Length != 0)
+            if (rocksmithFolder != null && rocksmithFolder.Length > 0)
             {
-                string[] psarcs = Directory.GetFiles(rocksmithFolder + @"\dlc", "*.psarc");
-                OpenFiles(psarcs);
+                loadAction(rocksmithFolder);
+            }
+            else
+            {
+                MessageBox.Show("Can't find Rocksmith 2014 in Steam Library folders\nTry opening psarc files directly", "Error loading songs", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

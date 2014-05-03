@@ -4,7 +4,9 @@
         xmlns:controls="clr-namespace:AlphaTab.Wpf.Share.Controls"
         xmlns:c="clr-namespace:RockSmithTabExplorer"
         xmlns:wpf="clr-namespace:AlphaTab.Wpf;assembly=AlphaTab.Core"
-        Title="RockSmith Tab Explorer " Height="750" Width="800" WindowState="Maximized">
+        Title="RockSmith Tab Explorer " Height="750" Width="800" WindowState="Maximized"
+        DataContext="{Binding Main, Source={StaticResource Locator}}"
+        >
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
         <c:BoolToOppositeBoolConverter x:Key="BoolToOpposite" />

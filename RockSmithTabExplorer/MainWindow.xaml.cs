@@ -30,15 +30,6 @@ namespace AlphaTab.Wpf.Gdi
         public MainWindow()
         {
             InitializeComponent();
-
-            // ensure the UI is using en-us as culture 
-            // we need this culture for correct WPF path string generation
-            // in a German culture it could happen that we have a , as a decimal separator. 
-            //App.InitializeCultures();
-
-            // create a our viewmodel for databinding
-            MainViewModel viewModel = new MainViewModel(new DialogService(), new ErrorService());
-            DataContext = viewModel;
             this.Title = this.Title + " - v" + Assembly.GetEntryAssembly().GetName().Version.ToString();
         }
 

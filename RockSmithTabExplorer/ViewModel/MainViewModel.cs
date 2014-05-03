@@ -24,6 +24,7 @@ using AlphaTab.Wpf.Share.Data;
 using AlphaTab.Wpf.Share.Utils;
 using System.Linq;
 using RocksmithToolkitLib.Xml;
+using System.Runtime.CompilerServices;
 
 namespace RockSmithTabExplorer.ViewModel
 {

@@ -11,6 +11,7 @@
         <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
         <c:BoolToOppositeBoolConverter x:Key="BoolToOpposite" />
         <c:ChordFretDisplayConverter x:Key="ChordFretDisplayConverter"/>
+        <CollectionViewSource x:Key="ChordTemplates" Filter="ChordTemplateFilter" Source="{Binding TrackDetail.RockSmithSong.ChordTemplates}" />
     </Window.Resources>
     <Grid Background="#4b4c4c">
         <Grid.RowDefinitions>
@@ -171,8 +172,8 @@
                         </ListView >
                     </TabItem>
 
-                    <TabItem Header="{Binding TrackDetail.RockSmithSong.ChordTemplates.Count}" HeaderStringFormat="Chord templates({0})">
-                        <ListView ItemsSource="{Binding TrackDetail.RockSmithSong.ChordTemplates}">
+                    <TabItem Header="{Binding Source={StaticResource ChordTemplates}, Path=Count}" HeaderStringFormat="Chord templates({0})">
+                        <ListView ItemsSource="{Binding Source={StaticResource ChordTemplates}}">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
                                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />

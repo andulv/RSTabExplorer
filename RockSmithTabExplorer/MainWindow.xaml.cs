@@ -42,5 +42,11 @@ namespace AlphaTab.Wpf.Gdi
             TablatureShadow.Height = TablatureControl.Height;
         }
 
+        void ChordTemplateFilter(object sender, System.Windows.Data.FilterEventArgs e)
+        {
+            var chordTemplate = e.Item as RocksmithToolkitLib.Xml.SongChordTemplate2014;
+            e.Accepted = chordTemplate.ChordId == null ? false : true;
+        }
+
     }
 }

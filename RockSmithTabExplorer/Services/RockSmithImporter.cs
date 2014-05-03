@@ -14,14 +14,14 @@ namespace RockSmithTabExplorer
 {
     public class RockSmithImporter
     {
-        private static string GetTuningName(TuningStrings tuning, bool isBass, bool inBem = true)
+        private static string GetTuningName(TuningStrings tuning, bool isBass, int capo, bool inBem = true)
         {
             List<Int32> Notes = new List<Int32>();
             List<String> NoteNames = new List<String>();
             String[] notesNames = new String[] { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
             String[] notesNamesHi = new String[] { "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B" };
             for (Byte s = 0; s < (isBass ? 4 : 6); s++)
-                Notes.Add(Sng2014FileWriter.GetMidiNote(tuning.ToShortArray(), s, 0, isBass));
+                Notes.Add(Sng2014FileWriter.GetMidiNote(tuning.ToShortArray(), s, 0, isBass,capo));
             foreach (var mNote in Notes)
                 if (inBem) NoteNames.Add(notesNamesHi[mNote % 12]); //oct = mNote / 12 - 1
                 else NoteNames.Add(notesNames[mNote % 12]); //oct = mNote / 12 - 1
@@ -101,19 +101,19 @@ namespace RockSmithTabExplorer
             var track = new Track();
             track.name = song.Arrangement;
             track.index = 1;
-            track.tuningName = GetTuningName(song.Tuning, isBass);
+            int capo = track.capo;
+            track.tuningName = GetTuningName(song.Tuning, isBass, capo);
             track.shortName = song.Arrangement;
 
             for (Byte s = 0; s < (isBass ? 4 : 6); s++)
-                track.tuning[(isBass ? 3 : 5) - s] = Sng2014FileWriter.GetMidiNote(song.Tuning.ToShortArray(), s, 0, isBass);
+                track.tuning[(isBass ? 3 : 5) - s] = Sng2014FileWriter.GetMidiNote(song.Tuning.ToShortArray(), s, 0, isBass, capo);
 
             score.addTrack(track);
 
-            int chordId = 0;
-            foreach (var chordTemplate in song.ChordTemplates)
+            foreach (var chordTemplate in song.ChordTemplates.Where(ct=>ct.ChordId!=null))
             {
                 var chord = new global::alphatab.model.Chord();
-                track.chords.set(chordId.ToString(), chord);
+                track.chords.set(chordTemplate.ChordId.ToString(), chord);
 
                 chord.name = chordTemplate.ChordName;
                 chord.strings[0] = chordTemplate.Fret0;
@@ -122,7 +122,6 @@ namespace RockSmithTabExplorer
                 chord.strings[3] = chordTemplate.Fret3;
                 chord.strings[4] = chordTemplate.Fret4;
                 chord.strings[5] = chordTemplate.Fret5;
-                chordId++;
             }
 
             var ebeatMeasures = song.Ebeats.Where(x => x.Measure > 0).OrderBy(x => x.Measure).ToList();

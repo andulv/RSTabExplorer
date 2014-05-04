@@ -119,7 +119,6 @@
     <Compile Include="Services\SongLoader.cs" />
     <Compile Include="Services\SongManager.cs" />
     <Compile Include="Utils\NonClosingStream.cs" />
-    <Compile Include="Utils\RelayCommand.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ScoreInfoViewModel.cs" />
     <Compile Include="ViewModel\GuitarPath.cs" />
@@ -128,10 +127,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controls\ToolBarCustom.cs" />
-    <Compile Include="Data\DialogService.cs" />
-    <Compile Include="Data\ErrorService.cs" />
-    <Compile Include="Data\IDialogService.cs" />
-    <Compile Include="Data\IErrorService.cs" />
+    <Compile Include="Services\DialogService.cs" />
+    <Compile Include="Services\ErrorService.cs" />
+    <Compile Include="Services\IDialogService.cs" />
+    <Compile Include="Services\IErrorService.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

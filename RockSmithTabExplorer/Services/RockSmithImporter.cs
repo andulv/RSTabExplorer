@@ -126,10 +126,25 @@ namespace RockSmithTabExplorer
                 chord.strings[5] = chordTemplate.Fret5;
             }
 
-            var ebeatMeasures = song.Ebeats.Where(x => x.Measure > 0).OrderBy(x => x.Measure).ToList();
+            List<eBeatWrapper> ebeatMeasures = new List<eBeatWrapper>();
+            eBeatWrapper currentMeasureBeat = null;
+            foreach (var srcBeat in song.Ebeats)
+            {
+                if (srcBeat.Measure > 0)
+                {
+                    currentMeasureBeat = new eBeatWrapper() { MeasureStartBeat = srcBeat, MeasureSubBeats = new List<SongEbeat>() };
+                    ebeatMeasures.Add(currentMeasureBeat);
+                }
+                else
+                {
+                    if (currentMeasureBeat == null)
+                        System.Diagnostics.Debug.WriteLine("Invalid ebeats in source file. Sub measure is before first measure!?");
+                    else
+                        currentMeasureBeat.MeasureSubBeats.Add(srcBeat);
+                }
+            }
 
             var notesStack = new Stack<SongNoteChordWrapper>(allSounds.OrderByDescending(x => x.Time));
-
             var currentNote = notesStack.Pop();
             var nextNote = notesStack.Pop();
 
@@ -139,64 +154,73 @@ namespace RockSmithTabExplorer
             foreach (var measure in ebeatMeasures)
             {
                 var nextmeasure = i < ebeatMeasures.Count ? ebeatMeasures[i] : null;
-                if (measure.Measure > prevMeasureId)
+                if (measure.MeasureStartBeat.Measure > prevMeasureId)
                 {
-                    var measureDuration = nextmeasure !=null ? nextmeasure.Time - measure.Time : prevMeasureDuration;
-                    AddMasterBarToScore(score, measure.Time.ToString("n2"));
+                    var measureDuration = nextmeasure !=null ? nextmeasure.MeasureStartBeat.Time - measure.MeasureStartBeat.Time : prevMeasureDuration;
+                    AddMasterBarToScore(score, measure.MeasureStartBeat.Time.ToString("n2"), measure);
                     var voice = AddBarAndVoiceToTrack(track, isBass ? Clef.F4 : Clef.G2);
 
                     bool firstNoteInBar = true;
-                    while (currentNote != null && (nextmeasure == null || currentNote.Time < nextmeasure.Time))
+                    while (currentNote != null && (nextmeasure == null || currentNote.Time < nextmeasure.MeasureStartBeat.Time))
                     {
+                        if (currentNote.IsNote() && currentNote.AsNote().Bend != 0)
+                            System.Diagnostics.Debug.WriteLine("Bent detected. Bend value: {0}. Measure: {1}", currentNote.AsNote().Bend, measure.MeasureStartBeat.Measure);
                         Duration duration = Duration.Quarter;
 
-                        if (firstNoteInBar && currentNote.Time > measure.Time)
+                        if (firstNoteInBar && currentNote.Time > measure.MeasureStartBeat.Time)
                         {
-                            var leadingSilenceTicks = Get64thsFromDuration(measure.Time, currentNote.Time, measureDuration);
+                            var leadingSilenceTicks = Get64thsFromDuration(measure.MeasureStartBeat.Time, currentNote.Time, measureDuration);
                             while (leadingSilenceTicks >= 1)
                             {
                                 if (leadingSilenceTicks >= 32)
                                 {
-                                    AddBeatAndNoteToVoice(voice, null, Duration.Half);
+                                    AddBeatAndSilenceToVoice(voice, Duration.Half);
                                     leadingSilenceTicks -= 32;
                                 }
                                 else if (leadingSilenceTicks >= 16)
                                 {
-                                    AddBeatAndNoteToVoice(voice, null, Duration.Quarter);
+                                    AddBeatAndSilenceToVoice(voice, Duration.Quarter);
                                     leadingSilenceTicks -= 16;
                                 }
                                 else if (leadingSilenceTicks >= 8)
                                 {
-                                    AddBeatAndNoteToVoice(voice, null, Duration.Eighth);
+                                    AddBeatAndSilenceToVoice(voice, Duration.Eighth);
                                     leadingSilenceTicks -= 8;
                                 }
                                 else if (leadingSilenceTicks >= 4)
                                 {
-                                    AddBeatAndNoteToVoice(voice, null, Duration.Sixteenth);
+                                    AddBeatAndSilenceToVoice(voice, Duration.Sixteenth);
                                     leadingSilenceTicks -= 4;
                                 }
                                 else if (leadingSilenceTicks >= 2)
                                 {
-                                    AddBeatAndNoteToVoice(voice, null, Duration.ThirtySecond);
+                                    AddBeatAndSilenceToVoice(voice, Duration.ThirtySecond);
                                     leadingSilenceTicks -= 2;
                                 }
                                 else if (leadingSilenceTicks >= 1)
                                 {
-                                    AddBeatAndNoteToVoice(voice, null, Duration.SixtyFourth);
+                                    AddBeatAndSilenceToVoice(voice, Duration.SixtyFourth);
                                     leadingSilenceTicks -= 1;
                                 }
                             }
                         }
 
+
+                        Single durationTime = 0;
                         if (nextNote != null)
                         {
-                            duration = GetBeatDuration(currentNote.Time,nextNote.Time,measureDuration);
+                            duration = GetBeatDuration(currentNote.Time, nextNote.Time, measureDuration);
+                            durationTime = nextNote.Time - currentNote.Time;
+                        }
+                        else
+                        {
+                            durationTime = measureDuration;
                         }
 
                         if (currentNote.IsNote())
-                            AddBeatAndNoteToVoice(voice, currentNote.AsNote(), duration);
+                            AddBeatAndNoteToVoice(voice, currentNote.AsNote(), duration, durationTime);
                         else
-                            AddBeatWithChordToVoice(voice, currentNote.AsChord(), duration);
+                            AddBeatWithChordToVoice(voice, currentNote.AsChord(), duration, durationTime);
 
                         currentNote = nextNote;
                         if (notesStack.Any())
@@ -206,7 +230,7 @@ namespace RockSmithTabExplorer
                         firstNoteInBar = false;
                     }
 
-                    prevMeasureId = measure.Measure;
+                    prevMeasureId = measure.MeasureStartBeat.Measure;
                     prevMeasureDuration = measureDuration;
                 }
                 i++;
@@ -252,11 +276,35 @@ namespace RockSmithTabExplorer
             return Duration.Whole;
         }
 
-        private static  void AddMasterBarToScore(Score score, string sessionText)
+        private static void AddMasterBarToScore(Score score, string sessionText, eBeatWrapper measureBeats)
         {
+            var measureBeatsCount = measureBeats.MeasureSubBeats.Count +1;
             var masterBar = new MasterBar();
-            masterBar.timeSignatureDenominator = 4;
-            masterBar.timeSignatureNumerator = 4;
+
+            if (measureBeatsCount == 2)
+            {
+                masterBar.timeSignatureNumerator = 2;
+                masterBar.timeSignatureDenominator = 4;
+            }
+            else if (measureBeatsCount == 3)
+            {
+                masterBar.timeSignatureNumerator = 3;
+                masterBar.timeSignatureDenominator = 4;
+            }
+            else if (measureBeatsCount == 6)
+            {
+                masterBar.timeSignatureNumerator = 6;
+                masterBar.timeSignatureDenominator = 8;
+            }
+            else
+            {
+                masterBar.timeSignatureNumerator = 4;
+                masterBar.timeSignatureDenominator = 4;
+
+                if (measureBeatsCount != 4)
+                    System.Diagnostics.Debug.WriteLine("Unknown timesignature (measureBeatsCount: {0}). Defaulting to 4/4.", measureBeatsCount);
+            }
+
             masterBar.section = new global::alphatab.model.Section() { text = sessionText };
             score.addMasterBar(masterBar);
         }
@@ -273,14 +321,21 @@ namespace RockSmithTabExplorer
 
         private static Note _prevConvertedNote = null;
 
-        private static void AddBeatAndNoteToVoice(Voice voice, SongNote2014 note, Duration duration)
+        private static void AddBeatAndSilenceToVoice(Voice voice, Duration duration)
+        {
+            var beat = new Beat();
+            beat.duration = duration;
+            voice.addBeat(beat);
+        }
+
+        private static void AddBeatAndNoteToVoice(Voice voice, SongNote2014 note, Duration duration, Single durationTime)
         {
             var beat = new Beat();
             beat.duration = duration;
             voice.addBeat(beat);
             if (note != null)
             {
-                var destNote = NoteFromNote(note);
+                var destNote = NoteFromNote(note, durationTime);
                 beat.addNote(destNote);
 
                 if (note.HammerOn == 1 && _prevConvertedNote != null)
@@ -297,23 +352,13 @@ namespace RockSmithTabExplorer
             }
         }
 
-        private static void AddBeatWithChordToVoice(Voice voice, SongChord2014 sourceChord, Duration duration)
+        private static void AddBeatWithChordToVoice(Voice voice, SongChord2014 sourceChord, Duration duration, Single durationTime)
         {
             var beat = new Beat();
             beat.duration = duration;
             voice.addBeat(beat);
             beat.chordId = sourceChord.ChordId.ToString();
             var chord = beat.chord();
-
-            var chordString = chord == null ? "null" : "not null";
-            var sourceChordString = sourceChord.ChordNotes != null ? sourceChord.ChordNotes.Length.ToString() : "null";
-
-            Debug.WriteLine(beat.chordId + " - chord: " + chordString + ", sourceChord.ChordNotes: " + sourceChordString);
-
-            //if (chord != null && sourceChord.ChordNotes.Any())
-            //{
-            //    DbgAssert(false);
-            //}
 
             //Will be non-null if predefined chord exist (and predefined chord should exist if ChordId is present in ChordTemplates)
             if (chord == null)
@@ -327,7 +372,7 @@ namespace RockSmithTabExplorer
                 {
                     foreach (var sourceNote in sourceChord.ChordNotes)
                     {
-                        var note1 = NoteFromNote(sourceNote);
+                        var note1 = NoteFromNote(sourceNote, durationTime);
                         beat.addNote(note1);
                     }
                 }
@@ -347,16 +392,15 @@ namespace RockSmithTabExplorer
                     }
                 }          
             }
-
-
         }
+
         private static void DbgAssert(bool condition)
         {
             if(!condition)
                 Debugger.Break();
         }
 
-        private static Note NoteFromNote(SongNote2014 srcNote)
+        private static Note NoteFromNote(SongNote2014 srcNote, Single durationTime)
         {
             //DbgAssert(srcNote.LinkNext == 0);
             //DbgAssert(srcNote.Bend == 0);
@@ -379,6 +423,40 @@ namespace RockSmithTabExplorer
             note1.fret = srcNote.Fret;
             note1.@string = srcNote.String + 1;
             note1.accentuated = srcNote.Accent == 1 ? AccentuationType.Normal : AccentuationType.None;
+
+            if (srcNote.BendValues != null )
+            {
+                foreach(var srcBend in srcNote.BendValues)
+                {
+                    var bp = new BendPoint(haxe.lang.EmptyObject.EMPTY);
+                    var srcBendOffset = srcBend.Time - srcNote.Time;
+                    bp.offset = Math.round((srcBendOffset / durationTime) * 60);
+                    bp.value = (int)(srcBend.Step * 4);
+                    note1.bendPoints.insert(note1.bendPoints.length, bp);
+                    //note1.bendPoints.insert
+                }
+                if (note1.bendPoints.length > 0)
+                {
+                    var lastbp = note1.bendPoints[note1.bendPoints.length-1] as BendPoint;
+                    if (lastbp.offset < 60)
+                    {
+                        var bp = new BendPoint(haxe.lang.EmptyObject.EMPTY);
+                        bp.offset = 60;
+                        bp.value = lastbp.value;
+                        note1.bendPoints.insert(note1.bendPoints.length, bp);                       
+                    }
+
+                    var firstBp = note1.bendPoints[0] as BendPoint;
+                    if (firstBp.offset > 0)
+                    {
+                        var bp = new BendPoint(haxe.lang.EmptyObject.EMPTY);
+                        bp.offset = 0;
+                        bp.value = 0;
+                        note1.bendPoints.insert(0, bp);
+                    }
+                }
+            }
+
             
             if (srcNote.SlideTo > -1)
                 note1.slideType = SlideType.Shift;
@@ -391,7 +469,8 @@ namespace RockSmithTabExplorer
                     note1.slideType = SlideType.OutDown;
             }
 
-            //note1.bendPoints          src.bend
+            //note1.bendPoints
+            //src.bend
             //note1.durationPercent
             //note1.hammerPullOrigin
             //note1.harmonicType=HarmonicType.Natural
@@ -416,11 +495,14 @@ namespace RockSmithTabExplorer
             //note1.vibrato
 
             return note1;
-
         }
 
 
-
+        private class eBeatWrapper
+        {
+            public SongEbeat MeasureStartBeat { get; set; }
+            public IList<SongEbeat> MeasureSubBeats { get; set; }
+        }
 
         private class SongNoteChordWrapper
         {
@@ -461,7 +543,6 @@ namespace RockSmithTabExplorer
             {
                 return _wrappedObject as SongNote2014;
             }
-
         }
 
         private class PhraseIterationWithEndTime : SongPhraseIteration2014

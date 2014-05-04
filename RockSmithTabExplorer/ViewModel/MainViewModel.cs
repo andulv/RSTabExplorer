@@ -21,17 +21,18 @@ using System.IO;
 using System.Windows.Input;
 using alphatab.model;
 using AlphaTab.Wpf.Share.Data;
-using AlphaTab.Wpf.Share.Utils;
 using System.Linq;
 using RocksmithToolkitLib.Xml;
 using System.Runtime.CompilerServices;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight;
 
 namespace RockSmithTabExplorer.ViewModel
 {
     /// <summary>
     /// This viewmodel contains the data and logic for the main application window. 
     /// </summary>
-    public class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel : ViewModelBase
     {
         // references to the services we want to use
         private readonly IDialogService _dialogService;
@@ -61,9 +62,9 @@ namespace RockSmithTabExplorer.ViewModel
                     _currentTrackIndex = 0;
                 else
                     _currentTrackIndex = -1;
-                OnPropertyChanged("Score");
-                OnPropertyChangedExplicit("ScoreTitle");
-                OnPropertyChangedExplicit("CurrentScoreTrack");
+                RaisePropertyChanged("Score");
+                RaisePropertyChanged("ScoreTitle");
+                RaisePropertyChanged("CurrentScoreTrack");
                 _showScoreInfoCommand.RaiseCanExecuteChanged();
                 TrackToolBarVisible = _score != null;
             }
@@ -111,7 +112,7 @@ namespace RockSmithTabExplorer.ViewModel
             set
             {
                 _selectedRockSmithSong = value;
-                OnPropertyChanged("SelectedRockSmithSong");
+                RaisePropertyChanged("SelectedRockSmithSong");
 
                 setTrackFromPath();
             }
@@ -140,7 +141,7 @@ namespace RockSmithTabExplorer.ViewModel
                 RockSmithTabExplorer.Properties.Settings.Default.GuitarPath = value;
                 RockSmithTabExplorer.Properties.Settings.Default.Save();
                 guitarPath = new GuitarPath(value);
-                OnPropertyChanged("SelectedGuitarPath");
+                RaisePropertyChanged("SelectedGuitarPath");
                 setTrackFromPath();
             }
         }
@@ -159,7 +160,7 @@ namespace RockSmithTabExplorer.ViewModel
             set
             {
                 _selectedRockSmithTrack = value;
-                OnPropertyChanged("SelectedRockSmithTrack");
+                RaisePropertyChanged("SelectedRockSmithTrack");
                 if (value != null)
                     TrackDetail = songManager.GetTrackDetail(SelectedRockSmithSong.Key, value.Name);
                 else
@@ -175,7 +176,7 @@ namespace RockSmithTabExplorer.ViewModel
             protected set
             {
                 _trackDetail = value;
-                OnPropertyChanged("TrackDetail");
+                RaisePropertyChanged("TrackDetail");
                 if (_trackDetail != null && _trackDetail.RockSmithSong != null && _trackDetail.RockSmithSong.Levels != null)
                     SelectedLevel = _trackDetail.RockSmithSong.Levels.LastOrDefault();
                 else
@@ -191,7 +192,7 @@ namespace RockSmithTabExplorer.ViewModel
             set
             {
                 _selectedLevel = value;
-                OnPropertyChanged("SelectedLevel");
+                RaisePropertyChanged("SelectedLevel");
                 GenerateScore();
             }
         }
@@ -222,7 +223,7 @@ namespace RockSmithTabExplorer.ViewModel
             set
             {
                 _levelOnlySelected = value;
-                OnPropertyChanged("LevelOnlySelected");
+                RaisePropertyChanged("LevelOnlySelected");
                 GenerateScore();
             }
         }
@@ -234,7 +235,7 @@ namespace RockSmithTabExplorer.ViewModel
             private set
             {
                 _trackToolBarVisible = value;
-                OnPropertyChanged("TrackToolBarVisible");
+                RaisePropertyChanged("TrackToolBarVisible");
             }
         }
 
@@ -245,7 +246,7 @@ namespace RockSmithTabExplorer.ViewModel
             private set
             {
                 _isLoading = value;
-                OnPropertyChanged("IsLoading");
+                RaisePropertyChanged("IsLoading");
             }
         }
 
@@ -258,8 +259,8 @@ namespace RockSmithTabExplorer.ViewModel
             songLoader = new SongLoader(_dialogService, songManager);
 
             // Re-raise events for the view
-            songManager.PropertyChanged += (sender, args) => this.OnPropertyChanged(args.PropertyName);
-            songLoader.PropertyChanged += (sender, args) => this.OnPropertyChanged(args.PropertyName);
+            songManager.PropertyChanged += (sender, args) => this.RaisePropertyChanged(args.PropertyName);
+            songLoader.PropertyChanged += (sender, args) => this.RaisePropertyChanged(args.PropertyName);
             songLoader.PropertyChanged += OnIsLoadingToggled;
 
             OpenFileCommand = new RelayCommand(songLoader.OpenFile);
@@ -271,21 +272,5 @@ namespace RockSmithTabExplorer.ViewModel
         }
 
 
-        #region INotifyPropertyChanged
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChangedExplicit(string propertyName)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        protected virtual void OnPropertyChanged(string propertyName)// = null) [CallerMemberName]
-        {
-            OnPropertyChangedExplicit(propertyName);
-        }
-
-        #endregion
     }
 }

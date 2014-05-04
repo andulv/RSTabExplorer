@@ -85,5 +85,11 @@ namespace RockSmithTabExplorerTests
         {
             StringAssert.Matches(RocksmithLocator.Rocksmith2014Folder(), new Regex("Rocksmith2014"));
         }
+
+        [TestMethod]
+        public void ItFindsRocksmith2014FolderFromUbisoftKey()
+        {
+            StringAssert.Matches(RocksmithLocator.Rocksmith2014FolderFromUbisoftKey(), new Regex("Rocksmith2014"));
+        }
     }
 }

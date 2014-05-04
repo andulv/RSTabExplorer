@@ -42,6 +42,12 @@ namespace RockSmithTabExplorer
             return folders;
         }
 
+        public static string Rocksmith2014FolderFromUbisoftKey()
+        {
+            RegistryKey ubiKey = Registry.LocalMachine.OpenSubKey(@"Software\Ubisoft\Rocksmith2014") ?? Registry.LocalMachine.OpenSubKey(@"Software\Wow6432Node\Ubisoft\Rocksmith2014");
+            return ubiKey.GetValue("installdir").ToString();
+        }
+
         public static string Rocksmith2014Folder()
         {
             var appFolders = LibraryFolders().Select(x => x + "\\SteamApps\\common");
@@ -61,7 +67,9 @@ namespace RockSmithTabExplorer
                 }
 
             }
-            return null;
+
+            // Couldn't find folder, attempt another method
+            return Rocksmith2014FolderFromUbisoftKey();
         }
     }
 }

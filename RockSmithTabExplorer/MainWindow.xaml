@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:controls="clr-namespace:AlphaTab.Wpf.Share.Controls"
         xmlns:c="clr-namespace:RockSmithTabExplorer"
-        xmlns:wpf="clr-namespace:AlphaTab.Platform.CSharp.Wpf;assembly=AlphaTab"
         Title="RockSmith Tab Explorer " Height="750" Width="800" WindowState="Maximized"
         DataContext="{Binding Main, Source={StaticResource Locator}}"
         >
@@ -235,7 +234,7 @@
                         <!-- The Background of the tablature -->
                         <Border VerticalAlignment="Top" Background="#F5F5F5" Name="TablatureContainer">
                             <!-- The Actual AlphaTab control with a binding to a track -->
-                            <wpf:AlphaTabImage Name="TablatureControl" Track="{Binding CurrentScoreTrack}" RenderFinished="OnRenderFinished" />
+                            <c:TabControl x:Name="TablatureControl" Track="{Binding CurrentScoreTrack}" RenderFinished="OnRenderFinished" ZoomEnabled="false" />
                         </Border>
                     </Grid>
                 </ScrollViewer>
@@ -244,7 +243,9 @@
                     <Button Command="{Binding ShowScoreInfoCommand}" ToolTip="Show Score Info" Style="{StaticResource ToolbarButtonStyle}" Margin="2,0,0,0"  DockPanel.Dock="Right">
                         <Path Width="24" Height="24" Stretch="Uniform" Fill="Black" Data="F1 M 18.0011,25.9619L 13.3448,25.9619L 13.3448,12.9L 18.0011,12.9L 18.0011,25.9619 Z M 15.649,10.56C 14.8629,10.5387 14.2149,10.2495 13.7048,9.69214C 13.1948,9.13486 12.9308,8.43716 12.9128,7.59912C 12.9308,6.7876 13.1948,6.11328 13.7048,5.57608C 14.2149,5.03891 14.8629,4.76019 15.649,4.73999C 16.435,4.76022 17.0831,5.03891 17.5931,5.57611C 18.1031,6.11328 18.3671,6.7876 18.3851,7.59912C 18.3671,8.4595 18.1031,9.16357 17.5931,9.7113C 17.0831,10.259 16.435,10.5419 15.649,10.56 Z M 15.601,0C 11.1707,0.108398 7.49048,1.63821 4.56027,4.58942C 1.6301,7.54062 0.110046,11.2628 0,15.7559C 0.110046,20.0614 1.6301,23.666 4.56027,26.5695C 7.49045,29.4731 11.1707,30.9826 15.601,31.0981C 20.0102,30.9826 23.6844,29.4731 26.6236,26.5695C 29.5628,23.666 31.0889,20.0614 31.2019,15.7559C 31.0889,11.2628 29.5628,7.54062 26.6236,4.58942C 23.6844,1.63821 20.0102,0.108398 15.601,0 Z "/>
                     </Button>
-                            
+
+                    <CheckBox Foreground="#FFDCE2E5" VerticalAlignment="Center" IsChecked="{Binding Mode=TwoWay, ElementName=TablatureControl, Path=ZoomEnabled}" DockPanel.Dock="Right">Compact zoom mode</CheckBox>
+
                     <ToolBarPanel DockPanel.Dock="Left" Orientation="Horizontal">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="6,0,0,0">
                             <Label Foreground="#FFDCE2E5">Track:</Label>

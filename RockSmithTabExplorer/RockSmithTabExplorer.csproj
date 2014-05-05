@@ -108,6 +108,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\TabControl.cs" />
     <Compile Include="Converter\BoolToOppositeBoolConverter.cs" />
     <Compile Include="Models\ArcFileWrapper.cs" />
     <Compile Include="Converter\ChordFretDisplayConverter.cs" />

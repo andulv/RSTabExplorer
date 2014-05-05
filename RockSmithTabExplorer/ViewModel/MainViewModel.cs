@@ -269,6 +269,9 @@ namespace RockSmithTabExplorer.ViewModel
             _showScoreInfoCommand = new RelayCommand(ShowScoreInfo, () => _score != null);
 
             SelectedGuitarPath = RockSmithTabExplorer.Properties.Settings.Default.GuitarPath;
+
+            if (ViewModelBase.IsInDesignModeStatic)
+                TrackToolBarVisible = true;
         }
 
 

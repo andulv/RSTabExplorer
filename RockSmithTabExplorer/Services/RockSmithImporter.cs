@@ -1,4 +1,4 @@
-﻿using alphatab.model;
+﻿using AlphaTab.Model;
 using RocksmithToolkitLib.Sng2014HSL;
 using RocksmithToolkitLib.Xml;
 using System;
@@ -85,45 +85,50 @@ namespace RockSmithTabExplorer
         private static Score CreateSong(Song2014 song, IEnumerable<SongNoteChordWrapper> allSounds)
         {
             var score = new Score();
-            score.album = song.AlbumName;
-            score.artist = song.ArtistName;
+            score.Album = song.AlbumName;
+            score.Artist = song.ArtistName;
             //score.copyright
             //score.instructions
             //score.music
-            score.notices = "Created by RockSmith Tab Explorer";
+            score.Notices = "Created by RockSmith Tab Explorer";
             //_score.subTitle
             //_score.tab
-            score.tempo = (int)song.AverageTempo;
-            score.tempoLabel = "avg. bpm";
-            score.title = song.Title + " (" + song.Arrangement + ")";
+            score.Tempo = (int)song.AverageTempo;
+            score.TempoLabel = "avg. bpm";
+            score.Title = song.Title + " (" + song.Arrangement + ")";
             //_score.words
 
             bool isBass = song.Arrangement.ToLower() == "bass";
 
             var track = new Track();
-            track.name = song.Arrangement;
-            track.index = 1;
-            int capo = track.capo;
-            track.tuningName = GetTuningName(song.Tuning, isBass, capo);
-            track.shortName = song.Arrangement;
+            track.Name = song.Arrangement;
+            track.Index = 1;
+            int capo = track.Capo;
+            track.TuningName = GetTuningName(song.Tuning, isBass, capo);
+            track.ShortName = song.Arrangement;
 
-            for (Byte s = 0; s < (isBass ? 4 : 6); s++)
-                track.tuning[(isBass ? 3 : 5) - s] = Sng2014FileWriter.GetMidiNote(song.Tuning.ToShortArray(), s, 0, isBass, capo);
+            // Add string tunings in reverse order
+            var tuning = new int[(isBass ? 4 : 6)];
+            for (Byte s = 0; s < tuning.Length; s++)
+            {
+                tuning[tuning.Length - 1 - s] = Sng2014FileWriter.GetMidiNote(song.Tuning.ToShortArray(), s, 0, isBass, capo);
+            }
+            track.Tuning.AddRange(tuning);
 
-            score.addTrack(track);
+            score.AddTrack(track);
 
             foreach (var chordTemplate in song.ChordTemplates.Where(ct=>ct.ChordId!=null))
             {
-                var chord = new global::alphatab.model.Chord();
-                track.chords.set(chordTemplate.ChordId.ToString(), chord);
+                var chord = new global::AlphaTab.Model.Chord();
+                track.Chords[chordTemplate.ChordId.ToString()] = chord;
 
-                chord.name = chordTemplate.ChordName;
-                chord.strings[0] = chordTemplate.Fret0;
-                chord.strings[1] = chordTemplate.Fret1;
-                chord.strings[2] = chordTemplate.Fret2;
-                chord.strings[3] = chordTemplate.Fret3;
-                chord.strings[4] = chordTemplate.Fret4;
-                chord.strings[5] = chordTemplate.Fret5;
+                chord.Name = chordTemplate.ChordName;
+                chord.Strings.Add(chordTemplate.Fret0);
+                chord.Strings.Add(chordTemplate.Fret1);
+                chord.Strings.Add(chordTemplate.Fret2);
+                chord.Strings.Add(chordTemplate.Fret3);
+                chord.Strings.Add(chordTemplate.Fret4);
+                chord.Strings.Add(chordTemplate.Fret5);
             }
 
             List<eBeatWrapper> ebeatMeasures = new List<eBeatWrapper>();
@@ -240,7 +245,7 @@ namespace RockSmithTabExplorer
 
         private static int GetRelativeDurationAsInt(float startTime, float endTime, float measureDuration)
         {
-            return (int)Math.round((1 / ((endTime - startTime) / measureDuration)));
+            return (int)Math.Round((1 / ((endTime - startTime) / measureDuration)));
         }
         private static Duration GetBeatDuration(float startTime, float endTime, float measureDuration)
         {
@@ -254,7 +259,7 @@ namespace RockSmithTabExplorer
             var duration = endTime - startTime;
             var percentDuration = duration / measureDuration;
             var retValue = percentDuration * 64.0;
-            return (int)Math.round(retValue);
+            return (int)Math.Round(retValue);
         }
 
         private static Duration DurationFromInt(int duration)
@@ -283,39 +288,39 @@ namespace RockSmithTabExplorer
 
             if (measureBeatsCount == 2)
             {
-                masterBar.timeSignatureNumerator = 2;
-                masterBar.timeSignatureDenominator = 4;
+                masterBar.TimeSignatureNumerator = 2;
+                masterBar.TimeSignatureDenominator = 4;
             }
             else if (measureBeatsCount == 3)
             {
-                masterBar.timeSignatureNumerator = 3;
-                masterBar.timeSignatureDenominator = 4;
+                masterBar.TimeSignatureNumerator = 3;
+                masterBar.TimeSignatureDenominator = 4;
             }
             else if (measureBeatsCount == 6)
             {
-                masterBar.timeSignatureNumerator = 6;
-                masterBar.timeSignatureDenominator = 8;
+                masterBar.TimeSignatureNumerator = 6;
+                masterBar.TimeSignatureDenominator = 8;
             }
             else
             {
-                masterBar.timeSignatureNumerator = 4;
-                masterBar.timeSignatureDenominator = 4;
+                masterBar.TimeSignatureNumerator = 4;
+                masterBar.TimeSignatureDenominator = 4;
 
                 if (measureBeatsCount != 4)
                     System.Diagnostics.Debug.WriteLine("Unknown timesignature (measureBeatsCount: {0}). Defaulting to 4/4.", measureBeatsCount);
             }
 
-            masterBar.section = new global::alphatab.model.Section() { text = sessionText };
-            score.addMasterBar(masterBar);
+            masterBar.Section = new global::AlphaTab.Model.Section() { Text = sessionText };
+            score.AddMasterBar(masterBar);
         }
 
         private static Voice AddBarAndVoiceToTrack(Track track, Clef clef)
         {
             var bar = new Bar();
-            bar.clef = clef;
-            track.addBar(bar);
+            bar.Clef = clef;
+            track.AddBar(bar);
             var voice = new Voice();
-            bar.addVoice(voice);
+            bar.AddVoice(voice);
             return voice;
         }
 
@@ -324,29 +329,29 @@ namespace RockSmithTabExplorer
         private static void AddBeatAndSilenceToVoice(Voice voice, Duration duration)
         {
             var beat = new Beat();
-            beat.duration = duration;
-            voice.addBeat(beat);
+            beat.Duration = duration;
+            voice.AddBeat(beat);
         }
 
         private static void AddBeatAndNoteToVoice(Voice voice, SongNote2014 note, Duration duration, Single durationTime)
         {
             var beat = new Beat();
-            beat.duration = duration;
-            voice.addBeat(beat);
+            beat.Duration = duration;
+            voice.AddBeat(beat);
             if (note != null)
             {
                 var destNote = NoteFromNote(note, durationTime);
-                beat.addNote(destNote);
+                beat.AddNote(destNote);
 
                 if (note.HammerOn == 1 && _prevConvertedNote != null)
                 {
-                    _prevConvertedNote.isHammerPullOrigin = true;
+                    _prevConvertedNote.IsHammerPullOrigin = true;
                     //_prevConvertedNote.slideTarget = destNote;
                     //_prevConvertedNote.slideType = SlideType.Shift;
-                    destNote.isHammerPullDestination = true;
-                    destNote.isGhost = true;
+                    destNote.IsHammerPullOrigin = false;
+                    destNote.IsGhost = true;
                     //_prevConvertedNote.hammerPullOrigin = destNote;// _prevConvertedNote;
-                    destNote.hammerPullOrigin = _prevConvertedNote;
+                    destNote.HammerPullOrigin = _prevConvertedNote;
                 }
                 _prevConvertedNote = destNote;
             }
@@ -355,15 +360,22 @@ namespace RockSmithTabExplorer
         private static void AddBeatWithChordToVoice(Voice voice, SongChord2014 sourceChord, Duration duration, Single durationTime)
         {
             var beat = new Beat();
-            beat.duration = duration;
-            voice.addBeat(beat);
-            beat.chordId = sourceChord.ChordId.ToString();
-            var chord = beat.chord();
+            beat.Duration = duration;
+            voice.AddBeat(beat);
+            beat.ChordId = sourceChord.ChordId.ToString();
+            AlphaTab.Model.Chord chord = null;
+            try
+            {
+                chord = beat.Chord;
+            }
+            catch (KeyNotFoundException)
+            {
+            }
 
             //Will be non-null if predefined chord exist (and predefined chord should exist if ChordId is present in ChordTemplates)
             if (chord == null)
             {
-                beat.chordId = null;
+                beat.ChordId = null;
                 //chord = new global::alphatab.model.Chord();
                 //voice.bar.track.chords.set(beat.chordId, chord);
                 
@@ -373,22 +385,22 @@ namespace RockSmithTabExplorer
                     foreach (var sourceNote in sourceChord.ChordNotes)
                     {
                         var note1 = NoteFromNote(sourceNote, durationTime);
-                        beat.addNote(note1);
+                        beat.AddNote(note1);
                     }
                 }
             }
             else
             {
                 //Set notes in beat from predefined chord
-                for (int i = 0; i < chord.strings.length; i++)
+                for (int i = 0; i < chord.Strings.Count; i++)
                 {
-                    var tmpstrFret = chord.strings[i];
+                    var tmpstrFret = chord.Strings[i];
                     if (tmpstrFret > -1)
                     {
                         var note1 = new Note();
-                        note1.fret = tmpstrFret;
-                        note1.@string = i + 1;
-                        beat.addNote(note1);
+                        note1.Fret = tmpstrFret;
+                        note1.String = i + 1;
+                        beat.AddNote(note1);
                     }
                 }          
             }
@@ -420,53 +432,52 @@ namespace RockSmithTabExplorer
             //DbgAssert(srcNote.Vibrato == 0);
 
             var note1 = new Note();
-            note1.fret = srcNote.Fret;
-            note1.@string = srcNote.String + 1;
-            note1.accentuated = srcNote.Accent == 1 ? AccentuationType.Normal : AccentuationType.None;
+            note1.Fret = srcNote.Fret;
+            note1.String = srcNote.String + 1;
+            note1.Accentuated = srcNote.Accent == 1 ? AccentuationType.Normal : AccentuationType.None;
 
             if (srcNote.BendValues != null )
             {
                 foreach(var srcBend in srcNote.BendValues)
                 {
-                    var bp = new BendPoint(haxe.lang.EmptyObject.EMPTY);
+                    var bp = new BendPoint();
                     var srcBendOffset = srcBend.Time - srcNote.Time;
-                    bp.offset = Math.round((srcBendOffset / durationTime) * 60);
-                    bp.value = (int)(srcBend.Step * 4);
-                    note1.bendPoints.insert(note1.bendPoints.length, bp);
+                    bp.Offset = (int)Math.Round((srcBendOffset / durationTime) * 60);
+                    bp.Value = (int)(srcBend.Step * 4);
+                    note1.BendPoints.Insert(note1.BendPoints.Count, bp);
                     //note1.bendPoints.insert
                 }
-                if (note1.bendPoints.length > 0)
+                if (note1.BendPoints.Count > 0)
                 {
-                    var lastbp = note1.bendPoints[note1.bendPoints.length-1] as BendPoint;
-                    if (lastbp.offset < 60)
+                    var lastbp = note1.BendPoints[note1.BendPoints.Count-1] as BendPoint;
+                    if (lastbp.Offset < 60)
                     {
-                        var bp = new BendPoint(haxe.lang.EmptyObject.EMPTY);
-                        bp.offset = 60;
-                        bp.value = lastbp.value;
-                        note1.bendPoints.insert(note1.bendPoints.length, bp);                       
+                        var bp = new BendPoint();
+                        bp.Offset = 60;
+                        bp.Value = lastbp.Value;
+                        note1.BendPoints.Insert(note1.BendPoints.Count, bp);                       
                     }
 
-                    var firstBp = note1.bendPoints[0] as BendPoint;
-                    if (firstBp.offset > 0)
+                    var firstBp = note1.BendPoints[0] as BendPoint;
+                    if (firstBp.Offset > 0)
                     {
-                        var bp = new BendPoint(haxe.lang.EmptyObject.EMPTY);
-                        bp.offset = 0;
-                        bp.value = 0;
-                        note1.bendPoints.insert(0, bp);
+                        var bp = new BendPoint();
+                        bp.Offset = 0;
+                        bp.Value = 0;
+                        note1.BendPoints.Insert(0, bp);
                     }
                 }
             }
-
             
             if (srcNote.SlideTo > -1)
-                note1.slideType = SlideType.Shift;
+                note1.SlideType = SlideType.Shift;
 
             if (srcNote.SlideUnpitchTo > -1)
             {
                 if (srcNote.SlideUnpitchTo > srcNote.Fret)
-                    note1.slideType = SlideType.OutUp;
+                    note1.SlideType = SlideType.OutUp;
                 else
-                    note1.slideType = SlideType.OutDown;
+                    note1.SlideType = SlideType.OutDown;
             }
 
             //note1.bendPoints
@@ -545,7 +556,7 @@ namespace RockSmithTabExplorer
             }
         }
 
-        private class PhraseIterationWithEndTime : SongPhraseIteration2014
+        private class PhraseIterationWithEndTime
         {
             public float EndTime;
             private SongPhraseIteration2014 phraseIteration;

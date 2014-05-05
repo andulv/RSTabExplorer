@@ -16,8 +16,8 @@
  * License along with this library.
  */
 
-using alphatab.model;
 
+using AlphaTab.Model;
 namespace AlphaTab.Wpf.Share.Data
 {
     public interface IDialogService

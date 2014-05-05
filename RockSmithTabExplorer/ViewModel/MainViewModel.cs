@@ -19,13 +19,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Input;
-using alphatab.model;
 using AlphaTab.Wpf.Share.Data;
 using System.Linq;
 using RocksmithToolkitLib.Xml;
 using System.Runtime.CompilerServices;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight;
+using AlphaTab.Model;
 
 namespace RockSmithTabExplorer.ViewModel
 {
@@ -58,7 +58,7 @@ namespace RockSmithTabExplorer.ViewModel
             protected set
             {
                 _score = value;
-                if (value != null && _score.tracks.length > 0)
+                if (value != null && _score.Tracks.Count > 0)
                     _currentTrackIndex = 0;
                 else
                     _currentTrackIndex = -1;
@@ -74,10 +74,10 @@ namespace RockSmithTabExplorer.ViewModel
         {
             get
             {
-                if (_score == null || _currentTrackIndex < 0 || _currentTrackIndex >= _score.tracks.length)
+                if (_score == null || _currentTrackIndex < 0 || _currentTrackIndex >= _score.Tracks.Count)
                     return null;
 
-                return _score.tracks[_currentTrackIndex] as Track;
+                return _score.Tracks[_currentTrackIndex] as Track;
             }
         }
 
@@ -85,7 +85,7 @@ namespace RockSmithTabExplorer.ViewModel
         {
             get
             {
-                return _score == null ? "No File Opened" : _score.title;
+                return _score == null ? "No File Opened" : _score.Title;
             }
         }
 

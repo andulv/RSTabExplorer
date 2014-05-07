@@ -8,7 +8,9 @@
     <ListView ItemsSource="{Binding SongCollection.AvaliableSongInfos}" SelectedItem="{Binding SelectedRockSmithSong, Mode=TwoWay}">
         <ListView.View>
             <GridView>
-                <GridViewColumn Header="Key" DisplayMemberBinding="{Binding Key}" />
+                <GridViewColumn Header="Song" DisplayMemberBinding="{Binding SongName}" Width="120"/>
+                <GridViewColumn Header="Artist" DisplayMemberBinding="{Binding ArtistName}" />
+                <GridViewColumn Header="Year" DisplayMemberBinding="{Binding SongYear}" />
                 <GridViewColumn Header="Tracks" DisplayMemberBinding="{Binding TrackInfos.Count}" />
             </GridView>
         </ListView.View>

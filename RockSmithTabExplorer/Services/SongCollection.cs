@@ -11,11 +11,17 @@ namespace RockSmithTabExplorer
         private List<ArcFileWrapper> files = new List<ArcFileWrapper>();
         public string StatusString { get; private set; }
 
-        public IList<RSSongInfo> AvaliableSongInfos { get; private set; }
+        public List<RSSongInfo> AvaliableSongInfos { get; private set; }
+
+        public SongCollection()
+        {
+            Clear();
+        }
 
         public void Add(string file)
         {
-            files.Add(new ArcFileWrapper(file));
+            var arcFile = new ArcFileWrapper(file);
+            files.Add(arcFile);
 
             if (StatusString != null && StatusString.Length > 0)
             {
@@ -26,7 +32,7 @@ namespace RockSmithTabExplorer
                 StatusString = file;
             }
 
-            AvaliableSongInfos = files.SelectMany(f => f.GetAllSongInfos()).ToList();
+            AvaliableSongInfos = AvaliableSongInfos.Union(arcFile.GetAllSongInfos()).ToList();
             OnPropertyChanged("StatusString");
             OnPropertyChanged("AvaliableSongInfos");
         }
@@ -35,11 +41,11 @@ namespace RockSmithTabExplorer
         {
             StatusString = "";
             files.Clear();
+            AvaliableSongInfos = new List<RSSongInfo>();
         }
 
         public RSSongInfo GetFirstSong()
         {
-            if (AvaliableSongInfos == null) return null;
             return AvaliableSongInfos.FirstOrDefault();
         }
 

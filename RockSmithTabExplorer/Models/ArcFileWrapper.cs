@@ -15,6 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
+using Newtonsoft.Json.Linq;
 
 namespace RockSmithTabExplorer
 {
@@ -52,7 +53,23 @@ namespace RockSmithTabExplorer
 
                 if (currentSongInfo == null || entrySongKey != currentSongInfo.Key)
                 {
-                    currentSongInfo = new RSSongInfo() { Key = entrySongKey, TrackInfos = new List<RSTrackInfo>() };
+                    string song_name, album_name, artist_name, song_year;
+                    using (var wrappedStream = new NonClosingStreamWrapper(entry.Data))
+                    {
+                        using (var reader = new StreamReader(wrappedStream))
+                        {
+                            string json = reader.ReadToEnd();
+                            JObject o = JObject.Parse(json);
+                            var attributes = o["Entries"].First.Last["Attributes"];
+
+                            song_name = attributes["SongName"].ToString();
+                            album_name = attributes["AlbumName"].ToString();
+                            artist_name = attributes["ArtistName"].ToString();
+                            song_year = attributes["SongYear"].ToString();
+                        }
+                    }
+
+                    currentSongInfo = new RSSongInfo() { Key = entrySongKey, TrackInfos = new List<RSTrackInfo>(), SongName = song_name, AlbumName = album_name, ArtistName = artist_name, SongYear = song_year };
                     retValue.Add(currentSongInfo);
                 }
                 var arrangmentInfo = new RSTrackInfo() { Name = entryArrangmentName, FileSize = entry.Length };
@@ -104,6 +121,11 @@ namespace RockSmithTabExplorer
     public class RSSongInfo
     {
         public string Key { get; set; }
+        public string SongName { get; set; }
+        public string AlbumName { get; set; }
+        public string ArtistName { get; set; }
+        public string SongYear { get; set; }
+
         public IList<RSTrackInfo> TrackInfos { get; set; }
     }
 

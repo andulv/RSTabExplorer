@@ -1,0 +1,81 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:rs="clr-namespace:RockSmithTabExplorer">
+
+    <Style TargetType="rs:SlideToggle">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="rs:SlideToggle">
+                    <ControlTemplate.Resources>
+                        <Storyboard x:Key="OnChecking">
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="slider" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="53" />
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                        <Storyboard x:Key="OnUnchecking">
+                            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="slider" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)">
+                                <SplineDoubleKeyFrame KeyTime="00:00:00.1000000" Value="0" />
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </ControlTemplate.Resources>
+                    <DockPanel x:Name="dockPanel">
+                        <ContentPresenter x:Name="MainContentPresenter" Content="{TemplateBinding Content}" VerticalAlignment="Center" />
+                        <Grid>
+                            <Border x:Name="BackgroundBorder" BorderBrush="#FF939393" BorderThickness="1" CornerRadius="1" Height="27" Width="94">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="#FFB5B5B5" Offset="0" />
+                                        <GradientStop Color="#FFDEDEDE" Offset="0.1" />
+                                        <GradientStop Color="#FFEEEEEE" Offset="0.5" />
+                                        <GradientStop Color="#FFFAFAFA" Offset="0.5" />
+                                        <GradientStop Color="#FFFEFEFE" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition  />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <ContentPresenter x:Name="OffPresenter"  Grid.Column="1" Content="{TemplateBinding Off}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <ContentPresenter x:Name="OnPresenter"  Grid.Column="0" Content="{TemplateBinding On}"  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Grid>
+                            </Border>
+                            <Border BorderBrush="#FF939393" HorizontalAlignment="Left" x:Name="slider" Width="41" Height="27" BorderThickness="1" CornerRadius="1" RenderTransformOrigin="0.5,0.5" Margin="0">
+                                <Border.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                                        <SkewTransform AngleX="0" AngleY="0" />
+                                        <RotateTransform Angle="0" />
+                                        <TranslateTransform X="0" Y="0" />
+                                    </TransformGroup>
+                                </Border.RenderTransform>
+                                <Border.Background>
+                                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                        <GradientStop Color="#FFF0F0F0" Offset="0" />
+                                        <GradientStop Color="#FFCDCDCD" Offset="0.1" />
+                                        <GradientStop Color="#FFFBFBFB" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+                        </Grid>
+                    </DockPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Trigger.ExitActions>
+                                <BeginStoryboard Storyboard="{StaticResource OnUnchecking}" x:Name="OnUnchecking_BeginStoryboard" />
+                            </Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource OnChecking}" x:Name="OnChecking_BeginStoryboard" />
+                            </Trigger.EnterActions>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <!-- ToDo: Add Style for Isenabled == False -->
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

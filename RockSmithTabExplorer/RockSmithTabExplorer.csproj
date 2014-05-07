@@ -108,6 +108,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\SlideToggle.cs" />
     <Compile Include="Controls\TabControl.cs" />
     <Compile Include="Converter\BoolToOppositeBoolConverter.cs" />
     <Compile Include="Models\ArcFileWrapper.cs" />
@@ -136,6 +137,10 @@
     <Compile Include="Services\IDialogService.cs" />
     <Compile Include="Services\IErrorService.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Page Include="Controls\SlideToggle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -143,6 +148,10 @@
     <Page Include="ScoreInfoWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +211,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

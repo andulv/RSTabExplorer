@@ -130,9 +130,6 @@
     </Compile>
     <Compile Include="Services\RockSmithImporter.cs" />
     <Compile Include="Services\RocksmithLocator.cs" />
-    <Compile Include="ScoreInfoWindow.xaml.cs">
-      <DependentUpon>ScoreInfoWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Services\SongLoader.cs" />
     <Compile Include="Services\SongCollection.cs" />
     <Compile Include="Utils\NonClosingStream.cs" />
@@ -169,10 +166,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="ScoreInfoWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

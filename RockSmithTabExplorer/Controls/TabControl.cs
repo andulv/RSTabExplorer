@@ -47,9 +47,15 @@ namespace RockSmithTabExplorer
                     return;
                 showScore = value;
                 if (value)
-                    Settings.Staves.Add(new AlphaTab.StaveSettings("score"));
+                {
+                    Settings.Staves.ToArray().First(s => s.Id == "score_disabled").Id = "score";
+                    Settings.Staves.ToArray().First(s => s.Id == "marker_disabled").Id = "marker";
+                }
                 else
-                    Settings.Staves.RemoveAt(Settings.Staves.FindIndex(s => s.Id == "score"));
+                {
+                    Settings.Staves.ToArray().First(s => s.Id == "score").Id = "score_disabled";
+                    Settings.Staves.ToArray().First(s => s.Id == "marker").Id = "marker_disabled";
+                }
             }
         }
 
@@ -57,23 +63,30 @@ namespace RockSmithTabExplorer
         public void EnableZoomMode()
         {
             ShowScore = false;
-            Settings.Scale = 0.9f;
-            //Settings.Width = 1300;//950;
 
-            // Layout Settings
-            var layoutSettings = new AlphaTab.Collections.FastDictionary<string, object>();
-            //layoutSettings["autoSize"] = false;
-            layoutSettings["barsPerRow"] = 4;
-            Settings.Layout.AdditionalSettings = layoutSettings;
+            setLayoutSettings((layoutSettings) =>
+            {
+                layoutSettings["spacingScale"] = 0.6f;
+            });
 
-            //Settings.Staves.Add(new StaveSettings("rhythm-up"));
+            //Settings.Staves.Add(new AlphaTab.StaveSettings("rhythm-up"));
         }
 
         public void DisableZoomMode()
         {
             ShowScore = true;
-            Settings.Scale = 1f;
-            Settings.Layout.AdditionalSettings = new AlphaTab.Collections.FastDictionary<string, object>();
+
+            setLayoutSettings((layoutSettings)=>
+            {
+                layoutSettings["spacingScale"] = 1.0f;
+            });
+        }
+
+        private void setLayoutSettings(Action<AlphaTab.Collections.FastDictionary<string, object>> action)
+        {
+            var layoutSettings = new AlphaTab.Collections.FastDictionary<string, object>();
+            action(layoutSettings);
+            Settings.Layout.AdditionalSettings = layoutSettings;
         }
 
     }

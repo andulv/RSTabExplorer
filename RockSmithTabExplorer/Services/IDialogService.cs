@@ -29,9 +29,5 @@ namespace AlphaTab.Wpf.Share.Data
         /// <returns>The path to the file which should be opened or <code>null</code> if no file should be opened</returns>
         string OpenFile();
 
-        /// <summary>
-        /// Called when the application wants to show a score information. 
-        /// </summary>
-        void ShowScoreInfo(Score score);
     }
 }

@@ -108,8 +108,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\InfoTabs.xaml.cs">
+      <DependentUpon>InfoTabs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MainToolBar.xaml.cs">
+      <DependentUpon>MainToolBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SlideToggle.cs" />
     <Compile Include="Controls\TabControl.cs" />
+    <Compile Include="Controls\TrackListing.xaml.cs">
+      <DependentUpon>TrackListing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TrackToolbar.xaml.cs">
+      <DependentUpon>TrackToolbar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converter\BoolToOppositeBoolConverter.cs" />
     <Compile Include="Models\ArcFileWrapper.cs" />
     <Compile Include="Converter\ChordFretDisplayConverter.cs" />
@@ -125,7 +137,6 @@
     <Compile Include="Services\SongManager.cs" />
     <Compile Include="Utils\NonClosingStream.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <Compile Include="ViewModel\ScoreInfoViewModel.cs" />
     <Compile Include="ViewModel\GuitarPath.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -137,7 +148,23 @@
     <Compile Include="Services\IDialogService.cs" />
     <Compile Include="Services\IErrorService.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Page Include="Controls\InfoTabs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MainToolBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\SlideToggle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TrackListing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TrackToolbar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

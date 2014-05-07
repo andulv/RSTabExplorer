@@ -42,7 +42,6 @@ namespace RockSmithTabExplorer.ViewModel
         // those properties store the score information
         private Score _score;
         private int _currentTrackIndex;
-        private readonly RelayCommand _showScoreInfoCommand;
 
         SongLoader songLoader;
         SongManager songManager = new SongManager();
@@ -65,7 +64,6 @@ namespace RockSmithTabExplorer.ViewModel
                 RaisePropertyChanged("Score");
                 RaisePropertyChanged("ScoreTitle");
                 RaisePropertyChanged("CurrentScoreTrack");
-                _showScoreInfoCommand.RaiseCanExecuteChanged();
                 TrackToolBarVisible = _score != null;
             }
         }
@@ -87,14 +85,6 @@ namespace RockSmithTabExplorer.ViewModel
             {
                 return _score == null ? "No File Opened" : _score.Title;
             }
-        }
-
-
-        public ICommand ShowScoreInfoCommand { get { return _showScoreInfoCommand; } }
-        public void ShowScoreInfo()
-        {
-            if (_score != null)
-                _dialogService.ShowScoreInfo(_score);
         }
 
         #endregion
@@ -266,7 +256,6 @@ namespace RockSmithTabExplorer.ViewModel
             OpenFileCommand = new RelayCommand(songLoader.OpenFile);
             LoadDiskTracksCommand = new RelayCommand(songLoader.LoadDiskTracks);
             LoadDLCTracksCommand = new RelayCommand(songLoader.LoadDLCTracks);
-            _showScoreInfoCommand = new RelayCommand(ShowScoreInfo, () => _score != null);
 
             SelectedGuitarPath = RockSmithTabExplorer.Properties.Settings.Default.GuitarPath;
 

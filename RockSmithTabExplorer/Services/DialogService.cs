@@ -16,7 +16,6 @@
  * License along with this library.
  */
 using System.Windows;
-using AlphaTab.Wpf.Share.ViewModel;
 using Microsoft.Win32;
 using AlphaTab.Model;
 
@@ -40,12 +39,6 @@ namespace AlphaTab.Wpf.Share.Data
             return null;
         }
 
-        public void ShowScoreInfo(Score score)
-        {
-            ScoreInfoViewModel viewModel = new ScoreInfoViewModel(score);
-            ScoreInfoWindow window = new ScoreInfoWindow();
-            window.DataContext = viewModel;
-            window.ShowDialog();
-        }
+
     }
 }

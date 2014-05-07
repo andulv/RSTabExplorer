@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="RockSmithTabExplorer.Controls.TrackListing"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="250">
+    <ListView ItemsSource="{Binding SongManager.AvaliableSongInfos}" SelectedItem="{Binding SelectedRockSmithSong, Mode=TwoWay}">
+        <ListView.View>
+            <GridView>
+                <GridViewColumn Header="Key" DisplayMemberBinding="{Binding Key}" />
+                <GridViewColumn Header="Tracks" DisplayMemberBinding="{Binding TrackInfos.Count}" />
+            </GridView>
+        </ListView.View>
+    </ListView >
+</UserControl>

@@ -5,7 +5,7 @@ using System.Text;
 using AlphaTab.Platform.CSharp.Wpf;
 using System.Windows;
 
-namespace RockSmithTabExplorer
+namespace RockSmithTabExplorer.Controls
 {
     public class TabControl : AlphaTabImage
     {

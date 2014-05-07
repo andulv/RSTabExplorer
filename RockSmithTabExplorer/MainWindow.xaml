@@ -1,56 +1,36 @@
 ﻿<Window x:Class="AlphaTab.Wpf.Gdi.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:controls="clr-namespace:AlphaTab.Wpf.Share.Controls"
-        xmlns:c="clr-namespace:RockSmithTabExplorer"
+        xmlns:rs="clr-namespace:RockSmithTabExplorer"
+        xmlns:c="clr-namespace:RockSmithTabExplorer.Controls"
         Title="RockSmith Tab Explorer " Height="750" Width="800" WindowState="Maximized"
         DataContext="{Binding Main, Source={StaticResource Locator}}"
         >
     <Window.Resources>
-        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
-        <c:BoolToOppositeBoolConverter x:Key="BoolToOpposite" />
-        <c:ChordFretDisplayConverter x:Key="ChordFretDisplayConverter"/>
-        <CollectionViewSource x:Key="ChordTemplates" Filter="ChordTemplateFilter" Source="{Binding TrackDetail.RockSmithSong.ChordTemplates}" />
     </Window.Resources>
-    <Grid Background="#4b4c4c">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-            <ToolBarTray DockPanel.Dock="Left">
-                <controls:ToolBarCustom ToolBarTray.IsLocked="True">
-                    <Label VerticalAlignment="Center">Load:</Label>
-                    <Button Command="{Binding OpenFileCommand}" ToolTip="Open File" Style="{StaticResource ToolbarButtonStyle}" Margin="6,0,0,0" IsEnabled="{Binding Path=IsLoading, Converter={StaticResource BoolToOpposite}}">
-                        <StackPanel>
-                            <Path Width="24" Height="24" Stretch="Uniform" UseLayoutRounding="False" Fill="Black" Data="F1 M 0,6.9975C -0.0300293,6.5675 0.0212402,6.25378 0.153717,6.05627C 0.286194,5.85876 0.609985,5.76001 1.125,5.76001L 22.8975,5.76001C 23.4125,5.76001 23.7325,5.85876 23.8575,6.05627C 23.9825,6.25378 24.03,6.5675 24,6.9975L 22.995,17.9625C 22.96,18.3925 22.865,18.7063 22.71,18.9037C 22.555,19.1013 22.22,19.2 21.705,19.2L 2.31744,19.2C 1.80249,19.2 1.46747,19.1013 1.3125,18.9037C 1.15747,18.7063 1.05496,18.3925 1.00494,17.9625L 0,6.9975 Z M 2.01749,4.32001L 2.37,1.21503C 2.42996,0.855042 2.58875,0.5625 2.84622,0.337524C 3.1037,0.112549 3.38995,0 3.70499,0L 7.64249,0C 8.4375,0 9.125,0.287537 9.70499,0.862549L 10.3799,1.53754C 10.96,2.11255 11.6475,2.40002 12.4424,2.40002L 20.6475,2.40002C 20.9625,2.40002 21.2637,2.49377 21.5512,2.68127C 21.8387,2.86877 22.0225,3.09503 22.1025,3.35999L 22.335,4.32001L 2.01749,4.32001 Z "/>
-                            <TextBlock>Psarc File</TextBlock>
-                        </StackPanel>
-                    </Button>
-                    <Button Command="{Binding LoadDiskTracksCommand}" ToolTip="Load Disk Tracks" Style="{StaticResource ToolbarButtonStyle}" Margin="2,0,0,0" IsEnabled="{Binding Path=IsLoading, Converter={StaticResource BoolToOpposite}}">
-                        <StackPanel>
-                            <Path Width="24" Height="24" Stretch="Uniform" Fill="Black" Data="F1 M 15.542,18.18C 16.4927,18.1584 17.2468,17.8796 17.8045,17.3437C 18.3622,16.8078 18.6473,16.1447 18.66,15.3542C 18.6473,14.5203 18.3622,13.8372 17.8045,13.305C 17.2468,12.7727 16.4927,12.4977 15.542,12.48C 14.6182,12.4977 13.8804,12.7727 13.3285,13.305C 12.7767,13.8372 12.4938,14.5203 12.48,15.3542C 12.4967,16.1447 12.7853,16.8078 13.3458,17.3437C 13.9063,17.8796 14.6383,18.1584 15.542,18.18 Z M 15.542,13.86C 16.6259,13.9243 17.2053,14.4224 17.28,15.3542C 17.2053,16.2699 16.6259,16.7518 15.542,16.8C 14.4767,16.7518 13.916,16.2699 13.86,15.3542C 13.916,14.4224 14.4767,13.9243 15.542,13.86 Z M 15.486,0C 11.0239,0.105011 7.35236,1.59457 4.47144,4.46866C 1.59045,7.3428 0.0999756,10.9713 0,15.3542C 0.0999756,19.7346 1.59045,23.3549 4.47144,26.2151C 7.35236,29.0753 11.0239,30.5569 15.486,30.66C 20.0125,30.5569 23.7285,29.0753 26.6338,26.2151C 29.5391,23.3549 31.0412,19.7346 31.14,15.3542C 31.0412,10.9713 29.5391,7.3428 26.6338,4.46866C 23.7285,1.59457 20.0125,0.10498 15.486,0 Z M 4.1037,23.9558L 10.3837,19.935C 9.22186,18.6825 8.62064,17.1556 8.57999,15.3542C 8.62384,13.4473 9.29175,11.8541 10.5837,10.5746C 11.8756,9.29501 13.5284,8.63016 15.542,8.57999C 16.998,8.59647 18.2018,8.90918 19.1536,9.51807L 22.7475,3.00098C 23.8571,3.64169 24.8728,4.42307 25.7949,5.34509C 26.2168,5.72015 26.5919,6.14209 26.92,6.61093L 20.6346,10.6535C 21.8688,11.9293 22.5106,13.4962 22.56,15.3542C 22.518,17.2546 21.8492,18.8385 20.5535,20.1058C 19.2578,21.3731 17.5873,22.0312 15.542,22.08C 14.0541,22.0719 12.8221,21.7469 11.8463,21.105L 8.30072,27.6126C 7.21259,27.0031 6.21777,26.253 5.31619,25.3623C 4.8887,24.9169 4.48456,24.4481 4.1037,23.9558 Z "/>
-                            <TextBlock>Disk Tracks</TextBlock>
-                        </StackPanel>
-                    </Button>
-                    <Button Command="{Binding LoadDLCTracksCommand}" ToolTip="Load DLC Tracks" Style="{StaticResource ToolbarButtonStyle}" Margin="2,0,0,0" IsEnabled="{Binding Path=IsLoading, Converter={StaticResource BoolToOpposite}}">
-                        <StackPanel>
-                            <Path Width="24" Height="24" Stretch="Uniform" Fill="Black" Data="F1 M 40.972,77.2199C 39.5052,75.4609 40.3575,72.5611 42.8998,72.5611L 52.8718,72.5611L 52.8718,29.3802C 52.8718,27.8918 54.1134,26.6503 55.6016,26.6503L 77.7318,26.6503C 79.22,26.6503 80.461,27.8918 80.461,29.3802L 80.461,72.5611L 90.4336,72.5611C 92.9765,72.5611 93.8281,75.4609 92.362,77.2199L 68.5964,105.772C 68.0156,106.471 67.3281,106.725 66.6667,106.68C 66.0052,106.725 65.3216,106.471 64.7376,105.772L 40.972,77.2199 Z M 66.6667,133.333C 29.8483,133.333 0,103.486 0,66.6666C 0,29.8476 29.8483,-3.05176e-005 66.6667,-3.05176e-005C 103.484,-3.05176e-005 133.333,29.8476 133.333,66.6666C 133.333,103.486 103.484,133.333 66.6667,133.333 Z M 66.6667,10.6667C 35.7403,10.6667 10.6667,35.7389 10.6667,66.6666C 10.6667,97.5937 35.7403,122.667 66.6667,122.667C 97.5937,122.667 122.667,97.5937 122.667,66.6666C 122.667,35.7389 97.5937,10.6667 66.6667,10.6667 Z "/>
-                            <TextBlock>DLC Tracks</TextBlock>
-                        </StackPanel>
-                    </Button>
-                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0,0,0">
-                        <Label>Path:</Label>
-                        <ComboBox SelectedValuePath="Tag" SelectedValue="{Binding Path=SelectedGuitarPath, Mode=TwoWay}" >
-                            <ComboBoxItem Tag="lead">Lead</ComboBoxItem>
-                            <ComboBoxItem Tag="rhythm">Rhythm</ComboBoxItem>
-                            <ComboBoxItem Tag="bass">Bass</ComboBoxItem>
-                        </ComboBox>
+        <DockPanel>
 
-                    </StackPanel>
-                </controls:ToolBarCustom>
-            </ToolBarTray>
+            <c:SlideToggle IsChecked="{Binding Mode=TwoWay, ElementName=TablatureControl, Path=ZoomEnabled}" DockPanel.Dock="Right" Margin="0,0,10,0">
+                <c:SlideToggle.Off>
+                    <Path Width="20" Height="27" Stretch="Uniform" Fill="#B9000000" Data="F1 M 49.5065,85.8074C 49.5065,71.7448 37.793,62.4361 25.3588,65.931C 24.1003,62.2643 22.8665,58.8191 21.7493,55.7656C 26.8308,49.0416 33.8803,37.8092 35.2721,28.5639C 36.9544,17.3919 32.2669,6.58269 25.6863,1.52588e-005C 10.3256,13.3639 8.39722,33.683 15.5723,51.3015C 4.68945,65.2864 0.19986,74.3074 0,85.0574C -0.242859,98.1185 9.36783,110.354 24.4056,110.354C 27.1653,110.354 29.6915,109.969 31.9961,109.288C 32.5196,122.402 29.2669,126.807 26.8555,127.367C 25.8751,127.591 25.6967,127.026 26.0898,126.598C 28.9961,123.443 26.7331,116.018 20.5867,116.018C 15.7721,116.018 13.0892,120.128 13.1439,124.341C 13.2012,128.777 16.2936,133.333 23.127,133.333C 30.2513,133.333 37.336,126.734 35.9271,107.745C 44.957,103.228 49.5065,93.6797 49.5065,85.8074 Z M 18.7429,27.1882C 20.2734,18.9225 23.9467,13.5931 27.9258,8.69719C 31.1811,13.655 32.0691,22.4544 29.6107,28.8717C 27.1264,35.3639 23.8958,40.4095 18.7761,47.1491C 17.2454,41.2162 17.2656,35.1719 18.7429,27.1882 Z M 4.81451,86.879C 4.81451,76.4245 10.6055,68.9583 18.8678,59.3613C 19.8724,61.9519 20.8613,64.6426 21.8177,67.3763C 13.916,71.879 9.99747,83.5416 15.6817,91.1653L 18.1295,90.2473C 16.0124,82.6875 18.9271,76.3841 23.9681,73.7422C 27.8529,85.6927 30.8854,97.5521 31.6563,104.444C 29.3164,105.727 26.8204,106.471 24.4056,106.471C 13.4883,106.471 4.81451,97.8984 4.81451,86.879 Z M 35.2696,101.935C 33.944,93.4245 30.8503,82.5964 27.5742,72.5456C 36.845,70.9883 42.6199,78.2774 42.6199,87.4922C 42.6199,92.9167 39.5196,98.2943 35.2696,101.935 Z "/>
+                </c:SlideToggle.Off>
+                <c:SlideToggle.On>
+                    <Grid>
+                        <Path Width="20" Height="27" Stretch="Uniform" Fill="#B9000000" Data="F1 M 49.5065,85.8074C 49.5065,71.7448 37.793,62.4361 25.3588,65.931C 24.1003,62.2643 22.8665,58.8191 21.7493,55.7656C 26.8308,49.0416 33.8803,37.8092 35.2721,28.5639C 36.9544,17.3919 32.2669,6.58269 25.6863,1.52588e-005C 10.3256,13.3639 8.39722,33.683 15.5723,51.3015C 4.68945,65.2864 0.19986,74.3074 0,85.0574C -0.242859,98.1185 9.36783,110.354 24.4056,110.354C 27.1653,110.354 29.6915,109.969 31.9961,109.288C 32.5196,122.402 29.2669,126.807 26.8555,127.367C 25.8751,127.591 25.6967,127.026 26.0898,126.598C 28.9961,123.443 26.7331,116.018 20.5867,116.018C 15.7721,116.018 13.0892,120.128 13.1439,124.341C 13.2012,128.777 16.2936,133.333 23.127,133.333C 30.2513,133.333 37.336,126.734 35.9271,107.745C 44.957,103.228 49.5065,93.6797 49.5065,85.8074 Z M 18.7429,27.1882C 20.2734,18.9225 23.9467,13.5931 27.9258,8.69719C 31.1811,13.655 32.0691,22.4544 29.6107,28.8717C 27.1264,35.3639 23.8958,40.4095 18.7761,47.1491C 17.2454,41.2162 17.2656,35.1719 18.7429,27.1882 Z M 4.81451,86.879C 4.81451,76.4245 10.6055,68.9583 18.8678,59.3613C 19.8724,61.9519 20.8613,64.6426 21.8177,67.3763C 13.916,71.879 9.99747,83.5416 15.6817,91.1653L 18.1295,90.2473C 16.0124,82.6875 18.9271,76.3841 23.9681,73.7422C 27.8529,85.6927 30.8854,97.5521 31.6563,104.444C 29.3164,105.727 26.8204,106.471 24.4056,106.471C 13.4883,106.471 4.81451,97.8984 4.81451,86.879 Z M 35.2696,101.935C 33.944,93.4245 30.8503,82.5964 27.5742,72.5456C 36.845,70.9883 42.6199,78.2774 42.6199,87.4922C 42.6199,92.9167 39.5196,98.2943 35.2696,101.935 Z "/>
+                        <Path Width="24" Height="24" Fill="#A8C20000" Stretch="Uniform" UseLayoutRounding="False" Data="F1 M68.873398,59.4734 C77.143997,46.646702 75.166702,29.323999 63.464001,18.794701 C57.638699,13.552 50.121399,10.6667 42.292,10.6667 C35.022701,10.6667 28.009399,13.176 22.418699,17.6733 L68.873398,59.4734 z M21.096001,65.882698 C26.921301,71.125397 34.439999,74.010696 42.268002,74.010696 C49.344002,74.010696 56.172001,71.626701 61.683998,67.354698 L15.3534,25.6653 C11.9614,31.117399 10.3067,37.459999 10.652,44.006699 C11.0974,52.4547 14.8067,60.224098 21.096001,65.882698 z M70.599998,10.8641 C87.954597,26.48 89.369301,53.304001 73.753304,70.658699 C65.736,79.5681 54.261299,84.677399 42.268002,84.677399 C31.799999,84.677399 21.747999,80.818703 13.96,73.811996 C5.55334,66.248001 0.59600103,55.862701 0,44.569302 C-0.59600103,33.2761 3.2413299,22.426701 10.8067,14.0201 C18.822701,5.1093798 30.299999,6.10352E-05 42.292,6.10352E-05 C52.759998,6.10352E-05 62.812,3.8587 70.599998,10.8641 z" />
+                    </Grid>
+                </c:SlideToggle.On>
+            </c:SlideToggle>
+
+            <c:MainToolBar />
+        </DockPanel>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -66,154 +46,8 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-                <ListView  Grid.Row="1" ItemsSource="{Binding SongManager.AvaliableSongInfos}" SelectedItem="{Binding SelectedRockSmithSong, Mode=TwoWay}">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Key" DisplayMemberBinding="{Binding Key}" />
-                            <GridViewColumn Header="Tracks" DisplayMemberBinding="{Binding TrackInfos.Count}" />
-                        </GridView>
-                    </ListView.View>
-                </ListView >               
-                <TabControl Grid.Row="3">
-                    <TabItem Header="{Binding TrackDetail.RockSmithSong.Sections.Count}" HeaderStringFormat="Sections({0})">
-                        <ListView ItemsSource="{Binding TrackDetail.RockSmithSong.Sections}">
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListView.ItemContainerStyle>
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn Header="Time">
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding StartTime, StringFormat=N2}" TextAlignment="Right" HorizontalAlignment="Stretch" />
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
-                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
-                                    <GridViewColumn Header="No." DisplayMemberBinding="{Binding Number}" />
-                                </GridView>
-                            </ListView.View>
-                        </ListView >
-                    </TabItem>
-
-                    <TabItem Header="{Binding TrackDetail.RockSmithSong.PhraseIterations.Count}" HeaderStringFormat="Phrase iterations({0})">
-                        <ListView ItemsSource="{Binding TrackDetail.RockSmithSong.PhraseIterations}">
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListView.ItemContainerStyle>
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn Header="Time">
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding Time, StringFormat=N2}" TextAlignment="Right" HorizontalAlignment="Stretch" />
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
-                                    <GridViewColumn Header="PhraseId" >
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding PhraseId}" TextAlignment="Center" HorizontalAlignment="Stretch" />
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
-                                    <GridViewColumn Header="Variation" DisplayMemberBinding="{Binding Variation}" />
-                                    <GridViewColumn Header="HeroLevels" DisplayMemberBinding="{Binding HeroLevels.Count}" />
-                                </GridView>
-                            </ListView.View>
-                        </ListView >
-                    </TabItem>
-
-                    <TabItem Header="{Binding TrackDetail.RockSmithSong.Phrases.Count}" HeaderStringFormat="Phrases({0})">
-                        <ListView ItemsSource="{Binding TrackDetail.RockSmithSong.Phrases}">
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListView.ItemContainerStyle>
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
-                                    <GridViewColumn Header="Disparity">
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding Disparity}" TextAlignment="Right" HorizontalAlignment="Stretch" />
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
-                                    <GridViewColumn Header="MaxDifficulty">
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding MaxDifficulty}" TextAlignment="Right" HorizontalAlignment="Stretch" />
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>                                    
-                                    <GridViewColumn Header="Ignore">
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding Ignore}" TextAlignment="Right" HorizontalAlignment="Stretch" />
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
-                                    <GridViewColumn Header="Solo">
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding Solo}" TextAlignment="Right" HorizontalAlignment="Stretch" />
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
-                                </GridView>
-                            </ListView.View>
-                        </ListView >
-                    </TabItem>
-
-                    <TabItem Header="{Binding Source={StaticResource ChordTemplates}, Path=Count}" HeaderStringFormat="Chord templates({0})">
-                        <ListView ItemsSource="{Binding Source={StaticResource ChordTemplates}}">
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListView.ItemContainerStyle>
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding ChordName}" />
-                                    <GridViewColumn Header="1" DisplayMemberBinding="{Binding Fret0, Converter={StaticResource ChordFretDisplayConverter}}" />
-                                    <GridViewColumn Header="2" DisplayMemberBinding="{Binding Fret1, Converter={StaticResource ChordFretDisplayConverter}}" />
-                                    <GridViewColumn Header="3" DisplayMemberBinding="{Binding Fret2, Converter={StaticResource ChordFretDisplayConverter}}" />
-                                    <GridViewColumn Header="4" DisplayMemberBinding="{Binding Fret3, Converter={StaticResource ChordFretDisplayConverter}}" />
-                                    <GridViewColumn Header="5" DisplayMemberBinding="{Binding Fret4, Converter={StaticResource ChordFretDisplayConverter}}" />
-                                    <GridViewColumn Header="6" DisplayMemberBinding="{Binding Fret5, Converter={StaticResource ChordFretDisplayConverter}}" />
-                                </GridView>
-                            </ListView.View>
-                        </ListView >
-                    </TabItem>
-                    <TabItem Header="{Binding TrackDetail.RockSmithSong.Tones.Count}" HeaderStringFormat="Tones({0})">
-                        <ListView ItemsSource="{Binding TrackDetail.RockSmithSong.Tones}">
-                            <ListView.ItemContainerStyle>
-                                <Style TargetType="ListViewItem">
-                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                </Style>
-                            </ListView.ItemContainerStyle>
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn Header="Time">
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <TextBlock Text="{Binding Time, StringFormat=N2}" TextAlignment="Right" HorizontalAlignment="Stretch" />
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
-                                    <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" />
-                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
-                    </TabItem>
-                </TabControl>
+                <c:TrackListing Grid.Row="1"/>
+                <c:InfoTabs Grid.Row="3"/>
             </Grid>
             
             <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" ResizeDirection="Columns"></GridSplitter>
@@ -239,55 +73,8 @@
                     </Grid>
                 </ScrollViewer>
 
-                <DockPanel Grid.Row="1" Background="#616362" Visibility="{Binding TrackToolBarVisible, Converter={StaticResource BoolToVisibility}}">
-                    <Button Command="{Binding ShowScoreInfoCommand}" ToolTip="Show Score Info" Style="{StaticResource ToolbarButtonStyle}" Margin="2,0,0,0"  DockPanel.Dock="Right">
-                        <Path Width="24" Height="24" Stretch="Uniform" Fill="Black" Data="F1 M 18.0011,25.9619L 13.3448,25.9619L 13.3448,12.9L 18.0011,12.9L 18.0011,25.9619 Z M 15.649,10.56C 14.8629,10.5387 14.2149,10.2495 13.7048,9.69214C 13.1948,9.13486 12.9308,8.43716 12.9128,7.59912C 12.9308,6.7876 13.1948,6.11328 13.7048,5.57608C 14.2149,5.03891 14.8629,4.76019 15.649,4.73999C 16.435,4.76022 17.0831,5.03891 17.5931,5.57611C 18.1031,6.11328 18.3671,6.7876 18.3851,7.59912C 18.3671,8.4595 18.1031,9.16357 17.5931,9.7113C 17.0831,10.259 16.435,10.5419 15.649,10.56 Z M 15.601,0C 11.1707,0.108398 7.49048,1.63821 4.56027,4.58942C 1.6301,7.54062 0.110046,11.2628 0,15.7559C 0.110046,20.0614 1.6301,23.666 4.56027,26.5695C 7.49045,29.4731 11.1707,30.9826 15.601,31.0981C 20.0102,30.9826 23.6844,29.4731 26.6236,26.5695C 29.5628,23.666 31.0889,20.0614 31.2019,15.7559C 31.0889,11.2628 29.5628,7.54062 26.6236,4.58942C 23.6844,1.63821 20.0102,0.108398 15.601,0 Z "/>
-                    </Button>
-
-                    <c:SlideToggle IsChecked="{Binding Mode=TwoWay, ElementName=TablatureControl, Path=ZoomEnabled}" DockPanel.Dock="Right">
-                        <c:SlideToggle.Off>
-                            <Path Width="20" Height="27" Stretch="Uniform" Fill="#B9000000" Data="F1 M 49.5065,85.8074C 49.5065,71.7448 37.793,62.4361 25.3588,65.931C 24.1003,62.2643 22.8665,58.8191 21.7493,55.7656C 26.8308,49.0416 33.8803,37.8092 35.2721,28.5639C 36.9544,17.3919 32.2669,6.58269 25.6863,1.52588e-005C 10.3256,13.3639 8.39722,33.683 15.5723,51.3015C 4.68945,65.2864 0.19986,74.3074 0,85.0574C -0.242859,98.1185 9.36783,110.354 24.4056,110.354C 27.1653,110.354 29.6915,109.969 31.9961,109.288C 32.5196,122.402 29.2669,126.807 26.8555,127.367C 25.8751,127.591 25.6967,127.026 26.0898,126.598C 28.9961,123.443 26.7331,116.018 20.5867,116.018C 15.7721,116.018 13.0892,120.128 13.1439,124.341C 13.2012,128.777 16.2936,133.333 23.127,133.333C 30.2513,133.333 37.336,126.734 35.9271,107.745C 44.957,103.228 49.5065,93.6797 49.5065,85.8074 Z M 18.7429,27.1882C 20.2734,18.9225 23.9467,13.5931 27.9258,8.69719C 31.1811,13.655 32.0691,22.4544 29.6107,28.8717C 27.1264,35.3639 23.8958,40.4095 18.7761,47.1491C 17.2454,41.2162 17.2656,35.1719 18.7429,27.1882 Z M 4.81451,86.879C 4.81451,76.4245 10.6055,68.9583 18.8678,59.3613C 19.8724,61.9519 20.8613,64.6426 21.8177,67.3763C 13.916,71.879 9.99747,83.5416 15.6817,91.1653L 18.1295,90.2473C 16.0124,82.6875 18.9271,76.3841 23.9681,73.7422C 27.8529,85.6927 30.8854,97.5521 31.6563,104.444C 29.3164,105.727 26.8204,106.471 24.4056,106.471C 13.4883,106.471 4.81451,97.8984 4.81451,86.879 Z M 35.2696,101.935C 33.944,93.4245 30.8503,82.5964 27.5742,72.5456C 36.845,70.9883 42.6199,78.2774 42.6199,87.4922C 42.6199,92.9167 39.5196,98.2943 35.2696,101.935 Z "/>
-                        </c:SlideToggle.Off>
-                        <c:SlideToggle.On>
-                            <Grid>
-                                <Path Width="20" Height="27" Stretch="Uniform" Fill="#B9000000" Data="F1 M 49.5065,85.8074C 49.5065,71.7448 37.793,62.4361 25.3588,65.931C 24.1003,62.2643 22.8665,58.8191 21.7493,55.7656C 26.8308,49.0416 33.8803,37.8092 35.2721,28.5639C 36.9544,17.3919 32.2669,6.58269 25.6863,1.52588e-005C 10.3256,13.3639 8.39722,33.683 15.5723,51.3015C 4.68945,65.2864 0.19986,74.3074 0,85.0574C -0.242859,98.1185 9.36783,110.354 24.4056,110.354C 27.1653,110.354 29.6915,109.969 31.9961,109.288C 32.5196,122.402 29.2669,126.807 26.8555,127.367C 25.8751,127.591 25.6967,127.026 26.0898,126.598C 28.9961,123.443 26.7331,116.018 20.5867,116.018C 15.7721,116.018 13.0892,120.128 13.1439,124.341C 13.2012,128.777 16.2936,133.333 23.127,133.333C 30.2513,133.333 37.336,126.734 35.9271,107.745C 44.957,103.228 49.5065,93.6797 49.5065,85.8074 Z M 18.7429,27.1882C 20.2734,18.9225 23.9467,13.5931 27.9258,8.69719C 31.1811,13.655 32.0691,22.4544 29.6107,28.8717C 27.1264,35.3639 23.8958,40.4095 18.7761,47.1491C 17.2454,41.2162 17.2656,35.1719 18.7429,27.1882 Z M 4.81451,86.879C 4.81451,76.4245 10.6055,68.9583 18.8678,59.3613C 19.8724,61.9519 20.8613,64.6426 21.8177,67.3763C 13.916,71.879 9.99747,83.5416 15.6817,91.1653L 18.1295,90.2473C 16.0124,82.6875 18.9271,76.3841 23.9681,73.7422C 27.8529,85.6927 30.8854,97.5521 31.6563,104.444C 29.3164,105.727 26.8204,106.471 24.4056,106.471C 13.4883,106.471 4.81451,97.8984 4.81451,86.879 Z M 35.2696,101.935C 33.944,93.4245 30.8503,82.5964 27.5742,72.5456C 36.845,70.9883 42.6199,78.2774 42.6199,87.4922C 42.6199,92.9167 39.5196,98.2943 35.2696,101.935 Z "/>
-                                <Path Width="24" Height="24" Fill="#A8C20000" Stretch="Uniform" UseLayoutRounding="False" Data="F1 M68.873398,59.4734 C77.143997,46.646702 75.166702,29.323999 63.464001,18.794701 C57.638699,13.552 50.121399,10.6667 42.292,10.6667 C35.022701,10.6667 28.009399,13.176 22.418699,17.6733 L68.873398,59.4734 z M21.096001,65.882698 C26.921301,71.125397 34.439999,74.010696 42.268002,74.010696 C49.344002,74.010696 56.172001,71.626701 61.683998,67.354698 L15.3534,25.6653 C11.9614,31.117399 10.3067,37.459999 10.652,44.006699 C11.0974,52.4547 14.8067,60.224098 21.096001,65.882698 z M70.599998,10.8641 C87.954597,26.48 89.369301,53.304001 73.753304,70.658699 C65.736,79.5681 54.261299,84.677399 42.268002,84.677399 C31.799999,84.677399 21.747999,80.818703 13.96,73.811996 C5.55334,66.248001 0.59600103,55.862701 0,44.569302 C-0.59600103,33.2761 3.2413299,22.426701 10.8067,14.0201 C18.822701,5.1093798 30.299999,6.10352E-05 42.292,6.10352E-05 C52.759998,6.10352E-05 62.812,3.8587 70.599998,10.8641 z" />
-                            </Grid>
-                        </c:SlideToggle.On>
-                    </c:SlideToggle>
-
-                    <ToolBarPanel DockPanel.Dock="Left" Orientation="Horizontal">
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="6,0,0,0">
-                            <Label Foreground="#FFDCE2E5">Track:</Label>
-                            <ComboBox ItemsSource="{Binding SelectedRockSmithSong.TrackInfos}" SelectedItem="{Binding SelectedRockSmithTrack, Mode=TwoWay}"/>
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0,0,0">
-                            <Label Foreground="#FFDCE2E5">Difficulty Level:</Label>
-                            <ComboBox ItemsSource="{Binding TrackDetail.RockSmithSong.Levels}" SelectedItem="{Binding SelectedLevel, Mode=TwoWay}">
-                                <ComboBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <TextBlock>
-                                    <Run Text="{Binding Difficulty, Mode=OneWay}" />
-                                    <Run Text=" (Notes: "></Run>
-                                    <Run Text="{Binding Notes.Count, Mode=OneWay}" />
-                                    <Run Text=", Chords: "></Run>
-                                    <Run Text="{Binding Chords.Count, Mode=OneWay}" />
-                                    <Run Text=")"></Run>
-                                        </TextBlock>
-                                    </DataTemplate>
-                                </ComboBox.ItemTemplate>
-                            </ComboBox>
-                        </StackPanel>
-
-                        <StackPanel VerticalAlignment="Center" Margin="6,0,0,0">
-                            <CheckBox Foreground="#FFDCE2E5" IsChecked="{Binding LevelOnlySelected, Mode=TwoWay}">Only include notes/chords for selected difficulty</CheckBox>
-                        </StackPanel>
-                    </ToolBarPanel>
-                </DockPanel>
-
+                <c:TrackToolbar Grid.Row="1"/>
             </Grid>
-            <!-- A scroll viewer to enable the tablature scrolling -->
         </Grid>
 
         <StatusBar Grid.Row="2">

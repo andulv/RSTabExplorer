@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="RockSmithTabExplorer.Controls.TrackToolbar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="700">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    </UserControl.Resources>
+
+    <DockPanel Background="#616362" Visibility="{Binding TrackToolBarVisible, Converter={StaticResource BoolToVisibility}}">
+        <ToolBarPanel DockPanel.Dock="Left" Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="6,0,0,0">
+                <Label Foreground="#FFDCE2E5">Track:</Label>
+                <ComboBox ItemsSource="{Binding SelectedRockSmithSong.TrackInfos}" SelectedItem="{Binding SelectedRockSmithTrack, Mode=TwoWay}"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="8,0,0,0">
+                <Label Foreground="#FFDCE2E5">Difficulty Level:</Label>
+                <ComboBox ItemsSource="{Binding TrackDetail.RockSmithSong.Levels}" SelectedItem="{Binding SelectedLevel, Mode=TwoWay}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                    <Run Text="{Binding Difficulty, Mode=OneWay}" />
+                                    <Run Text=" (Notes: "></Run>
+                                    <Run Text="{Binding Notes.Count, Mode=OneWay}" />
+                                    <Run Text=", Chords: "></Run>
+                                    <Run Text="{Binding Chords.Count, Mode=OneWay}" />
+                                    <Run Text=")"></Run>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel VerticalAlignment="Center" Margin="6,0,0,0">
+                <CheckBox Foreground="#FFDCE2E5" IsChecked="{Binding LevelOnlySelected, Mode=TwoWay}">Only include notes/chords for selected difficulty</CheckBox>
+            </StackPanel>
+        </ToolBarPanel>
+    </DockPanel>
+</UserControl>

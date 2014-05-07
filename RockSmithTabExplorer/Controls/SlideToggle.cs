@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace RockSmithTabExplorer
+namespace RockSmithTabExplorer.Controls
 {
     public class SlideToggle : CheckBox
     {

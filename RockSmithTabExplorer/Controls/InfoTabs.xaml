@@ -1,0 +1,153 @@
+﻿<UserControl x:Class="RockSmithTabExplorer.Controls.InfoTabs"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:c="clr-namespace:RockSmithTabExplorer"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="250">
+    <UserControl.Resources>
+        <c:ChordFretDisplayConverter x:Key="ChordFretDisplayConverter"/>
+        <CollectionViewSource x:Key="ChordTemplates" Filter="ChordTemplateFilter" Source="{Binding TrackDetail.RockSmithSong.ChordTemplates}" />
+    </UserControl.Resources>
+    <TabControl>
+        <TabItem Header="{Binding TrackDetail.RockSmithSong.Sections.Count}" HeaderStringFormat="Sections({0})">
+            <ListView ItemsSource="{Binding TrackDetail.RockSmithSong.Sections}">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Time">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding StartTime, StringFormat=N2}" TextAlignment="Right" HorizontalAlignment="Stretch" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="No." DisplayMemberBinding="{Binding Number}" />
+                    </GridView>
+                </ListView.View>
+            </ListView >
+        </TabItem>
+
+        <TabItem Header="{Binding TrackDetail.RockSmithSong.PhraseIterations.Count}" HeaderStringFormat="Phrase iterations({0})">
+            <ListView ItemsSource="{Binding TrackDetail.RockSmithSong.PhraseIterations}">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Time">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Time, StringFormat=N2}" TextAlignment="Right" HorizontalAlignment="Stretch" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="PhraseId" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding PhraseId}" TextAlignment="Center" HorizontalAlignment="Stretch" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Variation" DisplayMemberBinding="{Binding Variation}" />
+                        <GridViewColumn Header="HeroLevels" DisplayMemberBinding="{Binding HeroLevels.Count}" />
+                    </GridView>
+                </ListView.View>
+            </ListView >
+        </TabItem>
+
+        <TabItem Header="{Binding TrackDetail.RockSmithSong.Phrases.Count}" HeaderStringFormat="Phrases({0})">
+            <ListView ItemsSource="{Binding TrackDetail.RockSmithSong.Phrases}">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Disparity">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Disparity}" TextAlignment="Right" HorizontalAlignment="Stretch" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="MaxDifficulty">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding MaxDifficulty}" TextAlignment="Right" HorizontalAlignment="Stretch" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Ignore">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Ignore}" TextAlignment="Right" HorizontalAlignment="Stretch" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Solo">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Solo}" TextAlignment="Right" HorizontalAlignment="Stretch" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView >
+        </TabItem>
+
+        <TabItem Header="{Binding Source={StaticResource ChordTemplates}, Path=Count}" HeaderStringFormat="Chord templates({0})">
+            <ListView ItemsSource="{Binding Source={StaticResource ChordTemplates}}">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding ChordName}" />
+                        <GridViewColumn Header="1" DisplayMemberBinding="{Binding Fret0, Converter={StaticResource ChordFretDisplayConverter}}" />
+                        <GridViewColumn Header="2" DisplayMemberBinding="{Binding Fret1, Converter={StaticResource ChordFretDisplayConverter}}" />
+                        <GridViewColumn Header="3" DisplayMemberBinding="{Binding Fret2, Converter={StaticResource ChordFretDisplayConverter}}" />
+                        <GridViewColumn Header="4" DisplayMemberBinding="{Binding Fret3, Converter={StaticResource ChordFretDisplayConverter}}" />
+                        <GridViewColumn Header="5" DisplayMemberBinding="{Binding Fret4, Converter={StaticResource ChordFretDisplayConverter}}" />
+                        <GridViewColumn Header="6" DisplayMemberBinding="{Binding Fret5, Converter={StaticResource ChordFretDisplayConverter}}" />
+                    </GridView>
+                </ListView.View>
+            </ListView >
+        </TabItem>
+        <TabItem Header="{Binding TrackDetail.RockSmithSong.Tones.Count}" HeaderStringFormat="Tones({0})">
+            <ListView ItemsSource="{Binding TrackDetail.RockSmithSong.Tones}">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Time">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Time, StringFormat=N2}" TextAlignment="Right" HorizontalAlignment="Stretch" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" />
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </TabItem>
+    </TabControl>
+</UserControl>

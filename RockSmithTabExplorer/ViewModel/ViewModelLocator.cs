@@ -29,6 +29,7 @@ namespace RockSmithTabExplorer.ViewModel
             SimpleIoc.Default.Register<IErrorService, ErrorService>();
             SimpleIoc.Default.Register<IDialogService, DialogService>();
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<SongCollection>();
         }
 
         /// <summary>

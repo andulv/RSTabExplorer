@@ -78,7 +78,7 @@
         </Grid>
 
         <StatusBar Grid.Row="2">
-            <TextBlock Grid.Row="0" Text="{Binding SongManager.StatusString}"></TextBlock>
+            <TextBlock Grid.Row="0" Text="{Binding SongCollection.StatusString}"></TextBlock>
         </StatusBar>
     </Grid>
 </Window>

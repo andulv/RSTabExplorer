@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace RockSmithTabExplorer
 {
-    public class SongManager : INotifyPropertyChanged //SongCollection
+    public class SongCollection : INotifyPropertyChanged //SongCollection
     {
         private List<ArcFileWrapper> files = new List<ArcFileWrapper>();
         public string StatusString { get; private set; }

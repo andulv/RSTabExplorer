@@ -12,11 +12,11 @@ namespace RockSmithTabExplorer
     public class SongLoader
     {
         private readonly IDialogService _dialogService;
-        private SongManager songManager;
-        public SongLoader(IDialogService dialogService, SongManager songManager)
+        private SongCollection songCollection;
+        public SongLoader(IDialogService dialogService, SongCollection songCollection)
         {
             _dialogService = dialogService;
-            this.songManager = songManager;
+            this.songCollection = songCollection;
         }
 
         private bool isLoading=false;
@@ -79,9 +79,9 @@ namespace RockSmithTabExplorer
             {
                 if (!appendSongs)
                 {
-                    songManager.Clear();
+                    songCollection.Clear();
                 }
-                songManager.Add(file);
+                songCollection.Add(file);
             }
         }
 

@@ -134,7 +134,7 @@
       <DependentUpon>ScoreInfoWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\SongLoader.cs" />
-    <Compile Include="Services\SongManager.cs" />
+    <Compile Include="Services\SongCollection.cs" />
     <Compile Include="Utils\NonClosingStream.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\GuitarPath.cs" />

@@ -44,11 +44,11 @@ namespace RockSmithTabExplorer.ViewModel
         private int _currentTrackIndex;
 
         SongLoader songLoader;
-        SongManager songManager = new SongManager();
-        public SongManager SongManager
+        SongCollection songCollection;
+        public SongCollection SongCollection
         {
-            get { return songManager; }
-            private set { songManager = value; }
+            get { return songCollection; }
+            private set { songCollection = value; }
         }
 
         public Score Score
@@ -115,7 +115,7 @@ namespace RockSmithTabExplorer.ViewModel
             // Update SelectedRockSmithSong on song load
             if (args.PropertyName == "IsLoading" && songLoader.IsLoading == false)
             {
-                SelectedRockSmithSong = songManager.GetFirstSong();
+                SelectedRockSmithSong = songCollection.GetFirstSong();
             }
         }
 
@@ -152,7 +152,7 @@ namespace RockSmithTabExplorer.ViewModel
                 _selectedRockSmithTrack = value;
                 RaisePropertyChanged("SelectedRockSmithTrack");
                 if (value != null)
-                    TrackDetail = songManager.GetTrackDetail(SelectedRockSmithSong.Key, value.Name);
+                    TrackDetail = songCollection.GetTrackDetail(SelectedRockSmithSong.Key, value.Name);
                 else
                     TrackDetail = null;
             }
@@ -242,14 +242,15 @@ namespace RockSmithTabExplorer.ViewModel
 
         #endregion
 
-        public MainViewModel(IDialogService dialogService, IErrorService errorService)
+        public MainViewModel(IDialogService dialogService, IErrorService errorService, SongCollection songCollection)
         {
             _dialogService = dialogService;
             _errorService = errorService;
-            songLoader = new SongLoader(_dialogService, songManager);
+            this.songCollection = songCollection;
+            songLoader = new SongLoader(_dialogService, songCollection);
 
             // Re-raise events for the view
-            songManager.PropertyChanged += (sender, args) => this.RaisePropertyChanged(args.PropertyName);
+            songCollection.PropertyChanged += (sender, args) => this.RaisePropertyChanged(args.PropertyName);
             songLoader.PropertyChanged += (sender, args) => this.RaisePropertyChanged(args.PropertyName);
             songLoader.PropertyChanged += OnIsLoadingToggled;
 

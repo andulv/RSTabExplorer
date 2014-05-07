@@ -11,7 +11,7 @@ View Rocksmith 2014 songs (built in, DLC or custom DLC) as tablature
 * Uses RocksmithToolkitLib from 'Rocksmith Custom Toolkit' to parse archives and songs (https://github.com/rscustom/rocksmith-custom-song-toolkit)
 * The application itself is built upon GDI WPF sample application from alphaTab.
  
-# Status (v0.0.4 - 2014-05-04)
+# Status (v0.0.5 - 2014-05-07)
 * Working for most Rocksmith 2014 PC files
 * Not much error handling. Will probably crash and burn at slighest hint of failure.
 * No progress / busy indicators. UI locks up while rendering score
@@ -23,7 +23,7 @@ View Rocksmith 2014 songs (built in, DLC or custom DLC) as tablature
 
 # Dependencies
 RocksmithToolkitLib 2.5 (and its dependencies) are in the lib\ folder.
-AlphaTab dll is also in the lib folder.
+AlphaTab dll is also in the lib folder. Built from Jamedjo/alphaTab@dda365a for Glyph spacing & Voice bug patches.
 NuGet is needed to load MvvmLightLibs, CommonServiceLocator (IoC), and Costura.Fody (Bakes all dlls into the main exe).
 
 Solution should build on VS2010 or later with Framework 4.0 out of the box.

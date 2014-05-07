@@ -5,13 +5,44 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="250">
-    <ListView ItemsSource="{Binding SongCollection.AvaliableSongInfos}" SelectedItem="{Binding SelectedRockSmithSong, Mode=TwoWay}">
+    <UserControl.Resources>
+        <DataTemplate x:Key="HeaderTemplateArrowUp">
+            <DockPanel>
+                <TextBlock HorizontalAlignment="Center" Text="{Binding}"/>
+                <Path x:Name="arrow" StrokeThickness="1" Fill="gray" Data="M 5,10 L 15,10 L 10,5 L 5,10"/>
+            </DockPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="HeaderTemplateArrowDown">
+            <DockPanel>
+                <TextBlock HorizontalAlignment="Center" Text="{Binding }"/>
+                <Path x:Name="arrow" StrokeThickness="1" Fill="gray" Data="M 5,5 L 10,10 L 15,5 L 5,5"/>
+            </DockPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <ListView x:Name="TrackList" ItemsSource="{Binding SongCollection.AvaliableSongInfos}" SelectedItem="{Binding SelectedRockSmithSong, Mode=TwoWay}" GridViewColumnHeader.Click="SortClickHandler">
         <ListView.View>
             <GridView>
-                <GridViewColumn Header="Song" DisplayMemberBinding="{Binding SongName}" Width="120"/>
-                <GridViewColumn Header="Artist" DisplayMemberBinding="{Binding ArtistName}" />
-                <GridViewColumn Header="Year" DisplayMemberBinding="{Binding SongYear}" />
-                <GridViewColumn Header="Tracks" DisplayMemberBinding="{Binding TrackInfos.Count}" />
+                <GridViewColumn DisplayMemberBinding="{Binding SongName}" Width="120">
+                    <GridViewColumn.Header>
+                        <GridViewColumnHeader Tag="SongName">Song</GridViewColumnHeader>
+                    </GridViewColumn.Header>
+                </GridViewColumn>
+                <GridViewColumn DisplayMemberBinding="{Binding ArtistName}">
+                    <GridViewColumn.Header>
+                        <GridViewColumnHeader Tag="ArtistName">Artist</GridViewColumnHeader>
+                    </GridViewColumn.Header>
+                </GridViewColumn>
+                <GridViewColumn DisplayMemberBinding="{Binding SongYear}">
+                    <GridViewColumn.Header>
+                        <GridViewColumnHeader Tag="SongYear">Year</GridViewColumnHeader>
+                    </GridViewColumn.Header>
+                </GridViewColumn>
+                <GridViewColumn DisplayMemberBinding="{Binding TrackInfos.Count}">
+                    <GridViewColumn.Header>
+                        <GridViewColumnHeader Tag="TrackInfos.Count">Tracks</GridViewColumnHeader>
+                    </GridViewColumn.Header>
+                </GridViewColumn>
             </GridView>
         </ListView.View>
     </ListView >
